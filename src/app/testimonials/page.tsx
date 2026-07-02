@@ -42,7 +42,7 @@ export default function TestimonialsPage() {
       />
 
       {/* 1. Hero + aggregate rating */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/testimonials.jpg" bgImageAlt="A warm family living room with wood blinds in afternoon light." className="pt-32 sm:pt-36 lg:pt-40">
         <Container size="narrow">
           <div className="text-center flex flex-col items-center gap-6">
             <FadeUp>

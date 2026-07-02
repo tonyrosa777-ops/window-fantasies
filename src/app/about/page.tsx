@@ -30,7 +30,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={buildAboutSchema()} id="about-jsonld" />
       {/* 1. Hero / Page Header */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/about.jpg" bgImageAlt="A sunlit craftsman workspace with fabric sample books beside a shaded window." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>{about.eyebrow}</Eyebrow>

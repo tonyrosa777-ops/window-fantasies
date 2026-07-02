@@ -36,7 +36,7 @@ export default function ServiceAreasIndexPage() {
   return (
     <>
       {/* 1. Hero / Page header */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/service-areas.jpg" bgImageAlt="A classic New England neighborhood in early autumn at golden hour." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>{PAGE_EYEBROW}</Eyebrow>

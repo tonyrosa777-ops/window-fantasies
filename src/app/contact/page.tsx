@@ -30,7 +30,7 @@ export default function ContactPage() {
     <>
       <JsonLd data={buildContactSchema()} id="contact-jsonld" />
       {/* 1. Page Header */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/contact.jpg" bgImageAlt="A welcoming sunroom entry with light through plantation shutters." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>Get In Touch</Eyebrow>

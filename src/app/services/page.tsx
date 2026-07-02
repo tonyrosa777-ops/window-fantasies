@@ -28,7 +28,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* 1. Page Header */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/services.jpg" bgImageAlt="An elegant New England living room layered with sheer shades and drapery in morning light." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>What I Do</Eyebrow>

@@ -34,7 +34,7 @@ export default function RequestConsultationPage() {
     <>
       <JsonLd data={buildContactSchema()} id="consult-jsonld" />
 
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/consultation.jpg" bgImageAlt="Fabric swatches and a tape measure on a console beside a draped window." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>Free In-Home Consultation</Eyebrow>

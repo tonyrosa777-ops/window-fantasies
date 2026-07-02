@@ -25,7 +25,7 @@ export default function FaqPage() {
     <>
       <JsonLd data={buildFaqPageSchema()} id="faq-jsonld" />
       {/* 1. Page header */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/faq.jpg" bgImageAlt="A softly lit window with a cellular shade and a fern on the sill." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>Frequently Asked Questions</Eyebrow>

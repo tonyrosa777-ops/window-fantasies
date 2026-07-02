@@ -23,7 +23,7 @@ export default function PortfolioPage() {
 
   return (
     <>
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/portfolio.jpg" bgImageAlt="A luxury living room with golden light through sheer shades." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>Portfolio</Eyebrow>
