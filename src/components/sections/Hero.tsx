@@ -63,12 +63,27 @@ export default function Hero() {
       style={{ background: "var(--ink)" }}
       aria-label="Window Fantasies, the finest window treatments in New England, by hand"
     >
-      {/* Layer 1: Full-bleed photo background (z-0). */}
-      {/* TODO Part F: swap in /videos/hero-loop.mp4 movie hero */}
+      {/* Layer 1: Full-bleed stitched movie hero (Part F, 2026-07-02) — 3-clip
+          "Light, by hand" loop (shutters → sheers → drapes), Cinema Studio V2,
+          start_image-locked on Jim's real photos. Reduced-motion falls back to
+          the p04 photo (the poster's sister frame). */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        poster="/images/hero-poster.webp"
+        aria-hidden="true"
+      >
+        <source src="/videos/hero-loop.mp4" type="video/mp4" />
+        <source src="/videos/hero-loop.webm" type="video/webm" />
+      </video>
       <img
         src="/images/hunter-douglas/p04.jpg"
         alt="A premium New England living room dressed in Hunter Douglas Silhouette sheer shades, soft golden-hour light diffusing through the fabric."
-        className="absolute inset-0 w-full h-full object-cover z-0"
+        className="absolute inset-0 w-full h-full object-cover z-0 hidden motion-reduce:block"
         fetchPriority="high"
       />
 
