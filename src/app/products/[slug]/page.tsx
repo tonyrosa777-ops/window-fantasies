@@ -33,21 +33,21 @@ const signatureProducts: Record<
   { name: string; line: string; image: string; alt: string; w: number; h: number }[]
 > = {
   shades: [
-    { name: "Silhouette", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/hunter-douglas/p04.jpg", alt: "Hunter Douglas Silhouette sheer shades softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
-    { name: "Duette Honeycomb", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/hunter-douglas/p06.jpg", alt: "Hunter Douglas Duette cellular honeycomb shades in a bright kitchen.", w: 900, h: 600 },
-    { name: "Vignette Roman", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/hunter-douglas/p10.jpg", alt: "Tailored Hunter Douglas Vignette Roman shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
+    { name: "Silhouette", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.jpg", alt: "Hunter Douglas Silhouette sheer shades softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
+    { name: "Duette Honeycomb", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.jpg", alt: "Hunter Douglas Duette cellular honeycomb shades in a bright kitchen.", w: 900, h: 600 },
+    { name: "Vignette Roman", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.jpg", alt: "Tailored Hunter Douglas Vignette Roman shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
   ],
   blinds: [
-    { name: "Parkland Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/hunter-douglas/p02.jpg", alt: "Warm Hunter Douglas Parkland wood blinds in a modern dining room.", w: 2050, h: 1025 },
-    { name: "Certified Installation", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/hunter-douglas/p03.jpg", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
+    { name: "Parkland Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.jpg", alt: "Warm Hunter Douglas Parkland wood blinds in a modern dining room.", w: 2050, h: 1025 },
+    { name: "Certified Installation", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/certified-install.jpg", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
   ],
   shutters: [
-    { name: "Heritance Hardwood", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/hunter-douglas/p11.jpg", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
-    { name: "Palm Beach Polysatin", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/hunter-douglas/p09.jpg", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
+    { name: "Heritance Hardwood", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.jpg", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
+    { name: "Palm Beach Polysatin", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.jpg", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
   ],
   drapery: [
-    { name: "Carole Custom Drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/hunter-douglas/p05.jpg", alt: "Navy custom drapery framing a city view in a modern loft.", w: 1025, h: 513 },
-    { name: "Luminette Sheer Panels", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/hunter-douglas/p07.jpg", alt: "Airy Hunter Douglas Luminette sheer vertical shades with an ocean view.", w: 1025, h: 513 },
+    { name: "Carole Custom Drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.jpg", alt: "Navy custom drapery framing a city view in a modern loft.", w: 1025, h: 513 },
+    { name: "Luminette Sheer Panels", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.jpg", alt: "Airy Hunter Douglas Luminette sheer vertical shades with an ocean view.", w: 1025, h: 513 },
   ],
 };
 

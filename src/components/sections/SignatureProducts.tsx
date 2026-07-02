@@ -13,25 +13,25 @@ const SIGNATURES: { name: string; blurb: string; img: string; href: string }[] =
   {
     name: "Silhouette",
     blurb: "S-vane sheers that float between two sheers for soft, diffused light and daytime privacy. The signature Hunter Douglas look.",
-    img: "/images/hunter-douglas/p04.jpg",
+    img: "/images/signature/silhouette.jpg",
     href: "/products/shades",
   },
   {
     name: "Duette Honeycomb",
     blurb: "Energy-efficient cellular shades, with true blackout via LightLock. Takes a beating and still looks great.",
-    img: "/images/hunter-douglas/p06.jpg",
+    img: "/images/signature/duette.jpg",
     href: "/products/shades",
   },
   {
     name: "Luminette",
     blurb: "Drapery-like vertical sheers with rotating vanes, perfect for doors and wide openings.",
-    img: "/images/hunter-douglas/p07.jpg",
+    img: "/images/signature/luminette.jpg",
     href: "/products/drapery",
   },
   {
     name: "PowerView Motorization",
     blurb: "Control your shades from your phone, your voice, or a beach in Florida. Sunglasses for your windows, on a schedule.",
-    img: "/images/hunter-douglas/p08.jpg",
+    img: "/images/signature/powerview.jpg",
     href: "/services/powerview-automation",
   },
 ];

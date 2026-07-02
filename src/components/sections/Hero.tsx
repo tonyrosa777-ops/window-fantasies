@@ -81,7 +81,7 @@ export default function Hero() {
         <source src="/videos/hero-loop.webm" type="video/webm" />
       </video>
       <img
-        src="/images/hunter-douglas/p04.jpg"
+        src="/images/hero-poster.webp"
         alt="A premium New England living room dressed in Hunter Douglas Silhouette sheer shades, soft golden-hour light diffusing through the fabric."
         className="absolute inset-0 w-full h-full object-cover z-0 hidden motion-reduce:block"
         fetchPriority="high"

@@ -27,7 +27,7 @@ export function JimStoryTeaser() {
               }}
             >
               <Image
-                src="/images/hunter-douglas/p11.jpg"
+                src="/images/about/install-team.jpg"
                 alt="Warm golden light through hardwood plantation shutters, a signature Window Fantasies install."
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

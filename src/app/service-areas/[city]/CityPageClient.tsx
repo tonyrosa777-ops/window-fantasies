@@ -79,7 +79,10 @@ export default function CityPageClient({ area }: Props) {
   return (
     <>
       {/* 1. HERO */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base"
+        bgImage={`/images/towns/${area.slug}.jpg`}
+        bgImageAlt={`A ${area.city}, ${area.state} home dressed in custom Hunter Douglas window treatments.`}
+        className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           {/* Breadcrumb */}
           <FadeUp>

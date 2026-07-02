@@ -97,6 +97,12 @@ export default function ServiceAreasIndexPage() {
                     }}
                     aria-label={`Service area page for ${area.city}, ${area.state}`}
                   >
+                    <img
+                      src={`/images/towns/${area.slug}.jpg`}
+                      alt={`A ${area.city}, ${area.state} home with Hunter Douglas window treatments`}
+                      className="w-full aspect-[3/2] object-cover rounded-xl mb-4"
+                      loading="lazy"
+                    />
                     {isHomeBase && (
                       <span
                         className="inline-block font-mono text-[10px] uppercase tracking-widest mb-3 px-2 py-1 rounded"
