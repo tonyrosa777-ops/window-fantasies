@@ -27,7 +27,7 @@
   --bg-cream: #F8F3E2;
   --parchment: #F1E9CF;
   --taupe: #C5AE89;
-  --bg-card-light: #FBF7E8;                  /* elevated warm cream card on light bands (no-white rule) */
+  --bg-card-light: #EDE3C5;                  /* warm tan card on light bands — visible ~12-29pt step from cream/top-stop (Error #56 fix, no-white rule) */
 
   /* Text — on dark */
   --text-primary: #F6F1E1;                   /* warm ivory (17.8:1 on ink) */
@@ -39,7 +39,7 @@
 
   /* Borders */
   --border-dark: rgba(246, 241, 225, 0.08);
-  --border-light: rgba(7, 7, 6, 0.10);
+  --border-light: rgba(7, 7, 6, 0.14);
   --border-gold: rgba(205, 173, 105, 0.28);
 
   /* Spacing Scale */
