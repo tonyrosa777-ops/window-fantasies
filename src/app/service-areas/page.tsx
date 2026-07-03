@@ -76,8 +76,14 @@ export default function ServiceAreasIndexPage() {
       {/* 2. City grid — CREAM band, white cards, grid-cols-2 sm:grid-cols-3 */}
       <Section tone="cream">
         <Container size="wide">
+          {/* `immediate`: this grid is ~10 viewports tall, so any scroll-gated
+              threshold dead-gates it and the page loads looking empty (the
+              tall-container trap documented in Stagger.tsx). Stagger in on
+              mount instead; 0.02 keeps a fast alive ripple, fully populated
+              well under a second. */}
           <StaggerContainer
-            staggerDelay={0.03}
+            immediate
+            staggerDelay={0.02}
             className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6"
           >
             {areas.map((area) => {

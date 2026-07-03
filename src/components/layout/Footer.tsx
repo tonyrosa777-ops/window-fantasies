@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
+import { RisingAsh } from "@/components/animations/RisingAsh";
 
 /**
  * Footer — Window Fantasies. Dark (--ink). NAP, product + service-area links,
@@ -47,8 +48,13 @@ export function Footer() {
   const b = siteConfig.business;
 
   return (
-    <footer className="relative border-t border-[var(--border-dark)]" style={{ background: "var(--ink)" }}>
-      <Container className="py-16 md:py-20">
+    <footer className="relative overflow-hidden border-t border-[var(--border-dark)]" style={{ background: "var(--ink)" }}>
+      {/* Ambient backdrop: the footer is a plain-ink <footer> element, so the
+          globals.css section[...] gradient auto-styling never matches it. The
+          ash field is the footer's ONE motion layer (CSS transform/opacity
+          only, hidden under prefers-reduced-motion). */}
+      <RisingAsh />
+      <Container className="relative z-10 py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="block">

@@ -29,6 +29,13 @@ export default function ServicesPage() {
     <>
       {/* 1. Page Header */}
       <Section tone="base" bgImage="/images/headers/services.jpg" bgImageAlt="An elegant New England living room layered with sheer shades and drapery in morning light." className="pt-32 sm:pt-36 lg:pt-40">
+        {/* Seam-fade (design-symmetry rule L): dark photo header dissolves into
+            the cream consultation band. Mask only; core tone stays dark. */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-[1]"
+          style={{ background: "linear-gradient(to bottom, transparent, var(--cream))" }}
+        />
         <Container>
           <FadeUp>
             <Eyebrow>What I Do</Eyebrow>

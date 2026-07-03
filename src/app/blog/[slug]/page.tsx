@@ -10,6 +10,7 @@ import { Eyebrow } from "@/components/ui/Card";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { PostCard } from "@/components/blog/PostCard";
 import { PostBody, extractH2Headings } from "@/components/blog/PostBody";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
 
 /**
  * /blog/[slug] — Article detail page.
@@ -110,6 +111,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <>
+      <ReadingProgress />
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger

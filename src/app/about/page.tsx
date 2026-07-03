@@ -31,6 +31,14 @@ export default function AboutPage() {
       <JsonLd data={buildAboutSchema()} id="about-jsonld" />
       {/* 1. Hero / Page Header */}
       <Section tone="base" bgImage="/images/headers/about.jpg" bgImageAlt="A sunlit craftsman workspace with fabric sample books beside a shaded window." className="pt-32 sm:pt-36 lg:pt-40">
+        {/* Seam-fade (design-symmetry rule L): the dark photo header dissolves
+            ~96px into the cream story band below. Transition mask only; the
+            band's core tone stays clearly dark for the tone audit. */}
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none z-[1]"
+          style={{ background: "linear-gradient(to bottom, transparent, var(--cream))" }}
+        />
         <Container>
           <FadeUp>
             <Eyebrow>{about.eyebrow}</Eyebrow>
