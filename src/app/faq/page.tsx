@@ -61,8 +61,13 @@ export default function FaqPage() {
         </Container>
       </Section>
 
-      {/* 3. Answer-first reassurance — DARK band */}
-      <Section tone="base">
+      {/* 3. Answer-first reassurance — DARK band, full-bleed photo of swatches
+          held to real window light under the Section dark radial overlay. */}
+      <Section
+        tone="base"
+        bgImage="/images/sections/swatches-window-light.jpg"
+        bgImageAlt="Hands holding fabric swatches up to a sunlit window to judge their color in the home's own light."
+      >
         <Container size="narrow">
           <FadeUp className="text-center">
             <p className="eyebrow" style={{ color: "var(--primary)" }}>

@@ -203,11 +203,12 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* 4. CTA — CREAM, steps into the dark footer */}
+      {/* 4. CTA — CREAM, steps into the dark footer. Asymmetric split: copy left,
+          doorstep-arrival photo right (the showroom literally arrives at your door). */}
       <Section tone="cream">
-        <Container size="narrow">
-          <FadeUp>
-            <div className="text-center">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <FadeUp>
               <h2 className="text-h2 font-display" style={{ color: "var(--text-on-light)" }}>
                 Ready to let Jim bring the showroom to you?
               </h2>
@@ -217,7 +218,7 @@ export default function AboutPage() {
               >
                 The in-home consultation is free. I bring the real Hunter Douglas samples, hold them in your own windows, measure everything myself, and give you an honest installed price at your kitchen table. No pressure, no showroom to drive to, guaranteed for life.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4 justify-center">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
                   Request Your Free In-Home Consultation
                 </Button>
@@ -225,8 +226,27 @@ export default function AboutPage() {
                   Call Jim at {siteConfig.business.phoneFormatted}
                 </Button>
               </div>
-            </div>
-          </FadeUp>
+            </FadeUp>
+            <FadeUp delay={0.15}>
+              <div
+                className="relative rounded-2xl overflow-hidden border"
+                style={{
+                  aspectRatio: "4 / 3",
+                  borderColor: "var(--border-light)",
+                  boxShadow: "0 24px 60px rgba(7, 7, 6, 0.16)",
+                }}
+              >
+                <Image
+                  src="/images/sections/consultation-doorstep.jpg"
+                  alt="Fabric sample books and a tool bag on the front step of a New England colonial home."
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </FadeUp>
+          </div>
         </Container>
       </Section>
     </>

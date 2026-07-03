@@ -215,8 +215,13 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      {/* 3. One person, the whole way — DARK reassurance band */}
-      <Section tone="base">
+      {/* 3. One person, the whole way — DARK reassurance band, full-bleed craft
+          photo under the Section dark radial overlay (text contrast ≥4.5:1). */}
+      <Section
+        tone="base"
+        bgImage="/images/sections/craftsman-level-shutter.jpg"
+        bgImageAlt="A craftsman's hands checking a custom white plantation shutter with a level during a home install."
+      >
         <Container size="narrow">
           <FadeUp className="text-center">
             <p className="eyebrow" style={{ color: "var(--primary)" }}>
@@ -235,11 +240,32 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      {/* 4. CTA — CREAM, steps into the dark footer */}
+      {/* 4. CTA — CREAM, steps into the dark footer. Asymmetric split: the
+          "showroom comes to you" photo left, consultation copy right (grid-aligned,
+          items-center per design-symmetry rule F). */}
       <Section tone="cream">
-        <Container size="narrow">
-          <FadeUp>
-            <div className="text-center">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <FadeUp>
+              <div
+                className="relative rounded-2xl overflow-hidden border"
+                style={{
+                  aspectRatio: "4 / 3",
+                  borderColor: "var(--border-light)",
+                  boxShadow: "0 24px 60px rgba(7, 7, 6, 0.16)",
+                }}
+              >
+                <Image
+                  src="/images/sections/samples-kitchen-table.jpg"
+                  alt="Open Hunter Douglas fabric sample books and wood stain chips on a sunlit kitchen table."
+                  fill
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </FadeUp>
+            <FadeUp delay={0.15}>
               <h2 className="text-h2 font-display" style={{ color: "var(--text-on-light)" }}>
                 Not sure where to start?
               </h2>
@@ -249,7 +275,7 @@ export default function ServicesPage() {
               >
                 Start with the free in-home consultation. Jim brings the real Hunter Douglas samples to you, reads the room, and tells you honestly what belongs on your windows. No pressure, no showroom to drive to.
               </p>
-              <div className="mt-8 flex flex-wrap gap-4 justify-center">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
                   Request Your Free In-Home Consultation
                 </Button>
@@ -257,8 +283,8 @@ export default function ServicesPage() {
                   Call Jim
                 </Button>
               </div>
-            </div>
-          </FadeUp>
+            </FadeUp>
+          </div>
         </Container>
       </Section>
     </>
