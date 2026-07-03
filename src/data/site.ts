@@ -27,6 +27,7 @@ export interface SiteConfig {
   pastClients: PastClient[];
   workItems: WorkItem[];
   productLines: ProductLine[];
+  costAnchor: CostAnchor;
   industries: Industry[];
   serviceAreas: ServiceArea[];
   testimonials: Testimonial[];
@@ -85,6 +86,8 @@ export interface Service {
   longDescription: string;
   features: string[];
   pricingNote: string;
+  /** Optional reassurance line rendered near the pricing note; the phone number renders tap-to-call after it. */
+  notSureNote?: string;
   imageSrc: string;
   imageAlt: string;
   /** Intrinsic pixel dimensions of imageSrc so the photo renders at its natural aspect. */
@@ -128,6 +131,15 @@ export interface ProductLine {
   /** Intrinsic pixel dimensions of imageSrc so the photo renders at its natural aspect. */
   imageW: number;
   imageH: number;
+}
+
+/**
+ * Shared honest-cost anchor for the product pages (the "Susan" fix). Same
+ * plainspoken voice as the Cost FAQ and the homepage CostHonesty band.
+ */
+export interface CostAnchor {
+  eyebrow: string;
+  body: string;
 }
 
 export interface Industry {
@@ -276,7 +288,7 @@ export const siteConfig: SiteConfig = {
       emphasis: ["hand"],
     },
     subhead:
-      "Authorized Hunter Douglas Centurion dealer. Measured, designed, and installed by Jim himself. Guaranteed for life, across all of New England.",
+      "Measured, designed, and installed by Jim himself. Guaranteed for life. Motorized shades you control from your phone, or a beach in Florida.",
     trustMicrocopy: "Free in-home consultation. Jim brings the showroom to you.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
     ctaSecondary: { label: "Call Jim", href: `tel:+1${PHONE_TEL}` },
@@ -425,6 +437,7 @@ export const siteConfig: SiteConfig = {
         "The service fee is disclosed upfront, no surprises",
       ],
       pricingNote: "Repair itself is free under warranty. A flat service fee applies if Jim handles pickup and reinstall.",
+      notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
       imageSrc: "/images/services/installs-and-repairs.jpg",
       imageW: 2528,
       imageH: 1685,
@@ -434,17 +447,18 @@ export const siteConfig: SiteConfig = {
     {
       slug: "blind-and-shade-repairs",
       name: "Blind and Shade Repairs",
-      shortDescription: "Cords, mechanisms, motors, and fabric. If it is a Hunter Douglas product, Jim can get it repaired, even if you bought it somewhere else or from a shop that has closed.",
-      longDescription: "A shade you love should not go in the trash over a broken cord or a tired mechanism. Jim handles Hunter Douglas repairs of all kinds, and he helps even when you did not buy it from him or the original shop is long gone. Because the products are guaranteed for life, the fix is often free under warranty. Tell Jim what broke and he will tell you the honest path forward.",
+      shortDescription: "Here is the good news: the fix is often free under the Hunter Douglas lifetime warranty. Cords, mechanisms, motors, and fabric, Jim gets it repaired, even if you bought it somewhere else or from a shop that has closed.",
+      longDescription: "Start with the good news: Hunter Douglas products are guaranteed for life, so the fix is often free under warranty. A shade you love should not go in the trash over a broken cord or a tired mechanism. Jim handles Hunter Douglas repairs of all kinds, and he helps even when you did not buy it from him or the original shop is long gone. Tell Jim what broke and he will tell you the honest path forward.",
       features: [
+        "Free repairs under the Hunter Douglas lifetime warranty",
         "Cord, mechanism, and hardware repairs",
         "Motor and PowerView troubleshooting",
         "Help even if you bought it elsewhere",
-        "Free repairs under the Hunter Douglas lifetime warranty",
         "Honest guidance on repair versus replace",
         "Flat, disclosed service fee for full pickup and reinstall",
       ],
       pricingNote: "Free under warranty. Flat service fee for full pickup and reinstall, disclosed upfront.",
+      notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
       imageSrc: "/images/services/blind-and-shade-repairs.jpg",
       imageW: 2528,
       imageH: 1685,
@@ -749,6 +763,13 @@ export const siteConfig: SiteConfig = {
     },
   ],
 
+  // Honest-cost anchor rendered on /products and every /products/[slug] page.
+  // Same voice as the Cost FAQ below and the homepage CostHonesty band.
+  costAnchor: {
+    eyebrow: "Honest pricing, upfront",
+    body: "Hunter Douglas is custom and premium. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and yes, it is guaranteed for life.",
+  },
+
   // Not used by Window Fantasies (the /industries route is removed). Empty but valid.
   industries: [],
 
@@ -779,7 +800,7 @@ export const siteConfig: SiteConfig = {
       population: 91322,
       distance: "Southern NH",
       description: "Nashua is one of the most active markets Jim serves. Custom window treatments for condos, single-family homes, and lakeside properties, all measured, designed, and installed by hand.",
-      nearbyAreas: ["hudson-nh", "merrimack-nh", "windham-nh", "manchester-nh", "salem-nh"],
+      nearbyAreas: ["windham-nh", "manchester-nh", "salem-nh", "londonderry-nh", "derry-nh"],
     },
     {
       slug: "manchester-nh",
@@ -851,7 +872,7 @@ export const siteConfig: SiteConfig = {
       population: 24011,
       distance: "Southern NH",
       description: "Bedford is home to some of the region's finest properties, and to Goedecke Design, the Hunter Douglas authorized service center. Jim installs and services premium treatments across Bedford.",
-      nearbyAreas: ["manchester-nh", "merrimack-nh", "nashua-nh", "londonderry-nh", "salem-nh"],
+      nearbyAreas: ["manchester-nh", "nashua-nh", "londonderry-nh", "derry-nh", "salem-nh"],
     },
     {
       slug: "portsmouth-nh",
@@ -887,7 +908,7 @@ export const siteConfig: SiteConfig = {
       population: 7255,
       distance: "Seacoast NH",
       description: "Stratham homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, one person from measure to install.",
-      nearbyAreas: ["exeter-nh", "portsmouth-nh", "hampton-nh", "newmarket-nh", "seabrook-nh"],
+      nearbyAreas: ["exeter-nh", "portsmouth-nh", "hampton-nh", "dover-nh", "seabrook-nh"],
     },
     {
       slug: "seabrook-nh",
@@ -896,7 +917,7 @@ export const siteConfig: SiteConfig = {
       population: 8693,
       distance: "Seacoast NH",
       description: "Seabrook homeowners choose Jim for custom Hunter Douglas treatments and repairs. The same care whether it is one window or the whole home.",
-      nearbyAreas: ["hampton-nh", "exeter-nh", "newburyport-ma", "amesbury-ma", "salisbury-ma"],
+      nearbyAreas: ["hampton-nh", "exeter-nh", "newburyport-ma", "amesbury-ma", "portsmouth-nh"],
     },
     {
       slug: "dover-nh",
@@ -905,7 +926,7 @@ export const siteConfig: SiteConfig = {
       population: 32741,
       distance: "Seacoast NH",
       description: "Dover homeowners use Window Fantasies for shades, blinds, shutters, and motorization. Guaranteed for life, serviced personally by Jim.",
-      nearbyAreas: ["portsmouth-nh", "durham-nh", "rochester-nh", "exeter-nh", "somersworth-nh"],
+      nearbyAreas: ["portsmouth-nh", "stratham-nh", "exeter-nh", "hampton-nh", "newburyport-ma"],
     },
     {
       slug: "methuen-ma",
@@ -923,7 +944,7 @@ export const siteConfig: SiteConfig = {
       population: 36569,
       distance: "Merrimack Valley MA",
       description: "Andover's established homes are a strong fit for premium Hunter Douglas shades, shutters, and drapery. Jim brings the showroom to you and installs everything himself.",
-      nearbyAreas: ["north-andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "tewksbury-ma"],
+      nearbyAreas: ["north-andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
       slug: "north-andover-ma",
@@ -932,7 +953,7 @@ export const siteConfig: SiteConfig = {
       population: 30915,
       distance: "Merrimack Valley MA",
       description: "North Andover homeowners choose Window Fantasies for custom window treatments, measured and installed by hand, guaranteed for life.",
-      nearbyAreas: ["andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "boxford-ma"],
+      nearbyAreas: ["andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
       slug: "haverhill-ma",
@@ -959,7 +980,7 @@ export const siteConfig: SiteConfig = {
       population: 18289,
       distance: "North Shore MA",
       description: "Newburyport's coastal and historic homes are a beautiful fit for custom shutters, sheers, and drapery. Jim measures, designs, and installs it all by hand.",
-      nearbyAreas: ["amesbury-ma", "salisbury-ma", "seabrook-nh", "hampton-nh", "haverhill-ma"],
+      nearbyAreas: ["amesbury-ma", "seabrook-nh", "hampton-nh", "haverhill-ma", "portsmouth-nh"],
     },
     {
       slug: "amesbury-ma",
@@ -968,7 +989,7 @@ export const siteConfig: SiteConfig = {
       population: 17366,
       distance: "North Shore MA",
       description: "Amesbury homeowners choose Jim for custom Hunter Douglas window treatments. Guaranteed for life, serviced personally.",
-      nearbyAreas: ["newburyport-ma", "salisbury-ma", "seabrook-nh", "haverhill-ma", "merrimac-ma"],
+      nearbyAreas: ["newburyport-ma", "seabrook-nh", "haverhill-ma", "hampton-nh", "plaistow-nh"],
     },
     {
       slug: "boston-ma",
@@ -977,7 +998,7 @@ export const siteConfig: SiteConfig = {
       population: 675647,
       distance: "Greater Boston MA",
       description: "Jim serves Boston condos and towers, including the South End, with high-end custom Hunter Douglas treatments and PowerView motorization. There is no place in New England he will not travel.",
-      nearbyAreas: ["cambridge-ma", "newton-ma", "brookline-ma", "somerville-ma", "quincy-ma"],
+      nearbyAreas: ["cambridge-ma", "andover-ma", "lawrence-ma", "methuen-ma", "north-andover-ma"],
     },
     {
       slug: "cambridge-ma",
@@ -986,7 +1007,7 @@ export const siteConfig: SiteConfig = {
       population: 118403,
       distance: "Greater Boston MA",
       description: "Cambridge homeowners and condo owners use Window Fantasies for custom shades, sheers, and motorization. Jim brings the samples to your home and installs everything himself.",
-      nearbyAreas: ["boston-ma", "somerville-ma", "newton-ma", "brookline-ma", "arlington-ma"],
+      nearbyAreas: ["boston-ma", "andover-ma", "methuen-ma", "lawrence-ma", "haverhill-ma"],
     },
     {
       slug: "hyannis-ma",
@@ -995,7 +1016,8 @@ export const siteConfig: SiteConfig = {
       population: 14120,
       distance: "Cape Cod MA",
       description: "On Cape Cod, sun and salt air call for Palm Beach shutters and solar shades that will not warp or fade. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
-      nearbyAreas: ["barnstable-ma", "yarmouth-ma", "falmouth-ma", "sandwich-ma", "dennis-ma"],
+      // Cape Cod has no sibling town pages yet; link the real MA pages so the band renders.
+      nearbyAreas: ["boston-ma", "cambridge-ma"],
     },
     {
       slug: "portland-me",
@@ -1004,7 +1026,8 @@ export const siteConfig: SiteConfig = {
       population: 68408,
       distance: "Southern Maine",
       description: "Southern Maine is part of the range. Portland homes and condos get the same custom Hunter Douglas treatments and hand installation as everywhere else Jim serves. Distance may carry a travel charge.",
-      nearbyAreas: ["portsmouth-nh", "dover-nh", "kittery-me", "biddeford-me", "saco-me"],
+      // No other Maine pages exist yet; the nearest real pages are the NH Seacoast towns.
+      nearbyAreas: ["portsmouth-nh", "dover-nh", "hampton-nh", "exeter-nh", "stratham-nh"],
     },
     {
       slug: "burlington-vt",

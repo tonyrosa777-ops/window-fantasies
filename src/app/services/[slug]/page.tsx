@@ -139,8 +139,16 @@ export default async function ServicePage({ params }: Props) {
   const steps = processSteps[slug] ?? [];
 
   // Pull up to 5 FAQs from the global FAQ list for this service.
-  // Falls back to first 5 if no specific match.
-  const serviceFaqs = siteConfig.faq.slice(0, 5);
+  // Repair pages exclude the purchase-price FAQs (Cost / Value): a repair
+  // customer is not buying new treatments, and the $1,600 purchase anchor
+  // reads as a scare on a page whose whole message is "often free under
+  // warranty." The Repairs FAQ leads instead.
+  const isRepairPage = slug === "blind-and-shade-repairs" || slug === "installs-and-repairs";
+  const serviceFaqs = (
+    isRepairPage
+      ? siteConfig.faq.filter((f) => f.category !== "Cost" && f.category !== "Value")
+      : siteConfig.faq
+  ).slice(0, 5);
 
   return (
     <>
@@ -182,6 +190,21 @@ export default async function ServicePage({ params }: Props) {
                   >
                     {svc.pricingNote}
                   </p>
+                  {svc.notSureNote && (
+                    <p
+                      className="mt-3 font-body"
+                      style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.6 }}
+                    >
+                      {svc.notSureNote}{" "}
+                      <a
+                        href={`tel:+1${siteConfig.business.phone}`}
+                        className="phone-display hover:underline"
+                        style={{ color: "var(--primary)" }}
+                      >
+                        {siteConfig.business.phoneFormatted}
+                      </a>
+                    </p>
+                  )}
                 </div>
               </FadeUp>
               <FadeUp delay={0.4}>

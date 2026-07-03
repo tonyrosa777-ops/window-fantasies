@@ -169,6 +169,25 @@ export default function ProductsIndexPage() {
               That is why there is no showroom to drive to. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you exactly how each line reads in the room before you spend a dollar. Every treatment is guaranteed for life.
             </p>
           </FadeUp>
+
+          {/* Honest-cost anchor (shared costAnchor, site.ts) — compact strip
+              inside this band so the page's tone alternation stays intact. */}
+          <FadeUp delay={0.1}>
+            <div
+              className="mt-10 mx-auto max-w-2xl rounded-[8px] border px-6 py-6 sm:px-8 text-left"
+              style={{ background: "var(--bg-card)", borderColor: "var(--border-dark)" }}
+            >
+              <p className="eyebrow" style={{ color: "var(--primary)" }}>
+                {siteConfig.costAnchor.eyebrow}
+              </p>
+              <p
+                className="mt-3 font-body"
+                style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.65 }}
+              >
+                {siteConfig.costAnchor.body}
+              </p>
+            </div>
+          </FadeUp>
         </Container>
       </Section>
 

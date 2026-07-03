@@ -39,9 +39,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** City FAQ generator — kept in sync with CityPageClient for schema parity. */
-function cityFaqs(area: { city: string; distance: string }) {
+function cityFaqs(area: { city: string; state: string }) {
   const city = area.city;
-  return [
+  const faqs = [
     {
       q: `Do you serve ${city}?`,
       a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no showroom to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
@@ -59,6 +59,15 @@ function cityFaqs(area: { city: string; distance: string }) {
       a: `No showroom, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim brings the showroom to you, with the real Hunter Douglas samples, shown in your own light.`,
     },
   ];
+  // Out-of-state towns get the honest repair-logistics answer (Paul persona fix).
+  // Mirrored in CityPageClient.tsx for visible-accordion parity. Keep in sync.
+  if (area.state !== "NH") {
+    faqs.splice(3, 0, {
+      q: `Do you handle repairs out here in ${city}?`,
+      a: `Yes. Hunter Douglas warranty repairs are free, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself for free. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
+    });
+  }
+  return faqs;
 }
 
 export default async function CityPage({ params }: Props) {

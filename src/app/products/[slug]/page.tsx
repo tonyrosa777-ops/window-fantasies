@@ -310,6 +310,30 @@ export default async function ProductPage({ params }: Props) {
               >
                 Every {product.name.toLowerCase()} order is measured, designed, and installed by Jim himself. No sales team, no subcontractors, one person accountable from the first sample to the final install.
               </p>
+
+              {/* Honest-cost anchor (shared costAnchor, site.ts) — compact strip
+                  inside this band so tone alternation stays intact. */}
+              <div
+                className="mt-8 rounded-[8px] border px-6 py-6"
+                style={{
+                  background: "var(--bg-card-light)",
+                  borderColor: "var(--border-light)",
+                }}
+              >
+                <p className="eyebrow" style={{ color: "var(--gold-deep)" }}>
+                  {siteConfig.costAnchor.eyebrow}
+                </p>
+                <p
+                  className="mt-3 font-body"
+                  style={{
+                    color: "var(--muted-on-light)",
+                    fontSize: "0.95rem",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {siteConfig.costAnchor.body}
+                </p>
+              </div>
             </div>
             <div>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">

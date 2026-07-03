@@ -18,8 +18,8 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
  *   1. Hero (breadcrumb + H1 + subhead + 2 CTAs)
  *   2. City info (2-col: copy + trust checklist | Google Maps + info card)
  *   3. Services available in [city] (featured-1 + 2-col grid)
- *   4. City FAQ (Radix accordion, 4 auto-generated questions)
- *   5. Nearby areas (up to 5 links)
+ *   4. City FAQ (Radix accordion, 4 auto-generated questions, +1 repair-logistics question on non-NH towns)
+ *   5. Nearby areas (up to 5 links, same-state towns first)
  *   6. Final CTA
  *
  * Services grid: featured-1 full-width + the rest in `grid-cols-1 md:grid-cols-2`.
@@ -44,7 +44,7 @@ const TRUST_CHECKLIST = [
 
 const cityFaqs = (area: ServiceArea) => {
   const city = area.city;
-  return [
+  const faqs = [
     {
       q: `Do you serve ${city}?`,
       a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no showroom to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
@@ -62,15 +62,45 @@ const cityFaqs = (area: ServiceArea) => {
       a: `No showroom, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim brings the showroom to you, with the real Hunter Douglas samples, shown in your own light.`,
     },
   ];
+  // Out-of-state towns get the honest repair-logistics answer (Paul persona fix).
+  // Mirrored in [city]/page.tsx for FAQPage schema parity. Keep in sync.
+  if (area.state !== "NH") {
+    faqs.splice(3, 0, {
+      q: `Do you handle repairs out here in ${city}?`,
+      a: `Yes. Hunter Douglas warranty repairs are free, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself for free. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
+    });
+  }
+  return faqs;
 };
+
+/**
+ * Same-state-first ordering for the nearby-areas chips: towns in the same
+ * state as the current page come first (curated relative order preserved),
+ * then out-of-state towns (also in curated order). Pure function; slugs that
+ * do not resolve against siteConfig.serviceAreas are dropped.
+ */
+function orderNearbySameStateFirst(area: ServiceArea): string[] {
+  const sameState: string[] = [];
+  const outOfState: string[] = [];
+  for (const slug of area.nearbyAreas) {
+    const nearby = siteConfig.serviceAreas.find((a) => a.slug === slug);
+    if (!nearby) continue;
+    if (nearby.state === area.state) {
+      sameState.push(slug);
+    } else {
+      outOfState.push(slug);
+    }
+  }
+  return [...sameState, ...outOfState];
+}
 
 export default function CityPageClient({ area }: Props) {
   const services = siteConfig.services;
   const business = siteConfig.business;
   const faqs = cityFaqs(area);
 
-  // Nearby areas list (informational, not a grid).
-  const nearbyAreas = area.nearbyAreas.slice(0, 5);
+  // Nearby areas list (informational, not a grid). Same-state towns first.
+  const nearbyAreas = orderNearbySameStateFirst(area).slice(0, 5);
 
   // Featured-1 + 2-col pattern for services: first service featured, the rest in a 2-col grid.
   const featuredService = services[0];

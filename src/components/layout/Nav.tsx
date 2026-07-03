@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/Button";
 /**
  * Nav — Window Fantasies.
  *
- * Primary links: Products · Services · Portfolio · About · Service Areas · Blog.
+ * Primary links: Products · PowerView · Services · Portfolio · About · Service Areas · Blog.
  * Visible phone (603) 891-5755 and a gold "Free Consultation" button that goes
  * to /request-a-consultation.
  *
@@ -20,8 +20,12 @@ import { Button } from "@/components/ui/Button";
  * viewport, not to the blurred header (backdrop-filter containing-block trap).
  */
 
+// Desktop uses the short "PowerView" label: at the 1024px nav transition the
+// full "PowerView Motorization" label crowds the bar and risks a wrap. The
+// drawer has room, so it carries the full label (mapped below).
 const links = [
   { label: "Products", href: "/products" },
+  { label: "PowerView", href: "/services/powerview-automation" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
@@ -30,7 +34,11 @@ const links = [
 ];
 
 const drawerLinks = [
-  ...links,
+  ...links.map((l) =>
+    l.href === "/services/powerview-automation"
+      ? { ...l, label: "PowerView Motorization" }
+      : l
+  ),
   { label: "Reviews", href: "/testimonials" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
