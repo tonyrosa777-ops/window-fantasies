@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt ?? post.publishedAt,
       authors: [post.authorName],
     },
   };
@@ -67,7 +68,7 @@ function buildArticleJsonLd(post: SeededPost): string {
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     author: {
       "@type": "Person",
       name: post.authorName,
@@ -166,15 +167,23 @@ export default async function BlogPostPage({ params }: Props) {
                 </time>
                 <span aria-hidden="true">·</span>
                 <span>{post.readingTimeMinutes} min read</span>
+                {post.updatedAt ? (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <time dateTime={post.updatedAt}>
+                      Last updated {formatDate(post.updatedAt)}
+                    </time>
+                  </>
+                ) : null}
               </div>
             </div>
           </FadeUp>
-        </Container>
-      </Section>
 
-      <Section tone="elevated" id="post-body">
-        <Container size="wide">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
+          {/* The body shares the hero's dark band on purpose: ink and espresso
+              both classify as D, so rendering them as two sections produced a
+              DD run in the route's tone string (Pattern #98). One merged band
+              gives every article a strict D-L-D rhythm against the footer. */}
+          <div id="post-body" className="mt-16 md:mt-20 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14">
             <div className="lg:col-span-2 min-w-0">
               <FadeUp>
                 <PostBody body={post.body} />

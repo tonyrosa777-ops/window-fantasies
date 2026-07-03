@@ -139,6 +139,77 @@ function renderSeededBody(body: SeededPostParagraph[]) {
       );
       return;
     }
+    if (block.type === "table" && block.headers && block.rows) {
+      nodes.push(
+        <div key={key} className="overflow-x-auto mb-8 rounded-lg border" style={{ borderColor: "var(--border-dark)" }}>
+          <table className="w-full font-body text-sm md:text-base" style={{ borderCollapse: "collapse" }}>
+            <thead>
+              <tr style={{ background: "color-mix(in oklab, var(--primary) 10%, transparent)" }}>
+                {block.headers.map((h, i) => (
+                  <th
+                    key={i}
+                    className="text-left font-semibold px-4 py-3 border-b"
+                    style={{ color: "var(--text-primary)", borderColor: "var(--border-dark)" }}
+                  >
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row, r) => (
+                <tr key={r}>
+                  {row.map((cell, c) => (
+                    <td
+                      key={c}
+                      className="px-4 py-3 border-b align-top"
+                      style={{
+                        color: c === 0 ? "var(--text-primary)" : "var(--text-secondary)",
+                        borderColor: "var(--border-dark)",
+                      }}
+                    >
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      return;
+    }
+    if (block.type === "sources" && block.sources) {
+      nodes.push(
+        <div
+          key={key}
+          className="mt-12 pt-6 border-t"
+          style={{ borderColor: "var(--border-dark)" }}
+        >
+          <p
+            className="font-mono text-xs uppercase tracking-widest mb-3"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Sources
+          </p>
+          <ul className="font-body text-sm space-y-2" style={{ color: "var(--text-secondary)" }}>
+            {block.sources.map((s, i) => (
+              <li key={i}>
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4 transition-colors hover:text-[var(--primary)]"
+                >
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+      return;
+    }
   });
 
   return nodes;

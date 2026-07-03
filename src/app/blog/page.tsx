@@ -98,7 +98,10 @@ async function loadPosts(): Promise<PostCardData[]> {
 export default async function BlogIndexPage() {
   const posts = await loadPosts();
   const featured = posts.find((p) => p.isFeatured) ?? posts[0];
-  const rest = posts.filter((p) => p.slug !== featured?.slug);
+  // Newest first in the grid regardless of array order in the data file.
+  const rest = posts
+    .filter((p) => p.slug !== featured?.slug)
+    .sort((a, b) => +new Date(b.publishedAt) - +new Date(a.publishedAt));
 
   return (
     <>
