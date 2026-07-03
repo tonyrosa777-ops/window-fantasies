@@ -8,8 +8,8 @@ import "./globals.css";
 
 /**
  * Fonts: design-system.md §3
- * - Cormorant Garamond (display, luxury editorial serif) — Hero H1 + interior H1s + section H2s
- * - Inter (body) — all paragraph copy, card body, FAQ answers, form labels, eyebrows
+ * - Cormorant Garamond (display, luxury editorial serif), Hero H1 + interior H1s + section H2s
+ * - Inter (body), all paragraph copy, card body, FAQ answers, form labels, eyebrows
  */
 
 const cormorant = Cormorant_Garamond({
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.business.name} | ${siteConfig.business.tagline}`,
     template: `%s | ${siteConfig.business.name}`,
   },
-  description: `Authorized Hunter Douglas Centurion dealer in Salem, NH. ${siteConfig.business.yearsInBusiness}+ years of custom window treatments — shades, blinds, shutters, drapery and motorization — measured, designed and installed by hand across New England. Free in-home consultation, guaranteed for life.`,
+  description: `Authorized Hunter Douglas Centurion dealer in Salem, NH. ${siteConfig.business.yearsInBusiness}+ years of custom window treatments, shades, blinds, shutters, drapery and motorization, measured, designed and installed by hand across New England. Free in-home consultation, guaranteed for life.`,
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.windowfantasies.com"),
   alternates: {
     canonical: "/",

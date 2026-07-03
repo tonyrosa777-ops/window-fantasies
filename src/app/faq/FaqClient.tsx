@@ -19,7 +19,7 @@ const ALL = "All";
 export function FaqClient({ items, tone = "dark" }: Props) {
   const [filter, setFilter] = useState<string>(ALL);
   const isLight = tone === "light";
-  const cardBg = isLight ? "#FFFFFF" : "var(--bg-card)";
+  const cardBg = isLight ? "var(--bg-card-light)" : "var(--bg-card)";
   const cardBorder = isLight ? "var(--border-light)" : "var(--border-dark)";
   const headingColor = isLight ? "var(--text-on-light)" : "var(--text-primary)";
   const bodyColor = isLight ? "var(--muted-on-light)" : "var(--text-secondary)";

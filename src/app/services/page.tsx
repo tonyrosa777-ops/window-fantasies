@@ -65,7 +65,7 @@ export default function ServicesPage() {
             <StaggerItem>
               <div
                 className="mb-6 rounded-2xl p-6 sm:p-8 border"
-                style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
                   {/* Copy */}
@@ -158,7 +158,7 @@ export default function ServicesPage() {
                 <StaggerItem key={service.slug}>
                   <div
                     className="flex flex-col h-full rounded-2xl p-6 sm:p-8 border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(7, 7, 6,0.14)]"
-                    style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                    style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
                   >
                     {service.imageSrc && (
                       <Image

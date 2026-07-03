@@ -27,6 +27,7 @@
   --bg-cream: #F8F3E2;
   --parchment: #F1E9CF;
   --taupe: #C5AE89;
+  --bg-card-light: #FBF7E8;                  /* elevated warm cream card on light bands (no-white rule) */
 
   /* Text — on dark */
   --text-primary: #F6F1E1;                   /* warm ivory (17.8:1 on ink) */

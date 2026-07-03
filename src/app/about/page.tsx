@@ -70,7 +70,7 @@ export default function AboutPage() {
                 className="relative rounded-2xl overflow-hidden border"
                 style={{
                   aspectRatio: "3 / 4",
-                  background: "#FFFFFF",
+                  background: "var(--bg-card-light)",
                   borderColor: "color-mix(in oklab, var(--primary) 35%, var(--border-light))",
                   boxShadow: "0 28px 70px rgba(7, 7, 6,0.20)",
                 }}

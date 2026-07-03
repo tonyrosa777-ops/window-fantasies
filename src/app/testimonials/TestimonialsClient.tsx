@@ -27,7 +27,7 @@ interface Props {
 
 export function TestimonialsClient({ items, tone = "dark" }: Props) {
   const isLight = tone === "light";
-  const cardBg = isLight ? "#FFFFFF" : "var(--bg-card)";
+  const cardBg = isLight ? "var(--bg-card-light)" : "var(--bg-card)";
   const cardBorder = isLight ? "var(--border-light)" : "var(--border-dark)";
   const primaryText = isLight ? "var(--text-on-light)" : "var(--text-primary)";
   const mutedText = isLight ? "var(--muted-on-light)" : "var(--text-secondary)";

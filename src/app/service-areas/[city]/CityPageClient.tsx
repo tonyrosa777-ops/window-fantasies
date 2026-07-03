@@ -249,7 +249,7 @@ export default function CityPageClient({ area }: Props) {
               <div
                 className="mt-6 rounded-2xl border p-6"
                 style={{
-                  background: "#FFFFFF",
+                  background: "var(--bg-card-light)",
                   borderColor: "var(--border-light)",
                 }}
               >
@@ -563,7 +563,7 @@ function CityFaqAccordion({
 }) {
   const [openItem, setOpenItem] = useState<string>("");
   const isLight = tone === "light";
-  const cardBg = isLight ? "#FFFFFF" : "var(--bg-card)";
+  const cardBg = isLight ? "var(--bg-card-light)" : "var(--bg-card)";
   const restBorder = isLight ? "var(--border-light)" : "var(--border-dark)";
   const triggerColor = isLight ? "var(--text-on-light)" : "var(--text-primary)";
   const bodyColor = isLight ? "var(--muted-on-light)" : "var(--text-secondary)";

@@ -92,7 +92,7 @@ export default function ServiceAreasIndexPage() {
                     href={`/service-areas/${area.slug}`}
                     className="group block h-full rounded-2xl border p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(7, 7, 6,0.14)]"
                     style={{
-                      background: "#FFFFFF",
+                      background: "var(--bg-card-light)",
                       borderColor: "var(--border-light)",
                     }}
                     aria-label={`Service area page for ${area.city}, ${area.state}`}

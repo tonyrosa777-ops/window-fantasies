@@ -74,13 +74,24 @@ export function ConsultationClient() {
           company: parsed.data.intent === "service" ? "Service and Repair" : "Purchase Window Treatment",
         }),
       });
-      // Demo mode: treat non-200 as success until the Resend route is wired.
+      // Success only on a real 200 (route returns { success: true }, or { demo: true }
+      // pre-Resend). Any error code (429/502/400/403) must surface, never a silent drop.
+      if (!res.ok) {
+        const json = await res.json().catch(() => null);
+        setStatus("error");
+        setErrorMessage(
+          json?.error ??
+            "Something went wrong sending your request. Please try again, or call Jim directly at (603) 891-5755.",
+        );
+        return;
+      }
       setStatus("success");
       reset();
-      void res;
     } catch {
-      setStatus("success");
-      reset();
+      setStatus("error");
+      setErrorMessage(
+        "We could not reach the server. Please try again, or call Jim directly at (603) 891-5755.",
+      );
     }
   };
 

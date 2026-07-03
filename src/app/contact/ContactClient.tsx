@@ -70,20 +70,25 @@ export function ContactClient() {
         body: JSON.stringify(parsed.data),
       });
 
-      // Demo mode: API route not yet wired. Treat non-200 as a successful submit
-      // and surface the published SLA microcopy as the success state.
+      // Success only on a real 200 (route returns { success: true }, or { demo: true }
+      // pre-Resend). Any error code must surface so a message is never silently lost.
       if (!res.ok) {
-        setStatus("success");
-        reset();
+        const json = await res.json().catch(() => null);
+        setStatus("error");
+        setErrorMessage(
+          json?.error ??
+            "Something went wrong sending your message. Please try again, or call Jim directly at (603) 891-5755.",
+        );
         return;
       }
 
       setStatus("success");
       reset();
     } catch {
-      // Network error or no route handler. Same demo-mode fallback.
-      setStatus("success");
-      reset();
+      setStatus("error");
+      setErrorMessage(
+        "We could not reach the server. Please try again, or call Jim directly at (603) 891-5755.",
+      );
     }
   };
 

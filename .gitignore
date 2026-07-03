@@ -43,3 +43,4 @@ next-env.d.ts
 # QA screenshots + agent artifacts (Audit Artifact Hygiene Rule — never committed)
 /audits/
 .playwright-mcp/
+.optimus-review/

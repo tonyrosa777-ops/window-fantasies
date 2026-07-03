@@ -47,7 +47,7 @@ export function ProcessSteps() {
             <StaggerItem key={step.n} className="h-full">
               <div
                 className="h-full rounded-[8px] p-7 lg:p-8 border flex flex-col gap-4"
-                style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
               >
                 <span
                   className="font-display"

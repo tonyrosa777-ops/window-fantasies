@@ -25,7 +25,7 @@ export function WorkCard({ item, tone = "dark" }: Props) {
       <div
         className="rounded-2xl overflow-hidden border transition-all duration-300 hover:-translate-y-1"
         style={{
-          background: isLight ? "#FFFFFF" : "var(--bg-card)",
+          background: isLight ? "var(--bg-card-light)" : "var(--bg-card)",
           borderColor: isLight ? "var(--border-light)" : "var(--border-dark)",
           boxShadow: isLight
             ? "0 18px 48px rgba(7, 7, 6,0.14)"

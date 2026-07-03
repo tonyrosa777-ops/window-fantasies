@@ -58,7 +58,7 @@ export function SignatureProducts() {
               <Link
                 href={s.href}
                 className="group flex flex-col h-full rounded-[8px] overflow-hidden border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(7, 7, 6,0.18)]"
-                style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
               >
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
                   <Image

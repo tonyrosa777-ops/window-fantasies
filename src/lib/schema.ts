@@ -1,5 +1,5 @@
 /**
- * schema.ts — Centralized JSON-LD schema builders for Window Fantasies.
+ * schema.ts, Centralized JSON-LD schema builders for Window Fantasies.
  *
  * SEO + AEO schema:
  *  - LocalBusiness (with serviceArea covering all of New England)
@@ -27,7 +27,7 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://www.windowfantasies.com";
 
 /* ============================================================================
-   Shared entity @id references — anchor the entire knowledge graph
+   Shared entity @id references, anchor the entire knowledge graph
    ============================================================================ */
 
 export const LOCAL_BUSINESS_ID = `${SITE_URL}#localbusiness`;
@@ -51,7 +51,7 @@ function buildPostalAddress() {
 }
 
 /* ============================================================================
-   sameAs URLs (social profiles) — only include populated fields
+   sameAs URLs (social profiles), only include populated fields
    ============================================================================ */
 
 function buildSameAs(): string[] {
@@ -64,7 +64,7 @@ function buildSameAs(): string[] {
 }
 
 /* ============================================================================
-   areaServed — list every NH/MA town we cover, plus a region fallback.
+   areaServed, list every NH/MA town we cover, plus a region fallback.
    Google reads this for local pack ranking.
    ============================================================================ */
 
@@ -76,7 +76,7 @@ function buildAreaServed() {
 }
 
 /* ============================================================================
-   Opening hours — by appointment. Window Fantasies has no walk-in showroom;
+   Opening hours, by appointment. Window Fantasies has no walk-in showroom;
    consultations are scheduled in the customer's home.
    ============================================================================ */
 
@@ -93,7 +93,7 @@ function buildOpeningHours() {
 }
 
 /* ============================================================================
-   Person — Jim Garrity, owner. Used on /about and as worksFor reference.
+   Person, Jim Garrity, owner. Used on /about and as worksFor reference.
    ============================================================================ */
 
 export function buildPersonSchema() {
@@ -120,7 +120,7 @@ export function buildPersonSchema() {
 }
 
 /* ============================================================================
-   AggregateRating — from the real reviews only (research/real-reviews.md).
+   AggregateRating, from the real reviews only (research/real-reviews.md).
    Never fabricate. Google GBP shows 5.0 across the real set.
    ============================================================================ */
 
@@ -139,7 +139,7 @@ function buildAggregateRating() {
 }
 
 /* ============================================================================
-   LocalBusiness — the central entity. Lives on homepage, contact, about,
+   LocalBusiness, the central entity. Lives on homepage, contact, about,
    /faq, every service-area page. Salem NH coordinates:
    latitude 42.7884, longitude -71.2009 (Salem NH town centroid).
    ============================================================================ */
@@ -190,7 +190,7 @@ export function buildLocalBusinessSchema(opts: LocalBusinessOptions = {}) {
 }
 
 /* ============================================================================
-   Organization — sister entity. Same root identity, different schema type.
+   Organization, sister entity. Same root identity, different schema type.
    Useful for "Organization" rich results in Google.
    ============================================================================ */
 
@@ -212,7 +212,7 @@ export function buildOrganizationSchema() {
 }
 
 /* ============================================================================
-   Homepage graph — LocalBusiness + Organization + Person (Jim)
+   Homepage graph, LocalBusiness + Organization + Person (Jim)
    ============================================================================ */
 
 export function buildHomepageSchema() {
@@ -227,7 +227,7 @@ export function buildHomepageSchema() {
 }
 
 /* ============================================================================
-   About page graph — Person + LocalBusiness reference
+   About page graph, Person + LocalBusiness reference
    ============================================================================ */
 
 export function buildAboutSchema() {
@@ -248,7 +248,7 @@ export function buildAboutSchema() {
 }
 
 /* ============================================================================
-   Service schema — per /services/[slug] page
+   Service schema, per /services/[slug] page
    ============================================================================ */
 
 export function buildServiceSchema(svc: Service) {
@@ -273,7 +273,7 @@ export function buildServiceSchema(svc: Service) {
 }
 
 /* ============================================================================
-   FAQ page schema — full FAQ list from siteConfig.faq
+   FAQ page schema, full FAQ list from siteConfig.faq
    ============================================================================ */
 
 export function buildFaqPageSchema() {
@@ -314,7 +314,7 @@ export function buildFaqListSchema(
 }
 
 /* ============================================================================
-   Service-area / city page schema — LocalBusiness scoped to that city + FAQ
+   Service-area / city page schema, LocalBusiness scoped to that city + FAQ
    ============================================================================ */
 
 export function buildServiceAreaSchema(area: ServiceArea, faqs: { q: string; a: string }[]) {
@@ -325,7 +325,7 @@ export function buildServiceAreaSchema(area: ServiceArea, faqs: { q: string; a: 
   // local-pack signal for "window treatments [city]" queries.
   const cityLocalBusiness = buildLocalBusinessSchema({
     idOverride: `${url}#localbusiness`,
-    nameOverride: `${siteConfig.business.name} — ${cityName}`,
+    nameOverride: `${siteConfig.business.name}, ${cityName}`,
     areaServedOverride: {
       "@type": "City",
       name: cityName,
@@ -343,7 +343,7 @@ export function buildServiceAreaSchema(area: ServiceArea, faqs: { q: string; a: 
 }
 
 /* ============================================================================
-   Testimonials page schema — Review collection.
+   Testimonials page schema, Review collection.
    All testimonials in site.ts are real (research/real-reviews.md), so we emit
    a Review graph plus an AggregateRating computed from the real subset. We
    never fabricate reviews, ratings, or counts.
@@ -421,7 +421,7 @@ export function buildTestimonialsSchema() {
 }
 
 /* ============================================================================
-   Contact page schema — LocalBusiness, reinforces local-SEO entity.
+   Contact page schema, LocalBusiness, reinforces local-SEO entity.
    ============================================================================ */
 
 export function buildContactSchema() {
@@ -441,7 +441,7 @@ export function buildContactSchema() {
 }
 
 /* ============================================================================
-   BreadcrumbList — used on deep routes (blog post, service detail, etc.)
+   BreadcrumbList, used on deep routes (blog post, service detail, etc.)
    ============================================================================ */
 
 export function buildBreadcrumbSchema(items: { name: string; url: string }[]) {

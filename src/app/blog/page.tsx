@@ -173,7 +173,7 @@ function FeaturedPostCard({ post }: { post: PostCardData }) {
     <article
       className="relative rounded-2xl border transition-all duration-300 hover:shadow-[0_24px_60px_rgba(7, 7, 6,0.18)] overflow-hidden grid md:grid-cols-2 gap-0"
       style={{
-        background: "#FFFFFF",
+        background: "var(--bg-card-light)",
         borderColor: "color-mix(in oklab, var(--primary) 45%, var(--border-light))",
       }}
     >

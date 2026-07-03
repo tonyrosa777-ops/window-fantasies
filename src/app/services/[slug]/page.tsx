@@ -209,7 +209,7 @@ export default async function ServicePage({ params }: Props) {
                   sizes="(min-width: 1024px) 48vw, 100vw"
                   className="block mx-auto rounded-2xl border border-[var(--border-dark)] shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
                   style={{ width: "auto", height: "auto", maxWidth: "100%", maxHeight: "560px" }}
-                  preload
+                  priority
                 />
               </FadeUp>
             )}
@@ -238,7 +238,7 @@ export default async function ServicePage({ params }: Props) {
               <StaggerItem key={i}>
                 <div
                   className="h-full rounded-2xl p-6 sm:p-8 border"
-                  style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                  style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
                 >
                   <div className="flex gap-3">
                     <span
@@ -323,7 +323,7 @@ export default async function ServicePage({ params }: Props) {
                 <FadeUp key={i} delay={i * 0.1}>
                   <div
                     className="h-full rounded-2xl p-6 sm:p-8 border"
-                    style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+                    style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
                   >
                     <p
                       className="font-mono text-xs uppercase tracking-widest mb-3"

@@ -146,7 +146,7 @@ export default async function ProductPage({ params }: Props) {
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="block mx-auto rounded-2xl border border-[var(--border-dark)] shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
                 style={{ width: "auto", height: "auto", maxWidth: "100%", maxHeight: "560px" }}
-                preload
+                priority
               />
             )}
           </div>
@@ -319,7 +319,7 @@ export default async function ProductPage({ params }: Props) {
                     className="flex gap-3 rounded-[8px] border p-5 font-body"
                     style={{
                       color: "var(--text-on-light)",
-                      background: "#FFFFFF",
+                      background: "var(--bg-card-light)",
                       borderColor: "var(--border-light)",
                       fontSize: "0.95rem",
                       lineHeight: 1.55,

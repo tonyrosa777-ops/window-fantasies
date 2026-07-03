@@ -50,7 +50,7 @@ export function ServiceAreaTeaser() {
                   <Link
                     href={`/service-areas/${a.slug}`}
                     className="inline-flex items-center rounded-full border px-4 py-2 font-mono text-[11px] uppercase tracking-widest transition-all duration-200 hover:border-[var(--gold-deep)] hover:text-[var(--gold-deep)]"
-                    style={{ background: "#FFFFFF", borderColor: "var(--border-light)", color: "var(--text-on-light)" }}
+                    style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)", color: "var(--text-on-light)" }}
                   >
                     {a.city}, {a.state}
                   </Link>

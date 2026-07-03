@@ -145,7 +145,7 @@ export function PostCard({ post, variant = "default", tone = "dark" }: Props) {
     return (
       <div
         className="h-full flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(7, 7, 6,0.18)]"
-        style={{ background: "#FFFFFF", borderColor: "var(--border-light)" }}
+        style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
       >
         {Inner}
       </div>

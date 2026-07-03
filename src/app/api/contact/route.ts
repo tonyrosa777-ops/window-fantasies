@@ -113,9 +113,14 @@ function rateLimit(ip: string): boolean {
 }
 
 function getClientIp(request: Request): string {
+  // Trust the platform-appended IP, not the leftmost client-spoofable x-forwarded-for
+  // hop. On Vercel the real client IP is x-real-ip (or the RIGHTMOST xff entry), so a
+  // scripted client cannot mint a fresh rate-limit bucket per request. (BUG-5)
+  const real = request.headers.get("x-real-ip");
+  if (real) return real.trim();
   const xff = request.headers.get("x-forwarded-for");
-  if (xff) return xff.split(",")[0]!.trim();
-  return request.headers.get("x-real-ip") ?? "unknown";
+  if (xff) return xff.split(",").pop()!.trim();
+  return "unknown";
 }
 
 function isAllowedOrigin(request: Request): boolean {

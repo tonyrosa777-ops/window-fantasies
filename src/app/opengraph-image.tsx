@@ -2,14 +2,14 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/data/site";
 
 /**
- * opengraph-image.tsx — homepage OG image, generated at build time.
+ * opengraph-image.tsx, homepage OG image, generated at build time.
  *
  * Brand tokens (design-system.md §2): warm near-black (--ink #070706),
  * brass gold (--primary #CDAD69), warm bone-cream text (#F6F1E1).
  * Edge-runtime safe: no fetch, no URL font loading (system serif).
  */
 
-export const alt = `${siteConfig.business.name} — ${siteConfig.business.tagline}`;
+export const alt = `${siteConfig.business.name}, ${siteConfig.business.tagline}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
