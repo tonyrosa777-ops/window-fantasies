@@ -61,11 +61,12 @@ export default function AboutPage() {
       {/* 2. Story (2-col: portrait left, paragraphs right) — CREAM band */}
       <Section tone="cream">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-start">
-            {/* Founder portrait (3:4 aspect) */}
-            {/* TODO: real Jim portrait — swap in a commissioned 4:5 photo of Jim
-                (design-system.md §6). Using a tasteful HD interior for now. */}
-            <FadeUp>
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16">
+            {/* Founder portrait (3:4 aspect). Sticky on desktop so it follows the
+                tall story column instead of leaving a dead void below it
+                (design-symmetry §5 #3 vertical-void fix). */}
+            <FadeUp className="lg:sticky lg:top-28 self-start">
+
               <div
                 className="relative rounded-2xl overflow-hidden border"
                 style={{
