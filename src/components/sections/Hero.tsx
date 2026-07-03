@@ -12,8 +12,8 @@ import { TrustSignals } from "@/components/sections/TrustBar";
    full-bleed background (p04, with p10/p11 as alternates), under a dual-axis
    dark gradient scrim. H1 = the LOCKED tagline with .hero-shimmer. Subhead =
    the Centurion / guaranteed-for-life trust line. Primary CTA goes to
-   /request-a-consultation, secondary CTA is tap-to-call Jim. Above-the-fold
-   trust chips.
+   /request-a-consultation, secondary CTA goes to /quiz (both labels + hrefs
+   render generically from siteConfig.hero). Above-the-fold trust chips.
 
    TODO Part F: swap in /videos/hero-loop.mp4 movie hero.
    Part F replaces the img background with the stitched cinematic movie hero
@@ -180,7 +180,7 @@ export default function Hero() {
                 borderRadius: "0.5rem",
               }}
             >
-              {ctaSecondary.label} · {siteConfig.business.phoneFormatted}
+              {ctaSecondary.label}
             </a>
           </motion.div>
 

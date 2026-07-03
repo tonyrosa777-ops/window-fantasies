@@ -23,6 +23,7 @@ import { Button } from "@/components/ui/Button";
 // Desktop uses the short "PowerView" label: at the 1024px nav transition the
 // full "PowerView Motorization" label crowds the bar and risks a wrap. The
 // drawer has room, so it carries the full label (mapped below).
+// "⬥ Pricing" is the Optimus INTERNAL sales tool (amber, deleted pre-launch).
 const links = [
   { label: "Products", href: "/products" },
   { label: "PowerView", href: "/services/powerview-automation" },
@@ -31,6 +32,7 @@ const links = [
   { label: "About", href: "/about" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "Blog", href: "/blog" },
+  { label: "⬥ Pricing", href: "/pricing", internal: true },
 ];
 
 const drawerLinks = [
@@ -39,6 +41,7 @@ const drawerLinks = [
       ? { ...l, label: "PowerView Motorization" }
       : l
   ),
+  { label: "Take the Quiz", href: "/quiz" },
   { label: "Reviews", href: "/testimonials" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -98,7 +101,9 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 className="text-sm font-medium transition-colors duration-200 hover:text-[var(--primary)]"
-                style={{ color: "var(--text-secondary)" }}
+                style={{
+                  color: "internal" in l && l.internal ? "#f59e0b" : "var(--text-secondary)",
+                }}
               >
                 {l.label}
               </Link>

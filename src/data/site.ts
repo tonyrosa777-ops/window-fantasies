@@ -291,7 +291,7 @@ export const siteConfig: SiteConfig = {
       "Measured, designed, and installed by Jim himself. Guaranteed for life. Motorized shades you control from your phone, or a beach in Florida.",
     trustMicrocopy: "Free in-home consultation. Jim brings the showroom to you.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
-    ctaSecondary: { label: "Call Jim", href: `tel:+1${PHONE_TEL}` },
+    ctaSecondary: { label: "Take the Quiz", href: "/quiz" },
   },
 
   // Reframed as "why the showroom comes to you" reassurances, answer-first.
@@ -1151,8 +1151,9 @@ export const siteConfig: SiteConfig = {
     },
   ],
 
-  // Quiz is not used by Window Fantasies. Kept as an empty-but-valid structure so
-  // the type shape holds; the /quiz route is removed and no component renders this.
+  // Legacy scaffold shape, kept empty-but-valid so the type holds. The LIVE
+  // quiz (the /quiz archetype experience) reads src/data/quiz.ts instead;
+  // no component renders this object.
   quiz: {
     intro: { eyebrow: "", h1: "", subhead: "", ctaStart: "" },
     steps: [],

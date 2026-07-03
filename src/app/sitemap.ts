@@ -28,6 +28,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 2. Consultation — primary CTA destination.
   entries.push({ url: url("/request-a-consultation"), lastModified: NOW, changeFrequency: "monthly", priority: 0.95 });
 
+  // 2b. Quiz, the secondary hero CTA destination (archetype lead funnel).
+  entries.push({ url: url("/quiz"), lastModified: NOW, changeFrequency: "monthly", priority: 0.9 });
+
   // 3. Indexes.
   for (const path of ["/products", "/services", "/portfolio", "/service-areas", "/blog"]) {
     entries.push({ url: url(path), lastModified: NOW, changeFrequency: "monthly", priority: 0.85 });
