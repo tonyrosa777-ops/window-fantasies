@@ -30,7 +30,7 @@ export default function PortfolioPage() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="text-h1 hero-shimmer font-display mt-4" style={{ maxWidth: "22ch" }}>
-              Real installs, in real New England homes.
+              The window treatments Jim installs across New England.
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>

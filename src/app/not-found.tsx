@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const quickLinks: { label: string; href: string; blurb: string }[] = [
   { label: "Shades, Blinds, Shutters, Drapery", href: "/products", blurb: "The full Hunter Douglas line." },
   { label: "What Jim Does", href: "/services", blurb: "Consultation, install, repairs, motorization." },
-  { label: "See the Work", href: "/portfolio", blurb: "Real installs in real New England homes." },
+  { label: "See the Work", href: "/portfolio", blurb: "The looks Jim installs across New England." },
   { label: "Service Areas", href: "/service-areas", blurb: "All of New England." },
 ];
 
