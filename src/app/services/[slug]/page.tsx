@@ -150,13 +150,34 @@ export default async function ServicePage({ params }: Props) {
       : siteConfig.faq
   ).slice(0, 5);
 
+  // PowerView sits in the primary nav as a top-level destination, so its page
+  // header follows the interior-page standard: a full-bleed photo under the
+  // dark radial overlay (Section bgImage), not the boxed side image the other
+  // service detail pages use. The boxed imageSrc still serves the /services hub card.
+  const isPowerView = slug === "powerview-automation";
+
   return (
     <>
       <JsonLd data={buildServiceSchema(svc)} id={`service-${svc.slug}-jsonld`} />
       {/* 1. Service Hero */}
-      <Section tone="base" className="pt-32 sm:pt-36 lg:pt-40">
+      <Section
+        tone="base"
+        className="pt-32 sm:pt-36 lg:pt-40"
+        bgImage={isPowerView ? "/images/headers/powerview-motorization.jpg" : undefined}
+        bgImageAlt={
+          isPowerView
+            ? "A bright New England great room with tall windows, its motorized Hunter Douglas shades resting at staggered heights."
+            : undefined
+        }
+      >
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div
+            className={
+              isPowerView
+                ? "grid grid-cols-1 max-w-3xl"
+                : "grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+            }
+          >
             <div>
               <FadeUp>
                 <Eyebrow>Service</Eyebrow>
@@ -219,7 +240,7 @@ export default async function ServicePage({ params }: Props) {
               </FadeUp>
             </div>
 
-            {svc.imageSrc && (
+            {svc.imageSrc && !isPowerView && (
               <FadeUp delay={0.2}>
                 <Image
                   src={svc.imageSrc}
