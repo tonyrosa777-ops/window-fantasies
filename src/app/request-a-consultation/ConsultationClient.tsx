@@ -79,7 +79,18 @@ function CardShell({ children }: { children: ReactNode }) {
   );
 }
 
-export function ConsultationClient() {
+interface ConsultationClientProps {
+  /**
+   * Optional live selection context (e.g. the Virtual Showroom's current
+   * scene + treatment). When non-empty it is prepended to the POSTed message
+   * at submit time and shown as a non-editable chip above the message field.
+   * It never touches the textarea, validation, or the schema. Zero-required-props
+   * contract stays: <ConsultationClient /> keeps working unchanged.
+   */
+  context?: string;
+}
+
+export function ConsultationClient({ context }: ConsultationClientProps = {}) {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -119,6 +130,11 @@ export function ConsultationClient() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...parsed.data,
+          // Live selection context (read from the prop at submit time) rides
+          // along ahead of whatever the visitor typed; typed text is untouched.
+          message: context
+            ? [context, parsed.data.message].filter(Boolean).join("\n\n")
+            : parsed.data.message,
           company: parsed.data.intent === "service" ? "Service and Repair" : "Purchase Window Treatment",
         }),
       });
@@ -276,6 +292,20 @@ export function ConsultationClient() {
         </div>
 
         <div>
+          {context ? (
+            <span
+              className="mb-3 inline-flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 font-body text-xs font-semibold"
+              style={{
+                background: "color-mix(in oklab, var(--primary) 18%, var(--cream))",
+                border: "1px solid var(--gold-deep)",
+                color: "var(--gold-deep)",
+              }}
+              aria-label={`Attached to your request: ${context}`}
+            >
+              <span aria-hidden="true">📎</span>
+              <span className="truncate">{context}</span>
+            </span>
+          ) : null}
           <label htmlFor="c-message" className={labelClass} style={labelStyle}>
             {intent === "service" ? "What needs fixing?" : "Tell Jim about your windows (optional)"}
           </label>

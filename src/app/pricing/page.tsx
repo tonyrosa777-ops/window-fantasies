@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Fragment } from "react";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -35,6 +36,8 @@ interface Tier {
   price: string;
   tagline: string;
   badge?: string;
+  /** Small inline link under the tagline (e.g. the Premium live demo). */
+  demo?: { label: string; href: string };
   features: string[];
 }
 
@@ -78,10 +81,11 @@ const TIERS: Tier[] = [
     positioning: "The Virtual Showroom",
     price: "$5,500",
     tagline: "Everything in Pro, plus an interactive showroom that sends Jim pre-sold leads.",
+    demo: { label: "Live demo →", href: "/virtual-showroom" },
     features: [
       "Everything in Pro",
-      "“See It In Your Room” Visualizer: visitors upload a photo of their own window, preview shade, shutter, and drapery styles rendered in their room, and send the favorite straight to Jim with their consultation request",
-      "Pre-sold leads: the consultation arrives with the product already chosen",
+      "“See It In Your Room” Virtual Showroom: six real room scenes, every treatment style rendered in the same room, and the visitor's favorite look attached to their consultation request",
+      "Automated Monthly Newsletter, “Neighborhood Notes”: on-site signup, a branded welcome email, and a monthly digest assembled automatically from the blog",
       "Seasonal Content Engine: quarterly refresh with 4 new blog articles + a seasonal hero re-grade per year, year one included",
       "Priority same-week revision support for year one",
     ],
@@ -118,7 +122,7 @@ const COMPARISON: ComparisonGroup[] = [
     rows: [
       { feature: "Request-a-Consultation lead form + tap-to-call", starter: true, pro: true, premium: true },
       { feature: "Lead-Capture Quiz", starter: false, pro: true, premium: true },
-      { feature: "“See It In Your Room” Visualizer", starter: false, pro: false, premium: true },
+      { feature: "“See It In Your Room” Virtual Showroom (six room scenes, every treatment style)", starter: false, pro: false, premium: true },
       { feature: "Pre-sold leads with the product already chosen", starter: false, pro: false, premium: true },
     ],
   },
@@ -130,6 +134,7 @@ const COMPARISON: ComparisonGroup[] = [
       { feature: "Product detail pages", starter: false, pro: true, premium: true },
       { feature: "PowerView Motorization page", starter: false, pro: true, premium: true },
       { feature: "Full AEO/GEO optimization (answer-first content, FAQ schema, AI-crawler readiness)", starter: false, pro: true, premium: true },
+      { feature: "Automated Monthly Newsletter (“Neighborhood Notes”, assembled from the blog)", starter: false, pro: false, premium: true },
     ],
   },
   {
@@ -254,6 +259,17 @@ export default function PricingPage() {
                     >
                       {tier.tagline}
                     </p>
+                    {tier.demo && (
+                      <p className="mt-3">
+                        <Link
+                          href={tier.demo.href}
+                          className="font-mono text-xs uppercase tracking-widest font-semibold hover:underline"
+                          style={{ color: "var(--gold-deep)" }}
+                        >
+                          {tier.demo.label}
+                        </Link>
+                      </p>
+                    )}
                     <ul
                       className="mt-6 flex-1 space-y-3 border-t pt-6"
                       style={{ borderColor: "var(--border-light)" }}
