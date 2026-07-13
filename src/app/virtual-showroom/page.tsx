@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { SHOWROOM_COPY } from "@/data/showroom";
+import { features } from "@/data/features";
 import { ShowroomClient } from "./ShowroomClient";
 
 /**
@@ -31,6 +33,10 @@ export const metadata: Metadata = {
 };
 
 export default function VirtualShowroomPage() {
+  // PREMIUM-gated: Jim is on Pro (features.virtualShowroom = false), so this
+  // route is hidden (404). Flip the flag in @/data/features to unlock on upgrade.
+  if (!features.virtualShowroom) notFound();
+
   return (
     <>
       {/* 1. Page header -- DARK. Orientation: what this is, in Jim's voice,

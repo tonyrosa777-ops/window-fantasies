@@ -6,6 +6,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
+import { features } from "@/data/features";
 import { RoiCalculator } from "./RoiCalculator";
 
 /**
@@ -259,7 +260,11 @@ export default function PricingPage() {
                     >
                       {tier.tagline}
                     </p>
-                    {tier.demo && (
+                    {/* The Virtual Showroom "Live demo" link only renders when the
+                        Premium feature is unlocked (features.virtualShowroom).
+                        On Pro it stays hidden so the link never dangles to a
+                        404'd route. */}
+                    {tier.demo && features.virtualShowroom && (
                       <p className="mt-3">
                         <Link
                           href={tier.demo.href}
