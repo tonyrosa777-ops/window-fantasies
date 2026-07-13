@@ -32,7 +32,17 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.business.name}`,
   },
   description: `Authorized Hunter Douglas Centurion dealer in Salem, NH. ${siteConfig.business.yearsInBusiness}+ years of custom window treatments, shades, blinds, shutters, drapery and motorization, measured, designed and installed by hand across New England. Free in-home consultation, guaranteed for life.`,
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.windowfantasies.com"),
+  // Resolve absolute URLs (og:image, canonical) off an explicit override first,
+  // then Vercel's stable production domain (window-fantasies.vercel.app today,
+  // windowfantasies.com once the custom domain is connected), then the final
+  // hardcoded fallback. Prevents og:image pointing at the not-yet-live custom
+  // domain (which made link-share previews fail on the .vercel.app demo deploy).
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_PROJECT_PRODUCTION_URL
+        ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+        : "https://www.windowfantasies.com"),
+  ),
   alternates: {
     canonical: "/",
   },
