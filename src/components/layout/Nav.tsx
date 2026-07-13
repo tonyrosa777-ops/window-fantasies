@@ -20,9 +20,12 @@ import { Button } from "@/components/ui/Button";
  * viewport, not to the blurred header (backdrop-filter containing-block trap).
  */
 
-// Desktop uses the short "PowerView" label: at the 1024px nav transition the
-// full "PowerView Motorization" label crowds the bar and risks a wrap. The
-// drawer has room, so it carries the full label (mapped below).
+// Desktop uses the short "PowerView" label: even at the xl (1280px) nav
+// transition the full "PowerView Motorization" label crowds the bar and risks a
+// wrap. The drawer has room, so it carries the full label (mapped below).
+// Full horizontal nav shows at xl (>=1280px) — below that the 8 links + phone +
+// CTA cannot fit without wrapping (measured wrap band 1024-1240px, Error #133
+// family), so <xl collapses to the clean hamburger drawer instead.
 // "⬥ Pricing" is the Optimus INTERNAL sales tool (amber, deleted pre-launch).
 const links = [
   { label: "Products", href: "/products" },
@@ -95,7 +98,7 @@ export function Nav() {
             <Wordmark className="text-xl md:text-2xl" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+          <nav className="hidden xl:flex items-center gap-6">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -110,7 +113,7 @@ export function Nav() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-4 xl:gap-5">
+          <div className="hidden xl:flex items-center gap-4">
             <a
               href={`tel:${siteConfig.business.phone}`}
               className="flex items-center gap-2 text-sm phone-display transition-colors duration-200 hover:text-[var(--primary)]"
@@ -126,7 +129,7 @@ export function Nav() {
 
           {/* Mobile cluster: an always-visible tap-to-call (phone-first buyers must
               reach Jim without opening the drawer — five-persona QA "Dot") + hamburger. */}
-          <div className="flex items-center gap-1 lg:hidden">
+          <div className="flex items-center gap-1 xl:hidden">
             <a
               href={`tel:${siteConfig.business.phone}`}
               className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold"
@@ -156,7 +159,7 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-[60] xl:hidden overflow-y-auto"
             style={{ background: "var(--ink)" }}
             role="dialog"
             aria-modal="true"
