@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { z } from "zod";
 import { siteConfig } from "@/data/site";
+import { renderEmail, fromAddress } from "@/lib/email";
 
 /**
  * POST /api/contact
@@ -15,7 +16,14 @@ import { siteConfig } from "@/data/site";
  *   - Owner notification (load-bearing) and auto-reply (courtesy) use independent try/catch
  *     so auto-reply failure no longer masks a successful owner notification
  *
- * Pattern #69 seeded demo-mode contract preserved: blank RESEND_API_KEY → seeded success.
+ * EVERY submission sends TWO branded HTML emails (2026-07-20): the lead alert to Jim and
+ * a confirmation to the submitter. Both carry html + text. Templates: src/lib/email.ts.
+ * Treat "Jim notified" and "submitter confirmed" as two separate acceptance criteria —
+ * verifying only the first is Error #113.
+ *
+ * Demo mode requires an EXPLICIT opt-in (NEXT_PUBLIC_DEMO_MODE=1). A missing
+ * RESEND_API_KEY is a loud 502, never a seeded success — see the note at the guard and
+ * Error #205, where demo-on-missing-secret silently discarded every lead on a live site.
  * Lazy env read inside handler (NOT module top) per Pattern #69 + Error #58.
  */
 
@@ -65,25 +73,16 @@ function safeName(s: string): string {
     .slice(0, 120);
 }
 
-function simpleEmailHtml(p: {
-  greetingName: string;
-  phoneFormatted: string;
-  addressLine: string;
-}): string {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#f4f1ea;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1ea;"><tr><td align="center" style="padding:32px 16px;">
-    <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-      <tr><td align="center" style="padding-bottom:20px;"><span style="font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:3px;font-weight:bold;color:#CDAD69;">WINDOW FANTASIES</span></td></tr>
-      <tr><td style="background:#ffffff;border:1px solid #e7e1d6;border-radius:14px;padding:36px;">
-        <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#3a3a3a;">Hi ${p.greetingName},</p>
-        <p style="margin:0 0 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.7;color:#3a3a3a;">Thanks for reaching out. I will be in touch personally, usually within 24 hours, to set up your free in-home consultation.</p>
-        <p style="margin:0;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:1.6;color:#3a3a3a;"><strong>Jim Garrity</strong><br>Window Fantasies<br>${p.phoneFormatted}</p>
-      </td></tr>
-      <tr><td align="center" style="padding:20px 8px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.6;color:#9a9286;">${p.addressLine}</td></tr>
-    </table>
-  </td></tr></table>
-</body></html>`;
+/**
+ * Absolute base URL for links inside emails. An email has no page context, so every
+ * href must be absolute — a relative "/products" link is dead in an inbox.
+ */
+function siteUrl(): string {
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL;
+  if (explicit) return explicit.replace(/\/$/, "");
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (vercel) return `https://${vercel}`;
+  return "https://windowfantasies.com";
 }
 
 // In-memory rate limiter: 5 submissions per IP per 10 min.
@@ -203,56 +202,97 @@ export async function POST(request: Request) {
   // Free-text message from the lead.
   const typedMessage = validated.message ? stripControlChars(validated.message) : "";
 
-  // 7. Demo mode — Pattern #69 preserved
+  // 7. Demo mode — Pattern #69, re-keyed per Error #205 (Anjo Services, Jul 2026).
+  //
+  //    The old guard was `if (!apiKey) return success` — demo behaviour keyed on the
+  //    ABSENCE OF A PRODUCTION SECRET. That is exactly backwards: the one condition
+  //    meaning "this deployment is misconfigured" got interpreted as "this deployment
+  //    is a demo," so a live site with an unset Vercel env var returned {ok:true} to
+  //    the visitor and discarded every lead with no failure signal on either end.
+  //
+  //    Now: demo mode requires an EXPLICIT opt-in flag, and a missing key in production
+  //    is a loud 502. A misconfigured deployment fails visibly instead of silently
+  //    eating leads.
   const apiKey = process.env.RESEND_API_KEY;
+  const demoOptIn = process.env.NEXT_PUBLIC_DEMO_MODE === "1";
+
   if (!apiKey) {
-    if (process.env.NODE_ENV !== "production") {
-      // eslint-disable-next-line no-console
+    if (demoOptIn && process.env.NODE_ENV !== "production") {
+       
       console.info(
-        "[CONTACT DEMO] Form submitted, RESEND_API_KEY blank, returning seeded success."
+        "[CONTACT DEMO] NEXT_PUBLIC_DEMO_MODE=1 and RESEND_API_KEY blank — returning seeded success."
       );
+      return Response.json({
+        success: true,
+        demo: true,
+        confirmation: `DEMO-${Date.now()}`,
+      });
     }
-    return Response.json({
-      success: true,
-      demo: true,
-      confirmation: `DEMO-${Date.now()}`,
-    });
+     
+    console.error(
+      "[CONTACT] RESEND_API_KEY is not set. Lead NOT delivered — failing loudly rather than dropping it silently."
+    );
+    return Response.json(
+      { success: false, error: "Email delivery is not configured. Please call directly." },
+      { status: 502 }
+    );
   }
 
   const resend = new Resend(apiKey);
   const ownerEmail = siteConfig.business.ownerEmail;
-  const fromAddress = `Window Fantasies <noreply@${process.env.RESEND_DOMAIN ?? "windowfantasies.com"}>`;
+  const from = fromAddress();
   const phoneFormatted = siteConfig.business.phoneFormatted;
-  const addressLine = `Window Fantasies · ${siteConfig.business.address.street}, ${siteConfig.business.address.city}, ${siteConfig.business.address.state} ${siteConfig.business.address.zip}`;
+  // The address footer now lives in the shared email shell (src/lib/email.ts), which
+  // reads it from siteConfig directly — no local addressLine needed here anymore.
   const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-  // 8. Owner (Jim) lead notification — LOAD-BEARING. Plain text: the lead's info.
+  // 8. Owner (Jim) lead notification — LOAD-BEARING, branded HTML + text fallback.
   //    IMPORTANT: resend.emails.send() returns { data, error } and does NOT throw on
-  //    API errors, so we inspect `error` explicitly.
-  const ownerText = [
-    `New lead from ${source}`,
-    ``,
-    `Name: ${name}`,
-    intent ? `Intent: ${intent === "service" ? "Service and Repair" : "Purchase Window Treatment"}` : null,
-    phone ? `Phone: ${phone}` : null,
-    email ? `Email: ${email}` : null,
-    town ? `Town: ${town}` : null,
-    company && !intent ? `Company: ${company}` : null,
-    typedMessage ? `\nMessage:` : null,
-    typedMessage || null,
-  ]
-    .filter((l) => l !== null)
-    .join("\n");
+  //    API errors, so we inspect `error` explicitly (Error #87).
+  const intentLabel = intent
+    ? intent === "service"
+      ? "Service and Repair"
+      : "Purchase Window Treatment"
+    : "";
+  const sourceLabel =
+    source === "/request-a-consultation" ? "Consultation request" : "Contact form";
+
+  // Every row is a fact Jim acts on. Phone first: he calls, he does not email back.
+  const ownerRows = [
+    { label: "Name", value: name },
+    ...(phone ? [{ label: "Phone", value: phone }] : []),
+    ...(email ? [{ label: "Email", value: email }] : []),
+    ...(town ? [{ label: "Town", value: town }] : []),
+    ...(intentLabel ? [{ label: "Looking for", value: intentLabel }] : []),
+    ...(company && !intent ? [{ label: "Company", value: company }] : []),
+    ...(validated.quizResult ? [{ label: "Quiz result", value: stripControlChars(validated.quizResult) }] : []),
+    { label: "Came from", value: sourceLabel },
+  ];
+
+  const ownerEmailContent = renderEmail({
+    preheader: `${name}${town ? " in " + town : ""}${phone ? " · " + phone : ""}`,
+    eyebrow: "New website lead",
+    title: `${name}${town ? " · " + town : ""}`,
+    intro: [
+      phone
+        ? `${name} asked you to get in touch. Their number is below, so you can call straight from this email.`
+        : `${name} asked you to get in touch. They left an email address rather than a phone number.`,
+    ],
+    rows: ownerRows,
+    ...(typedMessage ? { quote: { label: "What they told you", body: typedMessage } } : {}),
+    ...(phone ? { cta: { label: `Call ${name.split(" ")[0] || name}`, href: `tel:${phone.replace(/[^0-9+]/g, "")}` } } : {}),
+  });
 
   const ownerSend = await resend.emails.send({
-    from: fromAddress,
+    from,
     to: ownerEmail,
     ...(email ? { replyTo: email } : {}), // Pattern #44 — owner reply lands with the lead
-    subject: `[${source}] ${name}${town ? " · " + town : ""}`,
-    text: ownerText,
+    subject: `[New lead] ${name}${town ? " · " + town : ""}${intentLabel ? " · " + intentLabel : ""}`,
+    html: ownerEmailContent.html,
+    text: ownerEmailContent.text,
   });
   if (ownerSend.error) {
-    // eslint-disable-next-line no-console
+     
     console.error("[CONTACT] Owner notification failed:", ownerSend.error);
     return Response.json(
       { success: false, error: "Email delivery failed. Please call directly." },
@@ -267,35 +307,58 @@ export async function POST(request: Request) {
   //    ignored — that is why Steve got his email and the user never did.
   await sleep(900);
   const greetingName = safeName(name) || "there";
+  const base = siteUrl();
 
-  const userSubject = "Thanks, Jim will be in touch within 24 hours.";
-  const userHtml = simpleEmailHtml({ greetingName, phoneFormatted, addressLine });
-  const userText = [
-    `Hi ${greetingName},`,
-    ``,
-    `Thanks for reaching out. I will be in touch personally, usually within 24 hours, to set up your free in-home consultation.`,
-    ``,
-    `Jim Garrity, Window Fantasies, ${phoneFormatted}`,
-  ].join("\n");
+  // Copy is intent-aware: a repair lead and a new-treatment lead are in different
+  // situations, and a generic "thanks for reaching out" serves neither well.
+  const isService = intent === "service";
+  const confirmation = renderEmail({
+    preheader: isService
+      ? "Jim has your repair request and will call you personally."
+      : "Jim has your request and will call to set up your free in-home consultation.",
+    eyebrow: "Request received",
+    title: `Thanks, ${greetingName}. Jim has your request.`,
+    intro: isService
+      ? [
+          "Your repair request came through and it goes straight to Jim, not to a call center.",
+          "He will call you personally, usually within 24 hours, to hear what the treatment is doing and tell you honestly whether it is a warranty fix or a service call. He repairs treatments bought anywhere, including ones another company installed.",
+        ]
+      : [
+          "Your request came through and it goes straight to Jim, not to a call center.",
+          "He will call you personally, usually within 24 hours, to set up your free in-home consultation. He brings the real Hunter Douglas samples to your home, holds them in your own windows, measures every opening himself, and gives you an honest installed price at your kitchen table.",
+        ],
+    ...(typedMessage ? { quote: { label: "What you told Jim", body: typedMessage } } : {}),
+    outro: [
+      `Prefer to talk sooner? Call Jim directly at ${phoneFormatted}. He answers his own phone.`,
+    ],
+    cta: isService
+      ? { label: "See repair services", href: `${base}/services/installs-and-repairs` }
+      : { label: "Browse the collections", href: `${base}/products` },
+    signature: true,
+  });
 
-  // Only send the courtesy auto-reply when the lead gave an email address.
+  // Only send the confirmation when the lead gave an email address. The consultation
+  // form deliberately accepts a phone number alone, so a phone-only lead has no inbox
+  // to confirm to — that is by design, not a gap. Jim's alert still fires either way.
   if (email) {
     try {
       const userSend = await resend.emails.send({
-        from: fromAddress,
+        from,
         to: email,
         replyTo: ownerEmail, // Pattern #44 — lead reply lands with the owner
-        subject: userSubject,
-        html: userHtml,
-        text: userText,
+        subject: isService
+          ? "Jim has your repair request, Window Fantasies"
+          : "Jim has your consultation request, Window Fantasies",
+        html: confirmation.html,
+        text: confirmation.text,
       });
       if (userSend.error) {
-        // eslint-disable-next-line no-console
-        console.warn("[CONTACT] Auto-reply failed:", userSend.error);
+         
+        console.warn("[CONTACT] Confirmation to submitter failed:", userSend.error);
       }
     } catch (err) {
-      // eslint-disable-next-line no-console
-      console.warn("[CONTACT] Auto-reply threw:", err);
+       
+      console.warn("[CONTACT] Confirmation to submitter threw:", err);
     }
   }
 
