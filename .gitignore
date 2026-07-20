@@ -30,8 +30,12 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files — real secrets never get committed
 .env*
+# ...but the placeholder template MUST be, or the next person cannot know what
+# the site needs. It contains no real values. The negation has to come AFTER the
+# .env* line above; git evaluates last-match-wins.
+!.env.example
 
 # vercel
 .vercel

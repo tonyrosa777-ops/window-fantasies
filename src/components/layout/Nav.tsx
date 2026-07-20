@@ -23,10 +23,18 @@ import { Button } from "@/components/ui/Button";
 // Desktop uses the short "PowerView" label: even at the xl (1280px) nav
 // transition the full "PowerView Motorization" label crowds the bar and risks a
 // wrap. The drawer has room, so it carries the full label (mapped below).
-// Full horizontal nav shows at xl (>=1280px) — below that the 8 links + phone +
-// CTA cannot fit without wrapping (measured wrap band 1024-1240px, Error #133
-// family), so <xl collapses to the clean hamburger drawer instead.
-// "⬥ Pricing" is the Optimus INTERNAL sales tool (amber, deleted pre-launch).
+// Full horizontal nav shows at xl (>=1280px) — below that the links + phone + CTA
+// cannot fit without wrapping (measured wrap band 1024-1240px, Error #133 family),
+// so <xl collapses to the clean hamburger drawer instead. The count dropped 8 -> 7
+// when the Pricing link was removed, which MAY leave room to lower the xl threshold;
+// that stays as-is until someone RE-MEASURES the wrap band, because guessing a
+// breakpoint off a link count is exactly how Error #133 shipped.
+// The "⬥ Pricing" internal Optimus sales link was REMOVED from the nav 2026-07-16 and
+// the /pricing ROUTE ITSELF WAS DELETED 2026-07-20: Jim closed on Pro 2026-07-13, so the
+// demo is over and the Optimus tier menu is not his to show his customers. This clears the
+// pre-launch-auditor hard FAIL on a live /pricing. Do NOT re-add a { href: "/pricing" }
+// link — the route no longer exists and would 404. The tier menu now lives only in
+// pro-plan-deliverables.md (project root); rebuild the page from there for an upsell demo.
 const links = [
   { label: "Products", href: "/products" },
   { label: "PowerView", href: "/services/powerview-automation" },
@@ -35,7 +43,6 @@ const links = [
   { label: "About", href: "/about" },
   { label: "Service Areas", href: "/service-areas" },
   { label: "Blog", href: "/blog" },
-  { label: "⬥ Pricing", href: "/pricing", internal: true },
 ];
 
 const drawerLinks = [
@@ -104,9 +111,7 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 className="text-sm font-medium transition-colors duration-200 hover:text-[var(--primary)]"
-                style={{
-                  color: "internal" in l && l.internal ? "#f59e0b" : "var(--text-secondary)",
-                }}
+                style={{ color: "var(--text-secondary)" }}
               >
                 {l.label}
               </Link>
