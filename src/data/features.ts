@@ -18,9 +18,11 @@ export const features = {
    * (/virtual-showroom): six real room scenes, every treatment style rendered
    * in the same room, favorite look attached to the consultation request.
    *
-   * When false: the /virtual-showroom route 404s and the "Live demo →" link on
-   * the /pricing Premium card is hidden. The page component + all 30 showroom
-   * images + ShowroomClient stay in the repo, untouched.
+   * When false: the /virtual-showroom route 404s. It is also absent from the nav
+   * and the sitemap, so it is unreachable and undiscoverable. The page component
+   * + all 30 showroom images + ShowroomClient stay in the repo, untouched.
+   * (The internal /pricing page that carried the Premium "Live demo →" link was
+   * deleted 2026-07-20 — this flag is now the only Premium gate on the site.)
    *
    * ON UPGRADE (Jim buys Premium): set to `true`. To also make it publicly
    * discoverable, add a nav link in components/layout/Nav.tsx, add its URL to
