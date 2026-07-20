@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StarRating } from "@/components/ui/StarRating";
 import { TestimonialsClient } from "./TestimonialsClient";
+import { ReviewSurvey } from "@/components/sections/ReviewSurvey";
 import { buildTestimonialsSchema, jsonLdString } from "@/lib/schema";
 
 /**
@@ -20,6 +21,7 @@ import { buildTestimonialsSchema, jsonLdString } from "@/lib/schema";
  */
 
 const reviews = siteConfig.testimonials.filter((t) => t.isReal);
+const survey = siteConfig.reviewSurvey;
 const count = reviews.length;
 const avg =
   count > 0
@@ -91,23 +93,41 @@ export default function TestimonialsPage() {
         </Container>
       </Section>
 
-      {/* 3. Proof-honest band — DARK */}
-      <Section tone="base">
+      {/* 3. Proof + interactive review survey — DARK.
+          The honesty statement and the ask deliberately share ONE band. Giving the
+          survey its own band would make five content bands, ending DARK against the
+          dark footer and breaking footer-anchored alternation (CLAUDE.md → Fixed
+          bookends); merging is the sanctioned count-parity fix rather than a recolor
+          cascade. It also reads better: the honesty claim earns the ask instead of
+          sitting next to it. Band tones stay D → L → D → L → footer(D). */}
+      <Section tone="base" id="leave-a-review">
         <Container size="narrow">
           <div className="text-center">
-            <p className="eyebrow" style={{ color: "var(--primary)" }}>
-              Real reviews, nothing fabricated
-            </p>
-            <h2 className="mt-4 text-h2 font-display" style={{ color: "var(--text-primary)" }}>
-              A small, real, five-star record.
-            </h2>
-            <p
-              className="mt-4 font-body mx-auto"
-              style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "58ch" }}
-            >
-              Rated {avg.toFixed(1)} on Google, in customers' own words, across {count} verified reviews on Google, Yelp, and Facebook. No wall of invented quotes, just honest proof from real New England homeowners and contractors.
-            </p>
+            <FadeUp>
+              <p className="eyebrow" style={{ color: "var(--primary)" }}>
+                {survey.eyebrow}
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h2 className="mt-4 text-h2 font-display" style={{ color: "var(--text-primary)" }}>
+                {survey.h2}
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.15}>
+              <p
+                className="mt-4 font-body mx-auto"
+                style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "58ch" }}
+              >
+                Rated {avg.toFixed(1)} on Google across {count} verified reviews. {survey.intro}
+              </p>
+            </FadeUp>
           </div>
+
+          <FadeUp delay={0.2}>
+            <div className="mt-12">
+              <ReviewSurvey />
+            </div>
+          </FadeUp>
         </Container>
       </Section>
 
@@ -119,7 +139,7 @@ export default function TestimonialsPage() {
               className="text-h2 font-display"
               style={{ color: "var(--text-on-light)" }}
             >
-              Want to be the next 5-star review?
+              Haven&apos;t had Jim out to the house yet?
             </h2>
             <p
               className="mt-4 font-body"
@@ -129,7 +149,7 @@ export default function TestimonialsPage() {
                 lineHeight: 1.6,
               }}
             >
-              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, guaranteed for life.
+              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, measures your windows, and gives you an honest installed price at your kitchen table. Every job is guaranteed for life.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Button href="/request-a-consultation" variant="primary" size="lg">

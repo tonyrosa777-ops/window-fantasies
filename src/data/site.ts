@@ -31,6 +31,7 @@ export interface SiteConfig {
   industries: Industry[];
   serviceAreas: ServiceArea[];
   testimonials: Testimonial[];
+  reviewSurvey: ReviewSurvey;
   stats: Stat[];
   faq: FaqItem[];
   quiz: Quiz;
@@ -52,6 +53,19 @@ export interface BusinessInfo {
   ownerEmail: string;
   serviceRadius: string;
   social: { facebook?: string; linkedin?: string; instagram?: string };
+  /**
+   * One-click "write a review" deep link for the Google Business Profile.
+   *
+   * The BEST value here is the official short link from Jim's GBP dashboard
+   * (Business Profile > Read Reviews > Get more reviews > Copy link), which looks
+   * like https://g.page/r/<opaque-code>/review. That code encodes the listing CID
+   * and CANNOT be derived from a Place ID, so it has to be copied out of the
+   * dashboard by hand once.
+   *
+   * Until then this uses the documented-by-behavior writereview endpoint keyed on
+   * the Place ID, which resolves to the same review composer.
+   */
+  googleReviewUrl: string;
 }
 
 export interface Hero {
@@ -166,6 +180,62 @@ export interface ServiceArea {
   nearbyAreas: string[];
 }
 
+/**
+ * ReviewSurvey — copy for the interactive star survey on /testimonials.
+ *
+ * Flow: pick a star rating, then branch. 1-3 routes to a private note that lands
+ * only in Jim's inbox. 4-5 collects the review on-site and then hands off to the
+ * Google review composer in one click.
+ *
+ * Ratings collected here are NEVER published or aggregated on the site. The
+ * displayed reviews + AggregateRating stay sourced from the curated real set in
+ * `testimonials` (research/real-reviews.md). Jim adds a submitted review to that
+ * set by hand if he wants it public. Collecting ratings and publishing a
+ * rating-filtered average off the same widget is the one thing that would make
+ * this a 16 CFR 465.7(b) problem, so the two stay strictly separate.
+ */
+export interface ReviewSurvey {
+  eyebrow: string;
+  h2: string;
+  intro: string;
+  /** Prompt above the star picker. */
+  starPrompt: string;
+  /** Shown under the stars at rest, before any rating is picked or hovered. */
+  starHint: string;
+  /** Accessible labels for stars 1-5, index 0 = one star. */
+  starLabels: string[];
+  /** Branch shown to 1-3 star raters: private, goes only to Jim. */
+  privateBranch: {
+    h3: string;
+    body: string;
+    nameLabel: string;
+    contactLabel: string;
+    contactHint: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submitLabel: string;
+    sendingLabel: string;
+    successH3: string;
+    successBody: string;
+  };
+  /** Branch shown to 4-5 star raters: on-site review, then one click to Google. */
+  publicBranch: {
+    h3: string;
+    body: string;
+    nameLabel: string;
+    townLabel: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submitLabel: string;
+    sendingLabel: string;
+    successH3: string;
+    successBody: string;
+    googleCtaLabel: string;
+    googleCtaNote: string;
+  };
+  errorMessage: string;
+}
+
 export interface Testimonial {
   id: string;
   body: string;
@@ -263,6 +333,32 @@ const CONSULT_HREF = "/request-a-consultation";
 const PHONE_TEL = "6038915755";
 const PHONE_FMT = "(603) 891-5755";
 
+/**
+ * Google review composer deep link for Window Fantasies.
+ * Full derivation + source URLs: research/google-review-deep-link.md
+ *
+ * This is the canonical Maps write-review URL: the SAME destination that the
+ * Places API `googleMapsLinks.writeAReviewUri` field returns and that the GBP
+ * dashboard's `g.page/r/<code>/review` short link redirects to. Built from the
+ * verified FID:CID pair for the listing. The trailing `!12e1` is the segment that
+ * makes Maps open the review composer instead of the profile.
+ *
+ *   Place ID : ChIJr9eihMSGMEkRWY1hwcmJr1Q
+ *   FID:CID  : 0x493086c484a2d7af:0x54af89c9c1618d59
+ *   CID      : 6102247519736139097  (google.com/maps?cid=... round-trips to the profile)
+ *
+ * Verified 2026-07-16: returns 200 directly, no ServiceLogin bounce.
+ *
+ * Deliberately NOT `search.google.com/local/writereview?placeid=`, which is the
+ * format most guides recommend. That endpoint is undocumented, Google closed the
+ * request to support it as "Won't Fix (Infeasible)", it has a history of unfixed
+ * regional breakage, and google.com publishes no iOS app association for it, so it
+ * can never hand off to the Maps app on an iPhone. `/maps/place/*` IS claimed by
+ * the Maps app on both iOS and Android, so this one opens in-app on a phone.
+ */
+const GOOGLE_REVIEW_URL =
+  "https://www.google.com/maps/place//data=!4m3!3m2!1s0x493086c484a2d7af:0x54af89c9c1618d59!12e1";
+
 export const siteConfig: SiteConfig = {
   business: {
     name: "Window Fantasies",
@@ -278,6 +374,7 @@ export const siteConfig: SiteConfig = {
     ownerEmail: "windowfantasies@gmail.com",
     serviceRadius: "All of New England (NH, MA, ME, VT, and Cape Cod)",
     social: {},
+    googleReviewUrl: GOOGLE_REVIEW_URL,
   },
 
   hero: {
@@ -1100,6 +1197,55 @@ export const siteConfig: SiteConfig = {
       isReal: true,
     },
   ],
+
+  reviewSurvey: {
+    eyebrow: "Real reviews, real names",
+    h2: "A small, real, five-star record.",
+    intro:
+      "Every review above is verbatim from a New England homeowner or contractor, pulled straight from Google, Yelp, and Facebook. If Jim has measured your windows, add yours below.",
+    starPrompt: "How did Jim do?",
+    /** Sits in the label slot at rest, so the reserved line carries the affordance
+     *  instead of holding an empty void under the stars. */
+    starHint: "Choose a rating to start.",
+    starLabels: [
+      "1 star, poor",
+      "2 stars, below expectations",
+      "3 stars, it was fine",
+      "4 stars, very good",
+      "5 stars, excellent",
+    ],
+    privateBranch: {
+      h3: "Tell Jim what went wrong.",
+      body: "This one goes straight to Jim and stays between the two of you. He answers his own phone, he installed the work himself, and every job he has ever done is guaranteed for life. Tell him what happened and he will make it right.",
+      nameLabel: "Your name",
+      contactLabel: "Phone or email",
+      contactHint: "So Jim can reach you directly.",
+      messageLabel: "What happened?",
+      messagePlaceholder: "Tell Jim what went wrong, and what would make it right.",
+      submitLabel: "Send this to Jim",
+      sendingLabel: "Sending...",
+      successH3: "Jim has it.",
+      successBody:
+        "He reads these himself, usually the same day, and he will call you. Thank you for telling him directly. It is the only way he can put it right.",
+    },
+    publicBranch: {
+      h3: "Glad to hear it.",
+      body: "Tell the next New England homeowner what the work was like. Jim reads every one of these himself.",
+      nameLabel: "Your name",
+      townLabel: "Your town",
+      messageLabel: "How did it go?",
+      messagePlaceholder: "What did Jim do for you, and how did it turn out?",
+      submitLabel: "Submit my review",
+      sendingLabel: "Sending...",
+      successH3: "Thank you. That means a lot to a small shop.",
+      successBody:
+        "Jim has your review. One more thing, and it is the single biggest help you can hand a small business: post it on Google, where the next homeowner hunting for a real Hunter Douglas dealer will actually find it.",
+      googleCtaLabel: "Post it on Google",
+      googleCtaNote: "Opens Google in a new tab. Takes about 30 seconds.",
+    },
+    errorMessage:
+      "Something went wrong sending that. Please call Jim at (603) 891-5755 and he will take care of it himself.",
+  },
 
   stats: [
     { number: "30", suffix: "+", label: "Years in window fashions across New England" },
