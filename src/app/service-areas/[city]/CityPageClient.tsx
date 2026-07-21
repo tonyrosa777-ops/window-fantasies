@@ -185,7 +185,9 @@ export default function CityPageClient({ area }: Props) {
       {/* 2. CITY INFO — CREAM band, 2-col with Google Maps */}
       <Section tone="cream">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          {/* Default items-stretch: the map flex-grows so the right column
+              bottom-aligns with the taller copy column (symmetry rule F/G). */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
             {/* LEFT: copy + trust checklist */}
             <FadeUp>
               <p className="eyebrow mb-3" style={{ color: "var(--gold-deep)" }}>Your Local Dealer</p>
@@ -258,9 +260,10 @@ export default function CityPageClient({ area }: Props) {
             </FadeUp>
 
             {/* RIGHT: Google Maps iframe + info card */}
-            <FadeUp delay={0.15}>
+            <FadeUp delay={0.15} className="lg:h-full">
+              <div className="flex flex-col lg:h-full">
               <div
-                className="rounded-2xl overflow-hidden shadow-md h-64 sm:h-72 lg:h-80 border"
+                className="rounded-2xl overflow-hidden shadow-md h-64 sm:h-72 lg:h-auto lg:flex-1 lg:min-h-80 border"
                 style={{ borderColor: "var(--border-light)" }}
               >
                 <iframe
@@ -353,6 +356,7 @@ export default function CityPageClient({ area }: Props) {
                     </dd>
                   </div>
                 </dl>
+              </div>
               </div>
             </FadeUp>
           </div>

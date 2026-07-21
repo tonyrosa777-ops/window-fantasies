@@ -290,7 +290,10 @@ export default async function ProductPage({ params }: Props) {
       {/* 3. FEATURES in a 2-col grid — CREAM band, white feature cards */}
       <Section tone="cream">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-start">
+          {/* Default items-stretch (no items-start): the feature grid fills the
+              full height of the taller left column via h-full + auto-rows-fr,
+              so both columns bottom-align — no lopsided void (symmetry rule F/G). */}
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16">
             <div>
               <p className="eyebrow mb-3" style={{ color: "var(--gold-deep)" }}>
                 What You Get
@@ -335,12 +338,12 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               </div>
             </div>
-            <div>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="lg:h-full">
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:h-full lg:auto-rows-fr">
                 {product.features.map((feature, i) => (
                   <li
                     key={i}
-                    className="flex gap-3 rounded-[8px] border p-5 font-body"
+                    className="flex items-center rounded-[8px] border p-5 font-body"
                     style={{
                       color: "var(--text-on-light)",
                       background: "var(--bg-card-light)",
@@ -349,17 +352,19 @@ export default async function ProductPage({ params }: Props) {
                       lineHeight: 1.55,
                     }}
                   >
-                    <span
-                      className="flex-shrink-0 mt-2"
-                      style={{
-                        width: "6px",
-                        height: "6px",
-                        borderRadius: "999px",
-                        background: "var(--primary)",
-                      }}
-                      aria-hidden="true"
-                    />
-                    <span>{feature}</span>
+                    <div className="flex gap-3">
+                      <span
+                        className="flex-shrink-0 mt-2"
+                        style={{
+                          width: "6px",
+                          height: "6px",
+                          borderRadius: "999px",
+                          background: "var(--primary)",
+                        }}
+                        aria-hidden="true"
+                      />
+                      <span>{feature}</span>
+                    </div>
                   </li>
                 ))}
               </ul>

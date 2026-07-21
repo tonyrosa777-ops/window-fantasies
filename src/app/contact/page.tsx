@@ -64,10 +64,12 @@ export default function ContactPage() {
           this is the last content band so it stairs into the dark footer. */}
       <Section tone="cream">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16 items-start">
+          {/* Default items-stretch + h-full cards: both columns share one bottom
+              edge — no lopsided tail void (symmetry rule F/G). */}
+          <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-10 lg:gap-16">
             {/* Left: form */}
-            <FadeUp>
-              <Card hoverable={false}>
+            <FadeUp className="lg:h-full">
+              <Card hoverable={false} className="lg:h-full">
                 <h2
                   className="text-h2 font-display"
                   style={{ color: "var(--text-primary)" }}
@@ -91,8 +93,8 @@ export default function ContactPage() {
             </FadeUp>
 
             {/* Right: contact info + map */}
-            <FadeUp delay={0.15}>
-              <Card hoverable={false}>
+            <FadeUp delay={0.15} className="lg:h-full">
+              <Card hoverable={false} className="lg:h-full">
                 <h2
                   className="text-h2 font-display"
                   style={{ color: "var(--text-primary)" }}
