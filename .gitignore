@@ -48,3 +48,5 @@ next-env.d.ts
 /audits/
 .playwright-mcp/
 .optimus-review/
+
+.vercel
