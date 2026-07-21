@@ -434,7 +434,7 @@ export const siteConfig: SiteConfig = {
       { title: "BBB A+ Accredited", description: "Accredited by the Better Business Bureau with an A+ rating." },
       { title: "Measure, Design, and Install by Hand", description: "Jim personally handles every step. No sales team, no subcontractors, no call center. When you call, you get Jim." },
     ],
-    photo: { src: "/images/about/jim-portrait.jpg", alt: "Jim Garrity, the owner, beside a Hunter Douglas window treatment he measured and installed by hand." },
+    photo: { src: "/images/about/jim-headshot.jpg", alt: "Jim Garrity, the owner of Window Fantasies. Retired Methuen fire lieutenant and Hunter Douglas Centurion dealer." },
     cta: { label: "Request a Free Consultation", href: CONSULT_HREF },
   },
 
