@@ -127,6 +127,10 @@ export interface PastClient {
 export interface WorkItem {
   brand: string;
   category: "Shades" | "Blinds" | "Shutters" | "Drapery" | "Motorization";
+  /** Room / setting metadata chip shown on gallery tiles ("Kitchen", "Nursery"). */
+  room: string;
+  /** True for the ~6 installs shown in the featured portfolio reel (rest go to the wall). */
+  featured?: boolean;
   image: string;
   alt: string;
   blurb: string;
@@ -609,6 +613,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Silhouette Sheer Shades",
       category: "Shades",
+      room: "Living room",
+      featured: true,
       image: "/images/hunter-douglas/p04.jpg",
       alt: "A premium New England living room with Hunter Douglas Silhouette sheer shades softening the daylight.",
       blurb: "Silhouette sheers diffusing golden-hour light in a premium living room. Daytime privacy without losing the view.",
@@ -618,6 +624,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Wood Blinds",
       category: "Blinds",
+      room: "Dining room",
       image: "/images/hunter-douglas/p02.jpg",
       alt: "A modern dining room with warm Hunter Douglas wood blinds.",
       blurb: "Parkland wood blinds bringing warmth to a modern dining room. Classic real-wood in dozens of finishes.",
@@ -627,6 +634,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Cellular Shades",
       category: "Shades",
+      room: "Kitchen",
       image: "/images/hunter-douglas/p06.jpg",
       alt: "A bright kitchen with Hunter Douglas Duette cellular honeycomb shades.",
       blurb: "Duette honeycomb shades in a sunny kitchen. Energy-efficient, and available in true blackout.",
@@ -636,6 +644,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Custom Drapery",
       category: "Drapery",
+      room: "City loft",
       image: "/images/hunter-douglas/p05.jpg",
       alt: "Navy custom drapery framing a city view in a modern loft.",
       blurb: "Custom drapery in a city loft, layered for drama and light control. Thousands of fabrics to choose from.",
@@ -645,6 +654,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Roller and Solar Shades",
       category: "Shades",
+      room: "Great room",
       image: "/images/hunter-douglas/p08.jpg",
       alt: "Clean roller shades in a large rustic-modern room.",
       blurb: "Roller and solar shades in a rustic-modern great room. Sunglasses for your windows, glare and UV handled.",
@@ -654,6 +664,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Plantation Shutters",
       category: "Shutters",
+      room: "Family room",
       image: "/images/hunter-douglas/p11.jpg",
       alt: "Wood plantation shutters in warm golden light.",
       blurb: "Hardwood plantation shutters in golden light. Timeless, and built to last a lifetime.",
@@ -663,6 +674,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Luminette Sheers",
       category: "Drapery",
+      room: "Patio doors",
       image: "/images/hunter-douglas/p07.jpg",
       alt: "Airy Luminette sheer vertical shades with an ocean view.",
       blurb: "Luminette vertical sheers on a wide ocean-view opening. Drapery softness with the light control of a shade.",
@@ -672,6 +684,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Roman Shades",
       category: "Shades",
+      room: "Music room",
       image: "/images/hunter-douglas/p10.jpg",
       alt: "Tailored Roman shades in a refined living room with a grand piano.",
       blurb: "Vignette Roman shades in a refined living room. Tailored folds, no exposed cords or rings.",
@@ -681,6 +694,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Coastal Great Room Sheers",
       category: "Shades",
+      room: "Great room",
+      featured: true,
       image: "/images/portfolio/pf-09.jpg",
       alt: "A coastal New England great room with sheer shades softening arched windows and an ocean view.",
       blurb: "Sheer shades diffusing sea light in a vaulted coastal great room.",
@@ -690,6 +705,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Chef's Kitchen Roller Shades",
       category: "Shades",
+      room: "Kitchen",
       image: "/images/portfolio/pf-10.jpg",
       alt: "A warm chef's kitchen with natural woven roller shades at golden hour.",
       blurb: "Woven roller shades warming a chef's kitchen in golden-hour light.",
@@ -699,6 +715,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Primary Bedroom Cellular",
       category: "Shades",
+      room: "Bedroom",
       image: "/images/portfolio/pf-11.jpg",
       alt: "A serene primary bedroom with room-darkening cellular honeycomb shades.",
       blurb: "Room-darkening cellular shades in a calm sage-toned primary bedroom.",
@@ -708,6 +725,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Home Office Wood Blinds",
       category: "Blinds",
+      room: "Home office",
+      featured: true,
       image: "/images/portfolio/pf-12.jpg",
       alt: "A handsome home office with warm wood blinds casting light bars across a walnut desk.",
       blurb: "Real wood blinds striping warm light across a home-office desk.",
@@ -717,6 +736,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Formal Dining Roman Shades",
       category: "Shades",
+      room: "Dining room",
       image: "/images/portfolio/pf-13.jpg",
       alt: "A formal dining room with botanical-linen Roman shades and a brass chandelier.",
       blurb: "Botanical Roman shades framing a formal dining room in raking light.",
@@ -726,6 +746,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Sunroom Plantation Shutters",
       category: "Shutters",
+      room: "Sunroom",
+      featured: true,
       image: "/images/portfolio/pf-14.jpg",
       alt: "A bright sunroom with wide-louver white plantation shutters and terracotta tile.",
       blurb: "White plantation shutters filtering light across a plant-filled sunroom.",
@@ -735,6 +757,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Nursery Blackout Shades",
       category: "Shades",
+      room: "Nursery",
       image: "/images/portfolio/pf-15.jpg",
       alt: "A soft nursery with blush blackout roller shades beside a wooden crib.",
       blurb: "Gentle blackout roller shades in a warm, restful nursery.",
@@ -744,6 +767,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Media Room Blackout",
       category: "Shades",
+      room: "Media room",
+      featured: true,
       image: "/images/portfolio/pf-16.jpg",
       alt: "A walnut-paneled media room with a charcoal motorized blackout shade.",
       blurb: "A motorized blackout shade darkening a warm walnut media room.",
@@ -753,6 +778,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Farmhouse Entry Cafe Shutters",
       category: "Shutters",
+      room: "Entryway",
       image: "/images/portfolio/pf-17.jpg",
       alt: "A farmhouse entry with lower-half cafe shutters, a rustic bench and baskets.",
       blurb: "Cafe-height shutters bringing privacy and light to a farmhouse entry.",
@@ -762,6 +788,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Loft Floor-to-Ceiling Drapery",
       category: "Drapery",
+      room: "Loft",
       image: "/images/portfolio/pf-18.jpg",
       alt: "An exposed-brick loft with floor-to-ceiling greige pinch-pleat drapery on steel windows.",
       blurb: "Floor-to-ceiling drapery softening a brick-and-steel loft.",
@@ -771,6 +798,7 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Spa Bath Top-Down Shades",
       category: "Shades",
+      room: "Bathroom",
       image: "/images/portfolio/pf-19.jpg",
       alt: "A marble spa bathroom with a top-down-bottom-up cellular shade for light and privacy.",
       blurb: "Top-down-bottom-up shades balancing light and privacy in a spa bath.",
@@ -780,6 +808,8 @@ export const siteConfig: SiteConfig = {
     {
       brand: "Lake House Drapery & Sheers",
       category: "Drapery",
+      room: "Lake house",
+      featured: true,
       image: "/images/portfolio/pf-20.jpg",
       alt: "A lake-house living room with layered sheers under tied-back linen drapery and a stone fireplace.",
       blurb: "Layered sheers and linen drapery framing a golden lake view.",
