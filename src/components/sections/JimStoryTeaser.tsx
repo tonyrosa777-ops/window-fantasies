@@ -2,7 +2,7 @@
  * JimStoryTeaser — Band 6 (dark, base). The category-unique asset: a named,
  * real, local human. Firefighter -> Centurion dealer. Photo + teaser + link to
  * /about. (No owner headshot in the hero, per design-system; his face and story
- * live here and on About. A real Jim portrait can replace the install photo.)
+ * live here and on About. Real Jim photo — teaser preview of the About page.)
  */
 
 import Image from "next/image";
@@ -19,18 +19,18 @@ export function JimStoryTeaser() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <ScaleIn from={0.96}>
             <div
-              className="relative w-full rounded-[8px] border overflow-hidden"
+              className="relative w-full max-w-[440px] mx-auto rounded-[8px] border overflow-hidden"
               style={{
-                aspectRatio: "4 / 3",
+                aspectRatio: "3 / 4",
                 borderColor: "var(--border-gold)",
                 boxShadow: "0 28px 70px rgba(0,0,0,0.55)",
               }}
             >
               <Image
-                src="/images/about/install-team.jpg"
-                alt="Warm golden light through hardwood plantation shutters, a signature Window Fantasies install."
+                src="/images/about/jim-headshot.jpg"
+                alt="Jim Garrity, the owner of Window Fantasies."
                 fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                sizes="(max-width: 1024px) 100vw, 440px"
                 className="object-cover"
               />
             </div>
