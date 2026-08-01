@@ -60,7 +60,7 @@ export default function RequestConsultationPage() {
       {/* Photo header - dark band, tightened so the form arrives fast */}
       <Section
         tone="base"
-        bgImage="/images/headers/consultation.jpg"
+        bgImage="/images/headers/consultation.webp"
         bgImageAlt="Fabric swatches and a tape measure on a console beside a draped window."
         className="pt-32 sm:pt-36 lg:pt-40 pb-14 md:pb-16"
       >

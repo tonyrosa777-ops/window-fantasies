@@ -130,10 +130,18 @@ export function HeroSequence() {
           layer the scrim washed over it and the label was unreadable, which
           does not satisfy "clearly labeled".
 
-          The h-[100svh] wrapper anchors "bottom" to the FOLD. The hero section
-          also contains the trust strip, so a credit anchored to the section
-          bottom lands off-screen, nowhere near the photo it labels. */}
-      <div className="absolute inset-x-0 top-0 h-[100svh] z-20 pointer-events-none">
+          At sm+ the h-[100svh] wrapper anchors "bottom" to the FOLD, because the
+          hero section also contains the trust strip and a credit at the section
+          bottom would sit far below the photo's visible portion.
+
+          Below sm that same fold anchor put the credit at y~804 in an 844px fold,
+          which is exactly where the trust chips wrap to a third row (measured
+          collision at both 375 and 390; clear at 428+). The hero content is
+          intrinsically taller than the fold at those widths, so its padding-bottom
+          lands off-screen and cannot reserve the strip. The photo runs the full
+          section height, so the fix is to caption its true bottom edge instead of
+          a mid-photo band: still an on-photo corner caption, and clear of content. */}
+      <div className="absolute inset-x-0 top-0 bottom-0 sm:bottom-auto sm:h-[100svh] z-20 pointer-events-none">
         <HDPhotoCredit credit={SLIDES[active].credit} variant="overlay" />
       </div>
     </>

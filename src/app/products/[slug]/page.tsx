@@ -8,8 +8,11 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { FadeUp } from "@/components/animations/FadeUp";
+import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 import { ProductLinePage } from "@/components/sections/ProductLinePage";
-import { getProductLine, isProductLineSlug, HD_PRODUCT_LINES } from "@/data/products";
+import { getProductLine, isProductLineSlug, HD_PRODUCT_LINES, linesByCategory } from "@/data/products";
 
 /**
  * /products/[slug] - Next 16 Promise params (Pattern #66 BINDING).
@@ -51,21 +54,21 @@ const signatureProducts: Record<
   { name: string; line: string; image: string; alt: string; w: number; h: number }[]
 > = {
   shades: [
-    { name: "Silhouette® Window Shadings", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.jpg", alt: "Hunter Douglas Silhouette® Window Shadings softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
-    { name: "Duette® Honeycomb Shades", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.jpg", alt: "Hunter Douglas Duette® Honeycomb Shades in a bright kitchen.", w: 900, h: 600 },
-    { name: "Vignette® Modern Roman Shades", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.jpg", alt: "Tailored Hunter Douglas Vignette® Modern Roman Shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
+    { name: "Silhouette® Window Shadings", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.webp", alt: "Hunter Douglas Silhouette® Window Shadings softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
+    { name: "Duette® Honeycomb Shades", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.webp", alt: "Hunter Douglas Duette® Honeycomb Shades in a bright kitchen.", w: 900, h: 600 },
+    { name: "Vignette® Modern Roman Shades", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.webp", alt: "Tailored Hunter Douglas Vignette® Modern Roman Shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
   ],
   blinds: [
-    { name: "Parkland® Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.jpg", alt: "Warm Hunter Douglas Parkland® Wood Blinds in a modern dining room.", w: 2050, h: 1025 },
-    { name: "Installation by hand", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/installed-by-hand.jpg", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
+    { name: "Parkland® Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.webp", alt: "Warm Hunter Douglas Parkland® Wood Blinds in a modern dining room.", w: 2050, h: 1025 },
+    { name: "Installation by hand", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/installed-by-hand.webp", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
   ],
   shutters: [
-    { name: "Heritance® Hardwood Shutters", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.jpg", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
-    { name: "Palm Beach™ Polysatin™ Shutters", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.jpg", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
+    { name: "Heritance® Hardwood Shutters", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.webp", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
+    { name: "Palm Beach™ Polysatin™ Shutters", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.webp", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
   ],
   drapery: [
-    { name: "Carole Fabrics custom drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.jpg", alt: "Golden floor-length custom drapery layered over sheers in a formal New England living room.", w: 1025, h: 513 },
-    { name: "Luminette® Privacy Sheers", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.jpg", alt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.", w: 1025, h: 513 },
+    { name: "Carole Fabrics custom drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.webp", alt: "Golden floor-length custom drapery layered over sheers in a formal New England living room.", w: 1025, h: 513 },
+    { name: "Luminette® Privacy Sheers", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.webp", alt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.", w: 1025, h: 513 },
   ],
 };
 
@@ -161,6 +164,9 @@ export default async function ProductPage({ params }: Props) {
 
   const product = siteConfig.productLines.find((p) => p.slug === slug);
   if (!product) notFound();
+
+  // The Hunter Douglas lines that live under this category.
+  const categoryLines = linesByCategory(slug);
 
   const hasTiers = product.moqTiers.length > 0;
   const signature = signatureProducts[slug] ?? [];
@@ -490,6 +496,65 @@ export default async function ProductPage({ params }: Props) {
           </div>
         </Container>
       </Section>
+
+      {/* 3b. THE LINES IN THIS CATEGORY - CREAM.
+          Without this, the 23 product-line pages are reachable only from the
+          /products hub, which makes them orphans from the category a visitor
+          actually landed on. Each card is that line's own page. */}
+      {categoryLines.length > 0 && (
+        <Section tone="cream">
+          <Container size="wide">
+            <FadeUp className="text-center max-w-3xl mx-auto mb-12">
+              <p className="eyebrow" style={{ color: "var(--gold-deep)" }}>
+                Every {product.name.toLowerCase()} line
+              </p>
+              <h2 className="mt-4 font-display text-h2" style={{ color: "var(--text-on-light)" }}>
+                The Hunter Douglas {product.name.toLowerCase()} Jim installs.
+              </h2>
+              <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
+                Each one is a different answer to light, privacy and how a room is used.
+                Open any of them to see what it does, then let Jim bring the samples to you.
+              </p>
+            </FadeUp>
+            <StaggerContainer staggerDelay={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {categoryLines.map((line) => (
+                <StaggerItem key={line.slug} className="h-full">
+                  <Link
+                    href={`/products/${line.slug}`}
+                    className="group flex flex-col h-full rounded-[8px] overflow-hidden border transition-all duration-300 hover:-translate-y-1"
+                    style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
+                  >
+                    {line.photos[0] ? (
+                      <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 10" }}>
+                        <Image
+                          src={line.photos[0].src}
+                          alt={line.photos[0].alt}
+                          fill
+                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                          loading="lazy"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
+                    ) : null}
+                    <div className="p-5 flex flex-col gap-2">
+                      <h3 className="font-display text-lg leading-tight" style={{ color: "var(--text-on-light)" }}>
+                        {line.name}
+                      </h3>
+                      <p className="font-body text-sm leading-relaxed" style={{ color: "var(--muted-on-light)" }}>
+                        {line.tagline}
+                      </p>
+                    </div>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+            {/* One credit for the set, per HD's first-instance rule. */}
+            <div className="mt-6">
+              <HDPhotoCredit credit="Product photography by Hunter Douglas" tone="light" />
+            </div>
+          </Container>
+        </Section>
+      )}
 
       {/* 4. SIGNATURE PRODUCTS - DARK photo band, room stills for this category */}
       {signature.length > 0 && (

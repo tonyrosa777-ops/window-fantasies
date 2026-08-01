@@ -35,7 +35,7 @@
  *  - Every title is a specific buyer question (AEO target).
  *  - First paragraph is a direct answer to that question (citation bait).
  *  - Educate, do not sell. Jim writes in first person.
- *  - Header image path is /images/blog/{slug}-header.jpg.
+ *  - Header image path is /images/blog/{slug}-header.webp.
  */
 
 export interface SeededPostSource {

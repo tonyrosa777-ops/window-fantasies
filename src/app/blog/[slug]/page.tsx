@@ -146,7 +146,7 @@ export default async function BlogPostPage({ params }: Props) {
           <FadeUp className="max-w-5xl mx-auto">
             <div className="relative aspect-[16/8] rounded-2xl overflow-hidden mb-10 border border-[var(--border-dark)]">
               <Image
-                src={`/images/blog/${post.slug}-header.jpg`}
+                src={`/images/blog/${post.slug}-header.webp`}
                 alt={post.mainImageAlt}
                 fill
                 sizes="(min-width: 1024px) 1024px, 100vw"

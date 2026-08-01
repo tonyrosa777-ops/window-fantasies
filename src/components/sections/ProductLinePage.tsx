@@ -98,8 +98,14 @@ export function ProductLinePage({ line }: Props) {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-start">
             <FadeUp>
               <div className="flex flex-col gap-5">
-                {line.body.map((p) => (
-                  <p key={p.slice(0, 40)} className="font-body text-base md:text-lg leading-relaxed" style={{ color: "var(--muted-on-light)" }}>
+                {/* Keyed by index, not by content. HD's trademark rule requires each
+                    paragraph to restate "Hunter Douglas <Mark>® <Descriptor>" near the
+                    mark, so consecutive paragraphs routinely share their opening
+                    clause. A content-prefix key collided on NewStyle® Hybrid Shutters,
+                    whose first two paragraphs are byte-identical for 40 characters.
+                    These arrays are static and never reordered, so the index IS stable. */}
+                {line.body.map((p, i) => (
+                  <p key={i} className="font-body text-base md:text-lg leading-relaxed" style={{ color: "var(--muted-on-light)" }}>
                     {p}
                   </p>
                 ))}

@@ -74,7 +74,7 @@ export function ServiceAreaTeaser() {
               style={{ aspectRatio: "4 / 3", borderColor: "var(--border-light)", boxShadow: "0 18px 48px rgba(7, 7, 6,0.15)" }}
             >
               <Image
-                src="/images/window-fashions/p09.jpg"
+                src="/images/window-fashions/p09.webp"
                 alt="Plantation shutters framing French doors with a New England ocean view."
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"

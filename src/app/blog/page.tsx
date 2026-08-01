@@ -106,7 +106,7 @@ export default async function BlogIndexPage() {
 
   return (
     <>
-      <Section tone="elevated" id="blog-header" bgImage="/images/headers/blog.jpg" bgImageAlt="A cozy reading nook beside a light-filtering roller shade." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="elevated" id="blog-header" bgImage="/images/headers/blog.webp" bgImageAlt="A cozy reading nook beside a light-filtering roller shade." className="pt-32 sm:pt-36 lg:pt-40">
         <Container size="wide">
           <FadeUp className="text-center max-w-3xl mx-auto">
             <Eyebrow className="mb-4">{PAGE_EYEBROW}</Eyebrow>
@@ -151,7 +151,7 @@ export default async function BlogIndexPage() {
               className="font-body text-center"
               style={{ color: "var(--muted-on-light)" }}
             >
-              More field notes from the workshop are on the way.
+              More field notes from Jim are on the way.
             </p>
           )}
 
@@ -184,7 +184,7 @@ function formatDate(iso: string): string {
 }
 
 function FeaturedPostCard({ post }: { post: PostCardData }) {
-  const headerImage = `/images/blog/${post.slug}-header.jpg`;
+  const headerImage = `/images/blog/${post.slug}-header.webp`;
   const altText = post.mainImageAlt ?? post.title;
   return (
     <article

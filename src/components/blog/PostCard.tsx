@@ -66,7 +66,7 @@ export function PostCard({ post, variant = "default", tone = "dark" }: Props) {
   // Card thumbnail IS the article header image (one generation, two placements,
   // the only allowed image reuse per the image-uniqueness rule). A separate
   // -card.jpg never ships, so pointing there rendered empty cards.
-  const cardImage = `/images/blog/${post.slug}-header.jpg`;
+  const cardImage = `/images/blog/${post.slug}-header.webp`;
   const altText = post.mainImageAlt ?? post.title;
 
   const Inner = (

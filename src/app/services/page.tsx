@@ -29,7 +29,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* 1. Page Header */}
-      <Section tone="base" bgImage="/images/headers/services.jpg" bgImageAlt="An elegant New England living room layered with sheer shades and drapery in morning light." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/services.webp" bgImageAlt="An elegant New England living room layered with sheer shades and drapery in morning light." className="pt-32 sm:pt-36 lg:pt-40">
         {/* Seam-fade (design-symmetry rule L): dark photo header dissolves into
             the cream consultation band. Mask only; core tone stays dark. */}
         <div
@@ -243,7 +243,7 @@ export default function ServicesPage() {
           photo under the Section dark radial overlay (text contrast ≥4.5:1). */}
       <Section
         tone="base"
-        bgImage="/images/sections/craftsman-level-shutter.jpg"
+        bgImage="/images/sections/craftsman-level-shutter.webp"
         bgImageAlt="A craftsman's hands checking a custom white plantation shutter with a level during a home install."
       >
         <Container size="narrow">
@@ -280,7 +280,7 @@ export default function ServicesPage() {
                 }}
               >
                 <Image
-                  src="/images/sections/samples-kitchen-table.jpg"
+                  src="/images/sections/samples-kitchen-table.webp"
                   alt="Open Hunter Douglas fabric sample books and wood stain chips on a sunlit kitchen table."
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"

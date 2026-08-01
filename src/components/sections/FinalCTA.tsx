@@ -67,7 +67,7 @@ export function FinalCTA() {
             }}
           >
             <Image
-              src="/images/sections/home-twilight-glow.jpg"
+              src="/images/sections/home-twilight-glow.webp"
               alt="A New England home's bay window glowing at dusk through sheer shades."
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

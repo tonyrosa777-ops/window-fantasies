@@ -56,7 +56,7 @@ export default function TestimonialsPage() {
       />
 
       {/* 1. Hero + aggregate rating */}
-      <Section tone="base" bgImage="/images/headers/testimonials.jpg" bgImageAlt="Hunter Douglas Parkland® Wood Blinds filtering afternoon light across a warm New England family room, measured and installed by Window Fantasies." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/testimonials.webp" bgImageAlt="Hunter Douglas Parkland® Wood Blinds filtering afternoon light across a warm New England family room, measured and installed by Window Fantasies." className="pt-32 sm:pt-36 lg:pt-40">
         <Container size="narrow">
           <div className="text-center flex flex-col items-center gap-6">
             <FadeUp>

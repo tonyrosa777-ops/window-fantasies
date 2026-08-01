@@ -51,7 +51,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={buildAboutSchema()} id="about-jsonld" />
       {/* 1. Hero / Page Header */}
-      <Section tone="base" bgImage="/images/headers/about.jpg" bgImageAlt="Hunter Douglas Designer Roller Shades filtering sunlight over a desk of fabric sample books in Jim's Salem office." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/about.webp" bgImageAlt="Hunter Douglas Designer Roller Shades filtering sunlight over a desk of fabric sample books in Jim's Salem office." className="pt-32 sm:pt-36 lg:pt-40">
         {/* Seam-fade (design-symmetry rule L): the dark photo header dissolves
             ~96px into the cream story band below. Transition mask only; the
             band's core tone stays clearly dark for the tone audit. */}
@@ -271,7 +271,7 @@ export default function AboutPage() {
                 }}
               >
                 <Image
-                  src="/images/sections/consultation-doorstep.jpg"
+                  src="/images/sections/consultation-doorstep.webp"
                   alt="Fabric sample books and a tool bag on the front step of a New England colonial home."
                   fill
                   sizes="(min-width: 1024px) 50vw, 100vw"

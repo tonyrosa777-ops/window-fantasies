@@ -75,3 +75,7 @@ next-env.d.ts
 *Waiver Compliance Review*.pdf
 hunter-douglas-media-kit.md
 hunter-douglas-waiver-review.md
+
+# Session artifacts written by Claude Code hooks into the repo root. These are
+# transcript-derived working notes, not deliverables, and this repo is PUBLIC.
+COMPACT-HANDOFF.md

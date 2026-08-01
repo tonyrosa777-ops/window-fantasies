@@ -26,7 +26,7 @@ export default function FaqPage() {
     <>
       <JsonLd data={buildFaqPageSchema()} id="faq-jsonld" />
       {/* 1. Page header */}
-      <Section tone="base" bgImage="/images/headers/faq.jpg" bgImageAlt="A softly lit window with a cellular shade and a fern on the sill." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/faq.webp" bgImageAlt="A softly lit window with a cellular shade and a fern on the sill." className="pt-32 sm:pt-36 lg:pt-40">
         <Container>
           <FadeUp>
             <Eyebrow>Frequently Asked Questions</Eyebrow>
@@ -74,7 +74,7 @@ export default function FaqPage() {
           held to real window light under the Section dark radial overlay. */}
       <Section
         tone="base"
-        bgImage="/images/sections/swatches-window-light.jpg"
+        bgImage="/images/sections/swatches-window-light.webp"
         bgImageAlt="Hands holding fabric swatches up to a sunlit window to judge their color in the home's own light."
       >
         <Container size="narrow">
