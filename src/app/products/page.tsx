@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { SITE_CATEGORIES, groupedByHdCategory } from "@/data/products";
 
 /**
  * /products - Index of the Hunter Douglas product lines.
@@ -32,6 +34,14 @@ const PAGE_EYEBROW = "Hunter Douglas Product Lines · Salem NH · All of New Eng
 const PAGE_H1 = "The full Hunter Douglas line, fitted to your windows by hand.";
 const PAGE_SUBHEAD =
   "Shades, blinds, shutters, and drapery, all custom-built for your exact openings. As an Authorized Hunter Douglas Dealer, Jim brings the real samples to your home, holds them in your own light, and gives you an honest installed price at your kitchen table. Explore the lines below, then request a free in-home consultation.";
+
+/** Display names for the four consumer-facing categories. */
+const CATEGORY_LABEL: Record<string, string> = {
+  shades: "Shades",
+  blinds: "Blinds",
+  shutters: "Shutters",
+  motorization: "Motorization",
+};
 
 export default function ProductsIndexPage() {
   const products = siteConfig.productLines;
@@ -167,6 +177,88 @@ export default function ProductsIndexPage() {
           <FadeUp className="mt-10 flex justify-center">
             <PowerViewDisclosure tone="light" className="text-center" />
           </FadeUp>
+        </Container>
+      </Section>
+
+      {/* 2b. THE FULL CATALOGUE - DARK.
+          Every Hunter Douglas line Jim sells, grouped under HD's own category
+          names. The four cards above are the broad entry points; this is the
+          actual catalogue, and each line has its own page. Grouping by HD's
+          taxonomy rather than listing 23 tiles flat is what makes a category
+          this deep browsable: "shades" alone spans Sheers & Shadings, Cellular
+          Honeycomb, Roller & Solar, Roman and Woven Woods. */}
+      <Section tone="base">
+        <Container size="wide">
+          <FadeUp className="text-center max-w-3xl mx-auto mb-12">
+            <p className="eyebrow" style={{ color: "var(--primary)" }}>The full line</p>
+            <h2 className="mt-4 font-display text-h2">
+              Every Hunter Douglas product Jim installs.
+            </h2>
+            <p className="mt-4 font-body" style={{ color: "var(--text-secondary)" }}>
+              Not a catalogue to order from, a starting point for the conversation.
+              Jim brings the real samples to your home so you can see any of these in
+              your own light before you spend a dollar.
+            </p>
+          </FadeUp>
+
+          <div className="flex flex-col gap-12">
+            {SITE_CATEGORIES.map((cat) => {
+              const groups = groupedByHdCategory(cat);
+              if (!groups.length) return null;
+              return (
+                <FadeUp key={cat}>
+                  <h3 className="font-display text-h3 mb-6 pb-3 border-b" style={{ borderColor: "var(--border-gold)" }}>
+                    {CATEGORY_LABEL[cat]}
+                  </h3>
+                  <div className="flex flex-col gap-8">
+                    {groups.map((g) => (
+                      <div key={g.hdCategory}>
+                        <p className="font-mono text-[0.7rem] uppercase tracking-widest mb-4" style={{ color: "var(--text-muted)" }}>
+                          {g.hdCategory}
+                        </p>
+                        <StaggerContainer staggerDelay={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                          {g.lines.map((line) => (
+                            <StaggerItem key={line.slug} className="h-full">
+                              <Link
+                                href={`/products/${line.slug}`}
+                                className="group flex flex-col h-full rounded-[8px] overflow-hidden border transition-all duration-300 hover:-translate-y-1"
+                                style={{ background: "var(--bg-card)", borderColor: "var(--border-dark)" }}
+                              >
+                                {line.photos[0] ? (
+                                  <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 10" }}>
+                                    <Image
+                                      src={line.photos[0].src}
+                                      alt={line.photos[0].alt}
+                                      fill
+                                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                                      loading="lazy"
+                                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                  </div>
+                                ) : null}
+                                <div className="p-5 flex flex-col gap-2">
+                                  <h4 className="font-display text-lg leading-tight">{line.name}</h4>
+                                  <p className="font-body text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                                    {line.tagline}
+                                  </p>
+                                </div>
+                              </Link>
+                            </StaggerItem>
+                          ))}
+                        </StaggerContainer>
+                      </div>
+                    ))}
+                  </div>
+                </FadeUp>
+              );
+            })}
+          </div>
+
+          {/* One credit for the whole band: HD's first-instance rule, and a
+              caption on all 23 tiles would read as clutter. */}
+          <div className="mt-8">
+            <HDPhotoCredit credit="Product photography by Hunter Douglas" />
+          </div>
         </Container>
       </Section>
 

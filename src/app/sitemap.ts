@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { HD_PRODUCT_LINES } from "@/data/products";
 import { siteConfig } from "@/data/site";
 import { seededPosts } from "@/data/seededPosts";
 
@@ -44,6 +45,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 5. Product category pages (Shades, Blinds, Shutters, Drapery).
   for (const product of siteConfig.productLines) {
     entries.push({ url: url(`/products/${product.slug}`), lastModified: NOW, changeFrequency: "monthly", priority: 0.8 });
+  }
+
+  // The 23 Hunter Douglas product-line pages. These are the branded-search
+  // targets ("duette honeycomb shades new hampshire"), so they carry the same
+  // priority as the category pages they sit under.
+  for (const line of HD_PRODUCT_LINES) {
+    entries.push({ url: url(`/products/${line.slug}`), lastModified: NOW, changeFrequency: "monthly", priority: 0.8 });
   }
 
   // 6. Service detail pages.

@@ -8,6 +8,8 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
+import { ProductLinePage } from "@/components/sections/ProductLinePage";
+import { getProductLine, isProductLineSlug, HD_PRODUCT_LINES } from "@/data/products";
 
 /**
  * /products/[slug] - Next 16 Promise params (Pattern #66 BINDING).
@@ -96,8 +98,25 @@ const powerViewByLine: Record<string, string> = {
     "Luminette® Privacy Sheers can be fitted with Hunter Douglas PowerView® Automation, so a whole bank of panels glides open without a wand or a cord to pull.",
 };
 
+/**
+ * This route serves TWO page types off one dynamic segment: the four
+ * consumer-facing CATEGORIES (shades, blinds, shutters, drapery) and the 23
+ * Hunter Douglas PRODUCT LINES (silhouette-window-shadings, ...).
+ *
+ * Flat product URLs were chosen deliberately over nesting them under their
+ * category: /products/duette-honeycomb-shades is what someone searching a
+ * branded product term will match, and it is shorter than
+ * /products/shades/duette-honeycomb-shades. The category pages stay as landing
+ * pages for the generic terms.
+ *
+ * Slugs cannot collide - no product line is named "shades" - and
+ * isProductLineSlug() is the discriminator everywhere below.
+ */
 export async function generateStaticParams() {
-  return siteConfig.productLines.map((p) => ({ slug: p.slug }));
+  return [
+    ...siteConfig.productLines.map((p) => ({ slug: p.slug })),
+    ...HD_PRODUCT_LINES.map((l) => ({ slug: l.slug })),
+  ];
 }
 
 /**
@@ -113,6 +132,15 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+
+  const line = getProductLine(slug);
+  if (line) {
+    return {
+      title: `Hunter Douglas ${line.name}`,
+      description: line.tagline,
+    };
+  }
+
   const product = siteConfig.productLines.find((p) => p.slug === slug);
   if (!product) return {};
   return {
@@ -123,6 +151,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
+
+  // Product line pages render their own template. See generateStaticParams for
+  // why both types share this route.
+  if (isProductLineSlug(slug)) {
+    const line = getProductLine(slug)!;
+    return <ProductLinePage line={line} />;
+  }
+
   const product = siteConfig.productLines.find((p) => p.slug === slug);
   if (!product) notFound();
 

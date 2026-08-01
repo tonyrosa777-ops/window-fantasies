@@ -144,9 +144,16 @@ export const HD_MARKS = {
   duolite: mark("Duolite", "®", "", { short: "Duolite®" }),
   clearview: mark("ClearView", "®", "", { short: "ClearView®" }),
   architella: mark("Architella", "®", "", { short: "Architella®" }),
-  aria: mark("Aria", "™", "", {
+  aria: mark("Aria", "™", "Soft Blinds", {
     short: "Aria™",
-    note: "Listed only under Alustra® Silhouette® Window Shadings.",
+    note:
+      "CORRECTED 2026-08-01. This was first entered from the 2025 trademark list, " +
+      "where Aria appears only as an Alustra® Silhouette® fabric name, so it was " +
+      "given no category descriptor and hdMark() returned a bare 'Aria™' that " +
+      "failed HD's descriptor rule. HD's own dealer library settles it: Aria™ " +
+      "Soft Blinds is a current product line with 12 photographs and 3 videos, " +
+      "filed under Horizontal Blinds. The trademark list is authoritative for the " +
+      "SYMBOL; the product catalogue is authoritative for whether a product exists.",
   }),
 
   /**
