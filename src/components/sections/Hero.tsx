@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { siteConfig } from "@/data/site";
 import { TrustSignals } from "@/components/sections/TrustBar";
 import { HunterDouglasLogo } from "@/components/brand/HunterDouglasLogo";
-import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { HeroSequence } from "@/components/sections/HeroSequence";
 
 /* ═══════════════════════════════════════════════════
    Hero — Window Fantasies (Band 1).
@@ -30,21 +30,20 @@ import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
       1536x720 scaled-laptop gate. It is `priority` because a logo that lazy-loads
       below the fold fails the criterion as surely as a missing one.
 
-   2. THE HERO FILM IS HUNTER DOUGLAS'S OWN, USED AS SUPPLIED.
-      It is their "Silhouette Halo" product film, downloaded from Brite (their
-      dealer asset library) on 2026-08-01. It is NOT trimmed, cropped, re-cut,
-      re-graded or otherwise edited: HD's policy says "using, altering or
-      tampering with any part of our creative content is a compliance violation",
-      and a 63s film cut down to a hero loop would be exactly that. It is only
-      transcoded (H.264/VP9, 1920 wide, audio stripped) which is delivery
-      encoding, not creative alteration - the same class of change as resizing a
-      photo to fit a slot. Play it whole, loop it whole. If a shorter hero cut is
-      ever wanted, that needs Prior Approval from Hunter Douglas Marketing.
+   2. THE HERO IMAGERY IS HUNTER DOUGLAS'S OWN, USED UNMODIFIED.
+      Four licensed HD photographs from Brite, crossfading with a slow push/pull.
+      The motion is CSS at render time, NEVER a baked video: rendering their
+      stills into an MP4 creates a derivative of their asset, and their policy
+      bars "altering or tampering with any part of our creative content". A
+      transform only changes how the browser paints a file served untouched.
+      Each slide carries its OWN product credit, because HD requires the label to
+      name the specific product in the photo and the photo changes. Details and
+      the full reasoning live in HeroSequence.tsx.
 
-      Note it ends on an HD logo card around t=60 and contains people. That is
-      what a manufacturer brand film is; it is the trade-off for using licensed
-      footage instead of an AI derivative of HD's photography, which is what this
-      hero used to be and which was a real violation.
+      This replaced an AI-generated loop that was image-to-image derived from
+      HD's own p11 photograph - an unauthorised derivative, live since July 2,
+      and the real compliance exposure here (knowledge base Error #274).
+
    ═══════════════════════════════════════════════════ */
 
 const TRUST_CHIPS = [
@@ -54,12 +53,6 @@ const TRUST_CHIPS = [
   "BBB A+",
   "Retired firefighter owner",
 ];
-
-/**
- * The hero credit. The film IS Hunter Douglas's own footage now, so criterion 3
- * applies again and the product it promotes is unambiguous - HD titled the file.
- */
-const HERO_CREDIT = "Aria™ Soft Blinds by Hunter Douglas";
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -101,14 +94,13 @@ export default function Hero() {
           image-to-image generated off HD's own p11 photograph, which made it an
           unauthorised derivative of an HD asset (knowledge base Error #274).
           Reduced-motion falls back to the poster frame below. */}
-      {/* STILL hero. See HERO_CREDIT note above for why this is a photograph
-          rather than HD's film. */}
-      <img
-        src="/images/hd-hero-aria-livingroom.webp"
-        alt="A warm New England living room with Hunter Douglas Aria™ Soft Blinds filtering daylight across a wood-panelled wall."
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        fetchPriority="high"
-      />
+      {/* Layer 1: the cinematic hero — four Hunter Douglas photographs, each on a
+          slow push or pull, crossfading. Motion is CSS at render time, NEVER a
+          baked video, because rendering HD's stills into an MP4 would create a
+          derivative of their asset. The per-slide product credit lives inside
+          the component, because the label has to name whichever photo is
+          currently visible. See HeroSequence.tsx. */}
+      <HeroSequence />
 
       {/* ⚠️ HD COMPLIANCE — brand logo, above the fold, separate from the dealer
           wordmark.
@@ -173,11 +165,6 @@ export default function Hero() {
       {/* Layer 3: Content, lower-left — 100svh centering lives on THIS wrapper so the
           trust strip below stays inside the same band without moving the fold (Error #133 gates). */}
       <div className="relative min-h-[100svh] flex items-center">
-      {/* ⚠️ HD COMPLIANCE — attribution for Hunter Douglas's own footage.
-          Anchored INSIDE the 100svh wrapper, not the outer <section>: the section
-          also holds the trust strip, so a credit anchored there lands below the
-          fold, away from the thing it labels. */}
-      <HDPhotoCredit credit={HERO_CREDIT} variant="overlay" />
       <div
         ref={ref}
         className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 w-full"

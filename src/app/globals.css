@@ -218,3 +218,49 @@ section[style*="var(--bg-cream)"]::before {
   }
   .hero-shimmer, .hero-shimmer-ink { background-position: 50% 50%; }
 }
+
+/* ============================================================================
+   HERO SEQUENCE — Hunter Douglas photography, animated at render time
+
+   ⚠️ COMPLIANCE-LOAD-BEARING. This motion exists in CSS rather than in a baked
+   video file on purpose. HD's dealer policy forbids modifying their assets
+   ("using, altering or tampering with any part of our creative content is a
+   compliance violation"), and rendering their stills into an MP4 would create a
+   derivative of their photography. A transform only changes how the browser
+   paints a file it received untouched, the same category as object-fit: cover.
+   Do not "optimise" this into a video. See components/sections/HeroSequence.tsx.
+   ============================================================================ */
+
+.hd-hero-slide {
+  opacity: 0;
+  transition: opacity 1200ms ease-in-out;
+  will-change: opacity, transform;
+}
+
+.hd-hero-slide[data-active="true"] {
+  opacity: 1;
+}
+
+/* The drift runs continuously rather than on activation, so a slide is already
+   mid-move when it fades in. Starting the zoom at the same instant as the fade
+   reads as a lurch. */
+.hd-hero-slide[data-direction="in"]  { animation: hd-hero-push 28s ease-in-out infinite alternate; }
+.hd-hero-slide[data-direction="out"] { animation: hd-hero-pull 28s ease-in-out infinite alternate; }
+
+@keyframes hd-hero-push {
+  from { transform: scale(1); }
+  to   { transform: scale(1.09); }
+}
+
+@keyframes hd-hero-pull {
+  from { transform: scale(1.09); }
+  to   { transform: scale(1); }
+}
+
+/* Reduced motion: hold the first photograph, no drift, no crossfade. The global
+   rule above already collapses the durations; this makes sure a still frame is
+   actually visible rather than a stack of transparent images. */
+@media (prefers-reduced-motion: reduce) {
+  .hd-hero-slide { animation: none !important; transform: none !important; }
+  .hd-hero-slide:first-of-type { opacity: 1 !important; }
+}
