@@ -47,24 +47,22 @@ const TRUST_CHIPS = [
 ];
 
 /**
- * Credit for the Hunter Douglas hero imagery.
+ * ⚠️ CORRECTED 2026-08-01. There is deliberately NO <HDPhotoCredit /> on the
+ * hero. An earlier pass credited it "Hunter Douglas hardwood shutters", which
+ * was wrong at a more basic level than which product line: this asset is not
+ * Hunter Douglas photography at all.
  *
- * ⚠️ Deliberately CATEGORY-level, not a named product line, for two reasons:
- *
- * 1. The hero is a stitched three-clip loop (shutters, then sheers, then
- *    drapes). No single product name is truthful across the whole thing.
- * 2. The poster frame shows real-wood plantation shutters on a bypass track.
- *    Hunter Douglas makes those as Heritance® Hardwood Shutters (real hardwood)
- *    AND NewStyle® Hybrid Shutters (wood composite, made to read as hardwood),
- *    and the two are not reliably distinguishable from a photograph.
- *
- * Naming the wrong line would be its own trademark violation, on the exact
- * criterion HD flagged. So this credits Hunter Douglas as the manufacturer and
- * describes the product honestly, inventing nothing. Upgrade it to the specific
- * line only once Hunter Douglas confirms which one this asset shows. Same
- * discipline as Carole Fabrics in src/data/hunterDouglas.ts.
+ * hero-poster.webp is a still from an AI-generated (Higgsfield) video clip,
+ * image-to-image off Jim's real p11 photo — see .higgsfield-pilot/
+ * composition-winner.md and movie-hero-plan.md ("still-1-shutters.png",
+ * "Every still passes as Jim's own photography"). It is Jim's own generated
+ * marketing content, not an HD-owned asset. HD's Criterion 3 requires
+ * attributing HD's OWN photo assets; it does not apply here, and crediting
+ * "Hunter Douglas" on a still HD did not shoot would be a false attribution,
+ * which is worse than none. The real, licensed HD photos are the twelve files
+ * in public/images/window-fashions/, which DO carry <HDPhotoCredit /> where
+ * they're used (portfolio, product pages, about, testimonials).
  */
-const HERO_PHOTO_CREDIT = "Hunter Douglas hardwood shutters";
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -120,7 +118,7 @@ export default function Hero() {
       </video>
       <img
         src="/images/hero-poster.webp"
-        alt="A premium New England living room dressed in Hunter Douglas hardwood shutters, warm golden-hour light raking through the open louvers."
+        alt="A premium New England living room dressed in custom wood shutters, warm golden-hour light raking through the open louvers."
         className="absolute inset-0 w-full h-full object-cover z-0 hidden motion-reduce:block"
         fetchPriority="high"
       />
@@ -191,14 +189,6 @@ export default function Hero() {
       {/* Layer 3: Content, lower-left — 100svh centering lives on THIS wrapper so the
           trust strip below stays inside the same band without moving the fold (Error #133 gates). */}
       <div className="relative min-h-[100svh] flex items-center">
-      {/* ⚠️ HD COMPLIANCE — attribution for the licensed Hunter Douglas hero
-          photograph. Anchored INSIDE the 100svh wrapper, not to the outer
-          <section>: the section also contains the trust-signal strip, so a
-          credit anchored there lands below the fold, away from the photo it
-          labels. HD requires their photography be labeled with the specific
-          product, and a label the visitor never sees alongside the image does
-          not satisfy that. */}
-      <HDPhotoCredit credit={HERO_PHOTO_CREDIT} variant="overlay" />
       <div
         ref={ref}
         className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 w-full"
