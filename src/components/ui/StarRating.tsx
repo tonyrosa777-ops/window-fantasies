@@ -1,5 +1,5 @@
 /**
- * StarRating — renders N filled stars in brand gold for a 1-5 rating.
+ * StarRating: renders N filled stars in brand gold for a 1-5 rating.
  *
  * Uses the ★ / ☆ text glyphs (no SVG icon library, per CLAUDE.md icon rule).
  * Filled stars use var(--primary); empty stars use a muted border tone.

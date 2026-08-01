@@ -50,3 +50,28 @@ next-env.d.ts
 .optimus-review/
 
 .vercel
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Hunter Douglas confidential material — HARD BLOCK.
+#
+# THIS REPO IS PUBLIC (github.com/tonyrosa777-ops/window-fantasies).
+#
+# The Hunter Douglas Business & Advertising Compliance Policy forbids a Dealer
+# publishing any portion of the Policy, HD Measuring/Installation Guides, HD
+# dealer cost factors, HD pricing, or dealer agreements. Committing any of it
+# here would publish it to the world and is itself a compliance violation — one
+# that could cost Jim the dealer locator listing this work exists to protect.
+#
+# The source PDFs and their transcriptions live ONLY in the sibling PRIVATE repo
+# (github.com/tonyrosa777-ops/window-fantasies-docs), one directory up.
+#
+# What MAY live in this public repo: our own obligation strings — the marks
+# table in src/data/hunterDouglas.ts and the banned-phrase list in
+# scripts/hd-compliance-check.mjs. Those are our work product describing what
+# OUR site must do. Never paste HD's policy prose into either one.
+# ─────────────────────────────────────────────────────────────────────────────
+*Media Kit*.pdf
+*Media-Kit*.pdf
+*Waiver Compliance Review*.pdf
+hunter-douglas-media-kit.md
+hunter-douglas-waiver-review.md

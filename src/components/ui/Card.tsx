@@ -9,7 +9,7 @@ interface Props {
 }
 
 /**
- * Self-sufficient surface (Pattern #55) — renders solid bg instead of translucent
+ * Self-sufficient surface (Pattern #55). Renders solid bg instead of translucent
  * overlay, safe to drop into any parent tone. Per design-system.md §5.
  */
 export function Card({ children, className, variant = "default", hoverable = true }: Props) {

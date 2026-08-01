@@ -3,10 +3,25 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { RisingAsh } from "@/components/animations/RisingAsh";
+import { hdCopyrightLine, HD_SEPARATE_ENTITIES_DISCLAIMER } from "@/data/hunterDouglas";
 
 /**
  * Footer — Window Fantasies. Dark (--ink). NAP, product + service-area links,
- * trust badges (Centurion, BBB A+, Guaranteed for Life, 5.0 Google), legal links.
+ * trust badges, legal links.
+ *
+ * ⚠️ COMPLIANCE: the footer carries the two disclosures Hunter Douglas requires
+ * site-wide, and they must appear on every page:
+ *
+ *  1. The dated HD copyright + trademark attribution line. HD requires this on
+ *     advertising creative that uses their name and marks.
+ *  2. The separate-entities disclaimer. HD permits a dealer to reference their
+ *     name only where the communication "clearly describes the two companies as
+ *     separate entities". Window Fantasies LLC is not Hunter Douglas, and this
+ *     line is what says so.
+ *
+ * Neither is optional and neither may be moved behind a toggle, shrunk to
+ * unreadable, or dropped in a redesign. Both render from src/data/hunterDouglas.ts
+ * so their wording stays in one place. See that file before editing this one.
  */
 
 type FooterLink = { label: string; href: string; external?: boolean };
@@ -17,7 +32,7 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: "Blinds", href: "/products/blinds" },
     { label: "Shutters", href: "/products/shutters" },
     { label: "Drapery", href: "/products/drapery" },
-    { label: "PowerView Motorization", href: "/services/powerview-automation" },
+    { label: "PowerView® Automation", href: "/services/powerview-automation" },
   ],
   Company: [
     { label: "About Jim", href: "/about" },
@@ -35,9 +50,13 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
 };
 
+// ⚠️ "Centurion" is a TRADE-ONLY Hunter Douglas designation that may not be shown
+// to consumers, and "Guaranteed for Life" is a warranty claim HD does not permit
+// in that form. The two strings below are the compliant replacements. Do not
+// revert them. See src/data/hunterDouglas.ts.
 const trustBadges = [
-  "Hunter Douglas Centurion Dealer",
-  "Guaranteed for Life",
+  "Authorized Hunter Douglas Dealer",
+  "Hunter Douglas Limited Lifetime Warranty",
   "BBB A+ Accredited",
   "5.0 Stars on Google",
   "All of New England",
@@ -81,7 +100,7 @@ export function Footer() {
                   <br />
                   {b.address.city}, {b.address.state} {b.address.zip}
                   <br />
-                  <span style={{ color: "var(--text-muted)" }}>By appointment. Jim brings the showroom to you.</span>
+                  <span style={{ color: "var(--text-muted)" }}>By appointment. Jim brings the samples to you.</span>
                 </span>
               </div>
             </div>
@@ -120,7 +139,20 @@ export function Footer() {
           </ul>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-[var(--border-dark)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        {/* ⚠️ HUNTER DOUGLAS REQUIRED DISCLOSURES — site-wide, every page.
+            Separate-entities disclaimer + dated HD copyright/trademark
+            attribution. Both are mandatory under HD's dealer advertising policy.
+            Do not delete, hide, or shrink below legibility. */}
+        <div className="mt-10 pt-8 border-t border-[var(--border-dark)] space-y-2">
+          <p className="text-xs leading-relaxed max-w-3xl" style={{ color: "var(--text-secondary)" }}>
+            {HD_SEPARATE_ENTITIES_DISCLAIMER}
+          </p>
+          <p className="text-xs leading-relaxed max-w-3xl" style={{ color: "var(--text-muted)" }}>
+            {hdCopyrightLine(year)}
+          </p>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-[var(--border-dark)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-mono text-xs" style={{ color: "var(--text-muted)" }}>
             © {year} {b.legalName}. All rights reserved.
           </p>

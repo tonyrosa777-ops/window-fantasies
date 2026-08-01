@@ -1,6 +1,6 @@
 /**
- * ProcessSteps — Band 5 (light, cream). The 3-step process:
- * Consult -> Measure & Design -> Certified Install. Convertible, elevated.
+ * ProcessSteps: Band 5 (light, cream). The 3-step process:
+ * Consult -> Measure & Design -> Installed by Jim. Convertible, elevated.
  */
 
 import Link from "next/link";
@@ -21,8 +21,8 @@ const STEPS = [
   },
   {
     n: "03",
-    title: "Certified install",
-    body: "Your custom treatments arrive built for your exact openings. Jim installs them himself, removes your old ones, and shows you how everything works. Guaranteed for life.",
+    title: "Installed by Jim",
+    body: "Your custom treatments arrive built for your exact openings. Jim installs them himself, removes your old ones, and shows you how everything works. Jim stands behind every install he does.",
   },
 ];
 

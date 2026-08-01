@@ -21,7 +21,7 @@ import { buildHomepageSchema } from "@/lib/schema";
  *   -- | ----------------------------- | ---------
  *    1 | Hero (photo) + trust strip    | dark (ink)
  *    2 | Product categories            | light (cream)
- *    3 | Why / bring the showroom      | dark (elevated)
+ *    3 | Why / he comes to you         | dark (elevated)
  *    4 | 3-step process                | light (cream)
  *    5 | Jim's story teaser            | dark (base)
  *    6 | Signature products            | light (cream)

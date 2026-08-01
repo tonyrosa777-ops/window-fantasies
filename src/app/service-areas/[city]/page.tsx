@@ -6,7 +6,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildServiceAreaSchema } from "@/lib/schema";
 
 /**
- * /service-areas/[city] — Next 16 Promise params (Pattern #66 BINDING).
+ * /service-areas/[city] - Next 16 Promise params (Pattern #66 BINDING).
  * Every `params.<key>` access MUST be on a line preceded by `await`.
  */
 
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!area) return {};
   const title = `Window Treatments in ${area.city}, ${area.state}`;
   const ogTitle = `${title} | ${siteConfig.business.name}`;
-  const description = `Custom Hunter Douglas shades, blinds, shutters, drapery, and PowerView motorization for ${area.city}, ${area.state} homes. Jim brings the showroom to you, measures and installs by hand, guaranteed for life. Free in-home consultation.`;
+  const description = `Custom Hunter Douglas shades, blinds, shutters, drapery, and PowerView® Automation for ${area.city}, ${area.state} homes. Jim brings the samples to you, measures and installs by hand, backed by the Hunter Douglas Limited Lifetime Warranty. Free in-home consultation.`;
   return {
     title,
     description,
@@ -38,25 +38,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-/** City FAQ generator — kept in sync with CityPageClient for schema parity. */
+/** City FAQ generator. Kept byte-identical to CityPageClient for schema parity. */
 function cityFaqs(area: { city: string; state: string }) {
   const city = area.city;
   const faqs = [
     {
       q: `Do you serve ${city}?`,
-      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no showroom to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
+      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
     },
     {
       q: `How much do Hunter Douglas window treatments cost in ${city}?`,
-      a: `Hunter Douglas is a premium, fully custom product, so pricing depends on the window, the product, and the options. A single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and yes, it is guaranteed for life.`,
+      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
     },
     {
       q: `Do you repair blinds and shades in ${city}?`,
-      a: `Yes. Hunter Douglas products are guaranteed for life, so warranty repairs are free, even on treatments you bought elsewhere or from a shop that has closed. Jim can help ${city} homeowners with cords, mechanisms, motors, and fabric. He will tell you the honest path forward, and any service fee for pickup and reinstall is disclosed upfront.`,
+      a: `Yes. Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing, even on treatments you bought elsewhere or from a shop that has closed. Jim can help ${city} homeowners with cords, mechanisms, motors, and fabric. He will tell you the honest path forward, and any service fee for pickup and reinstall is disclosed upfront.`,
     },
     {
       q: `Do you have a showroom near ${city}?`,
-      a: `No showroom, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim brings the showroom to you, with the real Hunter Douglas samples, shown in your own light.`,
+      a: `No storefront, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim shops at home with you, with the real Hunter Douglas samples, shown in your own light.`,
     },
   ];
   // Out-of-state towns get the honest repair-logistics answer (Paul persona fix).
@@ -64,7 +64,7 @@ function cityFaqs(area: { city: string; state: string }) {
   if (area.state !== "NH") {
     faqs.splice(3, 0, {
       q: `Do you handle repairs out here in ${city}?`,
-      a: `Yes. Hunter Douglas warranty repairs are free, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself for free. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
+      a: `Yes. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, so a covered repair itself costs you nothing, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself at no cost. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
     });
   }
   return faqs;

@@ -6,6 +6,7 @@ import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { FaqClient } from "./FaqClient";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 import { JsonLd } from "@/components/JsonLd";
 import { buildFaqPageSchema } from "@/lib/schema";
 
@@ -48,16 +49,24 @@ export default function FaqPage() {
                 maxWidth: "65ch",
               }}
             >
-              Pricing, repairs, motorization, measuring, the showroom that comes to you, and the areas Jim serves. If your question is not here, call <span className="phone-display">{siteConfig.business.phoneFormatted}</span> or request a free consultation.
+              Pricing, repairs, motorization, measuring, the samples that come to you, and the areas Jim serves. If your question is not here, call <span className="phone-display">{siteConfig.business.phoneFormatted}</span> or request a free consultation.
             </p>
           </FadeUp>
         </Container>
       </Section>
 
-      {/* 2. FAQ accordion — CREAM band */}
+      {/* 2. FAQ accordion — CREAM band.
+          The motorization answer promotes the PowerView® scheduling benefit,
+          so HD's mandatory app disclosure renders with it (never aria-hidden). */}
       <Section tone="cream">
         <Container size="narrow">
           <FaqClient items={siteConfig.faq} tone="light" />
+          {/* PowerViewDisclosure paints itself with --text-muted, a near-white
+              tuned for the dark bands. Rebind it locally so HD's mandatory
+              legal copy stays legible on cream. */}
+          <div style={{ "--text-muted": "var(--muted-on-light)" } as React.CSSProperties}>
+            <PowerViewDisclosure tone="light" />
+          </div>
         </Container>
       </Section>
 

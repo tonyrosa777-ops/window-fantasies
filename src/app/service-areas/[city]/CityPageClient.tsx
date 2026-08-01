@@ -8,11 +8,12 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 
 /**
- * /service-areas/[city] — Client component for city detail page.
+ * /service-areas/[city] - Client component for city detail page.
  *
  * Section composition:
  *   1. Hero (breadcrumb + H1 + subhead + 2 CTAs)
@@ -34,11 +35,18 @@ interface Props {
   area: ServiceArea;
 }
 
+/**
+ * ⚠️ COMPLIANCE: the dealer designation here must stay one of the consumer-facing
+ * ones in HD_DEALER_DESIGNATIONS (src/data/hunterDouglas.ts). HD's internal
+ * dealer-tier names are TRADE-ONLY and must never reach a consumer. The warranty
+ * line must stay the exact HD_WARRANTY_NAME; the bare lifetime-guarantee phrasings
+ * are expressly prohibited statements. See hunterDouglas.ts before editing either.
+ */
 const TRUST_CHECKLIST = [
-  "Authorized Hunter Douglas Centurion dealer",
-  "Guaranteed for life",
+  "Authorized Hunter Douglas Dealer",
+  "Hunter Douglas Limited Lifetime Warranty",
   "Measured, designed, and installed by hand",
-  "Free in-home consultation, the showroom comes to you",
+  "Free in-home consultation, Jim brings the samples to you",
   "Repairs even if you bought it elsewhere",
 ];
 
@@ -47,19 +55,19 @@ const cityFaqs = (area: ServiceArea) => {
   const faqs = [
     {
       q: `Do you serve ${city}?`,
-      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no showroom to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
+      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
     },
     {
       q: `How much do Hunter Douglas window treatments cost in ${city}?`,
-      a: `Hunter Douglas is a premium, fully custom product, so pricing depends on the window, the product, and the options. A single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and yes, it is guaranteed for life.`,
+      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
     },
     {
       q: `Do you repair blinds and shades in ${city}?`,
-      a: `Yes. Hunter Douglas products are guaranteed for life, so warranty repairs are free, even on treatments you bought elsewhere or from a shop that has closed. Jim can help ${city} homeowners with cords, mechanisms, motors, and fabric. He will tell you the honest path forward, and any service fee for pickup and reinstall is disclosed upfront.`,
+      a: `Yes. Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing, even on treatments you bought elsewhere or from a shop that has closed. Jim can help ${city} homeowners with cords, mechanisms, motors, and fabric. He will tell you the honest path forward, and any service fee for pickup and reinstall is disclosed upfront.`,
     },
     {
       q: `Do you have a showroom near ${city}?`,
-      a: `No showroom, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim brings the showroom to you, with the real Hunter Douglas samples, shown in your own light.`,
+      a: `No storefront, and that is on purpose. A shade looks completely different under store lights than it does in your ${city} home at four in the afternoon. So Jim shops at home with you, with the real Hunter Douglas samples, shown in your own light.`,
     },
   ];
   // Out-of-state towns get the honest repair-logistics answer (Paul persona fix).
@@ -67,7 +75,7 @@ const cityFaqs = (area: ServiceArea) => {
   if (area.state !== "NH") {
     faqs.splice(3, 0, {
       q: `Do you handle repairs out here in ${city}?`,
-      a: `Yes. Hunter Douglas warranty repairs are free, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself for free. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
+      a: `Yes. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, so a covered repair itself costs you nothing, even in ${city}. The authorized service center is Goedecke Design in Bedford, New Hampshire, and you are welcome to drive a blind there yourself at no cost. If you would rather have Jim handle the pickup, the delivery, and the reinstall, he charges a flat service fee, typically $225 plus $25 per blind. You get the exact number upfront, before anything happens.`,
     });
   }
   return faqs;
@@ -182,7 +190,7 @@ export default function CityPageClient({ area }: Props) {
         </Container>
       </Section>
 
-      {/* 2. CITY INFO — CREAM band, 2-col with Google Maps */}
+      {/* 2. CITY INFO - CREAM band, 2-col with Google Maps */}
       <Section tone="cream">
         <Container>
           {/* Default items-stretch: the map flex-grows so the right column
@@ -225,11 +233,12 @@ export default function CityPageClient({ area }: Props) {
                 }}
               >
                 Homeowners in {area.city} rely on me for custom Hunter Douglas shades,
-                blinds, shutters, drapery, and PowerView motorization, along with
-                repairs even on treatments bought elsewhere. There is no showroom to
+                blinds, shutters, drapery, and PowerView® Automation, along with
+                repairs even on treatments bought elsewhere. There is no store to
                 drive to. I bring the real samples to your home, hold them in your own
                 windows, and show you exactly what you are getting before you spend a
-                dollar. Everyone gets the same me, and everything is guaranteed for life.
+                dollar. Everyone gets the same me, and everything is backed by the
+                Hunter Douglas Limited Lifetime Warranty.
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -278,7 +287,7 @@ export default function CityPageClient({ area }: Props) {
                 />
               </div>
 
-              {/* Info card below map — white on cream */}
+              {/* Info card below map - white on cream */}
               <div
                 className="mt-6 rounded-2xl border p-6"
                 style={{
@@ -363,7 +372,7 @@ export default function CityPageClient({ area }: Props) {
         </Container>
       </Section>
 
-      {/* 3. SERVICES AVAILABLE IN [city] — Pattern #71 featured-1 + 2-col grid (1 + 4 = 5) */}
+      {/* 3. SERVICES AVAILABLE IN [city] - Pattern #71 featured-1 + 2-col grid (1 + 4 = 5) */}
       <Section tone="base">
         <Container size="wide">
           <FadeUp className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -477,10 +486,22 @@ export default function CityPageClient({ area }: Props) {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Hunter Douglas MANDATORY LEGAL COPY. This grid prints every service's
+              shortDescription, and the PowerView® one promotes scheduling and phone
+              control, so HD's exact sentence has to appear on all 30 city pages too.
+              Gated on the same site.ts `legalDisclosure` field the service detail
+              page uses, so the two can never drift apart. Render verbatim, and keep
+              it on this DARK band where the component's --text-muted is legible. */}
+          {services.some((s) => s.legalDisclosure) && (
+            <FadeUp delay={0.1}>
+              <PowerViewDisclosure tone="dark" />
+            </FadeUp>
+          )}
         </Container>
       </Section>
 
-      {/* 4. CITY FAQ — CREAM band, Radix accordion */}
+      {/* 4. CITY FAQ - CREAM band, Radix accordion */}
       <Section tone="cream" id="faq">
         <Container size="narrow">
           <FadeUp className="text-center mb-10 md:mb-14">
@@ -550,7 +571,7 @@ export default function CityPageClient({ area }: Props) {
         </Section>
       )}
 
-      {/* 6. FINAL CTA — CREAM, steps into the dark footer */}
+      {/* 6. FINAL CTA - CREAM, steps into the dark footer */}
       <Section tone="cream">
         <Container size="narrow">
           <FadeUp>
@@ -566,7 +587,7 @@ export default function CityPageClient({ area }: Props) {
                   lineHeight: 1.6,
                 }}
               >
-                The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no showroom to drive to, guaranteed for life.
+                The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to. Jim stands behind every install he does.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

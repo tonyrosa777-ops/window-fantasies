@@ -2,7 +2,7 @@ import type { CSSProperties } from "react";
 import type { SeededPostParagraph } from "@/data/seededPosts";
 
 /**
- * PostBody — Article body renderer for /blog/[slug].
+ * PostBody: Article body renderer for /blog/[slug].
  *
  * Accepts the seededPosts body shape (array of typed paragraph blocks with
  * `type` of "p" | "h2" | "h3" | "ul" | "ol"), a raw string, or an array of

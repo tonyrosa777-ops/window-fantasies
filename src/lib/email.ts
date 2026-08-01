@@ -1,7 +1,8 @@
 import { siteConfig } from "@/data/site";
+import { hdCopyrightLine } from "@/data/hunterDouglas";
 
 /**
- * Branded transactional email templates — Window Fantasies.
+ * Branded transactional email templates for Window Fantasies.
  *
  * Every email this site sends is branded HTML with a plain-text fallback, for BOTH
  * recipients: the submitter AND Jim. Per knowledge/patterns/transactional-emails-branded-html.md
@@ -13,7 +14,7 @@ import { siteConfig } from "@/data/site";
  *   - TABLE layout + INLINE styles only. Gmail/Outlook strip <style> blocks, CSS custom
  *     properties, flexbox, and grid. There is no `var(--primary)` in email.
  *   - Brand hex values are HARDCODED below, mirrored from globals.css. If the design
- *     tokens change, update BRAND here too — email cannot read the stylesheet.
+ *     tokens change, update BRAND here too, because email cannot read the stylesheet.
  *   - Light background + dark text: better deliverability and readability than a dark
  *     shell, and dark-mode clients invert unpredictably. The brand's black shows up as
  *     the header band + footer rule, not as the body surface.
@@ -29,14 +30,14 @@ import { siteConfig } from "@/data/site";
  * Resend REJECTS any send whose From domain is not verified on the account
  * (403 `validation_error`: "The <domain> domain is not verified"). As of 2026-07-20 the
  * Resend account has ZERO domains registered, so `noreply@windowfantasies.com` fails on
- * every submission — verified live against the API, not assumed.
+ * every submission. Verified live against the API, not assumed.
  *
  * Verifying windowfantasies.com needs DKIM/SPF records at 007names, which is gated on
  * runbook item O-1 (who holds that login). So this reads an explicit override first:
  *
  *   RESEND_FROM="Window Fantasies <onboarding@resend.dev>"
  *
- * `onboarding@resend.dev` is Resend's shared sender — it delivers immediately with no
+ * `onboarding@resend.dev` is Resend's shared sender. It delivers immediately with no
  * domain setup, which unblocks end-to-end testing today. It is a STOPGAP, not the ship
  * state: the From line reads as resend.dev rather than the brand, and a shared domain
  * carries weaker deliverability. Once windowfantasies.com is verified, drop the override
@@ -93,7 +94,7 @@ export type EmailShellInput = {
   title: string;
   /** Intro paragraphs, plain strings (escaped here). */
   intro: string[];
-  /** Optional label/value table — the lead detail block. */
+  /** Optional label/value table, the lead detail block. */
   rows?: DetailRow[];
   /** Optional highlighted quote/message block (free text, newlines preserved). */
   quote?: { label: string; body: string };
@@ -143,7 +144,7 @@ export function emailShell(input: EmailShellInput): string {
       </table>`
     : "";
 
-  // Button is a table cell with a background, not a styled <div> — Outlook ignores
+  // Button is a table cell with a background, not a styled <div>, because Outlook ignores
   // padding/background on inline <a>, so the <td> carries both.
   const ctaHtml = input.cta
     ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
@@ -180,7 +181,7 @@ export function emailShell(input: EmailShellInput): string {
 
         <tr><td align="center" style="background:${BRAND.ink};border-radius:0 0 14px 14px;padding:26px 20px;">
           <span style="font-family:${FONT};font-size:14px;letter-spacing:4px;font-weight:bold;color:${BRAND.gold};">WINDOW FANTASIES</span><br>
-          <span style="font-family:${FONT};font-size:10px;letter-spacing:2px;color:rgba(246,241,225,0.55);">CUSTOM HUNTER DOUGLAS TREATMENTS</span>
+          <span style="font-family:${FONT};font-size:10px;letter-spacing:1px;color:rgba(246,241,225,0.55);">Custom Hunter Douglas Window Treatments</span>
         </td></tr>
 
         <tr><td style="height:24px;line-height:24px;font-size:0;">&nbsp;</td></tr>
@@ -201,13 +202,17 @@ export function emailShell(input: EmailShellInput): string {
           <a href="tel:${escapeHtml(business.phone)}" style="color:${BRAND.muted};text-decoration:underline;">${escapeHtml(business.phoneFormatted)}</a>
         </td></tr>
 
+        <tr><td align="center" style="padding:14px 12px 0;font-family:${FONT};font-size:10px;line-height:1.6;color:${BRAND.muted};">
+          ${escapeHtml(hdCopyrightLine(new Date().getFullYear()))}
+        </td></tr>
+
       </table>
     </td></tr>
   </table>
 </body></html>`;
 }
 
-/** Plain-text sibling of emailShell — same content, no markup. Never omit this. */
+/** Plain-text sibling of emailShell, same content, no markup. Never omit this. */
 export function emailText(input: EmailShellInput): string {
   const { business } = siteConfig;
   const parts: string[] = ["WINDOW FANTASIES", "", input.title.toUpperCase(), ""];
@@ -229,12 +234,13 @@ export function emailText(input: EmailShellInput): string {
     );
   }
   parts.push(
-    `${business.name} · ${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.zip}`
+    `${business.name} · ${business.address.street}, ${business.address.city}, ${business.address.state} ${business.address.zip}`,
+    hdCopyrightLine(new Date().getFullYear())
   );
   return parts.join("\n");
 }
 
-/** Build both representations at once — every send passes html AND text. */
+/** Build both representations at once. Every send passes html AND text. */
 export function renderEmail(input: EmailShellInput): { html: string; text: string } {
   return { html: emailShell(input), text: emailText(input) };
 }

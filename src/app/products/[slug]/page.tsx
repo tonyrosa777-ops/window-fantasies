@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 import { siteConfig, type ProductLine } from "@/data/site";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /products/[slug] - Next 16 Promise params (Pattern #66 BINDING).
@@ -27,40 +29,94 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-/** Real Hunter Douglas photos that fit each category, for the signature band. */
+/**
+ * Signature Hunter Douglas products per category, for the signature band.
+ *
+ * ⚠️ COMPLIANCE: every `name` and every mark written into `alt` carries its own
+ * ® or ™ plus HD's official category descriptor, per the Trademark Usage rules
+ * in src/data/hunterDouglas.ts. Palm Beach™ and Polysatin™ are BOTH ™, never ®.
+ * Carole Fabrics is absent from HD's 2025 trademark list, so it ships with no
+ * symbol on purpose. Verify any change against HD_MARKS before editing.
+ *
+ * The photos here are the site's own room stills, not Hunter Douglas licensed
+ * photography (HD's 12 licensed photos live in /images/window-fashions/ and are
+ * referenced from workItems in site.ts). That is why no <HDPhotoCredit /> renders
+ * on this band: HD's attribution requirement covers THEIR photography, and
+ * captioning a non-HD photo "by Hunter Douglas" would misattribute it.
+ */
 const signatureProducts: Record<
   string,
   { name: string; line: string; image: string; alt: string; w: number; h: number }[]
 > = {
   shades: [
-    { name: "Silhouette", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.jpg", alt: "Hunter Douglas Silhouette sheer shades softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
-    { name: "Duette Honeycomb", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.jpg", alt: "Hunter Douglas Duette cellular honeycomb shades in a bright kitchen.", w: 900, h: 600 },
-    { name: "Vignette Roman", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.jpg", alt: "Tailored Hunter Douglas Vignette Roman shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
+    { name: "Silhouette® Window Shadings", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.jpg", alt: "Hunter Douglas Silhouette® Window Shadings softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
+    { name: "Duette® Honeycomb Shades", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.jpg", alt: "Hunter Douglas Duette® Honeycomb Shades in a bright kitchen.", w: 900, h: 600 },
+    { name: "Vignette® Modern Roman Shades", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.jpg", alt: "Tailored Hunter Douglas Vignette® Modern Roman Shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
   ],
   blinds: [
-    { name: "Parkland Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.jpg", alt: "Warm Hunter Douglas Parkland wood blinds in a modern dining room.", w: 2050, h: 1025 },
-    { name: "Certified Installation", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/certified-install.jpg", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
+    { name: "Parkland® Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.jpg", alt: "Warm Hunter Douglas Parkland® Wood Blinds in a modern dining room.", w: 2050, h: 1025 },
+    { name: "Installation by hand", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/installed-by-hand.jpg", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
   ],
   shutters: [
-    { name: "Heritance Hardwood", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.jpg", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
-    { name: "Palm Beach Polysatin", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.jpg", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
+    { name: "Heritance® Hardwood Shutters", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.jpg", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
+    { name: "Palm Beach™ Polysatin™ Shutters", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.jpg", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
   ],
   drapery: [
-    { name: "Carole Custom Drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.jpg", alt: "Navy custom drapery framing a city view in a modern loft.", w: 1025, h: 513 },
-    { name: "Luminette Sheer Panels", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.jpg", alt: "Airy Hunter Douglas Luminette sheer vertical shades with an ocean view.", w: 1025, h: 513 },
+    { name: "Carole Fabrics custom drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.jpg", alt: "Golden floor-length custom drapery layered over sheers in a formal New England living room.", w: 1025, h: 513 },
+    { name: "Luminette® Privacy Sheers", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.jpg", alt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.", w: 1025, h: 513 },
   ],
+};
+
+/**
+ * PowerView® Automation availability, per line.
+ *
+ * HD compliance criterion 2: PowerView® Automation must be visible everywhere on
+ * the site it applies, and product pages are named as the primary place. This is
+ * keyed by slug because availability is a per-line fact, not a blanket one:
+ *  - `shades` already carries "PowerView® Automation available across the line"
+ *    in its site.ts features list, so repeating it here would double up.
+ *  - `shutters` are hinged louvered panels with nothing to motorize, so claiming
+ *    it there would be a false product claim.
+ * That leaves blinds and drapery, both of which HD does build PowerView-capable.
+ *
+ * ⚠️ COMPLIANCE: every mark below carries its own ® plus HD's official category
+ * descriptor, and the product is "PowerView® Automation", never "PowerView
+ * Motorization". Both of these lines sit near the Hunter Douglas name (rule 5).
+ * Verify any edit against HD_MARKS in src/data/hunterDouglas.ts.
+ *
+ * The copy stays on availability and on-command control. It makes no scheduling,
+ * timing, or app claim, so it does not by itself trigger HD's app footnote, but
+ * <PowerViewDisclosure /> renders with it anyway: the footnote costs one small
+ * line and a missing one costs the dealer-locator listing.
+ */
+const powerViewByLine: Record<string, string> = {
+  blinds:
+    "Parkland® Wood Blinds and Skyline® Gliding Window Panels can both be fitted with Hunter Douglas PowerView® Automation, so the tall openings and the wide slider walls move at the touch of a button.",
+  drapery:
+    "Luminette® Privacy Sheers can be fitted with Hunter Douglas PowerView® Automation, so a whole bank of panels glides open without a wand or a cord to pull.",
 };
 
 export async function generateStaticParams() {
   return siteConfig.productLines.map((p) => ({ slug: p.slug }));
 }
 
+/**
+ * ⚠️ COMPLIANCE: the title names the Hunter Douglas product category and names
+ * the dealer SEPARATELY. It must never read "Hunter Douglas by Window
+ * Fantasies": HD permits "Hunter Douglas by [Dealer Name]" only for Design
+ * Gallery locations and dealers in HD's Exterior Signage Program, with written
+ * HD Marketing approval. Window Fantasies is neither, so that construction
+ * asserts a brand relationship that does not exist.
+ *
+ * The dealer name comes from the root layout's title template
+ * (`%s | Window Fantasies`), so do NOT append it here or the tab double-brands.
+ */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const product = siteConfig.productLines.find((p) => p.slug === slug);
   if (!product) return {};
   return {
-    title: `${product.name} | Hunter Douglas by Window Fantasies`,
+    title: `Hunter Douglas ${product.name}`,
     description: product.shortDescription,
   };
 }
@@ -72,6 +128,7 @@ export default async function ProductPage({ params }: Props) {
 
   const hasTiers = product.moqTiers.length > 0;
   const signature = signatureProducts[slug] ?? [];
+  const powerViewNote = powerViewByLine[slug];
   const schema = buildProductSchema(product);
 
   // Pattern #71 features grid math: features render in 2-col, any count is OK
@@ -96,7 +153,7 @@ export default async function ProductPage({ params }: Props) {
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <div>
-              <Eyebrow>Hunter Douglas Product Line · Guaranteed for Life</Eyebrow>
+              <Eyebrow>Hunter Douglas Product Line · Limited Lifetime Warranty</Eyebrow>
               <h1
                 className="text-h1 hero-shimmer font-display mt-4"
                 style={{ maxWidth: "22ch" }}
@@ -129,18 +186,18 @@ export default async function ProductPage({ params }: Props) {
               </div>
 
               <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
-                <li>Centurion dealer</li>
+                <li>Authorized Hunter Douglas Dealer</li>
                 <li aria-hidden="true">·</li>
                 <li>Measured &amp; installed by hand</li>
                 <li aria-hidden="true">·</li>
-                <li>Guaranteed for life</li>
+                <li>Hunter Douglas Limited Lifetime Warranty</li>
               </ul>
             </div>
 
             {product.imageSrc && (
               <Image
                 src={product.imageSrc}
-                alt={`Custom Hunter Douglas ${product.name.toLowerCase()} by Window Fantasies`}
+                alt={product.imageAlt ?? `Custom Hunter Douglas ${product.name.toLowerCase()}, measured and installed by Window Fantasies`}
                 width={product.imageW}
                 height={product.imageH}
                 sizes="(min-width: 1024px) 48vw, 100vw"
@@ -287,12 +344,12 @@ export default async function ProductPage({ params }: Props) {
         </Section>
       )}
 
-      {/* 3. FEATURES in a 2-col grid — CREAM band, white feature cards */}
+      {/* 3. FEATURES in a 2-col grid - CREAM band, white feature cards */}
       <Section tone="cream">
         <Container>
           {/* Default items-stretch (no items-start): the feature grid fills the
               full height of the taller left column via h-full + auto-rows-fr,
-              so both columns bottom-align — no lopsided void (symmetry rule F/G). */}
+              so both columns bottom-align, no lopsided void (symmetry rule F/G). */}
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-10 lg:gap-16">
             <div>
               <p className="eyebrow mb-3" style={{ color: "var(--gold-deep)" }}>
@@ -305,7 +362,7 @@ export default async function ProductPage({ params }: Props) {
                   maxWidth: "18ch",
                 }}
               >
-                Custom-built, and guaranteed for life.
+                Custom-built, and backed by the Hunter Douglas Limited Lifetime Warranty.
               </h2>
               <p
                 className="mt-4 font-body"
@@ -314,7 +371,32 @@ export default async function ProductPage({ params }: Props) {
                 Every {product.name.toLowerCase()} order is measured, designed, and installed by Jim himself. No sales team, no subcontractors, one person accountable from the first sample to the final install.
               </p>
 
-              {/* Honest-cost anchor (shared costAnchor, site.ts) — compact strip
+              {powerViewNote && (
+                <>
+                  <p
+                    className="mt-4 font-body"
+                    style={{ color: "var(--muted-on-light)", lineHeight: 1.6, maxWidth: "50ch" }}
+                  >
+                    {powerViewNote}{" "}
+                    <Link
+                      href="/services/powerview-automation"
+                      className="underline underline-offset-4"
+                      style={{ color: "var(--gold-deep)" }}
+                    >
+                      See how PowerView® Automation works
+                    </Link>
+                    .
+                  </p>
+                  {/* Hunter Douglas MANDATORY LEGAL COPY, rendered with the claim
+                      it belongs to. tone="light" because this is the CREAM band:
+                      the component then uses --muted-on-light (#6E5C3F) instead of
+                      the near-white --text-muted, which on cream renders at about
+                      1:1 and is legally the same as not disclosing at all. */}
+                  <PowerViewDisclosure tone="light" />
+                </>
+              )}
+
+              {/* Honest-cost anchor (shared costAnchor, site.ts) - compact strip
                   inside this band so tone alternation stays intact. */}
               <div
                 className="mt-8 rounded-[8px] border px-6 py-6"
@@ -373,7 +455,7 @@ export default async function ProductPage({ params }: Props) {
         </Container>
       </Section>
 
-      {/* 4. SIGNATURE PRODUCTS — DARK photo band, real HD photos for this category */}
+      {/* 4. SIGNATURE PRODUCTS - DARK photo band, room stills for this category */}
       {signature.length > 0 && (
         <Section tone="base">
           <Container size="wide">
@@ -385,7 +467,7 @@ export default async function ProductPage({ params }: Props) {
                 The pieces homeowners ask for by name.
               </h2>
               <p className="mt-4 font-body" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                A look at the {product.name.toLowerCase()} Jim installs most across New England. See any of them in your own light at a free in-home consultation.
+                A look at the Hunter Douglas {product.name.toLowerCase()} Jim installs most across New England. See any of them in your own light at a free in-home consultation.
               </p>
             </div>
             <div
@@ -422,7 +504,7 @@ export default async function ProductPage({ params }: Props) {
         </Section>
       )}
 
-      {/* 5. FINAL CTA — CREAM, steps into the dark footer */}
+      {/* 5. FINAL CTA - CREAM, steps into the dark footer */}
       <Section tone="cream">
         <Container size="narrow">
           <div className="text-center">
@@ -437,7 +519,7 @@ export default async function ProductPage({ params }: Props) {
                 lineHeight: 1.6,
               }}
             >
-              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, holds them in your windows, measures every opening, and gives you an honest installed price at your kitchen table. No pressure, guaranteed for life.
+              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, holds them in your windows, measures every opening, and gives you an honest installed price at your kitchen table. No pressure, and Jim stands behind every install he does.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Button href="/request-a-consultation" variant="primary" size="lg">
@@ -504,7 +586,20 @@ function buildProductSchema(product: ProductLine) {
           ? [`https://www.windowfantasies.com${product.imageSrc}`]
           : undefined,
         url,
-        brand: { "@id": "https://www.windowfantasies.com#localbusiness", name: business.name },
+        // ⚠️ COMPLIANCE: the brand of a Hunter Douglas product is Hunter
+        // Douglas. Pointing `brand` at the dealer's LocalBusiness node is the
+        // machine-readable form of claiming HD's products as our own, which is
+        // exactly the assertion HD prohibits. Window Fantasies is the dealer,
+        // not the brand.
+        //
+        // The dealer relationship belongs on `offers.seller`, which the Offer
+        // objects below already carry. These lines are quote-based and publish
+        // no price, so `offers` is empty and omitted, and we do NOT invent a
+        // priceless Offer (or a `manufacturer`/availability value) just to hold
+        // a seller reference. Omit over invent, per the policy in
+        // src/lib/schema.ts. The LocalBusiness node stays in this @graph, so
+        // the dealer entity is still stated on the page.
+        brand: { "@type": "Brand", name: "Hunter Douglas" },
         offers: offers.length > 0 ? offers : undefined,
       },
       {

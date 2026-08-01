@@ -2,14 +2,29 @@
  * site.ts — All site copy and content lives here.
  * Source of truth for every component (no hard-coded strings).
  *
- * Window Fantasies LLC — owner Jim Garrity. Authorized Hunter Douglas Centurion
- * dealer serving all of New England. Voice: educate, do not sell (voice-and-tone.md).
+ * Window Fantasies LLC — owner Jim Garrity. Authorized Hunter Douglas Dealer
+ * serving all of New England. Voice: educate, do not sell (voice-and-tone.md).
  * Facts: facts-of-record.md wins on conflicts.
  *
  * Public contact ONLY: phone (603) 891-5755, email windowfantasies@gmail.com,
  * office 280 Main Street, Salem, NH 03079. NEVER publish Jim's personal cell.
  *
  * Zero em dashes in any string literal (CLAUDE.md §13 absolute rule).
+ *
+ * ⚠️ HUNTER DOUGLAS COMPLIANCE. This site operates under HD's Independent
+ * Website Waiver program and is reviewed against a 10-point form; failing it
+ * delists windowfantasies.com from the hunterdouglas.com dealer locator. Before
+ * writing ANY string in this file that names Hunter Douglas or one of their
+ * products, read src/data/hunterDouglas.ts. In short:
+ *   - "Centurion" / "Pinnacle" are TRADE-ONLY. Consumer-facing is
+ *     "Authorized Hunter Douglas Dealer" (HD_DEALER_DESIGNATION).
+ *   - Product marks need their own ® or ™ AND a category descriptor:
+ *     "Silhouette® Window Shadings", never "Silhouette sheers". Use hdMark().
+ *   - "Hunter Douglas Lifetime Warranty", "guaranteed for life" applied to HD's
+ *     products, and "Hunter Douglas Showroom" are PROHIBITED phrases. The
+ *     warranty is the "Hunter Douglas Limited Lifetime Warranty".
+ *   - Jim's promise about his own labour is separate and allowed. Keep them apart.
+ * `npm run check:hd` enforces this. Run it before you commit.
  *
  * The interface/type SHAPE below is preserved from the prior scaffold so every
  * component keeps compiling. Fields that do not apply to Window Fantasies
@@ -102,6 +117,13 @@ export interface Service {
   pricingNote: string;
   /** Optional reassurance line rendered near the pricing note; the phone number renders tap-to-call after it. */
   notSureNote?: string;
+  /**
+   * Mandatory manufacturer legal copy for this service, rendered verbatim.
+   * Hunter Douglas requires "The PowerView® App is required for programmed
+   * operation." on any creative promoting the PowerView scheduling benefit.
+   * Never paraphrase it and never drop it. See src/data/hunterDouglas.ts.
+   */
+  legalDisclosure?: string;
   imageSrc: string;
   imageAlt: string;
   /** Intrinsic pixel dimensions of imageSrc so the photo renders at its natural aspect. */
@@ -134,6 +156,14 @@ export interface WorkItem {
   image: string;
   alt: string;
   blurb: string;
+  /**
+   * Photo attribution for Hunter Douglas product photography. HD requires their
+   * photography be "clearly labeled with the specific product it was designed to
+   * promote", so any item whose `image` is a licensed HD photo MUST set this.
+   * Rendered by <HDPhotoCredit /> on the first instance in a section.
+   * Leave undefined for photos that are not HD's.
+   */
+  credit?: string;
   w: number;
   h: number;
 }
@@ -146,6 +176,21 @@ export interface ProductLine {
   moqTiers: { quantity: number; pricePerUnit: number; label?: string }[];
   features: string[];
   imageSrc: string;
+  /**
+   * Alt text for imageSrc.
+   *
+   * ⚠️ COMPLIANCE (HD criterion 10). Hunter Douglas MANUFACTURES; Jim measures,
+   * designs, and installs. Alt text must never read "<product> by Window
+   * Fantasies", which claims Window Fantasies made it. The compliant form names
+   * the specific Hunter Douglas product, then Jim's actual role:
+   * "Custom Hunter Douglas Parkland® Wood Blinds ..., measured and installed by
+   * Window Fantasies." Name the specific product only where the photo plainly
+   * shows it; otherwise stay at the category rather than guess a mark.
+   *
+   * Every surface that renders imageSrc should read this field instead of
+   * building a string from `name`.
+   */
+  imageAlt?: string;
   /** Intrinsic pixel dimensions of imageSrc so the photo renders at its natural aspect. */
   imageW: number;
   imageH: number;
@@ -382,35 +427,35 @@ export const siteConfig: SiteConfig = {
   },
 
   hero: {
-    eyebrow: "Authorized Hunter Douglas Centurion Dealer · All of New England",
+    eyebrow: "Authorized Hunter Douglas Dealer · All of New England",
     h1: "The finest window treatments in New England, by hand.",
     h1WithEmphasis: {
       text: "The finest window treatments in New England, by hand.",
       emphasis: ["hand"],
     },
     subhead:
-      "Measured, designed, and installed by Jim himself. Guaranteed for life. Motorized shades you control from your phone, or a beach in Florida.",
-    trustMicrocopy: "Free in-home consultation. Jim brings the showroom to you.",
+      "Measured, designed, and installed by Jim himself. Backed by the Hunter Douglas Limited Lifetime Warranty. Motorized shades you control from your phone, or a beach in Florida.",
+    trustMicrocopy: "Free in-home consultation. Jim brings the samples to you.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
     ctaSecondary: { label: "Take the Quiz", href: "/quiz" },
   },
 
-  // Reframed as "why the showroom comes to you" reassurances, answer-first.
+  // Reframed as "why Jim shops at home with you" reassurances, answer-first.
   painPoints: [
     {
       icon: "home",
-      title: "No showroom, on purpose",
+      title: "Shop at home, on purpose",
       body: "You cannot judge a shade under fluorescent store lights. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you how they look in your light, at your time of day.",
     },
     {
       icon: "shield",
-      title: "Guaranteed for life",
-      body: "Hunter Douglas products are guaranteed for life, and Jim stands behind every install. You bought Hunter Douglas, you call Jim, and he answers. That is the whole promise.",
+      title: "Backed by the Hunter Douglas Limited Lifetime Warranty",
+      body: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and Jim stands behind every install he does. You bought Hunter Douglas, you call Jim, and he answers. That is the whole promise.",
     },
     {
       icon: "wrench",
       title: "Repairs, even if you bought it elsewhere",
-      body: "Broke a shade you bought from a shop that closed? Jim still helps. Hunter Douglas repairs are free under the lifetime warranty, and Jim can take the blind up to the authorized service center and bring it back.",
+      body: "Broke a shade you bought from a shop that closed? Jim still helps. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, and Jim can take the blind up to the authorized service center and bring it back.",
     },
     {
       icon: "handshake",
@@ -423,22 +468,22 @@ export const siteConfig: SiteConfig = {
     eyebrow: "About Jim",
     h1: "A retired firefighter who measures, designs, and installs it all by hand.",
     paragraphs: [
-      "I am Jim Garrity. I am a retired fire lieutenant out of Methuen, and I have spent more than thirty years in window fashions. A few years ago I bought Window Fantasies outright, and I moved the Hunter Douglas Centurion dealership the previous owner spent decades earning down to Salem, New Hampshire.",
-      "Centurion is the top tier Hunter Douglas gives a dealer. It is not a title you buy, it is one you earn. What it means for you is simple: you get the full line, the newest products, and someone who actually knows how to fit them to your home.",
-      "I do not have a showroom, and that is on purpose. A shade looks one way under store lights and a completely different way in your kitchen at four in the afternoon. So I bring the showroom to you. I come to your home with the real samples, I hold them in your windows, and I show you exactly what you are getting before you spend a dollar.",
+      "I am Jim Garrity. I am a retired fire lieutenant out of Methuen, and I have spent more than thirty years in window fashions. A few years ago I bought Window Fantasies outright, and I moved the Hunter Douglas dealership the previous owner spent decades earning down to Salem, New Hampshire.",
+      "I am an Authorized Hunter Douglas Dealer, and I have earned that standing over three decades. What it means for you is simple: you get the full line, the newest products, and someone who actually knows how to fit them to your home.",
+      "I do not have a storefront, and that is on purpose. A shade looks one way under store lights and a completely different way in your kitchen at four in the afternoon. So I shop at home with you. I come to your home with the real samples, I hold them in your windows, and I show you exactly what you are getting before you spend a dollar.",
       "I measure it, I design it, and I install it myself. When I am in your home, I treat it the way I treated a call for thirty years. You do not want to be talked at, you want the truth and a clear plan. I give you both.",
-      "Hunter Douglas is the Mercedes-Benz for your window. It is custom, it is built for your exact opening, and it is guaranteed for life. If something ever goes wrong, you call me and I answer. And if God ever takes me home, you call Hunter Douglas and they will tell you who took my place. That is what buying quality should feel like.",
-      "Everyone gets the same me. The lady in a double-wide who scratched a lucky ticket and wants one Luminette in her kitchen gets the same care as the client with thirty windows in a Boston tower. I built this business on that, and I am not about to change it.",
+      "Hunter Douglas is the luxury end of the window. Every treatment is custom, built for your exact opening, and carries the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. If something ever goes wrong, you call me and I answer. And if God ever takes me home, you call Hunter Douglas and they will tell you who took my place. That is what buying quality should feel like.",
+      "Everyone gets the same me. The lady in a double-wide who scratched a lucky ticket and wants Hunter Douglas Luminette® Privacy Sheers on one kitchen window gets the same care as the client with thirty windows in a Boston tower. I built this business on that, and I am not about to change it.",
     ],
     credentials: [
-      { title: "Authorized Hunter Douglas Centurion Dealer", description: "Centurion is the top dealer tier Hunter Douglas offers. Full product line, newest releases, and factory-level product knowledge." },
+      { title: "Authorized Hunter Douglas Dealer", description: "Jim carries the full Hunter Douglas line, including the newest releases, with three decades of hands-on product knowledge behind every recommendation." },
       { title: "30+ Years in Window Fashions", description: "More than three decades measuring, designing, and installing custom window treatments across New England." },
       { title: "Retired Fire Lieutenant", description: "A career in the Methuen Fire Department. Same calm-under-pressure, tell-you-the-truth approach brought to every home consultation." },
-      { title: "Guaranteed for Life", description: "Hunter Douglas products carry a lifetime guarantee, and Jim services them personally. He repairs even treatments bought elsewhere." },
+      { title: "Hunter Douglas Limited Lifetime Warranty", description: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and Jim services them personally. He repairs even treatments bought elsewhere." },
       { title: "BBB A+ Accredited", description: "Accredited by the Better Business Bureau with an A+ rating." },
       { title: "Measure, Design, and Install by Hand", description: "Jim personally handles every step. No sales team, no subcontractors, no call center. When you call, you get Jim." },
     ],
-    photo: { src: "/images/about/jim-headshot.jpg", alt: "Jim Garrity, the owner of Window Fantasies. Retired Methuen fire lieutenant and Hunter Douglas Centurion dealer." },
+    photo: { src: "/images/about/jim-headshot.jpg", alt: "Jim Garrity, the owner of Window Fantasies. Retired Methuen fire lieutenant and Authorized Hunter Douglas Dealer." },
     cta: { label: "Request a Free Consultation", href: CONSULT_HREF },
   },
 
@@ -447,8 +492,8 @@ export const siteConfig: SiteConfig = {
     {
       slug: "in-home-consultation",
       name: "Free In-Home Consultation",
-      shortDescription: "Jim brings the Hunter Douglas showroom to your home, holds real samples in your own windows, and gives you an installed price at your kitchen table. No cost, no pressure.",
-      longDescription: "There is no showroom to drive to, and that is by design. A shade looks one way in a store and another way in your home. Jim comes to you with the actual Hunter Douglas samples, holds them in your windows, and shows you how each one behaves in your light. You get an education first, then an honest, installed price. The consultation is always free.",
+      shortDescription: "Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and gives you an installed price at your kitchen table. No cost, no pressure.",
+      longDescription: "There is no store to drive to, and that is by design. A shade looks one way in a store and another way in your home. Jim comes to you with the actual Hunter Douglas samples, holds them in your windows, and shows you how each one behaves in your light. You get an education first, then an honest, installed price. The consultation is always free.",
       features: [
         "Real Hunter Douglas samples viewed in your own light",
         "Jim measures every window himself",
@@ -506,16 +551,16 @@ export const siteConfig: SiteConfig = {
     },
     {
       slug: "measuring-and-installation",
-      name: "Measuring and Certified Installation",
-      shortDescription: "Jim measures every opening and installs every treatment himself. Custom Hunter Douglas is built for your exact window, so a precise measure and a clean install are everything.",
+      name: "Measuring and Installation by Hand",
+      shortDescription: "Jim measures every opening and installs every treatment himself. Custom Hunter Douglas treatments are built for your exact window, so a precise measure and a clean install are everything.",
       longDescription: "Custom window treatments are fabricated to your exact opening, which means the measure has to be right the first time. Jim takes every measurement personally and installs the finished product himself. No subcontractors, no handoffs. The people who measure and install are the same person who quoted you.",
       features: [
         "Precise measurement of every opening by Jim",
         "Products fabricated for your exact windows",
-        "Clean, certified installation",
+        "Clean installation, done by hand",
         "Old treatments removed and disposed of",
         "One person accountable from measure to install",
-        "Guaranteed for life",
+        "Backed by the Hunter Douglas Limited Lifetime Warranty",
       ],
       pricingNote: "Installation is included in your quoted price.",
       imageSrc: "/images/services/measuring-and-installation.jpg",
@@ -527,17 +572,17 @@ export const siteConfig: SiteConfig = {
     {
       slug: "installs-and-repairs",
       name: "Installs and Repairs",
-      shortDescription: "New installs and repairs, both. Hunter Douglas is guaranteed for life, so warranty repairs are free. Jim can pick up, deliver to the authorized service center, and reinstall for you.",
-      longDescription: "Hunter Douglas products are guaranteed for life, so a warranty repair itself costs nothing. The authorized service center is Goedecke Design in Bedford, New Hampshire, the hospital for your blind. You can drive it there yourself for free, or Jim can take it down, drive it up, and reinstall it for a flat service fee that covers his time and travel. He will tell you the number straight up, before anything happens.",
+      shortDescription: "New installs and repairs, both. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty. Jim can pick up, deliver to the authorized service center, and reinstall for you.",
+      longDescription: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs nothing. The authorized service center is Goedecke Design in Bedford, New Hampshire, the hospital for your blind. You can drive it there yourself at no charge, or Jim can take it down, drive it up, and reinstall it for a flat service fee that covers his time and travel. He will tell you the number straight up, before anything happens.",
       features: [
         "New Hunter Douglas installs across New England",
-        "Warranty repairs are free under the lifetime guarantee",
+        "Covered repairs handled under the Hunter Douglas Limited Lifetime Warranty",
         "Authorized service center: Goedecke Design, Bedford NH",
-        "Free option: drop your blind off yourself",
+        "No-charge option: drop your blind off yourself",
         "Full-service option: Jim handles pickup, repair, and reinstall",
         "The service fee is disclosed upfront, no surprises",
       ],
-      pricingNote: "Repair itself is free under warranty. A flat service fee applies if Jim handles pickup and reinstall.",
+      pricingNote: "A covered repair is handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms. A flat service fee applies if Jim handles pickup and reinstall.",
       notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
       imageSrc: "/images/services/installs-and-repairs.jpg",
       imageW: 2528,
@@ -548,17 +593,17 @@ export const siteConfig: SiteConfig = {
     {
       slug: "blind-and-shade-repairs",
       name: "Blind and Shade Repairs",
-      shortDescription: "Here is the good news: the fix is often free under the Hunter Douglas lifetime warranty. Cords, mechanisms, motors, and fabric, Jim gets it repaired, even if you bought it somewhere else or from a shop that has closed.",
-      longDescription: "Start with the good news: Hunter Douglas products are guaranteed for life, so the fix is often free under warranty. A shade you love should not go in the trash over a broken cord or a tired mechanism. Jim handles Hunter Douglas repairs of all kinds, and he helps even when you did not buy it from him or the original shop is long gone. Tell Jim what broke and he will tell you the honest path forward.",
+      shortDescription: "Here is the good news: the fix is often covered under the Hunter Douglas Limited Lifetime Warranty. Cords, mechanisms, motors, and fabric, Jim gets it repaired, even if you bought it somewhere else or from a shop that has closed.",
+      longDescription: "Start with the good news: Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so the fix is often covered. A shade you love should not go in the trash over a broken cord or a tired mechanism. Jim handles Hunter Douglas repairs of all kinds, and he helps even when you did not buy it from him or the original shop is long gone. Tell Jim what broke and he will tell you the honest path forward.",
       features: [
-        "Free repairs under the Hunter Douglas lifetime warranty",
+        "Covered repairs handled under the Hunter Douglas Limited Lifetime Warranty",
         "Cord, mechanism, and hardware repairs",
-        "Motor and PowerView troubleshooting",
+        "Motor and PowerView® Automation troubleshooting",
         "Help even if you bought it elsewhere",
         "Honest guidance on repair versus replace",
         "Flat, disclosed service fee for full pickup and reinstall",
       ],
-      pricingNote: "Free under warranty. Flat service fee for full pickup and reinstall, disclosed upfront.",
+      pricingNote: "A covered repair is handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms. Flat service fee for full pickup and reinstall, disclosed upfront.",
       notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
       imageSrc: "/images/services/blind-and-shade-repairs.jpg",
       imageW: 2528,
@@ -568,9 +613,9 @@ export const siteConfig: SiteConfig = {
     },
     {
       slug: "powerview-automation",
-      name: "PowerView Motorization",
-      shortDescription: "Adjust your shades from your phone, your voice, or from a beach in Florida. Hunter Douglas PowerView automates your treatments on a schedule or on command. Sunglasses for your windows.",
-      longDescription: "PowerView is Hunter Douglas motorization done right. Your shades move on a schedule, react to the sun, or respond to your voice, and you can control them from anywhere. Snowbirds run their New England shades from Florida. Think of solar and sheer shades as sunglasses for your windows: they cut glare and UV while you still see out. Jim sets it all up and shows you how to use it.",
+      name: "PowerView® Automation",
+      shortDescription: "Adjust your shades from your phone, your voice, or from a beach in Florida. Hunter Douglas PowerView® Automation moves your treatments on a schedule or on command. Sunglasses for your windows.",
+      longDescription: "Hunter Douglas PowerView® Automation is motorization done right. Your shades move on a schedule, react to the sun, or respond to your voice, and you can control them from anywhere. Snowbirds run their New England shades from Florida. Think of solar and sheer shades as sunglasses for your windows: they cut glare and UV while you still see out. Jim sets it all up and shows you how to use it.",
       features: [
         "Control from phone, voice, or a wall remote",
         "Schedule shades to open and close automatically",
@@ -579,19 +624,25 @@ export const siteConfig: SiteConfig = {
         "Cuts glare and UV, sunglasses for your windows",
         "Jim configures it and teaches you to use it",
       ],
+      // HD mandatory legal copy: any creative promoting the PowerView scheduling
+      // benefit must carry this sentence. Rendered by <PowerViewDisclosure />.
+      legalDisclosure: "The PowerView® App is required for programmed operation.",
       pricingNote: "Quote-based. Motorization is priced at your free consultation.",
       imageSrc: "/images/services/powerview-automation.jpg",
       imageW: 2528,
       imageH: 1685,
-      imageAlt: "Airy Luminette sheer vertical shades with an ocean view.",
+      imageAlt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.",
       cta: { label: "Request a Free Consultation", href: CONSULT_HREF },
     },
   ],
 
-  // Trust badges (rendered as a badge row, not licensed logos).
+  // Trust badges (rendered as a badge row). The Hunter Douglas BRAND LOGO is a
+  // separate, licensed asset rendered by <HunterDouglasLogo /> in the hero, per
+  // HD's requirement that it appear above the fold and separate from the dealer's
+  // own mark. These text badges must never carry an HD logo image.
   brandPartners: [
-    { name: "Hunter Douglas Centurion Dealer", logoSrc: "" },
-    { name: "Guaranteed for Life", logoSrc: "" },
+    { name: "Authorized Hunter Douglas Dealer", logoSrc: "" },
+    { name: "Hunter Douglas Limited Lifetime Warranty", logoSrc: "" },
     { name: "BBB A+ Accredited", logoSrc: "" },
     { name: "30+ Years Experience", logoSrc: "" },
     { name: "5.0 Stars on Google", logoSrc: "" },
@@ -599,95 +650,105 @@ export const siteConfig: SiteConfig = {
   ],
 
   // Signature Hunter Douglas products (used on the /portfolio + signature band).
+  // Names carry their trademark symbol + category descriptor per HD's Trademark
+  // Usage rules. Verify any change against src/data/hunterDouglas.ts.
   pastClients: [
-    { name: "Silhouette", industry: "Shades", description: "S-vane sheers that float between two sheers for diffused light and daytime privacy. The signature Hunter Douglas look." },
-    { name: "Duette Honeycomb", industry: "Shades", description: "Energy-efficient cellular shades with true blackout via LightLock. Takes a beating and still looks great." },
-    { name: "Luminette", industry: "Shades", description: "Drapery-like vertical sheers with rotating vanes for doors and wide windows." },
-    { name: "Pirouette", industry: "Shades", description: "Soft fabric vanes over a single back sheer for a gentle, contoured look." },
-    { name: "Plantation Shutters", industry: "Shutters", description: "Timeless hardwood and poly shutters that never go out of style." },
-    { name: "PowerView Automation", industry: "Motorization", description: "Motorized control on a schedule, by voice, or from anywhere in the world." },
+    { name: "Silhouette® Window Shadings", industry: "Shades", description: "S-vane sheers that float between two sheers for diffused light and daytime privacy. The signature Hunter Douglas look." },
+    { name: "Duette® Honeycomb Shades", industry: "Shades", description: "Energy-efficient cellular shades from Hunter Douglas with true blackout via LightLock®. Takes a beating and still looks great." },
+    { name: "Luminette® Privacy Sheers", industry: "Shades", description: "Drapery-like vertical sheers from Hunter Douglas with rotating vanes for doors and wide windows." },
+    { name: "Pirouette® Window Shadings", industry: "Shades", description: "Soft fabric vanes over a single back sheer for a gentle, contoured look." },
+    { name: "Plantation Shutters", industry: "Shutters", description: "Timeless hardwood and poly shutters from Hunter Douglas that never go out of style." },
+    { name: "PowerView® Automation", industry: "Motorization", description: "Motorized control from Hunter Douglas on a schedule, by voice, or from anywhere in the world." },
   ],
 
   // Portfolio items (real HD photos). Category typed to the union above.
   workItems: [
     {
-      brand: "Silhouette Sheer Shades",
+      brand: "Silhouette® Window Shadings",
+      credit: "Silhouette® Window Shadings by Hunter Douglas",
       category: "Shades",
       room: "Living room",
       featured: true,
-      image: "/images/hunter-douglas/p04.jpg",
-      alt: "A premium New England living room with Hunter Douglas Silhouette sheer shades softening the daylight.",
-      blurb: "Silhouette sheers diffusing golden-hour light in a premium living room. Daytime privacy without losing the view.",
+      image: "/images/window-fashions/p04.jpg",
+      alt: "A premium New England living room with Hunter Douglas Silhouette® Window Shadings softening the daylight.",
+      blurb: "Silhouette® Window Shadings diffusing golden-hour light in a premium living room. Daytime privacy without losing the view.",
       w: 2050,
       h: 1025,
     },
     {
-      brand: "Wood Blinds",
+      brand: "Parkland® Wood Blinds",
+      credit: "Parkland® Wood Blinds by Hunter Douglas",
       category: "Blinds",
       room: "Dining room",
-      image: "/images/hunter-douglas/p02.jpg",
-      alt: "A modern dining room with warm Hunter Douglas wood blinds.",
-      blurb: "Parkland wood blinds bringing warmth to a modern dining room. Classic real-wood in dozens of finishes.",
+      image: "/images/window-fashions/p02.jpg",
+      alt: "A modern dining room with warm Hunter Douglas Parkland® Wood Blinds.",
+      blurb: "Parkland® Wood Blinds bringing warmth to a modern dining room. Classic real-wood in dozens of finishes.",
       w: 2050,
       h: 1025,
     },
     {
-      brand: "Cellular Shades",
+      brand: "Duette® Honeycomb Shades",
+      credit: "Duette® Honeycomb Shades by Hunter Douglas",
       category: "Shades",
       room: "Kitchen",
-      image: "/images/hunter-douglas/p06.jpg",
-      alt: "A bright kitchen with Hunter Douglas Duette cellular honeycomb shades.",
-      blurb: "Duette honeycomb shades in a sunny kitchen. Energy-efficient, and available in true blackout.",
+      image: "/images/window-fashions/p06.jpg",
+      alt: "A bright kitchen with Hunter Douglas Duette® Honeycomb Shades.",
+      blurb: "Duette® Honeycomb Shades in a sunny kitchen. Energy-efficient, and available in true blackout.",
       w: 900,
       h: 600,
     },
     {
       brand: "Custom Drapery",
+      credit: "Custom drapery by Hunter Douglas",
       category: "Drapery",
       room: "City loft",
-      image: "/images/hunter-douglas/p05.jpg",
+      image: "/images/window-fashions/p05.jpg",
       alt: "Navy custom drapery framing a city view in a modern loft.",
       blurb: "Custom drapery in a city loft, layered for drama and light control. Thousands of fabrics to choose from.",
       w: 1025,
       h: 513,
     },
     {
-      brand: "Roller and Solar Shades",
+      brand: "Designer Roller Shades",
+      credit: "Designer Roller Shades by Hunter Douglas",
       category: "Shades",
       room: "Great room",
-      image: "/images/hunter-douglas/p08.jpg",
-      alt: "Clean roller shades in a large rustic-modern room.",
-      blurb: "Roller and solar shades in a rustic-modern great room. Sunglasses for your windows, glare and UV handled.",
+      image: "/images/window-fashions/p08.jpg",
+      alt: "Clean Hunter Douglas Designer Roller Shades in a large rustic-modern room.",
+      blurb: "Designer Roller Shades in a rustic-modern great room. Sunglasses for your windows, glare and UV handled.",
       w: 2050,
       h: 1025,
     },
     {
-      brand: "Plantation Shutters",
+      brand: "Heritance® Hardwood Shutters",
+      credit: "Heritance® Hardwood Shutters by Hunter Douglas",
       category: "Shutters",
       room: "Family room",
-      image: "/images/hunter-douglas/p11.jpg",
-      alt: "Wood plantation shutters in warm golden light.",
-      blurb: "Hardwood plantation shutters in golden light. Timeless, and built to last a lifetime.",
+      image: "/images/window-fashions/p11.jpg",
+      alt: "Hunter Douglas Heritance® Hardwood Shutters in warm golden light.",
+      blurb: "Heritance® Hardwood Shutters in golden light. Timeless, and built to last.",
       w: 1025,
       h: 513,
     },
     {
-      brand: "Luminette Sheers",
+      brand: "Luminette® Privacy Sheers",
+      credit: "Luminette® Privacy Sheers by Hunter Douglas",
       category: "Drapery",
       room: "Patio doors",
-      image: "/images/hunter-douglas/p07.jpg",
-      alt: "Airy Luminette sheer vertical shades with an ocean view.",
-      blurb: "Luminette vertical sheers on a wide ocean-view opening. Drapery softness with the light control of a shade.",
+      image: "/images/window-fashions/p07.jpg",
+      alt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.",
+      blurb: "Luminette® Privacy Sheers on a wide ocean-view opening. Drapery softness with the light control of a shade.",
       w: 1025,
       h: 513,
     },
     {
-      brand: "Roman Shades",
+      brand: "Vignette® Modern Roman Shades",
+      credit: "Vignette® Modern Roman Shades by Hunter Douglas",
       category: "Shades",
       room: "Music room",
-      image: "/images/hunter-douglas/p10.jpg",
-      alt: "Tailored Roman shades in a refined living room with a grand piano.",
-      blurb: "Vignette Roman shades in a refined living room. Tailored folds, no exposed cords or rings.",
+      image: "/images/window-fashions/p10.jpg",
+      alt: "Tailored Hunter Douglas Vignette® Modern Roman Shades in a refined living room with a grand piano.",
+      blurb: "Vignette® Modern Roman Shades in a refined living room. Tailored folds, no exposed cords or rings.",
       w: 2560,
       h: 1714,
     },
@@ -823,68 +884,80 @@ export const siteConfig: SiteConfig = {
     {
       slug: "shades",
       name: "Shades",
-      shortDescription: "The flagship Hunter Douglas category. Silhouette, Pirouette, Luminette, Duette honeycomb, Vignette Roman, and roller and solar shades. Diffused light, daytime privacy, and true blackout when you want it.",
+      shortDescription: "The flagship Hunter Douglas category. Silhouette® Window Shadings, Pirouette® Window Shadings, Luminette® Privacy Sheers, Duette® Honeycomb Shades, Vignette® Modern Roman Shades, Designer Roller Shades, and Designer Screen Shades. Diffused light, daytime privacy, and true blackout when you want it.",
       moqTiers: [],
       features: [
-        "Silhouette: S-vane sheers for diffused light and daytime privacy",
-        "Duette honeycomb: energy efficient, with true blackout via LightLock",
-        "Luminette: drapery-like vertical sheers for doors and wide windows",
-        "Vignette: tailored modern Roman folds, no exposed cords",
-        "Roller and solar: clean lines, sunglasses for your windows",
-        "PowerView motorization available across the line",
+        "Silhouette® Window Shadings: S-vane sheers for diffused light and daytime privacy",
+        "Duette® Honeycomb Shades: energy efficient, with true blackout via LightLock®",
+        "Luminette® Privacy Sheers: drapery-like vertical sheers for doors and wide windows",
+        "Vignette® Modern Roman Shades: tailored folds, no exposed cords",
+        "Designer Roller Shades and Designer Screen Shades: clean lines, sunglasses for your windows",
+        "PowerView® Automation available across the line",
       ],
       imageSrc: "/images/products/shades.jpg",
+      imageAlt: "Custom Hunter Douglas Duette® Honeycomb Shades filtering morning light in a calm New England bedroom, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
     {
       slug: "blinds",
       name: "Blinds",
-      shortDescription: "Real-wood warmth and sleek modern options. Parkland wood blinds in 50-plus colors, Modern Precious Metals, soft fabric blinds, and panel-track systems for tall and wide windows.",
+      shortDescription: "Real-wood warmth and sleek modern options from Hunter Douglas. Parkland® Wood Blinds in 50-plus colors, Modern Precious Metals® Aluminum Blinds, soft fabric blinds, and Skyline® Gliding Window Panels for tall and wide windows.",
       moqTiers: [],
       features: [
-        "Parkland wood blinds: classic warmth, 50-plus finishes",
-        "Modern Precious Metals: sleek, durable, 70-plus colors",
-        "Aria soft blinds: lightweight translucent glow",
-        "Skyline panel-track: gliding panels for tall or wide openings",
+        "Parkland® Wood Blinds: classic warmth, 50-plus finishes",
+        "Modern Precious Metals® Aluminum Blinds: sleek, durable, 70-plus colors",
+        // "Aria™ soft blinds" was removed 2026-07-31: "soft blinds" is not an
+        // official Hunter Douglas category descriptor, and Aria™ appears in HD's
+        // 2025 list only under Alustra® Silhouette® fabrics, not as a blind.
+        // Replaced with a blind HD actually lists, using HD's own descriptor
+        // ("Soft Vertical Blinds") straight from src/data/hunterDouglas.ts.
+        "Cadence® Soft Vertical Blinds: soft fabric vanes for wide windows and sliding doors",
+        "Skyline® Gliding Window Panels: gliding panels for tall or wide openings",
         "Precise light and privacy control",
-        "Guaranteed for life",
+        "Backed by the Hunter Douglas Limited Lifetime Warranty",
       ],
       imageSrc: "/images/products/blinds.jpg",
+      imageAlt: "Custom Hunter Douglas Parkland® Wood Blinds with cloth tapes in a warm home library, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
     {
       slug: "shutters",
       name: "Shutters",
-      shortDescription: "Timeless and built to last. Heritance hardwood shutters, Palm Beach polysatin that never warps or fades, and NewStyle hybrids that pair a hardwood look with added strength.",
+      shortDescription: "Timeless and built to last. Hunter Douglas Heritance® Hardwood Shutters, Palm Beach™ Polysatin™ Shutters that never warp or fade, and NewStyle® Hybrid Shutters that pair a hardwood look with added strength.",
       moqTiers: [],
       features: [
-        "Heritance: 100 percent hardwood, dovetail construction",
-        "Palm Beach: polysatin that never warps, cracks, or fades",
-        "NewStyle: wood and composite hybrid, hardwood look with strength",
+        "Heritance® Hardwood Shutters: 100 percent hardwood, dovetail construction",
+        "Palm Beach™ Polysatin™ Shutters: never warp, crack, or fade",
+        "NewStyle® Hybrid Shutters: wood and composite, hardwood look with strength",
         "Ideal for humid rooms, doors, and coastal homes",
         "A classic look that never dates the room",
-        "Guaranteed for life",
+        "Backed by the Hunter Douglas Limited Lifetime Warranty",
       ],
       imageSrc: "/images/products/shutters.jpg",
+      // The photo shows white plantation shutters, but not clearly enough to
+      // tell Heritance® hardwood from Palm Beach™ Polysatin™. Naming the wrong
+      // mark is itself a violation, so this alt stays at the category.
+      imageAlt: "Custom Hunter Douglas plantation shutters on a bay window in a bright New England breakfast nook, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
     {
       slug: "drapery",
       name: "Drapery",
-      shortDescription: "Soften a room and control the light. Carole Fabrics custom drapes with 4,000-plus fabric choices, Luminette sheer panels, and Provenance woven-wood drapes in natural materials.",
+      shortDescription: "Soften a room and control the light. Hunter Douglas Carole Fabrics custom drapery with 4,000-plus fabric choices, Luminette® Privacy Sheers, and Provenance® Woven Wood Shades in natural materials.",
       moqTiers: [],
       features: [
-        "Carole Fabrics custom drapes: 4,000-plus fabric and color choices",
+        "Carole Fabrics custom drapery: 4,000-plus fabric and color choices",
         "Layer over sheers or hang standalone",
-        "Luminette sheer panels: light diffusing with integrated vanes",
-        "Provenance woven wood: natural reeds, woods, and bamboo",
+        "Luminette® Privacy Sheers: light diffusing with integrated vanes",
+        "Provenance® Woven Wood Shades: natural reeds, woods, and bamboo",
         "Adds warmth, softness, and insulation",
         "Coordinated with your shades and shutters",
       ],
       imageSrc: "/images/products/drapery.jpg",
+      imageAlt: "Custom Hunter Douglas Carole Fabrics drapery in sage linen framing a New England dining room, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
@@ -892,9 +965,17 @@ export const siteConfig: SiteConfig = {
 
   // Honest-cost anchor rendered on /products and every /products/[slug] page.
   // Same voice as the Cost FAQ below and the homepage CostHonesty band.
+  //
+  // ⚠️ COMPLIANCE: HD's Independent Website Waiver rules bar a dealer site from
+  // providing "web-based Hunter Douglas product price quotes". The figure below
+  // is deliberately framed as a CATEGORY scale anchor for premium made-to-measure
+  // window treatments, never as a Hunter Douglas price. Do not put a dollar
+  // amount next to the Hunter Douglas name, and never publish a per-window,
+  // per-product, or per-square-foot price. The real number comes from the
+  // in-home measure, which is the whole point of this band.
   costAnchor: {
     eyebrow: "Honest pricing, upfront",
-    body: "Hunter Douglas is custom and premium. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and yes, it is guaranteed for life.",
+    body: "Custom window treatments are a premium, made-to-measure purchase. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
   },
 
   // Not used by Window Fantasies (the /industries route is removed). Empty but valid.
@@ -908,7 +989,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 30089,
       distance: "Home base",
-      description: "Salem is home. The office and workroom are at 280 Main Street. Most consultations start close to here, and Jim can often be at a Salem home the same week. There is no showroom to visit, Jim brings the Hunter Douglas samples to you.",
+      description: "Salem is home. The office is at 280 Main Street, and that is where the sample books live between visits. Most consultations start close to here, and Jim can often be at a Salem home the same week. There is no showroom to visit, Jim brings the Hunter Douglas samples to you.",
       nearbyAreas: ["windham-nh", "derry-nh", "methuen-ma", "atkinson-nh", "hampstead-nh"],
     },
     {
@@ -944,7 +1025,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 34317,
       distance: "Southern NH",
-      description: "Derry homeowners choose Window Fantasies for custom shades, shutters, and motorized shades. One person from measure to install, guaranteed for life.",
+      description: "Derry homeowners choose Window Fantasies for custom shades, shutters, and motorized shades. One person from measure to install, and Jim stands behind every install.",
       nearbyAreas: ["londonderry-nh", "windham-nh", "salem-nh", "hampstead-nh", "manchester-nh"],
     },
     {
@@ -953,7 +1034,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 26368,
       distance: "Southern NH",
-      description: "Londonderry families use Jim for everything from a single Luminette to a whole-home Hunter Douglas package. Samples viewed in your home, installed price at your table.",
+      description: "Londonderry families use Jim for everything from one set of Hunter Douglas Luminette® Privacy Sheers on a patio door to a whole-home package. Samples viewed in your home, installed price at your table.",
       nearbyAreas: ["derry-nh", "manchester-nh", "windham-nh", "salem-nh", "bedford-nh"],
     },
     {
@@ -971,7 +1052,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 8998,
       distance: "Southern NH",
-      description: "Hampstead homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, guaranteed for life, no showroom to drive to.",
+      description: "Hampstead homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, no store to drive to, and Jim stands behind every install.",
       nearbyAreas: ["atkinson-nh", "derry-nh", "salem-nh", "windham-nh", "plaistow-nh"],
     },
     {
@@ -989,7 +1070,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 6202,
       distance: "Southern NH",
-      description: "Kingston homeowners use Window Fantasies for custom shades, shutters, and motorized shades. One accountable person, guaranteed for life.",
+      description: "Kingston homeowners use Window Fantasies for custom shades, shutters, and motorized shades. One accountable person, and Jim stands behind every install.",
       nearbyAreas: ["hampstead-nh", "plaistow-nh", "exeter-nh", "salem-nh", "atkinson-nh"],
     },
     {
@@ -998,7 +1079,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 24011,
       distance: "Southern NH",
-      description: "Bedford is home to some of the region's finest properties, and to Goedecke Design, the Hunter Douglas authorized service center. Jim installs and services premium treatments across Bedford.",
+      description: "Bedford is home to some of the region's finest properties, and to Goedecke Design, the authorized service center. Jim installs and services premium treatments across Bedford.",
       nearbyAreas: ["manchester-nh", "nashua-nh", "londonderry-nh", "derry-nh", "salem-nh"],
     },
     {
@@ -1016,7 +1097,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 16097,
       distance: "Seacoast NH",
-      description: "Exeter homeowners choose Jim for custom shades, shutters, and drapery. Samples viewed in your own light, guaranteed for life.",
+      description: "Exeter homeowners choose Jim for custom shades, shutters, and drapery. Samples viewed in your own light, and Jim stands behind every install.",
       nearbyAreas: ["stratham-nh", "hampton-nh", "portsmouth-nh", "kingston-nh", "seabrook-nh"],
     },
     {
@@ -1025,7 +1106,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 15853,
       distance: "Seacoast NH",
-      description: "Hampton and the beaches are perfect for Palm Beach shutters and solar shades that stand up to sun and salt air. Jim measures and installs it all himself.",
+      description: "Hampton and the beaches are perfect for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades that stand up to sun and salt air. Jim measures and installs it all himself.",
       nearbyAreas: ["seabrook-nh", "exeter-nh", "portsmouth-nh", "stratham-nh", "newburyport-ma"],
     },
     {
@@ -1052,7 +1133,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 32741,
       distance: "Seacoast NH",
-      description: "Dover homeowners use Window Fantasies for shades, blinds, shutters, and motorization. Guaranteed for life, serviced personally by Jim.",
+      description: "Dover homeowners use Window Fantasies for shades, blinds, shutters, and motorization. Serviced personally by Jim, who stands behind every install.",
       nearbyAreas: ["portsmouth-nh", "stratham-nh", "exeter-nh", "hampton-nh", "newburyport-ma"],
     },
     {
@@ -1070,7 +1151,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 36569,
       distance: "Merrimack Valley MA",
-      description: "Andover's established homes are a strong fit for premium Hunter Douglas shades, shutters, and drapery. Jim brings the showroom to you and installs everything himself.",
+      description: "Andover's established homes are a strong fit for premium Hunter Douglas shades, shutters, and drapery. Jim brings the samples to you and installs everything himself.",
       nearbyAreas: ["north-andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
@@ -1079,7 +1160,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 30915,
       distance: "Merrimack Valley MA",
-      description: "North Andover homeowners choose Window Fantasies for custom window treatments, measured and installed by hand, guaranteed for life.",
+      description: "North Andover homeowners choose Window Fantasies for custom window treatments, measured and installed by hand, and Jim stands behind every install.",
       nearbyAreas: ["andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
@@ -1097,7 +1178,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 89143,
       distance: "Merrimack Valley MA",
-      description: "Lawrence homeowners rely on Window Fantasies for premium custom treatments. One accountable person, guaranteed for life.",
+      description: "Lawrence homeowners rely on Window Fantasies for premium custom treatments. One accountable person, and Jim stands behind every install.",
       nearbyAreas: ["methuen-ma", "andover-ma", "north-andover-ma", "haverhill-ma", "salem-nh"],
     },
     {
@@ -1115,7 +1196,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 17366,
       distance: "North Shore MA",
-      description: "Amesbury homeowners choose Jim for custom Hunter Douglas window treatments. Guaranteed for life, serviced personally.",
+      description: "Amesbury homeowners choose Jim for custom Hunter Douglas window treatments, serviced personally by Jim.",
       nearbyAreas: ["newburyport-ma", "seabrook-nh", "haverhill-ma", "hampton-nh", "plaistow-nh"],
     },
     {
@@ -1124,7 +1205,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 675647,
       distance: "Greater Boston MA",
-      description: "Jim serves Boston condos and towers, including the South End, with high-end custom Hunter Douglas treatments and PowerView motorization. There is no place in New England he will not travel.",
+      description: "Jim serves Boston condos and towers, including the South End, with high-end custom Hunter Douglas treatments and PowerView® Automation. There is no place in New England he will not travel.",
       nearbyAreas: ["cambridge-ma", "andover-ma", "lawrence-ma", "methuen-ma", "north-andover-ma"],
     },
     {
@@ -1142,7 +1223,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 14120,
       distance: "Cape Cod MA",
-      description: "On Cape Cod, sun and salt air call for Palm Beach shutters and solar shades that will not warp or fade. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
+      description: "On Cape Cod, sun and salt air call for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades that will not warp or fade. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
       // Cape Cod has no sibling town pages yet; link the real MA pages so the band renders.
       nearbyAreas: ["boston-ma", "cambridge-ma"],
     },
@@ -1246,7 +1327,7 @@ export const siteConfig: SiteConfig = {
     ],
     privateBranch: {
       h3: "Tell Jim what went wrong.",
-      body: "This one goes straight to Jim and stays between the two of you. He answers his own phone, he installed the work himself, and every job he has ever done is guaranteed for life. Tell him what happened and he will make it right.",
+      body: "This one goes straight to Jim and stays between the two of you. He answers his own phone, he installed the work himself, and he stands behind every job he has ever done. Tell him what happened and he will make it right.",
       nameLabel: "Your name",
       contactLabel: "Phone or email",
       contactHint: "So Jim can reach you directly.",
@@ -1287,17 +1368,17 @@ export const siteConfig: SiteConfig = {
   faq: [
     {
       q: "How much do Hunter Douglas window treatments cost in New Hampshire?",
-      a: "Hunter Douglas is a premium, fully custom product, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and yes, it is guaranteed for life.",
+      a: "Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
       category: "Cost",
     },
     {
       q: "Are Hunter Douglas shades worth the price?",
-      a: "For most homeowners, yes. You are buying a Mercedes-Benz for your window: a custom product built for your exact opening, guaranteed for life, and serviced by the person who installed it. They last for years, they hold their look, and options like blackout and motorization solve real problems. Jim will also tell you honestly if a simpler product fits your situation better. He sells you what you deserve, not the most expensive thing on the truck.",
+      a: "For most homeowners, yes. You are buying the luxury end of the window: a custom product built for your exact opening, backed by the Hunter Douglas Limited Lifetime Warranty, and serviced by the person who installed it. They last for years, they hold their look, and options like blackout and motorization solve real problems. Jim will also tell you honestly if a simpler product fits your situation better. He sells you what you deserve, not the most expensive thing on the truck.",
       category: "Value",
     },
     {
       q: "Do you repair Hunter Douglas blinds, even if I did not buy them from you?",
-      a: "Yes. Hunter Douglas products are guaranteed for life, so the repair itself is free under warranty, even on treatments you bought elsewhere or from a shop that has closed. The authorized service center is Goedecke Design in Bedford, New Hampshire. You can drive your blind there yourself at no cost, or Jim can take it down, deliver it, and reinstall it for a flat service fee that covers his time and travel. He will tell you that number upfront, before anything happens.",
+      a: "Yes. Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing, even on treatments you bought elsewhere or from a shop that has closed. The authorized service center is Goedecke Design in Bedford, New Hampshire. You can drive your blind there yourself at no cost, or Jim can take it down, deliver it, and reinstall it for a flat service fee that covers his time and travel. He will tell you that number upfront, before anything happens.",
       category: "Repairs",
     },
     {
@@ -1307,7 +1388,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       q: "Do you offer smart or motorized shades I can control from my phone?",
-      a: "Yes. Hunter Douglas PowerView motorization lets you control your shades from your phone, your voice, or a remote, and set them on automatic schedules. You can even adjust them from out of state. Snowbirds run their New England shades from Florida. It is ideal for hard-to-reach windows and for cutting glare and UV automatically. Jim sets it all up and teaches you how to use it.",
+      a: "Yes. Hunter Douglas PowerView® Automation lets you control your shades from your phone, your voice, or a remote, and set them on automatic schedules. You can even adjust them from out of state. Snowbirds run their New England shades from Florida. It is ideal for hard-to-reach windows and for cutting glare and UV automatically. Jim sets it all up and teaches you how to use it.",
       category: "Smart Home",
     },
     {
@@ -1317,7 +1398,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       q: "Do you have a showroom I can visit?",
-      a: "No showroom, and that is on purpose. A shade looks completely different under store lights than it does in your home at four in the afternoon. So Jim brings the showroom to you. He comes to your home with the real Hunter Douglas samples, holds them in your windows, and shows you how they look in your own light.",
+      a: "No storefront, and that is on purpose. A shade looks completely different under store lights than it does in your home at four in the afternoon. So Jim shops at home with you. He comes to your home with the real Hunter Douglas samples, holds them in your windows, and shows you how they look in your own light.",
       category: "Consultation",
     },
     {
@@ -1338,9 +1419,9 @@ export const siteConfig: SiteConfig = {
   },
 
   cta: {
-    h1: "Let Jim bring the showroom to you.",
+    h1: "Let Jim bring the samples to you.",
     subhead:
-      "The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no showroom to drive to, guaranteed for life.",
+      "The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to, and Jim stands behind every install.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
     ctaSecondary: { label: "Call Jim", href: `tel:+1${PHONE_TEL}` },
   },
@@ -1353,7 +1434,7 @@ export const siteConfig: SiteConfig = {
       summary:
         "What information Window Fantasies collects when you request a consultation, how we use it, who we share it with, and the choices you have. Plain language, by design.",
       blocks: [
-        { kind: "p", content: "Window Fantasies LLC is a Hunter Douglas Centurion dealer based in Salem, New Hampshire, serving all of New England. This Privacy Policy explains what information we collect when you use our website or request a consultation, how we use it, who we share it with, and the choices you have. We wrote it in plain language on purpose. If anything here is unclear, call (603) 891-5755 and ask." },
+        { kind: "p", content: "Window Fantasies LLC is an Authorized Hunter Douglas Dealer based in Salem, New Hampshire, serving all of New England. This Privacy Policy explains what information we collect when you use our website or request a consultation, how we use it, who we share it with, and the choices you have. We wrote it in plain language on purpose. If anything here is unclear, call (603) 891-5755 and ask." },
 
         { kind: "h2", content: "Information we collect" },
         { kind: "p", content: "We collect information you give us directly. When you request a consultation, ask about a repair, or contact us, we collect your name, phone number, email, town or address, and the project details you share, such as the rooms, windows, and products you are interested in." },
@@ -1397,7 +1478,7 @@ export const siteConfig: SiteConfig = {
         { kind: "p", content: "Hunter Douglas window treatments are custom-fabricated for your exact windows. Because of that, orders generally cannot be cancelled or returned once fabrication begins. Jim will confirm the products, colors, and options with you before the order is placed." },
 
         { kind: "h2", content: "Warranty and repairs" },
-        { kind: "p", content: "Hunter Douglas products carry a lifetime guarantee, subject to the manufacturer's warranty terms. Warranty repairs are free. If you ask Jim to handle pickup, delivery to the authorized service center, and reinstallation, a flat service fee applies, disclosed to you in advance." },
+        { kind: "p", content: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. A covered warranty repair itself costs you nothing. If you ask Jim to handle pickup, delivery to the authorized service center, and reinstallation, a flat service fee applies, disclosed to you in advance." },
 
         { kind: "h2", content: "Governing law" },
         { kind: "p", content: "These terms are governed by the laws of the State of New Hampshire. Any dispute that cannot be resolved by a direct conversation will be handled in the state or federal courts located in New Hampshire. We would always rather pick up the phone and fix it first." },

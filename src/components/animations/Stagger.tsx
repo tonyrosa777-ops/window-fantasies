@@ -35,7 +35,7 @@ interface ItemProps {
  * not the viewport's. On a container several viewports tall (a 29-card grid
  * is ~3000px), even threshold 0.15 means ~450px must be visible before
  * anything animates, so the section reads as empty/broken on load. That is
- * why the default here is a tiny 0.05 — entry detection, not depth
+ * why the default here is a tiny 0.05, entry detection, not depth
  * detection. Never raise the default; pass a per-use `threshold` only for
  * short containers, or pass `immediate` to skip the observer entirely.
  */

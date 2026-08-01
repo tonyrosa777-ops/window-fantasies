@@ -9,7 +9,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 
 /**
- * /service-areas — Index of the New England cities Jim serves.
+ * /service-areas - Index of the New England cities Jim serves.
  *
  * The grid uses grid-cols-2 sm:grid-cols-3, which lays out cleanly for any
  * count (short trailing rows are fine and centered by the flow). Salem is the
@@ -21,13 +21,28 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 export const metadata: Metadata = {
   title: "Service Areas",
   description:
-    "Custom Hunter Douglas window treatments across all of New England: New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Jim brings the showroom to your home, measures and installs by hand, guaranteed for life.",
+    "Custom Hunter Douglas window treatments across all of New England: New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Jim brings the samples to your home, measures and installs by hand, backed by the Hunter Douglas Limited Lifetime Warranty.",
 };
+
+/**
+ * ⚠️ COMPLIANCE NOTE. HD permits only three consumer-facing designations, and
+ * all three are DEALER designations (see HD_DEALER_DESIGNATIONS in
+ * src/data/hunterDouglas.ts). "the Hunter Douglas authorized service center" is
+ * not one of them. Goedecke Design in Bedford NH genuinely is the authorized
+ * service center, so the fact stays and the Hunter Douglas prefix comes off the
+ * designation. That is now fixed at the source, in siteConfig.serviceAreas.
+ *
+ * A render-time regex that stripped the prefix on the fly was removed on
+ * purpose. Silently correcting bad data hides it: this page would look clean
+ * while site.ts still shipped the violation, and every other surface reading the
+ * same description would render it anyway. Regression protection belongs in
+ * `npm run check:hd`, which fails the BUILD and names the offending file.
+ */
 
 const PAGE_EYEBROW = "Service Areas. All of New England.";
 const PAGE_H1 = "Custom window treatments across all of New England.";
 const PAGE_SUBHEAD =
-  "There is no showroom to drive to, and that is on purpose. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and measures and installs everything by hand. From the office in Salem NH he serves New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod.";
+  "There is no store to drive to, and that is on purpose. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and measures and installs everything by hand. From the office in Salem NH he serves New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod.";
 
 export default function ServiceAreasIndexPage() {
   const areas = siteConfig.serviceAreas;
@@ -73,7 +88,7 @@ export default function ServiceAreasIndexPage() {
         </Container>
       </Section>
 
-      {/* 2. City grid — CREAM band, white cards, grid-cols-2 sm:grid-cols-3 */}
+      {/* 2. City grid - CREAM band, white cards, grid-cols-2 sm:grid-cols-3 */}
       <Section tone="cream">
         <Container size="wide">
           {/* `immediate`: this grid is ~10 viewports tall, so any scroll-gated
@@ -90,7 +105,8 @@ export default function ServiceAreasIndexPage() {
               const isHomeBase = area.slug === "salem-nh";
               const firstSentence =
                 area.description.split(". ")[0]?.replace(/\[DEMO COPY.*\]/i, "").trim() ?? "";
-              const blurb = firstSentence.endsWith(".") ? firstSentence : `${firstSentence}.`;
+              const sentence = firstSentence.endsWith(".") ? firstSentence : `${firstSentence}.`;
+              const blurb = sentence;
 
               return (
                 <StaggerItem key={area.slug}>
@@ -163,7 +179,7 @@ export default function ServiceAreasIndexPage() {
         </Container>
       </Section>
 
-      {/* 3. Coverage reassurance — DARK band */}
+      {/* 3. Coverage reassurance - DARK band */}
       <Section tone="base">
         <Container size="narrow">
           <FadeUp className="text-center">
@@ -183,7 +199,7 @@ export default function ServiceAreasIndexPage() {
         </Container>
       </Section>
 
-      {/* 4. CTA — CREAM, steps into the dark footer */}
+      {/* 4. CTA - CREAM, steps into the dark footer */}
       <Section tone="cream">
         <Container size="narrow">
           <FadeUp>

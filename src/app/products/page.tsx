@@ -8,6 +8,7 @@ import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /products - Index of the Hunter Douglas product lines.
@@ -24,13 +25,13 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 export const metadata: Metadata = {
   title: "Hunter Douglas Product Lines",
   description:
-    "Custom Hunter Douglas shades, blinds, shutters, and drapery for homes across New England. Measured, designed, and installed by hand by Jim Garrity. Guaranteed for life. Every quote is free.",
+    "Custom Hunter Douglas shades, blinds, shutters, and drapery for homes across New England. Measured, designed, and installed by hand by Jim Garrity. Backed by the Hunter Douglas Limited Lifetime Warranty. Every quote is free.",
 };
 
 const PAGE_EYEBROW = "Hunter Douglas Product Lines · Salem NH · All of New England";
 const PAGE_H1 = "The full Hunter Douglas line, fitted to your windows by hand.";
 const PAGE_SUBHEAD =
-  "Shades, blinds, shutters, and drapery, all custom-built for your exact openings. As an authorized Hunter Douglas Centurion dealer, Jim brings the real samples to your home, holds them in your own light, and gives you an honest installed price at your kitchen table. Explore the lines below, then request a free in-home consultation.";
+  "Shades, blinds, shutters, and drapery, all custom-built for your exact openings. As an Authorized Hunter Douglas Dealer, Jim brings the real samples to your home, holds them in your own light, and gives you an honest installed price at your kitchen table. Explore the lines below, then request a free in-home consultation.";
 
 export default function ProductsIndexPage() {
   const products = siteConfig.productLines;
@@ -75,7 +76,7 @@ export default function ProductsIndexPage() {
         </Container>
       </Section>
 
-      {/* 2. Product grid in a 3-col grid — CREAM band, white photo-led cards */}
+      {/* 2. Product grid in a 3-col grid - CREAM band, white photo-led cards */}
       <Section tone="cream">
         <Container size="wide">
           <FadeUp className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -86,7 +87,15 @@ export default function ProductsIndexPage() {
               Explore the full Hunter Douglas line.
             </h2>
             <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
-              Each line is custom-built for your exact openings and fitted by hand. Start with a category, and Jim will help you find the right piece for the room.
+              Each line is custom-built for your exact openings and fitted by hand. Start with a category, and Jim will help you find the right piece for the room. Most of these lines can be fitted with{" "}
+              <Link
+                href="/services/powerview-automation"
+                className="underline underline-offset-4"
+                style={{ color: "var(--gold-deep)" }}
+              >
+                Hunter Douglas PowerView® Automation
+              </Link>
+              , so the tall and hard-to-reach windows move at the touch of a button.
             </p>
           </FadeUp>
 
@@ -108,7 +117,7 @@ export default function ProductsIndexPage() {
                     <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4 / 3" }}>
                       <Image
                         src={product.imageSrc}
-                        alt={`Custom Hunter Douglas ${product.name.toLowerCase()} by Window Fantasies`}
+                        alt={`Custom Hunter Douglas ${product.name.toLowerCase()}, measured and installed by Window Fantasies`}
                         fill
                         sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
                         loading="lazy"
@@ -149,15 +158,24 @@ export default function ProductsIndexPage() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Hunter Douglas MANDATORY LEGAL COPY. This band names PowerView®
+              Automation and links to it, so HD's exact sentence rides along.
+              tone="light": the band is CREAM, so the component paints itself
+              --muted-on-light (#6E5C3F) rather than the near-white --text-muted
+              that belongs on the dark bands. Verbatim, visible, never removed. */}
+          <FadeUp className="mt-10 flex justify-center">
+            <PowerViewDisclosure tone="light" className="text-center" />
+          </FadeUp>
         </Container>
       </Section>
 
-      {/* 3. Reassurance band — DARK */}
+      {/* 3. Reassurance band - DARK */}
       <Section tone="base">
         <Container size="narrow">
           <FadeUp className="text-center">
             <p className="eyebrow" style={{ color: "var(--primary)" }}>
-              Bring the showroom home
+              Bring the samples home
             </p>
             <h2 className="mt-4 text-h2 font-display" style={{ color: "var(--text-primary)" }}>
               A shade looks one way in a store, another in your light.
@@ -166,11 +184,11 @@ export default function ProductsIndexPage() {
               className="mt-4 font-body mx-auto"
               style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "60ch" }}
             >
-              That is why there is no showroom to drive to. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you exactly how each line reads in the room before you spend a dollar. Every treatment is guaranteed for life.
+              That is why there is no store to drive to. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you exactly how each line reads in the room before you spend a dollar. Every treatment is backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer&apos;s warranty terms.
             </p>
           </FadeUp>
 
-          {/* Honest-cost anchor (shared costAnchor, site.ts) — compact strip
+          {/* Honest-cost anchor (shared costAnchor, site.ts) - compact strip
               inside this band so the page's tone alternation stays intact. */}
           <FadeUp delay={0.1}>
             <div
@@ -191,7 +209,7 @@ export default function ProductsIndexPage() {
         </Container>
       </Section>
 
-      {/* 4. CTA — CREAM, steps into the dark footer */}
+      {/* 4. CTA - CREAM, steps into the dark footer */}
       <Section tone="cream">
         <Container size="narrow">
           <FadeUp>
@@ -207,7 +225,7 @@ export default function ProductsIndexPage() {
                   lineHeight: 1.6,
                 }}
               >
-                That is what the free in-home consultation is for. Jim reads the light and the room, brings the real Hunter Douglas samples to you, and matches the right product to your home. No showroom to drive to, and no pressure.
+                That is what the free in-home consultation is for. Jim reads the light and the room, brings the real Hunter Douglas samples to you, and matches the right product to your home. No store to drive to, and no pressure.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

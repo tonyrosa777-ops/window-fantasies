@@ -1,5 +1,5 @@
 /**
- * ReviewsBand — Band 8 (dark, elevated). Real, on-site reviews (no competitor
+ * ReviewsBand: Band 8 (dark, elevated). Real, on-site reviews (no competitor
  * shows any). Shows real testimonials that carry written text; the aggregate
  * rating and count are computed from the real set only, never fabricated.
  */

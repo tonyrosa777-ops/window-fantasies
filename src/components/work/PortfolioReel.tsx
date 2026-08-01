@@ -5,6 +5,7 @@ import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import type { WorkItem } from "@/data/site";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 import { PortfolioLightbox } from "./PortfolioLightbox";
 
 /**
@@ -14,6 +15,11 @@ import { PortfolioLightbox } from "./PortfolioLightbox";
  * interaction, native drag/swipe. Page scroll is never captured (the
  * no-scroll-jack rule); autoplay is disabled under prefers-reduced-motion.
  * Slides are photo + metadata chips + name only; prose lives in the lightbox.
+ *
+ * Hunter Douglas photo attribution: HD's reviewer confirmed only the FIRST
+ * instance in a product section needs a label, so the credit renders on the
+ * first slide carrying a `credit` and on no other. Crediting every tile is
+ * noise, not extra safety.
  */
 
 const EASE_LUXE = "cubic-bezier(0.22, 1, 0.36, 1)";
@@ -44,6 +50,9 @@ export function PortfolioReel({ items }: { items: WorkItem[] }) {
 
   const [selected, setSelected] = useState(0);
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+
+  // HD first-instance rule: label the first credited photo in this section only.
+  const creditIndex = items.findIndex((item) => item.credit);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -113,6 +122,16 @@ export function PortfolioReel({ items }: { items: WorkItem[] }) {
                 >
                   ⤢
                 </span>
+                {/* HD product label, first credited slide only. The offset
+                    wrapper keeps it clear of the expand cue in the corner. */}
+                {i === creditIndex && item.credit ? (
+                  <span
+                    className="pointer-events-none absolute inset-y-0 left-0"
+                    style={{ right: "3.25rem" }}
+                  >
+                    <HDPhotoCredit credit={item.credit} variant="overlay" />
+                  </span>
+                ) : null}
               </button>
             </div>
           ))}

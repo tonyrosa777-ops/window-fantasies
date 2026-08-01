@@ -1,8 +1,8 @@
 /**
- * TrustSignals — the six proof points, rendered as the BOTTOM STRIP of the hero
+ * TrustSignals: the six proof points, rendered as the BOTTOM STRIP of the hero
  * band (design-system §5 + §11 band 1; Pattern #98 parity fix 2026-07-02: the
  * old standalone dark TrustBar band created a DD seam under the dark hero, so
- * the row merged INTO the hero section — 10 content bands, strict alternation).
+ * the row merged INTO the hero section, 10 content bands, strict alternation).
  * Pre-empts the trust fear immediately below the hero fold, same warm-dark band.
  */
 
@@ -12,8 +12,8 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 
 const SIGNALS: { value: string; label: string }[] = [
   { value: "30+", label: "Years in window fashions" },
-  { value: "Centurion", label: "Top-tier Hunter Douglas dealer" },
-  { value: "Lifetime", label: "Guaranteed for life" },
+  { value: "Authorized", label: "Hunter Douglas Dealer" },
+  { value: "Lifetime", label: "Hunter Douglas Limited Lifetime Warranty" },
   { value: "A+", label: "BBB accredited" },
   { value: "5.0", label: "Rated on Google" },
   { value: "New England", label: "NH, MA, ME, VT, and the Cape" },

@@ -11,6 +11,8 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { PostCard } from "@/components/blog/PostCard";
 import { PostBody, extractH2Headings } from "@/components/blog/PostBody";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /blog/[slug] — Article detail page.
@@ -27,6 +29,26 @@ import { ReadingProgress } from "@/components/blog/ReadingProgress";
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+/**
+ * Hunter Douglas photo attribution (HD compliance).
+ *
+ * These three article headers are licensed Hunter Douglas product photography
+ * (byte-identical to the HD library in /public/images/window-fashions), and HD
+ * requires their photography be clearly labeled with the product it promotes.
+ * Keyed by slug rather than added to SeededPost so the blog data file stays a
+ * pure content source. Only the header photo of each of these posts is HD's;
+ * every other article header is original photography and carries no credit.
+ *
+ * The blind-repair header shows a dark wood blind whose exact HD line is not
+ * recorded anywhere in the data layer, so it takes a category-level credit
+ * rather than a guessed trademark. Guessing a mark is itself a violation.
+ */
+const HD_PHOTO_CREDITS: Record<string, string> = {
+  "hunter-douglas-cost-new-hampshire": "Silhouette® Window Shadings by Hunter Douglas",
+  "are-motorized-shades-worth-it": "Luminette® Privacy Sheers by Hunter Douglas",
+  "hunter-douglas-blind-repair-new-england": "Wood blinds by Hunter Douglas",
+};
 
 export async function generateStaticParams() {
   return seededPosts.map((p) => ({ slug: p.slug }));
@@ -108,6 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
   const related = [...sameCategory, ...fillers].slice(0, RELATED_COUNT);
 
   const tocHeadings = extractH2Headings(post.body);
+  const hdPhotoCredit = HD_PHOTO_CREDITS[post.slug];
 
   return (
     <>
@@ -130,6 +153,9 @@ export default async function BlogPostPage({ params }: Props) {
                 className="object-cover"
                 priority
               />
+              {hdPhotoCredit ? (
+                <HDPhotoCredit credit={hdPhotoCredit} variant="overlay" />
+              ) : null}
             </div>
             <div className="text-center max-w-3xl mx-auto">
               <div className="flex items-center justify-center gap-3 mb-5">
@@ -305,6 +331,22 @@ export default async function BlogPostPage({ params }: Props) {
                 </FadeUp>
               ))}
             </div>
+            {/* ⚠️ HD MANDATORY LEGAL COPY, and it is here for a non-obvious
+                reason. These cards print each related post's EXCERPT, and one of
+                the excerpts promotes the PowerView scheduling benefit ("control
+                your shades from your phone, your voice, or a schedule"). That
+                excerpt therefore renders on articles whose own body never
+                mentions motorization, which means the scheduling claim reaches
+                the page without HD's required footnote.
+
+                Rather than bolting the footnote onto six unrelated articles, it
+                renders once here, gated on whether a card actually carries the
+                claim. tone="light" because this band is cream. */}
+            {related.some((p) => /schedule|automatic/i.test(p.excerpt)) && (
+              <div className="mt-8 flex justify-center">
+                <PowerViewDisclosure tone="light" className="text-center" />
+              </div>
+            )}
           </Container>
         </Section>
       ) : null}

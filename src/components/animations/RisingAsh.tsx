@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * RisingAsh — ambient ember/ash field for plain-dark (--ink) surfaces.
+ * RisingAsh: ambient ember/ash field for plain-dark (--ink) surfaces.
  *
  * ~22 gold-tinted 2-4px particles rise and fade on a pure CSS keyframe
  * (transform + opacity ONLY, GPU-cheap). Staggered NEGATIVE animation

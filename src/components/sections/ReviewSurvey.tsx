@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/site";
 import { Button } from "@/components/ui/Button";
 
 /**
- * ReviewSurvey — the interactive star survey on /testimonials.
+ * ReviewSurvey: the interactive star survey on /testimonials.
  *
  * Flow: pick a rating, then branch.
  *   1-3 stars -> a private note that lands only in Jim's inbox.

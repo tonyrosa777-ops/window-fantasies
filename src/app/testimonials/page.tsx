@@ -8,6 +8,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { StarRating } from "@/components/ui/StarRating";
 import { TestimonialsClient } from "./TestimonialsClient";
 import { ReviewSurvey } from "@/components/sections/ReviewSurvey";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 import { buildTestimonialsSchema, jsonLdString } from "@/lib/schema";
 
 /**
@@ -18,6 +19,17 @@ import { buildTestimonialsSchema, jsonLdString } from "@/lib/schema";
  * dashes (CLAUDE.md §13). Schema (Review + AggregateRating) emitted from the
  * real set. Some reviews are rating-only, rendered as rating cards, never
  * fabricated.
+ *
+ * ⚠️ COMPLIANCE. This page had ZERO visible product labels on 2026-07-31.
+ * Hunter Douglas requires photography showing their product be "clearly labeled
+ * with the specific product it was designed to promote", first instance per
+ * section. The header photo shows real-wood horizontal blinds, so it carries a
+ * <HDPhotoCredit />. The label is the BARE PRODUCT NAME, not "by Hunter
+ * Douglas": this is the site's own still that DEPICTS the product, not HD's
+ * licensed photography (that lives in /images/window-fashions/), and captioning
+ * it "by Hunter Douglas" would misattribute authorship to HD. HD's own second
+ * worked example is exactly this form, "Parkland® Wood Blinds" under a photo.
+ * No other section on this page shows a window treatment, so no other label.
  */
 
 const reviews = siteConfig.testimonials.filter((t) => t.isReal);
@@ -44,7 +56,7 @@ export default function TestimonialsPage() {
       />
 
       {/* 1. Hero + aggregate rating */}
-      <Section tone="base" bgImage="/images/headers/testimonials.jpg" bgImageAlt="A warm family living room with wood blinds in afternoon light." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/testimonials.jpg" bgImageAlt="Hunter Douglas Parkland® Wood Blinds filtering afternoon light across a warm New England family room, measured and installed by Window Fantasies." className="pt-32 sm:pt-36 lg:pt-40">
         <Container size="narrow">
           <div className="text-center flex flex-col items-center gap-6">
             <FadeUp>
@@ -84,6 +96,11 @@ export default function TestimonialsPage() {
             </FadeUp>
           </div>
         </Container>
+        {/* Hunter Douglas product label for the header photograph. Overlay, so
+            it sits on its own dark scrim ON the photo it labels and stays
+            legible over any part of the image. First (and only) instance on
+            this page, per HD's first-instance-per-section rule. */}
+        <HDPhotoCredit credit="Hunter Douglas Parkland® Wood Blinds" variant="overlay" />
       </Section>
 
       {/* 2. Reviews masonry — CREAM band, white cards */}
@@ -149,7 +166,7 @@ export default function TestimonialsPage() {
                 lineHeight: 1.6,
               }}
             >
-              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, measures your windows, and gives you an honest installed price at your kitchen table. Every job is guaranteed for life.
+              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, measures your windows, and gives you an honest installed price at your kitchen table. He stands behind every job.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Button href="/request-a-consultation" variant="primary" size="lg">

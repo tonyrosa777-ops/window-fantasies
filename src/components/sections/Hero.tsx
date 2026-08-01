@@ -4,29 +4,67 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { siteConfig } from "@/data/site";
 import { TrustSignals } from "@/components/sections/TrustBar";
+import { HunterDouglasLogo } from "@/components/brand/HunterDouglasLogo";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 
 /* ═══════════════════════════════════════════════════
    Hero — Window Fantasies (Band 1).
 
-   PHOTO-RICH PLACEHOLDER hero. A real Hunter Douglas install photo is the
-   full-bleed background (p04, with p10/p11 as alternates), under a dual-axis
-   dark gradient scrim. H1 = the LOCKED tagline with .hero-shimmer. Subhead =
-   the Centurion / guaranteed-for-life trust line. Primary CTA goes to
-   /request-a-consultation, secondary CTA goes to /quiz (both labels + hrefs
-   render generically from siteConfig.hero). Above-the-fold trust chips.
+   Full-bleed stitched cinematic movie hero over a real Hunter Douglas install
+   photo, under a dual-axis dark gradient scrim. H1 = the LOCKED tagline with
+   .hero-shimmer. Primary CTA goes to /request-a-consultation, secondary CTA
+   goes to /quiz (both labels + hrefs render generically from siteConfig.hero).
 
-   TODO Part F: swap in /videos/hero-loop.mp4 movie hero.
-   Part F replaces the img background with the stitched cinematic movie hero
-   (video + webm + webp poster, reduced-motion falls back to this same photo).
+   ⚠️ THIS BAND CARRIES TWO HUNTER DOUGLAS COMPLIANCE REQUIREMENTS.
+   HD's 2026-07-31 waiver review failed this site on both. Do not remove either.
+
+   1. THE HUNTER DOUGLAS BRAND LOGO, ABOVE THE FOLD.
+      HD's criterion: "The Hunter Douglas Brand logo must be featured on the
+      homepage above the fold and separate from the dealer's logo. It must be
+      current and prominent." Their reviewer added: "where it can be seen upon
+      first view without having to scroll."
+      It sits TOP-RIGHT of the hero, diagonally opposite the Window Fantasies
+      wordmark in the fixed nav (top-left) — that diagonal IS the "separate from
+      the dealer's logo" requirement, so do not move the two together. It must
+      remain visible without scrolling at EVERY viewport, including the short
+      1536x720 scaled-laptop gate. It is `priority` because a logo that lazy-loads
+      below the fold fails the criterion as surely as a missing one.
+
+   2. PHOTO ATTRIBUTION ON THE HERO IMAGE.
+      HD requires their product photography be "clearly labeled with the specific
+      product it was designed to promote." The hero photo is a licensed HD image,
+      so it carries an on-photo credit. HD expressly permits this overlay: "text
+      boxes with acceptable information may slightly overlap the Hunter Douglas
+      image." This is the FIRST instance on the page, which is what HD requires.
    ═══════════════════════════════════════════════════ */
 
 const TRUST_CHIPS = [
   "30+ years",
-  "Centurion dealer",
-  "Guaranteed for life",
+  "Authorized Hunter Douglas Dealer",
+  "Limited Lifetime Warranty",
   "BBB A+",
   "Retired firefighter owner",
 ];
+
+/**
+ * Credit for the Hunter Douglas hero imagery.
+ *
+ * ⚠️ Deliberately CATEGORY-level, not a named product line, for two reasons:
+ *
+ * 1. The hero is a stitched three-clip loop (shutters, then sheers, then
+ *    drapes). No single product name is truthful across the whole thing.
+ * 2. The poster frame shows real-wood plantation shutters on a bypass track.
+ *    Hunter Douglas makes those as Heritance® Hardwood Shutters (real hardwood)
+ *    AND NewStyle® Hybrid Shutters (wood composite, made to read as hardwood),
+ *    and the two are not reliably distinguishable from a photograph.
+ *
+ * Naming the wrong line would be its own trademark violation, on the exact
+ * criterion HD flagged. So this credits Hunter Douglas as the manufacturer and
+ * describes the product honestly, inventing nothing. Upgrade it to the specific
+ * line only once Hunter Douglas confirms which one this asset shows. Same
+ * discipline as Carole Fabrics in src/data/hunterDouglas.ts.
+ */
+const HERO_PHOTO_CREDIT = "Hunter Douglas hardwood shutters";
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -82,10 +120,61 @@ export default function Hero() {
       </video>
       <img
         src="/images/hero-poster.webp"
-        alt="A premium New England living room dressed in Hunter Douglas Silhouette sheer shades, soft golden-hour light diffusing through the fabric."
+        alt="A premium New England living room dressed in Hunter Douglas hardwood shutters, warm golden-hour light raking through the open louvers."
         className="absolute inset-0 w-full h-full object-cover z-0 hidden motion-reduce:block"
         fetchPriority="high"
       />
+
+      {/* ⚠️ HD COMPLIANCE — brand logo, above the fold, separate from the dealer
+          wordmark.
+
+          TABLET / DESKTOP (sm+) ONLY. Absolutely positioned at the hero's
+          top-right, diagonally opposite the Window Fantasies wordmark in the nav.
+          That diagonal IS the "separate from the dealer's logo" requirement. The
+          `top` offset clears the fixed nav (h-20 / md:h-24 / lg:h-28).
+
+          MOBILE (<sm) is handled separately, IN FLOW at the top of the copy
+          column below. This absolute placement overlapped the H1 at 390px, and
+          a logo sitting on top of the headline is not "prominent", it is a
+          layout bug. In-flow cannot overlap anything and is still the first
+          thing a visitor sees.
+
+          The plate exists because HD Gray #5B6770 is unreadable on --ink and
+          recolouring their art is a compliance violation. */}
+      <motion.div
+        className="hidden sm:block absolute z-20 right-6 lg:right-12"
+        style={{ top: "calc(clamp(5rem, 8svh, 7rem) + clamp(0.75rem, 2svh, 1.5rem))" }}
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.15 }}
+      >
+        <span className="flex flex-col items-center gap-1.5">
+          <HunterDouglasLogo
+            variant="horizontal"
+            width={200}
+            plate
+            priority
+            className="block"
+          />
+          {/* The hero background is a moving video, so this line can land on a
+              bright frame at any moment. It carries its own scrim rather than
+              relying on the band gradient, which varies across the loop. */}
+          <span
+            className="font-mono uppercase tracking-widest text-center rounded-full"
+            style={{
+              fontSize: "0.625rem",
+              color: "var(--text-primary)",
+              letterSpacing: "0.14em",
+              padding: "0.25rem 0.6rem",
+              background: "rgba(7, 7, 6, 0.62)",
+              backdropFilter: "blur(3px)",
+            }}
+          >
+            Authorized Dealer
+          </span>
+        </span>
+      </motion.div>
+
 
       {/* Layer 2: Dual-axis dark gradient scrim + faint gold glow behind the headline (z-5). */}
       <div
@@ -102,6 +191,14 @@ export default function Hero() {
       {/* Layer 3: Content, lower-left — 100svh centering lives on THIS wrapper so the
           trust strip below stays inside the same band without moving the fold (Error #133 gates). */}
       <div className="relative min-h-[100svh] flex items-center">
+      {/* ⚠️ HD COMPLIANCE — attribution for the licensed Hunter Douglas hero
+          photograph. Anchored INSIDE the 100svh wrapper, not to the outer
+          <section>: the section also contains the trust-signal strip, so a
+          credit anchored there lands below the fold, away from the photo it
+          labels. HD requires their photography be labeled with the specific
+          product, and a label the visitor never sees alongside the image does
+          not satisfy that. */}
+      <HDPhotoCredit credit={HERO_PHOTO_CREDIT} variant="overlay" />
       <div
         ref={ref}
         className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 w-full"
@@ -111,6 +208,35 @@ export default function Hero() {
         }}
       >
         <div className="max-w-2xl flex flex-col" style={{ gap: "clamp(0.85rem, 2.4svh, 1.75rem)" }}>
+          {/* ⚠️ HD COMPLIANCE — brand logo, MOBILE (<sm) only.
+              In flow at the head of the copy column, so it can never overlap the
+              H1 the way an absolutely-positioned lockup did at 390px. Uses HD's
+              approved horizontal art at 150px, comfortably above their 135px
+              on-screen minimum. Left-aligned to the copy column, while the
+              Window Fantasies wordmark sits in the nav above it, keeping the two
+              marks visually separate. */}
+          <motion.div
+            className="sm:hidden flex items-center gap-2.5"
+            initial={{ opacity: 0, y: -6 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.05 }}
+          >
+            <HunterDouglasLogo variant="horizontal" width={150} plate priority className="block" />
+            <span
+              className="font-mono uppercase tracking-widest rounded-full whitespace-nowrap"
+              style={{
+                fontSize: "0.5625rem",
+                color: "var(--text-primary)",
+                letterSpacing: "0.12em",
+                padding: "0.25rem 0.55rem",
+                background: "rgba(7, 7, 6, 0.62)",
+                backdropFilter: "blur(3px)",
+              }}
+            >
+              Authorized Dealer
+            </span>
+          </motion.div>
+
           {eyebrow && (
             <motion.p
               className="eyebrow"

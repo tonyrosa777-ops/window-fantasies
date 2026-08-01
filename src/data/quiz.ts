@@ -11,7 +11,13 @@
  * Every option `detail` mirrors the visitor's situation back to them; the
  * mirroring does the selling. ZERO em dashes in any string (CLAUDE.md §13).
  * Public phone only: (603) 891-5755.
+ *
+ * HD COMPLIANCE: every Hunter Douglas mark below carries its own symbol plus
+ * its category descriptor, and warranty language uses the one permitted name.
+ * See src/data/hunterDouglas.ts before editing any product or warranty string.
  */
+
+import { POWERVIEW_APP_DISCLOSURE } from "@/data/hunterDouglas";
 
 export type QuizType =
   | "light-sculptor"
@@ -101,7 +107,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       {
         label: "Honestly, something I own just broke",
         detail:
-          "Take a breath. If it is Hunter Douglas, the repair is often free under the lifetime warranty, even if you bought it somewhere else. Keep going, your result ends with the fix.",
+          "Take a breath. If it is Hunter Douglas, a covered repair itself costs you nothing under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, even if you bought it somewhere else. Keep going, your result ends with the fix.",
         type: "repair",
       },
     ],
@@ -192,7 +198,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       {
         label: "That I buy it once, and it is built to outlast me",
         detail:
-          "You will pay for quality, you just refuse to pay twice. A lifetime guarantee is not a perk to you, it is the point.",
+          "You will pay for quality, you just refuse to pay twice. The Hunter Douglas Limited Lifetime Warranty is not a perk to you, it is the point.",
         type: "value-craftsman",
       },
     ],
@@ -243,7 +249,7 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
       "Jim fits rooms like yours every week. He brings the real fabric to your windows and holds it up in your own afternoon light, because a sheer that glows in a showroom can go flat in your kitchen. You will see the difference before you spend a dollar.",
     ],
     recommendation: {
-      name: "Silhouette and Luminette Sheers",
+      name: "Silhouette® Window Shadings and Luminette® Privacy Sheers",
       reason:
         "Soft fabric vanes floating between two sheers turn hard sun into an even glow, with daytime privacy that never costs you the view. It is the signature Hunter Douglas look, and it is built for rooms like yours.",
       href: "/products/shades",
@@ -256,14 +262,15 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     headline: "You want the house to handle it, so you never have to.",
     body: [
       "Schedules, scenes, a phone that runs the whole wall of glass. You are not chasing gadgets, you are done doing a daily chore a motor should be doing. Tall windows, hard-to-reach windows, twenty windows, it is all the same answer.",
-      "Hunter Douglas PowerView is motorization done right, and Jim sets up every bit of it. Your shades move on a schedule, react to the sun, answer your voice, and take orders from a beach in Florida. He configures it, teaches you to use it, and answers the phone when you have a question in year five.",
+      "Hunter Douglas PowerView® Automation is automation done right, and Jim sets up every bit of it. Your shades move on a schedule, react to the sun, answer your voice, and take orders from a beach in Florida. He configures it, teaches you to use it, and answers the phone when you have a question in year five.",
+      POWERVIEW_APP_DISCLOSURE,
     ],
     recommendation: {
-      name: "PowerView Motorization",
+      name: "PowerView® Automation",
       reason:
         "Control from your phone, your voice, or a schedule that runs itself. Ideal for tall and hard-to-reach windows, and for anyone who would rather live in the house than operate it.",
       href: "/services/powerview-automation",
-      linkLabel: "See PowerView",
+      linkLabel: "See PowerView®",
     },
   },
   "sleep-sanctuary": {
@@ -272,10 +279,10 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     headline: "You protect the sleep in this house.",
     body: [
       "A bedroom that never gets truly dark. A night shift that needs the noon sun gone. A nursery nap that a single sunbeam can end. You are not being fussy, you are guarding the one thing a home owes everyone in it, real rest.",
-      "True blackout exists, and most people have never seen it. Duette honeycomb shades with LightLock seal the light gap at the edges, the part ordinary blackout shades leak. Ask Jim to show you at the consultation, in your own bedroom window, so you can see actual dark.",
+      "True blackout exists, and most people have never seen it. Duette® Honeycomb Shades with LightLock® seal the light gap at the edges, the part ordinary blackout shades leak. Ask Jim to show you at the consultation, in your own bedroom window, so you can see actual dark.",
     ],
     recommendation: {
-      name: "Duette Honeycomb with LightLock",
+      name: "Duette® Honeycomb Shades with LightLock®",
       reason:
         "Cellular shades with side channels that seal out light at the edges, where every other shade leaks. True blackout for bedrooms, nurseries, and day sleepers, with energy savings all year.",
       href: "/products/shades",
@@ -288,7 +295,7 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     headline: "You would rather pay for it once than fight it forever.",
     body: [
       "Who knew shades could cost so much? You did your homework, so you already know the answer, and you also know what replacing cheap blinds every five years adds up to. You are not price-shy, you are waste-shy. There is a difference, and Jim respects it.",
-      "Hunter Douglas is guaranteed for life, and Jim measures it, installs it, and services it himself. The consultation is free, and the number he gives you at your kitchen table is the real installed price, with your old blinds hauled away included. Straight answers before you spend a dollar, and a person who picks up after.",
+      "Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. Jim measures it, installs it, and services it himself, and Jim stands behind every install he does. The consultation is free, and the number he gives you at your kitchen table is the real installed price, with your old blinds hauled away included. Straight answers before you spend a dollar, and a person who picks up after.",
     ],
     recommendation: {
       name: "The Free In-Home Consultation",
@@ -303,13 +310,13 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     name: "The Fix Comes First",
     headline: "Something broke. Here is the good news.",
     body: [
-      "Hunter Douglas products are guaranteed for life, so the repair itself is often free under warranty. That holds even if you bought the blind somewhere else, or from a shop that closed years ago. A broken cord or a tired motor is not a reason to throw away a shade you love.",
+      "Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, so a covered repair itself costs you nothing. That holds even if you bought the blind somewhere else, or from a shop that closed years ago. A broken cord or a tired motor is not a reason to throw away a shade you love.",
       "You have two honest paths. Drive the blind to Goedecke Design in Bedford, New Hampshire, the authorized service center, and pay nothing. Or have Jim take it down, deliver it, and reinstall it for a flat service fee he tells you upfront, before anything happens.",
     ],
     recommendation: {
       name: "Blind and Shade Repairs",
       reason:
-        "Cords, mechanisms, motors, and fabric, handled through the authorized Hunter Douglas service center. Often free under the lifetime warranty, and Jim helps even if you bought it elsewhere.",
+        "Cords, mechanisms, motors, and fabric, handled through the authorized service center. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, and Jim helps even if you bought it elsewhere.",
       href: "/services/blind-and-shade-repairs",
       linkLabel: "See How Repairs Work",
     },

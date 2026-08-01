@@ -1,5 +1,5 @@
 /**
- * FinalCTA — Band 11 (light, cream). The closing consultation CTA. Light band so
+ * FinalCTA: Band 11 (light, cream). The closing consultation CTA. Light band so
  * it steps tone into the dark footer. H1 uses .hero-shimmer-ink (gold sweep on
  * warm ink) since this sits on a light background. Asymmetric split: copy left,
  * twilight "come home to it" photo right (design-symmetry rule F, items-center);
@@ -10,8 +10,22 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { siteConfig } from "@/data/site";
 
+/**
+ * ⚠️ COMPLIANCE NOTE. "Hunter Douglas Showroom" is an expressly prohibited
+ * statement in HD dealer advertising, and a headline offering "the showroom"
+ * directly above a line about Hunter Douglas samples reads as exactly that.
+ * The headline is data (siteConfig.cta.h1) and now correctly says "samples".
+ *
+ * A render-time guard that rewrote the string on the fly was removed on purpose.
+ * Silently correcting bad data hides it: the page looks fine while site.ts still
+ * ships the violation, and the next surface to read that same field renders it
+ * anyway. Regression protection belongs in `npm run check:hd`, which fails the
+ * BUILD on the banned phrase and names the file, rather than in a component that
+ * quietly papers over it.
+ */
 export function FinalCTA() {
   const { cta, business } = siteConfig;
+  const headline = cta.h1;
 
   return (
     <section id="final-cta" className="relative py-20 md:py-28" style={{ background: "var(--bg-cream)" }}>
@@ -19,7 +33,7 @@ export function FinalCTA() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="text-center lg:text-left flex flex-col items-center lg:items-start gap-7">
             <h2 className="hero-shimmer-ink font-display text-h1" style={{ lineHeight: 1.12 }}>
-              {cta.h1}
+              {headline}
             </h2>
             <p className="font-body text-base md:text-lg max-w-prose" style={{ color: "var(--muted-on-light)", lineHeight: 1.6 }}>
               {cta.subhead}

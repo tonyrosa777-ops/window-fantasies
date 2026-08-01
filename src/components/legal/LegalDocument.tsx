@@ -5,7 +5,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import type { LegalDoc } from "@/data/site";
 
 /**
- * LegalDocument — shared renderer for /privacy and /terms.
+ * LegalDocument: shared renderer for /privacy and /terms.
  *
  * Long-form legal text: per the Homepage Section Architecture Rule
  * (Background depth & motion), legal pages take the static-gradient

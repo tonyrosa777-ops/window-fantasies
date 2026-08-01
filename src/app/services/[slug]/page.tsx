@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 import { JsonLd } from "@/components/JsonLd";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 import { buildServiceSchema } from "@/lib/schema";
 
 /**
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const audienceMap: Record<string, string[]> = {
   "in-home-consultation": [
     "Homeowners who want to see real Hunter Douglas samples in their own light before spending a dollar",
-    "Busy families who would rather have the showroom come to them than drive to a store",
+    "Busy families who would rather have Jim bring the samples to them than drive to a store",
     "Anyone comparing shades, blinds, shutters, and drapery and wanting honest guidance on what fits",
     "First-time buyers who want to be educated, not sold, and told the truth about cost",
   ],
@@ -62,7 +63,7 @@ const audienceMap: Record<string, string[]> = {
     "Homeowners ordering custom Hunter Douglas built to their exact openings",
     "People who want one accountable person from measure to install, no handoffs",
     "Anyone with tricky or oversized windows that demand a precise professional measurement",
-    "Buyers who want a clean, certified install and their old treatments hauled away",
+    "Buyers who want a clean installation, done by hand, and their old treatments hauled away",
   ],
   "installs-and-repairs": [
     "Homeowners with a Hunter Douglas treatment that needs a warranty repair",
@@ -74,7 +75,7 @@ const audienceMap: Record<string, string[]> = {
     "Homeowners with a broken cord, tired mechanism, or a motor that stopped responding",
     "People deciding honestly between repairing a treatment and replacing it",
     "Anyone with a Hunter Douglas product bought elsewhere that still deserves a fix",
-    "Buyers who want free warranty repairs handled without the runaround",
+    "Buyers who want a covered repair handled without the runaround",
   ],
   "powerview-automation": [
     "Homeowners who want to control shades from a phone, their voice, or a wall remote",
@@ -88,9 +89,9 @@ const audienceMap: Record<string, string[]> = {
 const processSteps: Record<string, { title: string; body: string }[]> = {
   "in-home-consultation": [
     { title: "Request your free visit", body: "Tell Jim your town, your rooms, and roughly what you are thinking. The consultation is always free and carries no obligation." },
-    { title: "The showroom comes to you", body: "Jim arrives with the real Hunter Douglas samples and holds them in your own windows, so you see every color and fabric in your light." },
+    { title: "The samples come to you", body: "Jim arrives with the real Hunter Douglas samples and holds them in your own windows, so you see every color and fabric in your light." },
     { title: "Measure and educate", body: "Jim measures every opening himself and walks you through what fits the room, the light, and how you live. He sells you what you deserve." },
-    { title: "Honest installed price", body: "You get a real, installed price at your kitchen table, removal of your old treatments included. No pressure, guaranteed for life." },
+    { title: "Honest installed price", body: "You get a real, installed price at your kitchen table, removal of your old treatments included. No pressure, and Jim stands behind every install he does." },
   ],
   "interior-design": [
     { title: "Read the room", body: "Jim looks at how the light moves through the space, the style of the home, and how you actually use the room." },
@@ -106,27 +107,27 @@ const processSteps: Record<string, { title: string; body: string }[]> = {
   ],
   "measuring-and-installation": [
     { title: "Precise measurement by Jim", body: "Custom Hunter Douglas is built to your exact opening, so Jim takes every measurement personally. It has to be right the first time." },
-    { title: "Built for your windows", body: "Your treatments are fabricated to your specific openings at the Hunter Douglas factory. Jim confirms the products and options with you." },
-    { title: "Clean, certified install", body: "Jim installs the finished product himself. No subcontractors, no handoffs, one person accountable from measure to install." },
-    { title: "Old treatments removed", body: "Jim removes and disposes of your old blinds as part of the job, and every install is guaranteed for life." },
+    { title: "Built for your windows", body: "Your treatments are fabricated to your specific openings by Hunter Douglas. Jim confirms the products and options with you." },
+    { title: "Clean installation, done by hand", body: "Jim installs the finished product himself. No subcontractors, no handoffs, one person accountable from measure to install." },
+    { title: "Old treatments removed", body: "Jim removes and disposes of your old blinds as part of the job. Jim stands behind every install he does." },
   ],
   "installs-and-repairs": [
-    { title: "Tell Jim what broke", body: "Describe the treatment and the problem. Because Hunter Douglas is guaranteed for life, the repair itself is often free under warranty." },
+    { title: "Tell Jim what broke", body: "Describe the treatment and the problem. Because Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, a covered repair itself costs you nothing." },
     { title: "Choose your path", body: "Drive the blind to the authorized service center, Goedecke Design in Bedford NH, yourself at no cost, or have Jim handle the whole thing." },
     { title: "Service and reinstall", body: "If Jim handles it, he takes the treatment down, delivers it, and reinstalls it. The flat service fee is disclosed upfront, before anything happens." },
-    { title: "Back to guaranteed for life", body: "Your repaired treatment goes right back under the Hunter Douglas lifetime guarantee. You call Jim, and he answers." },
+    { title: "Back under warranty", body: "Your repaired treatment goes right back under the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. You call Jim, and he answers." },
   ],
   "blind-and-shade-repairs": [
     { title: "Describe the problem", body: "Cord, mechanism, motor, or fabric. Tell Jim what happened, even if you bought it elsewhere or the original shop is long gone." },
     { title: "Repair versus replace", body: "Jim gives you honest guidance on whether a fix makes sense or a replacement is the smarter move. No pushing you toward the expensive option." },
-    { title: "Free under warranty", body: "Because the products are guaranteed for life, most Hunter Douglas repairs are free under warranty. Jim handles the service center relationship." },
+    { title: "Covered under warranty", body: "Because the products carry the Hunter Douglas Limited Lifetime Warranty, a covered repair itself costs you nothing. Jim handles the service center relationship." },
     { title: "Pickup and reinstall option", body: "Want it fully handled? Jim picks it up, gets it fixed, and reinstalls it for a flat service fee, disclosed to you upfront." },
   ],
   "powerview-automation": [
     { title: "Plan the automation", body: "Jim looks at which windows to motorize and how you want to control them, by phone, voice, remote, or an automatic schedule." },
-    { title: "Install and configure", body: "Jim installs the PowerView motorization and sets up the schedules, scenes, and app so everything works the day he leaves." },
+    { title: "Install and configure", body: "Jim installs Hunter Douglas PowerView® Automation and sets up the schedules, scenes, and app so everything works the day he leaves." },
     { title: "Control from anywhere", body: "Adjust your shades from the couch or from Florida. Snowbirds run their New England shades from out of state, all season." },
-    { title: "Learn to use it", body: "Jim teaches you how to run it, and it is all guaranteed for life. Think of it as sunglasses for your windows, on a schedule." },
+    { title: "Learn to use it", body: "Jim teaches you how to run it, and it is all backed by the Hunter Douglas Limited Lifetime Warranty. Think of it as sunglasses for your windows, on a schedule." },
   ],
 };
 
@@ -141,14 +142,29 @@ export default async function ServicePage({ params }: Props) {
   // Pull up to 5 FAQs from the global FAQ list for this service.
   // Repair pages exclude the purchase-price FAQs (Cost / Value): a repair
   // customer is not buying new treatments, and the $1,600 purchase anchor
-  // reads as a scare on a page whose whole message is "often free under
-  // warranty." The Repairs FAQ leads instead.
+  // reads as a scare on a page whose whole message is "the repair is often
+  // covered." The Repairs FAQ leads instead.
   const isRepairPage = slug === "blind-and-shade-repairs" || slug === "installs-and-repairs";
   const serviceFaqs = (
     isRepairPage
       ? siteConfig.faq.filter((f) => f.category !== "Cost" && f.category !== "Value")
       : siteConfig.faq
   ).slice(0, 5);
+
+  // ⚠️ HD COMPLIANCE. Hunter Douglas requires the PowerView® App footnote wherever
+  // the SCHEDULING benefit is promoted. On this template that can happen two ways:
+  // the service itself is PowerView (svc.legalDisclosure is set), OR the shared
+  // FAQ block renders the smart-home answer, which promises automatic schedules
+  // on service pages that have nothing to do with motorization.
+  //
+  // This is DERIVED from the copy actually being rendered rather than hardcoded
+  // to a slug or an array index, because `serviceFaqs` is a .slice(0, 5) of a
+  // shared array. Reordering site.ts FAQs would silently push the smart-home
+  // answer in or out of that slice, and a required legal footnote must not
+  // depend on where an unrelated question happens to sit in a list.
+  const promotesScheduling =
+    Boolean(svc.legalDisclosure) ||
+    serviceFaqs.some((f) => /schedule|automatic/i.test(f.a));
 
   // PowerView sits in the primary nav as a top-level destination, so its page
   // header follows the interior-page standard: a full-bleed photo under the
@@ -226,6 +242,19 @@ export default async function ServicePage({ params }: Props) {
                       </a>
                     </p>
                   )}
+                  {/* Hunter Douglas MANDATORY LEGAL COPY. Any creative that
+                      promotes the PowerView® scheduling benefit must carry HD's
+                      exact sentence, so it sits directly under the body copy that
+                      makes the scheduling promise. Gated on `promotesScheduling`,
+                      which is derived from the copy actually rendered (see above)
+                      rather than from this page's slug, because the shared FAQ
+                      block can put a scheduling promise on a service page that has
+                      nothing to do with motorization. Render verbatim: never
+                      paraphrase it, fold it into surrounding prose, hide it, or
+                      aria-hide it. This band is dark, which is where the
+                      component's default colour is legible; if it ever moves to a
+                      cream band, pass tone="light". */}
+                  {promotesScheduling && <PowerViewDisclosure tone="dark" />}
                 </div>
               </FadeUp>
               <FadeUp delay={0.4}>
@@ -246,7 +275,7 @@ export default async function ServicePage({ params }: Props) {
                   src={svc.imageSrc}
                   alt={
                     svc.imageAlt ??
-                    `${svc.name} by Window Fantasies, custom Hunter Douglas window treatments`
+                    `${svc.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
                   }
                   width={svc.imageW}
                   height={svc.imageH}
@@ -261,7 +290,7 @@ export default async function ServicePage({ params }: Props) {
         </Container>
       </Section>
 
-      {/* 2. What you get (features list) — CREAM band, white cards */}
+      {/* 2. What you get (features list) - CREAM band, white cards */}
       <Section tone="cream">
         <Container>
           <FadeUp>
@@ -352,7 +381,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       )}
 
-      {/* 4. How it works (4-step) — CREAM band, white cards */}
+      {/* 4. How it works (4-step) - CREAM band, white cards */}
       {steps.length > 0 && (
         <Section tone="cream">
           <Container>
@@ -399,7 +428,7 @@ export default async function ServicePage({ params }: Props) {
         </Section>
       )}
 
-      {/* 5. FAQ — DARK band */}
+      {/* 5. FAQ - DARK band */}
       <Section tone="base">
         <Container>
           <FadeUp>
@@ -448,7 +477,7 @@ export default async function ServicePage({ params }: Props) {
         </Container>
       </Section>
 
-      {/* 6. Final CTA — CREAM, steps into the dark footer */}
+      {/* 6. Final CTA - CREAM, steps into the dark footer */}
       <Section tone="cream">
         <Container size="narrow">
           <FadeUp>
@@ -457,13 +486,13 @@ export default async function ServicePage({ params }: Props) {
                 className="text-h2 font-display"
                 style={{ color: "var(--text-on-light)" }}
               >
-                Let Jim bring the showroom to you.
+                Let Jim bring the samples to you.
               </h2>
               <p
                 className="mt-6 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.65 }}
               >
-                Request a free in-home consultation. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no showroom to drive to, guaranteed for life.
+                Request a free in-home consultation. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to. Jim stands behind every install he does.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

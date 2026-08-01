@@ -1,8 +1,9 @@
 /**
- * JimStoryTeaser — Band 6 (dark, base). The category-unique asset: a named,
- * real, local human. Firefighter -> Centurion dealer. Photo + teaser + link to
- * /about. (No owner headshot in the hero, per design-system; his face and story
- * live here and on About. Real Jim photo — teaser preview of the About page.)
+ * JimStoryTeaser: Band 6 (dark, base). The category-unique asset: a named,
+ * real, local human. Firefighter -> Authorized Hunter Douglas Dealer. Photo +
+ * teaser + link to /about. (No owner headshot in the hero, per design-system;
+ * his face and story live here and on About. Real Jim photo, a teaser preview
+ * of the About page.)
  */
 
 import Image from "next/image";
@@ -44,7 +45,7 @@ export function JimStoryTeaser() {
               A retired firefighter who treats your home like the only call that matters.
             </h2>
             <p className="font-body text-base md:text-lg max-w-prose" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-              Jim Garrity spent a career as a fire lieutenant, then more than thirty years in window fashions. He owns Window Fantasies and holds Hunter Douglas's top Centurion dealer tier. He measures, designs, and installs every treatment himself.
+              Jim Garrity spent a career as a fire lieutenant, then more than thirty years in window fashions. He owns Window Fantasies and is an Authorized Hunter Douglas Dealer. He measures, designs, and installs every treatment himself.
             </p>
             <p className="font-body text-base md:text-lg max-w-prose" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
               Whether you live in a double-wide or a Boston tower, you get the same Jim: the same honesty, the same craft, and the same promise. You call, and he answers.

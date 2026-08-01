@@ -8,6 +8,7 @@ import { Eyebrow } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /services - Index of the window-treatment services.
@@ -17,7 +18,7 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: `Free in-home consultations, interior design guidance, measuring and certified installation, repairs, and PowerView motorization. Custom Hunter Douglas window treatments from Jim Garrity, with ${siteConfig.business.yearsInBusiness} years in window fashions across New England.`,
+  description: `Free in-home consultations, interior design guidance, measuring and installation by hand, repairs, and Hunter Douglas PowerView® Automation. Custom Hunter Douglas window treatments from Jim Garrity, with ${siteConfig.business.yearsInBusiness} years in window fashions across New England.`,
 };
 
 export default function ServicesPage() {
@@ -58,13 +59,13 @@ export default function ServicesPage() {
                 maxWidth: "65ch",
               }}
             >
-              Everything from the first free consultation to the final install, handled by Jim himself. He brings the Hunter Douglas showroom to your home, reads the light and the room, measures every window, installs it cleanly, and services it for life. No showroom to drive to, no sales team, no subcontractors. One person, all of New England.
+              Everything from the first free consultation to the final install, handled by Jim himself. He brings the real Hunter Douglas samples to your home, reads the light and the room, measures every window, and installs it cleanly. Jim stands behind every install he does. No store to drive to, no sales team, no subcontractors. One person, all of New England.
             </p>
           </FadeUp>
         </Container>
       </Section>
 
-      {/* 2. Service grid: featured + 2x2 — CREAM band, white cards */}
+      {/* 2. Service grid: featured + 2x2 - CREAM band, white cards */}
       <Section tone="cream">
         <Container>
           <StaggerContainer staggerDelay={0.1}>
@@ -122,7 +123,7 @@ export default function ServicesPage() {
                       src={featured.imageSrc}
                       alt={
                         featured.imageAlt ??
-                        `${featured.name} by Window Fantasies, custom Hunter Douglas window treatments`
+                        `${featured.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
                       }
                       width={featured.imageW}
                       height={featured.imageH}
@@ -172,7 +173,7 @@ export default function ServicesPage() {
                         src={service.imageSrc}
                         alt={
                           service.imageAlt ??
-                          `${service.name} by Window Fantasies, custom Hunter Douglas window treatments`
+                          `${service.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
                         }
                         width={service.imageW}
                         height={service.imageH}
@@ -219,10 +220,26 @@ export default function ServicesPage() {
               ))}
             </div>
           </StaggerContainer>
+
+          {/* Hunter Douglas MANDATORY LEGAL COPY. The grid above prints every
+              service's shortDescription, and the PowerView® Automation one says
+              the treatments move on a schedule. HD requires their exact sentence
+              wherever a page promotes that scheduling benefit, so it renders here.
+              Gated on the same site.ts `legalDisclosure` field the service detail
+              page and the city pages read, so the three can never drift apart.
+              tone="light" because this is the CREAM band: the component then
+              paints itself --muted-on-light (#6E5C3F) instead of the near-white
+              --text-muted, which on cream would be invisible. Never aria-hidden,
+              never deleted for looking like clutter. */}
+          {services.some((s) => s.legalDisclosure) && (
+            <FadeUp className="mt-10 flex justify-center">
+              <PowerViewDisclosure tone="light" className="text-center" />
+            </FadeUp>
+          )}
         </Container>
       </Section>
 
-      {/* 3. One person, the whole way — DARK reassurance band, full-bleed craft
+      {/* 3. One person, the whole way - DARK reassurance band, full-bleed craft
           photo under the Section dark radial overlay (text contrast ≥4.5:1). */}
       <Section
         tone="base"
@@ -241,14 +258,14 @@ export default function ServicesPage() {
               className="mt-4 font-body mx-auto"
               style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "60ch" }}
             >
-              No sales team, no subcontractors, no call center. Jim measures, designs, installs, and services every treatment himself, and stands behind it for life. When you call, you get Jim.
+              No sales team, no subcontractors, no call center. Jim measures, designs, installs, and services every treatment himself, and he stands behind his work. When you call, you get Jim.
             </p>
           </FadeUp>
         </Container>
       </Section>
 
-      {/* 4. CTA — CREAM, steps into the dark footer. Asymmetric split: the
-          "showroom comes to you" photo left, consultation copy right (grid-aligned,
+      {/* 4. CTA - CREAM, steps into the dark footer. Asymmetric split: the
+          "samples come to you" photo left, consultation copy right (grid-aligned,
           items-center per design-symmetry rule F). */}
       <Section tone="cream">
         <Container>
@@ -280,7 +297,7 @@ export default function ServicesPage() {
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}
               >
-                Start with the free in-home consultation. Jim brings the real Hunter Douglas samples to you, reads the room, and tells you honestly what belongs on your windows. No pressure, no showroom to drive to.
+                Start with the free in-home consultation. Jim brings the real Hunter Douglas samples to you, reads the room, and tells you honestly what belongs on your windows. No pressure, no store to drive to.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

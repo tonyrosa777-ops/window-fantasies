@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Card, Eyebrow } from "@/components/ui/Card";
 
 /**
- * PostCard — Blog index article card.
+ * PostCard: Blog index article card.
  *
  * Renders a single post tile inside the /blog grid (Pattern #71: 1 featured +
  * 8 regular = 4-col rows with no orphans). Category chip color tracks
@@ -63,7 +63,7 @@ export function PostCard({ post, variant = "default", tone = "dark" }: Props) {
   const metaBorder = isLight ? "var(--border-light)" : "var(--border-dark)";
   const linkColor = isLight ? "var(--gold-deep)" : "var(--primary)";
 
-  // Card thumbnail IS the article header image (one generation, two placements —
+  // Card thumbnail IS the article header image (one generation, two placements,
   // the only allowed image reuse per the image-uniqueness rule). A separate
   // -card.jpg never ships, so pointing there rendered empty cards.
   const cardImage = `/images/blog/${post.slug}-header.jpg`;

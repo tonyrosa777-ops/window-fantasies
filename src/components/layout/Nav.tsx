@@ -20,9 +20,12 @@ import { Button } from "@/components/ui/Button";
  * viewport, not to the blurred header (backdrop-filter containing-block trap).
  */
 
-// Desktop uses the short "PowerView" label: even at the xl (1280px) nav
-// transition the full "PowerView Motorization" label crowds the bar and risks a
-// wrap. The drawer has room, so it carries the full label (mapped below).
+// Desktop uses the short "PowerView®" label: even at the xl (1280px) nav
+// transition the full product name crowds the bar and risks a wrap. The drawer
+// has room, so it carries the full label (mapped below).
+// ⚠️ Hunter Douglas requires the product be named "PowerView® Automation" and
+// expressly bars calling it "PowerView Motorization". Both labels below are the
+// compliant forms; do not shorten them back. See src/data/hunterDouglas.ts.
 // Full horizontal nav shows at xl (>=1280px) — below that the links + phone + CTA
 // cannot fit without wrapping (measured wrap band 1024-1240px, Error #133 family),
 // so <xl collapses to the clean hamburger drawer instead. The count dropped 8 -> 7
@@ -37,7 +40,7 @@ import { Button } from "@/components/ui/Button";
 // pro-plan-deliverables.md (project root); rebuild the page from there for an upsell demo.
 const links = [
   { label: "Products", href: "/products" },
-  { label: "PowerView", href: "/services/powerview-automation" },
+  { label: "PowerView® Automation", href: "/services/powerview-automation" },
   { label: "Services", href: "/services" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
@@ -48,7 +51,7 @@ const links = [
 const drawerLinks = [
   ...links.map((l) =>
     l.href === "/services/powerview-automation"
-      ? { ...l, label: "PowerView Motorization" }
+      ? { ...l, label: "PowerView® Automation" }
       : l
   ),
   { label: "Take the Quiz", href: "/quiz" },

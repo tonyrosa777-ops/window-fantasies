@@ -14,19 +14,28 @@ export const CURRENT_PLAN = "pro" as const;
 
 export const features = {
   /**
-   * PREMIUM flagship — the "See It In Your Room" Virtual Showroom
-   * (/virtual-showroom): six real room scenes, every treatment style rendered
-   * in the same room, favorite look attached to the consultation request.
+   * PREMIUM flagship — the "See It In Your Room" Virtual Showroom: six real room
+   * scenes, every treatment style rendered in the same room, favorite look
+   * attached to the consultation request.
    *
-   * When false: the /virtual-showroom route 404s. It is also absent from the nav
-   * and the sitemap, so it is unreachable and undiscoverable. The page component
-   * + all 30 showroom images + ShowroomClient stay in the repo, untouched.
-   * (The internal /pricing page that carried the Premium "Live demo →" link was
-   * deleted 2026-07-20 — this flag is now the only Premium gate on the site.)
+   * ⚠️ REMOVED FROM THE REPO 2026-07-31, NOT JUST GATED. The route, its client,
+   * its data file, and all 30 images are deleted. Flipping this flag no longer
+   * does anything on its own.
    *
-   * ON UPGRADE (Jim buys Premium): set to `true`. To also make it publicly
-   * discoverable, add a nav link in components/layout/Nav.tsx, add its URL to
-   * app/sitemap.ts, and flip the page's `robots` to `{ index: true }`.
+   * WHY: the feature was gated off but its source still shipped in the repo, and
+   * it violated Hunter Douglas's dealer compliance policy in two ways. It named
+   * HD products as generic descriptors ("Silhouette Sheers", "Duette Honeycomb")
+   * rather than in their required trademarked form, and the whole surface was
+   * built around the word "showroom" — HD expressly prohibits "Hunter Douglas
+   * Showroom" in dealer advertising. A dormant violation is still a violation the
+   * moment someone flips a flag, and HD's waiver review is what this site's
+   * dealer-locator listing depends on.
+   *
+   * ON UPGRADE (Jim buys Premium): rebuild it compliant. Every product name must
+   * carry its trademark symbol and category descriptor from src/data/hunterDouglas.ts,
+   * and the feature must be named something other than a showroom (it is a
+   * room visualizer). Recover the deleted source from git history at the commit
+   * that removed it, then fix the naming before wiring it back up.
    */
   virtualShowroom: false,
 } as const;

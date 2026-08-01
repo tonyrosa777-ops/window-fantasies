@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/data/site";
 import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
@@ -7,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { PortfolioReel } from "@/components/work/PortfolioReel";
 import { PortfolioWall } from "@/components/work/PortfolioWall";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /portfolio — real Hunter Douglas installs in real New England rooms.
@@ -27,6 +30,11 @@ export default function PortfolioPage() {
   const { workItems } = siteConfig;
   const featured = workItems.filter((item) => item.featured);
   const wall = workItems.filter((item) => !item.featured);
+
+  // Hunter Douglas photo attribution. HD's reviewer confirmed only the FIRST
+  // instance in a product section needs the label, so the lead credited photo
+  // carries it for the whole wall. Crediting every tile is noise, not safety.
+  const leadCredit = workItems.find((item) => item.credit)?.credit;
 
   return (
     <>
@@ -62,6 +70,17 @@ export default function PortfolioPage() {
           </FadeUp>
         </Container>
         <PortfolioReel items={featured} />
+        {leadCredit ? (
+          <Container>
+            {/* HDPhotoCredit paints itself with --text-muted, which is a
+                near-white tuned for the dark bands. Rebind it locally so the
+                attribution stays legible on cream, per HD's requirement that
+                the label be clear. */}
+            <div style={{ "--text-muted": "var(--muted-on-light)" } as React.CSSProperties}>
+              <HDPhotoCredit credit={leadCredit} />
+            </div>
+          </Container>
+        ) : null}
       </Section>
 
       {/* 3. The Wall — DARK band, filterable true-aspect photo wall */}
@@ -89,7 +108,18 @@ export default function PortfolioPage() {
                 Ready to picture it in your home?
               </h2>
               <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}>
-                Every one of these was measured, designed, and installed by Jim himself, then guaranteed for life. He brings the real samples to you, holds them in your windows, and gives you an honest installed price. Free, and no pressure.
+                Every one of these was measured, designed, and installed by Jim himself, and he stands behind every job. He brings the real samples to you, holds them in your windows, and gives you an honest installed price. Free, and no pressure.
+              </p>
+              <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}>
+                Most of the lines in these rooms can also be fitted with Hunter Douglas PowerView® Automation, including the high windows and stairwell openings nobody can reach by hand.{" "}
+                <Link
+                  href="/services/powerview-automation"
+                  className="underline underline-offset-4"
+                  style={{ color: "var(--gold-deep)" }}
+                >
+                  See how PowerView® Automation works
+                </Link>
+                .
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
@@ -98,6 +128,15 @@ export default function PortfolioPage() {
                 <Button href="/products" variant="secondary" size="lg" tone="light">
                   Browse the Products
                 </Button>
+              </div>
+              {/* Hunter Douglas MANDATORY LEGAL COPY. This band now names
+                  PowerView® Automation, so HD's exact sentence rides with it.
+                  tone="light" because the band is CREAM (--bg-cream, #F8F3E2):
+                  the component paints --muted-on-light (#6E5C3F), not the
+                  near-white --text-muted that belongs on the dark bands. Copy a
+                  reviewer cannot read has not been disclosed. */}
+              <div className="mt-8 flex justify-center">
+                <PowerViewDisclosure tone="light" className="text-center" />
               </div>
             </div>
           </FadeUp>

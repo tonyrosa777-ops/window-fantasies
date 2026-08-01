@@ -9,6 +9,7 @@ import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 import { CountUp } from "@/components/animations/CountUp";
 import { JsonLd } from "@/components/JsonLd";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 import { buildAboutSchema } from "@/lib/schema";
 
 /**
@@ -16,11 +17,31 @@ import { buildAboutSchema } from "@/lib/schema";
  * Server Component. Voice = Jim first-person ("I").
  * Hero H1 uses .hero-shimmer (CLAUDE.md §6 + §15 BINDING).
  * ZERO em dashes in any string literal (CLAUDE.md §13 BINDING).
+ *
+ * ⚠️ COMPLIANCE, two things this page failed on 2026-07-31.
+ *
+ * 1. NO VISIBLE PRODUCT LABEL. Hunter Douglas requires photography showing
+ *    their product be "clearly labeled with the specific product it was
+ *    designed to promote", first instance per section. The header photo shows a
+ *    roller shade, so it carries a <HDPhotoCredit />. The label is the BARE
+ *    PRODUCT NAME, not "by Hunter Douglas": this is the site's own still that
+ *    DEPICTS the product, not HD's licensed photography (that lives in
+ *    /images/window-fashions/), and captioning it "by Hunter Douglas" would
+ *    misattribute authorship to HD. Bare-name captions are HD's own second
+ *    worked example. Note "Designer Roller Shades" correctly carries NO ® or ™:
+ *    HD's 2025 list gives it none, and inventing a symbol is itself a violation.
+ *    The other two photos on this page (Jim's portrait, the doorstep sample
+ *    books) show no window treatment, so they need no label.
+ *
+ * 2. "WORKROOM" / "CRAFTSMAN WORKSPACE" LANGUAGE. HD criterion 10 requires the
+ *    dealer not be fabricating any products. A workroom is where treatments are
+ *    fabricated. Jim measures, designs, and installs; Hunter Douglas manufactures.
+ *    Describe the office and the sample library, never a workroom or a shop.
  */
 
 export const metadata: Metadata = {
   title: `About ${siteConfig.business.founderName}`,
-  description: `Meet ${siteConfig.business.founderName}, ${siteConfig.business.founderTitle} of ${siteConfig.business.name}. An authorized Hunter Douglas Centurion dealer with ${siteConfig.business.yearsInBusiness}+ years measuring, designing, and installing custom window treatments by hand across all of New England.`,
+  description: `Meet ${siteConfig.business.founderName}, ${siteConfig.business.founderTitle} of ${siteConfig.business.name}. An Authorized Hunter Douglas Dealer with ${siteConfig.business.yearsInBusiness}+ years measuring, designing, and installing custom window treatments by hand across all of New England.`,
 };
 
 export default function AboutPage() {
@@ -30,7 +51,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={buildAboutSchema()} id="about-jsonld" />
       {/* 1. Hero / Page Header */}
-      <Section tone="base" bgImage="/images/headers/about.jpg" bgImageAlt="A sunlit craftsman workspace with fabric sample books beside a shaded window." className="pt-32 sm:pt-36 lg:pt-40">
+      <Section tone="base" bgImage="/images/headers/about.jpg" bgImageAlt="Hunter Douglas Designer Roller Shades filtering sunlight over a desk of fabric sample books in Jim's Salem office." className="pt-32 sm:pt-36 lg:pt-40">
         {/* Seam-fade (design-symmetry rule L): the dark photo header dissolves
             ~96px into the cream story band below. Transition mask only; the
             band's core tone stays clearly dark for the tone audit. */}
@@ -64,6 +85,11 @@ export default function AboutPage() {
             </p>
           </FadeUp>
         </Container>
+        {/* Hunter Douglas product label for the header photograph. Overlay, so
+            it sits on its own dark scrim ON the photo it labels and stays
+            legible over any part of the image. First (and only) instance on
+            this page, per HD's first-instance-per-section rule. */}
+        <HDPhotoCredit credit="Hunter Douglas Designer Roller Shades" variant="overlay" />
       </Section>
 
       {/* 2. Story (2-col: portrait left, paragraphs right) — CREAM band */}
@@ -212,19 +238,19 @@ export default function AboutPage() {
       </Section>
 
       {/* 4. CTA — CREAM, steps into the dark footer. Asymmetric split: copy left,
-          doorstep-arrival photo right (the showroom literally arrives at your door). */}
+          doorstep-arrival photo right (the samples literally arrive at your door). */}
       <Section tone="cream">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeUp>
               <h2 className="text-h2 font-display" style={{ color: "var(--text-on-light)" }}>
-                Ready to let Jim bring the showroom to you?
+                Ready to let Jim shop at home with you?
               </h2>
               <p
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}
               >
-                The in-home consultation is free. I bring the real Hunter Douglas samples, hold them in your own windows, measure everything myself, and give you an honest installed price at your kitchen table. No pressure, no showroom to drive to, guaranteed for life.
+                The in-home consultation is free. I bring the real Hunter Douglas samples, hold them in your own windows, measure everything myself, and give you an honest installed price at your kitchen table. No pressure, no store to drive to, and I stand behind every install I do.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

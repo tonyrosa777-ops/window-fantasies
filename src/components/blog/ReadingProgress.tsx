@@ -3,7 +3,7 @@
 import { motion, useScroll, useReducedMotion } from "framer-motion";
 
 /**
- * ReadingProgress — thin gold bar fixed to the top edge of the viewport,
+ * ReadingProgress: thin gold bar fixed to the top edge of the viewport,
  * filling left-to-right with window scroll progress. Article pages only.
  *
  * - Transform-only: framer-motion useScroll drives scaleX (no width/layout

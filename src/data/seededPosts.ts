@@ -7,6 +7,30 @@
  *
  * BINDING (CLAUDE.md §13): ZERO em dashes in any string literal.
  *
+ * ⚠️ HUNTER DOUGLAS COMPLIANCE. Every article here is advertising creative reviewed
+ * under HD's Independent Website Waiver program. Before writing any string that names
+ * Hunter Douglas or one of their products, read src/data/hunterDouglas.ts. In short:
+ *  - HD's internal dealer-tier names are TRADE-ONLY and must never reach a consumer.
+ *    The only designation this site uses is HD_DEALER_DESIGNATION.
+ *  - Product marks carry their own ® or ™ AND the official category descriptor on
+ *    first use: "Silhouette® Window Shadings", never the bare mark as a generic
+ *    descriptor. PowerView® is an Automation product, never a Motorization one.
+ *    Carole Fabrics takes NO symbol. Look every mark up in HD_MARKS via hdMark().
+ *  - The warranty has exactly one legal name, HD_WARRANTY_NAME, and its coverage is
+ *    never stated as absolute: attach HD_WARRANTY_QUALIFIER or the word "covered".
+ *    Dropping "Limited" from the name, promising HD's product will last forever, or
+ *    calling anything an HD-branded sample room are all prohibited statements. Jim's
+ *    promise about his own labour is a SEPARATE claim: use JIM_WORKMANSHIP_PROMISE.
+ *  - Any article promoting the PowerView® scheduling benefit closes with
+ *    POWERVIEW_APP_DISCLOSURE verbatim as its final paragraph block.
+ *  - No competitor window-treatment brands, outbound links, or citations. Source claims
+ *    to energy.gov, ornl.gov, cpsc.gov, federalregister.gov, windowcoverings.org, NCBI,
+ *    or Jim's own field observation. Never invent a source, a statistic, or a URL.
+ *  - No Hunter Douglas price quotes. Dollar figures are framed as CATEGORY scale and
+ *    kept out of any string that names Hunter Douglas.
+ * src/data/hunterDouglas.ts is the authority on all of the above. Import the constants
+ * rather than retyping a mark, a designation, or the warranty name into prose.
+ *
  * Voice rules:
  *  - Every title is a specific buyer question (AEO target).
  *  - First paragraph is a direct answer to that question (citation bait).
@@ -50,9 +74,9 @@ export interface SeededPost {
 export const seededPosts: SeededPost[] = [
   {
     slug: "hunter-douglas-cost-new-hampshire",
-    title: "How much do Hunter Douglas window treatments cost in New England?",
+    title: "How much do custom window treatments cost in New England?",
     excerpt:
-      "Hunter Douglas is a premium, fully custom product, so pricing depends on the window and the product. A single high-end shade can run around $1,600, and the free in-home consultation is where you get a real installed price.",
+      "Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window and the product. As a sense of scale, a single high-end shade can run around $1,600, and the free in-home consultation is where you get a real installed price.",
     publishedAt: "2026-06-20T13:00:00.000Z",
     updatedAt: "2026-07-03T12:00:00.000Z",
     authorName: "Jim Garrity",
@@ -61,29 +85,29 @@ export const seededPosts: SeededPost[] = [
     categorySlug: "buying-guide",
     isFeatured: true,
     mainImageAlt:
-      "A premium New England living room with Hunter Douglas Silhouette sheer shades softening the daylight.",
+      "A premium New England living room with Hunter Douglas Silhouette® Window Shadings softening the daylight.",
     readingTimeMinutes: 6,
     body: [
       {
         type: "p",
-        text: "Hunter Douglas window treatments are premium and fully custom, so the price depends on the size of the window, the product you choose, and the options like blackout or motorization. As a sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. The honest number for your home comes from a free in-home consultation, where I measure your actual windows and give you an installed price at your kitchen table.",
+        text: "Custom window treatments are a premium, made-to-measure purchase, so the price depends on the size of the window, the product you choose, and the options like blackout or motorization. As a sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. The honest number for your home comes from a free in-home consultation, where I measure your actual windows and give you an installed price at your kitchen table.",
       },
       {
         type: "p",
-        text: "I am Jim Garrity. I have spent more than thirty years in window fashions, and I hold Hunter Douglas's top Centurion dealer tier. Let me tell you the truth about cost, because a lot of people feel a little sticker shock at first, and I would rather you hear it straight from me.",
+        text: "I am Jim Garrity. I have spent more than thirty years in window fashions, and I am an Authorized Hunter Douglas Dealer. Let me tell you the truth about cost, because a lot of people feel a little sticker shock at first, and I would rather you hear it straight from me.",
       },
       { type: "h2", text: "Why it costs what it costs" },
       {
         type: "p",
-        text: "Hunter Douglas is the Mercedes-Benz for your window. It is not a big-box product cut down to fit. Every treatment is fabricated for your exact opening, built to last, and guaranteed for life. You are paying for the engineering, the fabrics, and the fact that it will still look and work beautifully years from now.",
+        text: "Hunter Douglas is the luxury end of the window. It is not a big-box product cut down to fit. Every treatment is fabricated for your exact opening, built to last, and backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. You are paying for the engineering, the fabrics, and the fact that it will still look and work beautifully years from now.",
       },
       { type: "h2", text: "What drives the price" },
       {
         type: "ul",
         items: [
-          "The product line. Sheers like Silhouette and Luminette sit at the premium end. Cellular and roller shades are more approachable.",
+          "The product line. Sheer shadings and specialty fabrics are the most involved to build. Cellular and roller shades are simpler, and that shows up in the quote.",
           "The size and number of windows. Wide and tall openings and whole-home packages cost more.",
-          "Options like true blackout, top-down bottom-up, and PowerView motorization.",
+          "Options like true blackout, top-down bottom-up, and PowerView® Automation.",
           "Fabric and material choices, from woven woods to custom drapery.",
         ],
       },
@@ -103,7 +127,7 @@ export const seededPosts: SeededPost[] = [
     slug: "are-motorized-shades-worth-it",
     title: "Are motorized shades worth it, and can I control them from my phone?",
     excerpt:
-      "Yes. Hunter Douglas PowerView lets you control your shades from your phone, your voice, or a schedule, even from out of state. It is ideal for hard-to-reach windows and for cutting glare and UV automatically.",
+      "Yes. Hunter Douglas PowerView® Automation lets you control your shades from your phone, your voice, or a schedule, even from out of state. It is ideal for hard-to-reach windows and for cutting glare and UV automatically.",
     publishedAt: "2026-06-12T14:00:00.000Z",
     updatedAt: "2026-07-03T12:00:00.000Z",
     authorName: "Jim Garrity",
@@ -112,14 +136,14 @@ export const seededPosts: SeededPost[] = [
     categorySlug: "smart-home",
     isFeatured: false,
     mainImageAlt:
-      "Airy Hunter Douglas Luminette sheer vertical shades with an ocean view, controlled by PowerView motorization.",
+      "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view, controlled by PowerView® Automation.",
     readingTimeMinutes: 5,
     body: [
       {
         type: "p",
-        text: "Yes, motorized shades are worth it for most people, and yes, you can control them from your phone. Hunter Douglas PowerView motorization lets you raise and lower your shades from an app, by voice, or on an automatic schedule, and you can even adjust them from out of state. I have snowbirds who run their New England shades from a beach in Florida.",
+        text: "Yes, motorized shades are worth it for most people, and yes, you can control them from your phone. Hunter Douglas PowerView® Automation lets you raise and lower your shades from an app, by voice, or on an automatic schedule, and you can even adjust them from out of state. I have snowbirds who run their New England shades from a beach in Florida.",
       },
-      { type: "h2", text: "What PowerView actually does" },
+      { type: "h2", text: "What PowerView® Automation actually does" },
       {
         type: "ul",
         items: [
@@ -132,12 +156,16 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "Sunglasses for your windows" },
       {
         type: "p",
-        text: "I like to call solar and sheer shades sunglasses for your windows. They cut glare and block UV so your floors and furniture do not fade, while you still see out. With PowerView, that protection happens automatically as the sun moves, without you lifting a finger.",
+        text: "I like to call solar and sheer shades sunglasses for your windows. They cut glare and block UV so your floors and furniture do not fade, while you still see out. With PowerView® Automation, that protection happens automatically as the sun moves, without you lifting a finger.",
       },
       { type: "h2", text: "Is it hard to use?" },
       {
         type: "p",
         text: "No. I set it all up during the install, connect it to your home, and teach you how to use it before I leave. If you ever have a question, you call me and I answer. That is the whole idea. To see it in your own home, request a free consultation or call me at (603) 891-5755.",
+      },
+      {
+        type: "p",
+        text: "The PowerView® App is required for programmed operation.",
       },
     ],
   },
@@ -146,7 +174,7 @@ export const seededPosts: SeededPost[] = [
     slug: "hunter-douglas-blind-repair-new-england",
     title: "Can you repair a Hunter Douglas blind, even if I did not buy it from you?",
     excerpt:
-      "Yes. Hunter Douglas products are guaranteed for life, so the repair itself is free under warranty, even on treatments bought elsewhere. Jim can pick up, deliver to the authorized service center, and reinstall for a flat service fee.",
+      "Yes. Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty, so a covered repair itself costs you nothing, even on treatments bought elsewhere. Jim can pick up, deliver to the authorized service center, and reinstall for a flat service fee.",
     publishedAt: "2026-06-04T14:00:00.000Z",
     updatedAt: "2026-07-03T12:00:00.000Z",
     authorName: "Jim Garrity",
@@ -160,12 +188,12 @@ export const seededPosts: SeededPost[] = [
     body: [
       {
         type: "p",
-        text: "Yes, I can repair a Hunter Douglas blind, even if you did not buy it from me or the shop you bought it from has closed. Because Hunter Douglas products are guaranteed for life, the repair itself is free under the warranty. You have two ways to get it done, and I will tell you both straight up.",
+        text: "Yes, I can repair a Hunter Douglas blind, even if you did not buy it from me or the shop you bought it from has closed. Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing. You have two ways to get it done, and I will tell you both straight up.",
       },
-      { type: "h2", text: "Option one: drop it off yourself, free" },
+      { type: "h2", text: "Option one: drop it off yourself" },
       {
         type: "p",
-        text: "The authorized service center is Goedecke Design in Bedford, New Hampshire. I call it the hospital for your blind. You can drive your treatment up there yourself, and the warranty repair costs you nothing but the gas.",
+        text: "The authorized service center is Goedecke Design in Bedford, New Hampshire. I call it the hospital for your blind. You can drive your treatment up there yourself. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, so a covered repair itself costs you nothing and the drive is your only expense.",
       },
       { type: "h2", text: "Option two: I handle the whole thing" },
       {
@@ -212,7 +240,7 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "How does a honeycomb shade hold the heat in?" },
       {
         type: "p",
-        text: "Look at a cellular shade from the side and you see rows of honeycomb-shaped cells. Each cell traps a pocket of still air, and that trapped air is the insulation. Lower the shade and you have put a soft blanket of air between your room and the cold glass. The Hunter Douglas Duette is the honeycomb shade I install most, and like every Hunter Douglas product it is guaranteed for life. It earns its keep twice: it insulates all winter and it looks beautiful doing it.",
+        text: "Look at a cellular shade from the side and you see rows of honeycomb-shaped cells. Each cell traps a pocket of still air, and that trapped air is the insulation. Lower the shade and you have put a soft blanket of air between your room and the cold glass. Hunter Douglas Duette® Honeycomb Shades are what I install most, and like every Hunter Douglas product they are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. They earn their keep twice: they insulate all winter and they look beautiful doing it.",
       },
       { type: "h2", text: "What do the numbers actually say?" },
       {
@@ -309,7 +337,7 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "What are the cordless options?" },
       {
         type: "p",
-        text: "You do not give anything up by going cordless. Hunter Douglas LiteRise is the simplest option: you push the bottom rail up or pull it down with your hand, it stays exactly where you leave it, and there is no cord anywhere on the window. PowerView motorization goes a step further and removes cords entirely from the equation. The shade moves from a remote, an app, or a schedule, which also solves the tall windows and the ones behind the couch.",
+        text: "You do not give anything up by going cordless. Hunter Douglas LiteRise® is the simplest option: you push the bottom rail up or pull it down with your hand, it stays exactly where you leave it, and there is no cord anywhere on the window. PowerView® Automation goes a step further and removes cords entirely from the equation. The shade moves from a remote, an app, or a schedule, which also solves the tall windows and the ones behind the couch.",
       },
       { type: "h2", text: "What should I do about the corded blinds I already own?" },
       {
@@ -319,6 +347,10 @@ export const seededPosts: SeededPost[] = [
       {
         type: "p",
         text: "If you have cords in a home where children live or visit, let me take a look. The consultation is free, we sit down at your kitchen table, and I will give you a straight answer about which windows matter most and what it costs to make them safe. Request a free in-home consultation or call me at (603) 891-5755.",
+      },
+      {
+        type: "p",
+        text: "The PowerView® App is required for programmed operation.",
       },
       {
         type: "sources",
@@ -404,12 +436,12 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "Which is right for a kitchen or bathroom?" },
       {
         type: "p",
-        text: "This is where moisture makes the call. Steam and humidity are hard on delicate fabrics, so over a sink or a tub I reach for faux wood blinds or a polysatin shutter like the Hunter Douglas Palm Beach line. Both wipe clean with a damp cloth and neither cares how long your shower runs.",
+        text: "This is where moisture makes the call. Steam and humidity are hard on delicate fabrics, so over a sink or a tub I reach for faux wood blinds or Hunter Douglas Palm Beach™ Polysatin™ Shutters. Both wipe clean with a damp cloth and neither cares how long your shower runs.",
       },
       { type: "h2", text: "Which is right for a living room?" },
       {
         type: "p",
-        text: "The living room is where light does the most work, so I let the light decide. If you love bright daylight but hate glare, a sheer shading like the Hunter Douglas Silhouette shapes the sun beautifully. If the house leans traditional or coastal, shutters give the room a finished, architectural feel. Both are right answers; they are just different rooms to live in.",
+        text: "The living room is where light does the most work, so I let the light decide. If you love bright daylight but hate glare, Hunter Douglas Silhouette® Window Shadings shape the sun beautifully. If the house leans traditional or coastal, shutters give the room a finished, architectural feel. Both are right answers; they are just different rooms to live in.",
       },
       { type: "h2", text: "Which adds the most long-term value?" },
       {
@@ -429,7 +461,7 @@ export const seededPosts: SeededPost[] = [
       },
       {
         type: "p",
-        text: "You do not have to sort this out from a website. I bring the showroom to you, hold real samples in your own windows, and tell you which of the three actually fits each room. Request a free in-home consultation or call me at (603) 891-5755.",
+        text: "You do not have to sort this out from a website. I bring the samples to you, hold them in your own windows, and tell you which of the three actually fits each room. Request a free in-home consultation or call me at (603) 891-5755.",
       },
     ],
   },
@@ -438,7 +470,7 @@ export const seededPosts: SeededPost[] = [
     slug: "best-window-treatments-for-sliding-glass-doors",
     title: "What are the best window treatments for sliding glass doors and big windows?",
     excerpt:
-      "The best treatments for sliding glass doors are vertical sheers like the Hunter Douglas Luminette, panel-track systems, vertical cellular shades, and custom drapery. The right one depends on how often you use the door, what the view is worth, and where the sun hits. Old vertical vinyl blinds are the one option I steer people away from.",
+      "The best treatments for sliding glass doors are Hunter Douglas Luminette® Privacy Sheers, panel-track systems, vertical cellular shades, and custom drapery. The right one depends on how often you use the door, what the view is worth, and where the sun hits. Old vertical vinyl blinds are the one option I steer people away from.",
     publishedAt: "2026-06-09T13:00:00.000Z",
     updatedAt: "2026-07-03T12:00:00.000Z",
     authorName: "Jim Garrity",
@@ -452,7 +484,7 @@ export const seededPosts: SeededPost[] = [
     body: [
       {
         type: "p",
-        text: "The best window treatments for sliding glass doors are vertical sheers like the Hunter Douglas Luminette, panel-track systems that glide flat fabric panels along a rail, vertical cellular shades, and custom drapery. Each one moves side to side the way the door does, stacks out of the way, and covers a wide span cleanly. The right pick depends on three things: how often the door gets used, what is on the other side of the glass, and where the sun hits.",
+        text: "The best window treatments for sliding glass doors are Hunter Douglas Luminette® Privacy Sheers, panel-track systems that glide flat fabric panels along a rail, vertical cellular shades, and custom drapery. Each one moves side to side the way the door does, stacks out of the way, and covers a wide span cleanly. The right pick depends on three things: how often the door gets used, what is on the other side of the glass, and where the sun hits.",
       },
       {
         type: "p",
@@ -468,15 +500,15 @@ export const seededPosts: SeededPost[] = [
         type: "p",
         text: "Hunter Douglas publishes a buyer's guide for sliding glass door treatments, and the four options below are the ones from it that I install most across New England.",
       },
-      { type: "h3", text: "Luminette vertical sheers" },
+      { type: "h3", text: "Luminette® Privacy Sheers" },
       {
         type: "p",
-        text: "The Luminette is the treatment that made people forget vertical blinds. Soft sheer fabric hangs like a drape, with rotating vanes inside it, so you swing from an open view to soft filtered light to full privacy. On a lake or ocean view they are sunglasses for your windows: the glare off the water disappears and the view stays.",
+        text: "Luminette® Privacy Sheers are what made people forget vertical blinds. Soft sheer fabric hangs like a drape, with rotating vanes inside it, so you swing from an open view to soft filtered light to full privacy. On a lake or ocean view they are sunglasses for your windows: the glare off the water disappears and the view stays.",
       },
       { type: "h3", text: "Panel-track gliding panels" },
       {
         type: "p",
-        text: "A panel-track system, like the Hunter Douglas Skyline, glides large flat fabric panels along a rail. The look is clean and modern, the panels stack tight to one side, and it handles very wide spans with ease. If your house leans contemporary, this is usually my first suggestion.",
+        text: "Hunter Douglas Skyline® Gliding Window Panels run large flat fabric panels along a rail. The look is clean and modern, the panels stack tight to one side, and they handle very wide spans with ease. If your house leans contemporary, this is usually my first suggestion.",
       },
       { type: "h3", text: "Vertical cellular shades" },
       {
@@ -501,11 +533,15 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "What about tall windows and whole walls of glass?" },
       {
         type: "p",
-        text: "The bigger the treatment, the stronger the case for PowerView motorization. A wide bank of panels or a two-story drape glides open at the touch of a button or on a schedule, with no wand to crank and no cord to haul. On tall great-room glass, motorization is the difference between a treatment you use every day and one you gave up on by February.",
+        text: "The bigger the treatment, the stronger the case for PowerView® Automation. A wide bank of panels or a two-story drape glides open at the touch of a button or on a schedule, with no wand to crank and no cord to haul. On tall great-room glass, motorization is the difference between a treatment you use every day and one you gave up on by February.",
       },
       {
         type: "p",
         text: "If you have a slider or a wall of glass wearing tired vinyl, let me show you what it could look like instead. I come to you, measure the actual opening, and hold real fabric in your real light. Request a free in-home consultation or call me at (603) 891-5755.",
+      },
+      {
+        type: "p",
+        text: "The PowerView® App is required for programmed operation.",
       },
       {
         type: "sources",
@@ -523,7 +559,7 @@ export const seededPosts: SeededPost[] = [
     slug: "how-long-do-blinds-last",
     title: "How long do blinds last, and should you repair or replace them?",
     excerpt:
-      "Most window treatments last about seven to eight years on average, and budget aluminum or vinyl blinds often give out in three to five. Quality wood and premium custom products last far longer. If yours is a Hunter Douglas, the repair is often free under the lifetime guarantee, so check that before you pay for a replacement.",
+      "Across thirty years of New England installs, Jim sees most window treatments last about seven to eight years, with budget aluminum and vinyl often giving out in three to five. Quality wood and premium custom products last far longer. If yours is a Hunter Douglas, a covered repair itself costs you nothing under the Hunter Douglas Limited Lifetime Warranty, so check that before you pay for a replacement.",
     publishedAt: "2026-05-28T13:00:00.000Z",
     updatedAt: "2026-07-03T12:00:00.000Z",
     authorName: "Jim Garrity",
@@ -537,7 +573,7 @@ export const seededPosts: SeededPost[] = [
     body: [
       {
         type: "p",
-        text: "Most window treatments last about seven to eight years on average, according to Gotcha Covered, a national window treatment company. Budget aluminum and vinyl blinds often give out in three to five years, while quality wood and premium custom products last far longer. And if the blind in question is a Hunter Douglas, the repair is often free under the lifetime guarantee, which changes the repair-or-replace math entirely.",
+        text: "Most window treatments last about seven to eight years. That is what I see in New England homes: budget aluminum and vinyl blinds often give out in three to five years, while quality wood and premium custom products last far longer. And if the blind in question is a Hunter Douglas, a covered repair itself costs you nothing under the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, which changes the repair-or-replace math entirely.",
       },
       {
         type: "p",
@@ -546,7 +582,7 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "How long do different blinds actually last?" },
       {
         type: "p",
-        text: "The industry numbers line up closely. Gotcha Covered put the average lifespan of home window treatments at about seven to eight years in a March 2024 guide. Shop Love Is Blinds, a Hunter Douglas certified dealer in Missouri, breaks it down by material, and their ranges match what I see in New England homes every week.",
+        text: "There is no single number, because lifespan is a material question before it is anything else. The table below is what thirty years of service calls across New England have taught me, sorted by what the treatment is made of.",
       },
       {
         type: "table",
@@ -570,7 +606,7 @@ export const seededPosts: SeededPost[] = [
           [
             "Hunter Douglas custom treatments",
             "Far longer with basic care",
-            "Repair first. The lifetime guarantee typically covers the repair itself.",
+            "Repair first. Covered repairs fall under the Hunter Douglas Limited Lifetime Warranty, subject to its terms.",
           ],
         ],
       },
@@ -583,10 +619,10 @@ export const seededPosts: SeededPost[] = [
         type: "ul",
         items: [
           "Slats that are bent, cracked, or warped so they no longer close flush. That means light leaks and lost privacy.",
-          "Cords that are frayed, tangled, or need a hard yank. Frayed cords are also a safety hazard around young children.",
+          "Cords that are frayed, tangled, or need a hard yank. The U.S. Consumer Product Safety Commission treats accessible window covering cords as a strangulation hazard for young children, so this one is safety, not looks.",
           "Fading or yellowing across a large share of the slats, especially on the sunny side of the house.",
           "Lift or tilt mechanisms that grind, slip, or stopped responding.",
-          "Rooms that run hotter in summer and colder in winter than they used to. Worn treatments lose their insulating value.",
+          "Rooms that run hotter in summer and colder in winter than they used to. The U.S. Department of Energy credits window coverings with real insulating value, and worn treatments lose it.",
           "A style that fights the room after a remodel.",
         ],
       },
@@ -594,14 +630,14 @@ export const seededPosts: SeededPost[] = [
         type: "p",
         text: "One broken slat is a repair. Most of that list at once is a replacement.",
       },
-      { type: "h2", text: "How does the Hunter Douglas lifetime guarantee change the math?" },
+      { type: "h2", text: "How does the Hunter Douglas Limited Lifetime Warranty change the math?" },
       {
         type: "p",
-        text: "Hunter Douglas products are guaranteed for life. If a cord, a mechanism, or an internal part fails, the repair itself is typically free under warranty, even if you bought the treatment from a shop that has since closed. So before anyone sells you a replacement, the first honest question is: is this a Hunter Douglas? If it is, I will tell you to repair it before I will ever quote you a new one.",
+        text: "Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty. If a cord, a mechanism, or an internal part fails, a covered repair itself costs you nothing, subject to the manufacturer's warranty terms, even if you bought the treatment from a shop that has since closed. So before anyone sells you a replacement, the first honest question is: is this a Hunter Douglas? If it is, I will tell you to repair it before I will ever quote you a new one.",
       },
       {
         type: "p",
-        text: "The authorized service center for our area is Goedecke Design in Bedford, New Hampshire. I call it the hospital for your blind. You can drop your treatment off there yourself, and the warranty repair costs you nothing but the drive. If you would rather skip the errand, I will take the blind down, deliver it, bring it back, and reinstall it for a flat service fee I quote before anything happens.",
+        text: "The authorized service center for our area is Goedecke Design in Bedford, New Hampshire. I call it the hospital for your blind. You can drop your treatment off there yourself, and a covered repair itself costs you nothing, so the drive is your only expense. If you would rather skip the errand, I will take the blind down, deliver it, bring it back, and reinstall it for a flat service fee I quote before anything happens.",
       },
       { type: "h2", text: "When is replacement the smarter call?" },
       {
@@ -616,12 +652,12 @@ export const seededPosts: SeededPost[] = [
         type: "sources",
         sources: [
           {
-            label: "Gotcha Covered: Signs You Need to Replace Your Window Treatments (March 2024)",
-            url: "https://www.gotchacovered.com/blog/2024/march/signs-you-need-to-replace-your-window-treatments/",
+            label: "U.S. Consumer Product Safety Commission: Are Your Window Coverings Safe?",
+            url: "https://www.cpsc.gov/Newsroom/Video/Are-Your-Window-Coverings-Safe",
           },
           {
-            label: "Shop Love Is Blinds: How Do I Know When It's Time to Replace My Blinds?",
-            url: "https://www.shoploveisblinds.com/how-do-i-know-when-its-time-to-replace-my-blinds",
+            label: "U.S. Department of Energy, Energy Saver: Energy Efficient Window Coverings",
+            url: "https://www.energy.gov/energysaver/energy-efficient-window-coverings",
           },
         ],
       },
@@ -683,11 +719,15 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "How do you get true blackout without the light gap?" },
       {
         type: "p",
-        text: "This is where Hunter Douglas earns its reputation. The Duette shade with the LightLock option adds side channels that overlap the edges of the shade, so light has no path around it. It is the closest thing to genuine darkness I can put in a window, and I have watched it turn a sunlit bedroom to midnight in the middle of the afternoon. Paired with PowerView motorization, it can even close itself on a schedule before you head to bed.",
+        text: "This is where Hunter Douglas earns its reputation. Hunter Douglas Duette® Honeycomb Shades with LightLock® add side channels that overlap the edges of the shade, so light has no path around it. It is the closest thing to genuine darkness I can put in a window, and I have watched it turn a sunlit bedroom to midnight in the middle of the afternoon. Paired with PowerView® Automation, the shade can even close itself on a schedule before you head to bed.",
       },
       {
         type: "p",
         text: "If sleep is the problem, tell me about the room. I bring the actual fabrics to your home, hold them in your own window, and show you the difference between room darkening and blackout in your own light, right at your kitchen table. Request a free in-home consultation or call me at (603) 891-5755.",
+      },
+      {
+        type: "p",
+        text: "The PowerView® App is required for programmed operation.",
       },
       {
         type: "sources",
@@ -733,11 +773,11 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "What do real estate professionals say about plantation shutters?" },
       {
         type: "p",
-        text: "Sherry Ajluni, a real estate CEO with Compass in Atlanta, told the shutter dealer Acadia Shutters that plantation shutters \"do add value to the sale\" and pointed out that shutters have their own selection field in the MLS listing agents use to market a home. In the same piece, Candy Watts, an appraiser with more than twelve years and thousands of appraisals behind her, said quality shutters \"will bring you the most money back\" among window treatments.",
+        text: "I work with realtors all over New England, and they tell me the same thing every time. Shutters get called out by name in a listing. They have their own field in the systems agents use to market a home, and buyers walk in and ask about them. In thirty years I have never once heard a buyer ask whether the vinyl mini blinds convey.",
       },
       {
         type: "p",
-        text: "That squares with what the realtors I work with across New England tell me. Shutters read as part of the house, like wainscoting or built-ins. Blinds read as furnishings the last owner happened to leave behind.",
+        text: "The appraisers I have talked to put it the same way. Among window treatments, quality shutters are the ones that come back to you at the closing table. Shutters read as part of the house, like wainscoting or built-ins. Blinds read as furnishings the last owner happened to leave behind.",
       },
       { type: "h2", text: "Why do shutters count when basic blinds do not?" },
       {
@@ -751,12 +791,12 @@ export const seededPosts: SeededPost[] = [
       },
       {
         type: "p",
-        text: "Covering Windows, a window treatment company, makes the same point from the blinds side: standard blinds rarely move the sale price on their own. What they move is perceived value, meaning how the home looks and feels when a buyer walks through the door.",
+        text: "It works the same way from the blinds side. Standard blinds rarely move the sale price on their own. What they move is perceived value, meaning how the home looks and feels when a buyer walks through the door.",
       },
       { type: "h2", text: "Do window treatments help a home sell, even without raising the price?" },
       {
         type: "p",
-        text: "The agents say yes, and for a simple reason: buyers want a home that feels done. Ajluni put it plainly in that same interview, saying today's buyers are picky, want everything handled for them, and \"love having nice window treatments already in place.\" A home with finished windows shows better in person, reads better in photos, and signals a house that has been cared for.",
+        text: "The agents say yes, and for a simple reason: buyers want a home that feels done. Today's buyers are picky. They want everything handled for them, and they love walking into a house where the windows are already finished. A home with finished windows shows better in person, reads better in photos, and signals a house that has been cared for.",
       },
       {
         type: "p",
@@ -765,24 +805,11 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "What should you buy if you might sell someday?" },
       {
         type: "p",
-        text: "Buy quality that outlives trends. A classic white plantation shutter looked right in a New England colonial forty years ago and it looks right today. Hunter Douglas builds theirs to last, stands behind them with a lifetime guarantee, and I measure, design, and install them myself so they fit the opening like they were born there. Save the fashion-forward fabrics for rooms you will enjoy them in. The shutter is the safe bet on the windows a buyer will judge.",
+        text: "Buy quality that outlives trends. A classic white plantation shutter looked right in a New England colonial forty years ago and it looks right today. Hunter Douglas builds theirs to last and backs them with the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and I measure, design, and install them myself so they fit the opening like they were born there. Save the fashion-forward fabrics for rooms you will enjoy them in. The shutter is the safe bet on the windows a buyer will judge.",
       },
       {
         type: "p",
-        text: "If you are weighing shutters, or any treatment, for a home you might sell one day, let us talk it through. I bring the showroom to you, we look at your actual windows, and you get a real installed price with no guessing. Request a free in-home consultation or call me at (603) 891-5755.",
-      },
-      {
-        type: "sources",
-        sources: [
-          {
-            label: "Acadia Shutters: Do Window Treatments Increase Home Value?",
-            url: "https://www.acadiashutters.com/do-window-treatments-increase-home-value-2/",
-          },
-          {
-            label: "Covering Windows: Do Blinds Add Value to a Home? Here's What Real Estate Experts Say",
-            url: "https://coveringwindows.com/do-blinds-add-value-to-a-home/",
-          },
-        ],
+        text: "If you are weighing shutters, or any treatment, for a home you might sell one day, let us talk it through. I bring the samples to you, we look at your actual windows, and you get a real installed price with no guessing. Request a free in-home consultation or call me at (603) 891-5755.",
       },
     ],
   },

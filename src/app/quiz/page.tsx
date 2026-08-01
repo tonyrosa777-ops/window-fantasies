@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
 import { QuizAmbient } from "./QuizAmbient";
 import { QuizClient } from "./QuizClient";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 /**
  * /quiz: the full-page archetype quiz (full-page-archetype-quiz pattern).
@@ -25,6 +26,12 @@ export default function QuizPage() {
       <QuizAmbient />
       <div className="relative pt-32 pb-24 sm:pt-36 lg:pt-40">
         <QuizClient />
+        {/* Questions and results promote the PowerView® scheduling benefit, so
+            HD's mandatory app disclosure renders on the page. Visible, never
+            aria-hidden, and present no matter which step the visitor is on. */}
+        <div className="relative z-10 mx-auto w-full max-w-3xl px-6 sm:px-8">
+          <PowerViewDisclosure tone="dark" />
+        </div>
       </div>
     </div>
   );

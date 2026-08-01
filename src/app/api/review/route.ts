@@ -182,12 +182,12 @@ export async function POST(request: Request) {
   if (!apiKey) {
     if (demoOptIn && process.env.NODE_ENV !== "production") {
       console.info(
-        `[REVIEW DEMO] ${rating}-star ${branch} submission from ${name}, NEXT_PUBLIC_DEMO_MODE=1 — returning seeded success.`
+        `[REVIEW DEMO] ${rating}-star ${branch} submission from ${name}, NEXT_PUBLIC_DEMO_MODE=1, returning seeded success.`
       );
       return Response.json({ success: true, demo: true, confirmation: `DEMO-${Date.now()}` });
     }
     console.error(
-      "[REVIEW] RESEND_API_KEY is not set. Feedback NOT delivered — failing loudly rather than dropping it silently."
+      "[REVIEW] RESEND_API_KEY is not set. Feedback NOT delivered, failing loudly rather than dropping it silently."
     );
     return Response.json(
       { success: false, error: "Email delivery is not configured. Please call directly." },

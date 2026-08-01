@@ -1,7 +1,13 @@
 /**
- * CostHonesty — Band 10 (dark, base). The sticker-shock solvent (AEO exploit).
+ * CostHonesty: Band 10 (dark, base). The sticker-shock solvent (AEO exploit).
  * Answer-first honesty on cost, then the reassurance: the consultation is free
- * and the value is guaranteed for life.
+ * and Jim stands behind the work.
+ *
+ * ⚠️ COMPLIANCE: this band states a dollar figure, so it is written as a
+ * CATEGORY anchor for premium made-to-measure window treatments. Hunter Douglas
+ * bars a dealer site from publishing "web-based Hunter Douglas product price
+ * quotes", so no price may sit beside the Hunter Douglas name here. Mirrors
+ * siteConfig.costAnchor.
  */
 
 import { Container } from "@/components/ui/Container";
@@ -12,7 +18,7 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 const POINTS: { title: string; body: string }[] = [
   {
     title: "Yes, it is an investment",
-    body: "Hunter Douglas is custom and premium, the Mercedes-Benz for your window. A single high-end shade can run around $1,600, and every treatment is built for your exact opening.",
+    body: "Custom window treatments are a premium, made-to-measure purchase. A single high-end shade can run around $1,600, and every treatment is built for your exact opening.",
   },
   {
     title: "The consultation is always free",
@@ -23,8 +29,8 @@ const POINTS: { title: string; body: string }[] = [
     body: "Not what he wants to move. If a simpler product fits your situation, he will tell you. Everyone gets the same honest advice, whether it is one window or thirty.",
   },
   {
-    title: "It is guaranteed for life",
-    body: "You are not just buying shades, you are buying permanence. Guaranteed for life, serviced by the person who installed it. You call Jim, and he answers.",
+    title: "It is built to last",
+    body: "You are not just buying shades, you are buying permanence. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and Jim services what he installs. You call, and he answers.",
   },
 ];
 

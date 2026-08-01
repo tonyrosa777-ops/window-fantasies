@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Card";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { PostCard, type PostCardData } from "@/components/blog/PostCard";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 import { seededPosts, type SeededPost } from "@/data/seededPosts";
 import { isSanityConfigured, getSanityClient } from "@/sanity/lib/client";
 import { ALL_POSTS_QUERY } from "@/sanity/lib/queries";
@@ -152,6 +153,19 @@ export default async function BlogIndexPage() {
             >
               More field notes from the workshop are on the way.
             </p>
+          )}
+
+          {/* ⚠️ HD MANDATORY LEGAL COPY. These cards print each post's EXCERPT,
+              and one excerpt promotes the PowerView scheduling benefit, so the
+              claim reaches this index page even though the index itself says
+              nothing about motorization. Gated on a rendered card actually
+              carrying the claim. tone="light" because this band is cream. */}
+          {[featured, ...rest].some(
+            (post) => post && /schedule|automatic/i.test(post.excerpt ?? "")
+          ) && (
+            <div className="mt-10 flex justify-center">
+              <PowerViewDisclosure tone="light" className="text-center" />
+            </div>
           )}
         </Container>
       </Section>

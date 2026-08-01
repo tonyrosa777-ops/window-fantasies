@@ -1,6 +1,29 @@
 /**
- * SignatureProducts — Band 7 (light, cream). Real-photo showcase of the headline
- * Hunter Douglas products: Silhouette, Duette, Luminette, PowerView. Photo-led.
+ * SignatureProducts: Band 7 (light, cream). Real-photo showcase of the headline
+ * Hunter Douglas products. Photo-led.
+ *
+ * ⚠️ COMPLIANCE. Every product name here is a Hunter Douglas trademark and must
+ * carry its own symbol PLUS its category descriptor, per HD's trademark rules.
+ * The traps this file has already stepped in once: PowerView is "PowerView®
+ * Automation", never "Motorization", and LightLock is ®, not ™. Names are built
+ * from src/data/hunterDouglas.ts so a hand-typed name cannot drift again.
+ *
+ * This band promotes PowerView® scheduling and app control, so HD's mandatory
+ * legal sentence renders at the bottom via <PowerViewDisclosure />. It is not
+ * optional and it may not be paraphrased or hidden.
+ *
+ * ⚠️ THE LABEL SAYS THE PRODUCT, NOT "by Hunter Douglas". These four photos are
+ * the site's OWN room stills that DEPICT Hunter Douglas products. They are not
+ * HD's licensed photography (that lives in /images/window-fashions/ and is
+ * referenced from workItems in site.ts, each carrying its own `credit`). So the
+ * lead label is the bare product name, exactly HD's second worked example
+ * ("Parkland® Wood Blinds" under a photo): it satisfies "clearly labeled with
+ * the specific product" WITHOUT claiming HD shot the picture. Captioning one of
+ * these "by Hunter Douglas" would misattribute authorship to HD, which is worse
+ * than no caption at all.
+ *
+ * ⚠️ ALT TEXT: Hunter Douglas manufactures, Jim measures and installs. Alt never
+ * reads "<product> by Window Fantasies" (that claims Window Fantasies made it).
  */
 
 import Link from "next/link";
@@ -8,30 +31,37 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
+import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
+import { hdMark } from "@/data/hunterDouglas";
 
-const SIGNATURES: { name: string; blurb: string; img: string; href: string }[] = [
+const SIGNATURES: { name: string; blurb: string; img: string; alt: string; href: string }[] = [
   {
-    name: "Silhouette",
+    name: hdMark("silhouette"),
     blurb: "S-vane sheers that float between two sheers for soft, diffused light and daytime privacy. The signature Hunter Douglas look.",
     img: "/images/signature/silhouette.jpg",
+    alt: "Custom Hunter Douglas Silhouette® Window Shadings softening the light across a bay window in a New England living room, measured and installed by Window Fantasies.",
     href: "/products/shades",
   },
   {
-    name: "Duette Honeycomb",
-    blurb: "Energy-efficient cellular shades, with true blackout via LightLock. Takes a beating and still looks great.",
+    name: hdMark("duette"),
+    blurb: "Energy-efficient cellular shades, with true blackout via LightLock®. Takes a beating and still looks great.",
     img: "/images/signature/duette.jpg",
+    alt: "Custom Hunter Douglas Duette® Honeycomb Shades in a New England home, measured and installed by Window Fantasies.",
     href: "/products/shades",
   },
   {
-    name: "Luminette",
+    name: hdMark("luminette"),
     blurb: "Drapery-like vertical sheers with rotating vanes, perfect for doors and wide openings.",
     img: "/images/signature/luminette.jpg",
+    alt: "Custom Hunter Douglas Luminette® Privacy Sheers across a wide opening in a New England home, measured and installed by Window Fantasies.",
     href: "/products/drapery",
   },
   {
-    name: "PowerView Motorization",
+    name: hdMark("powerview"),
     blurb: "Control your shades from your phone, your voice, or a beach in Florida. Sunglasses for your windows, on a schedule.",
     img: "/images/signature/powerview.jpg",
+    alt: "Hunter Douglas shades running on PowerView® Automation in a New England home, installed and configured by Window Fantasies.",
     href: "/services/powerview-automation",
   },
 ];
@@ -53,7 +83,7 @@ export function SignatureProducts() {
         </FadeUp>
 
         <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {SIGNATURES.map((s) => (
+          {SIGNATURES.map((s, i) => (
             <StaggerItem key={s.name} className="h-full">
               <Link
                 href={s.href}
@@ -63,11 +93,22 @@ export function SignatureProducts() {
                 <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
                   <Image
                     src={s.img}
-                    alt={`Hunter Douglas ${s.name} installed in a New England home`}
+                    alt={s.alt}
                     fill
                     sizes="(min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
+                  {/* HD product label on the LEAD photo only (HD first-instance
+                      rule). Overlay, not a caption below, so both cards in the
+                      top row keep identical heights.
+
+                      Product name ALONE (s.name is already the full trademarked
+                      form from hdMark). This is our own still of the product,
+                      not HD's photograph, so it must not read "by Hunter
+                      Douglas". See the file header. */}
+                  {i === 0 ? (
+                    <HDPhotoCredit credit={`Hunter Douglas ${s.name}`} variant="overlay" />
+                  ) : null}
                 </div>
                 <div className="p-6 sm:p-7 flex flex-col gap-2">
                   <h3 className="font-display" style={{ color: "var(--text-on-light)", fontSize: "1.6rem", lineHeight: 1.15 }}>
@@ -81,6 +122,13 @@ export function SignatureProducts() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        {/* MANDATORY Hunter Douglas legal copy. This band promotes PowerView®
+            scheduling and phone control, so HD requires the App sentence here.
+            Visible, in the DOM, never aria-hidden. Do not remove. */}
+        <FadeUp className="mt-10 flex justify-center">
+          <PowerViewDisclosure tone="light" className="text-center" />
+        </FadeUp>
       </Container>
     </section>
   );

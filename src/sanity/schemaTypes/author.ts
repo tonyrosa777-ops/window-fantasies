@@ -1,11 +1,11 @@
 import { defineField, defineType } from "sanity";
 
 /**
- * Author — Person who writes a post.
+ * Author: the Person who writes a post.
  *
  * Owner-named, owner-present voice (design-system.md §9). Jim Garrity is the
- * seeded default author; credentials drive the "30+ years, Hunter Douglas
- * Centurion dealer" trust signal on each article footer.
+ * seeded default author; credentials drive the "30+ years, Authorized Hunter
+ * Douglas Dealer" trust signal on each article footer.
  */
 export const author = defineType({
   name: "author",

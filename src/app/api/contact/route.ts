@@ -220,7 +220,7 @@ export async function POST(request: Request) {
     if (demoOptIn && process.env.NODE_ENV !== "production") {
        
       console.info(
-        "[CONTACT DEMO] NEXT_PUBLIC_DEMO_MODE=1 and RESEND_API_KEY blank — returning seeded success."
+        "[CONTACT DEMO] NEXT_PUBLIC_DEMO_MODE=1 and RESEND_API_KEY blank, returning seeded success."
       );
       return Response.json({
         success: true,
@@ -230,7 +230,7 @@ export async function POST(request: Request) {
     }
      
     console.error(
-      "[CONTACT] RESEND_API_KEY is not set. Lead NOT delivered — failing loudly rather than dropping it silently."
+      "[CONTACT] RESEND_API_KEY is not set. Lead NOT delivered, failing loudly rather than dropping it silently."
     );
     return Response.json(
       { success: false, error: "Email delivery is not configured. Please call directly." },

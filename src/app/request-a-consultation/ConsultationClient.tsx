@@ -81,8 +81,8 @@ function CardShell({ children }: { children: ReactNode }) {
 
 interface ConsultationClientProps {
   /**
-   * Optional live selection context (e.g. the Virtual Showroom's current
-   * scene + treatment). When non-empty it is prepended to the POSTed message
+   * Optional live selection context (e.g. a quiz result or a product a
+   * visitor was viewing). When non-empty it is prepended to the POSTed message
    * at submit time and shown as a non-editable chip above the message field.
    * It never touches the textarea, validation, or the schema. Zero-required-props
    * contract stays: <ConsultationClient /> keeps working unchanged.
@@ -253,7 +253,7 @@ export function ConsultationClient({ context }: ConsultationClientProps = {}) {
             What can Jim help with?
           </label>
           <div className="flex flex-col sm:flex-row gap-3">
-            {intentBtn("purchase", "Purchase window treatments", "New shades, blinds, shutters, drapery, or motorization")}
+            {intentBtn("purchase", "Shop at home for new treatments", "New shades, blinds, shutters, drapery, or motorization")}
             {intentBtn("service", "Service and repair", "Fix or service an existing Hunter Douglas product")}
           </div>
         </div>

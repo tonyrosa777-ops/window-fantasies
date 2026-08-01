@@ -8,7 +8,7 @@ interface Props {
   id?: string;
   style?: CSSProperties;
   /**
-   * Optional full-bleed photo backdrop (interior PAGE HEADERS — design-system §6 +
+   * Optional full-bleed photo backdrop (interior PAGE HEADERS, design-system §6 +
    * Homepage Section Architecture Rule "interior page headers are PHOTO HEADERS").
    * When set, the photo fills the band under a dark radial overlay that preserves the
    * dark-never-flat rule and holds ≥4.5:1 text contrast; children render above it.
@@ -19,7 +19,7 @@ interface Props {
 
 /**
  * Section wrapper that opts into the auto-applied luxury gradients via globals.css
- * attribute selectors (design-system.md §3 — NO flat backgrounds; §4 — alternate
+ * attribute selectors (design-system.md §3, NO flat backgrounds; §4, alternate
  * dark/light bands, footer-anchored). Tones: base/elevated/card = warm dark;
  * cream = warm light band (its default text color flips to --text-on-light so
  * un-styled text reads correctly; explicit inline colors on children still win).

@@ -1,5 +1,5 @@
 /**
- * JsonLd.tsx — Reusable JSON-LD script tag wrapper.
+ * JsonLd.tsx: Reusable JSON-LD script tag wrapper.
  *
  * Usage:
  *   import { JsonLd } from "@/components/JsonLd";

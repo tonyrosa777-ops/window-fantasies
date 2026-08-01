@@ -6,6 +6,7 @@ import { RowsPhotoAlbum, type RenderImageContext, type RenderImageProps } from "
 import "react-photo-album/rows.css";
 import { AnimatePresence, motion } from "framer-motion";
 import type { WorkItem } from "@/data/site";
+import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 import { PortfolioLightbox } from "./PortfolioLightbox";
 
 /**
@@ -15,66 +16,84 @@ import { PortfolioLightbox } from "./PortfolioLightbox";
  * category chip at all widths, item name on a desktop hover scrim only
  * (photo-first-on-mobile rule), always-visible expand cue on touch, all prose
  * in the lightbox.
+ *
+ * Hunter Douglas photo attribution: HD's reviewer confirmed only the FIRST
+ * instance in a product section needs a label, so exactly one credit renders,
+ * on the first VISIBLE credited tile. It is recomputed per filter because
+ * filtering changes which photo is first on screen.
  */
 
 type WallPhoto = WorkItem & { src: string; width: number; height: number };
 
 const EASE_LUXE = [0.22, 1, 0.36, 1] as const;
 
-function renderTile(
-  _: RenderImageProps,
-  { photo, width, height }: RenderImageContext<WallPhoto>
-) {
-  return (
-    <div
-      className="group relative h-full w-full overflow-hidden rounded-xl border"
-      style={{
-        aspectRatio: `${width} / ${height}`,
-        borderColor: "var(--border-dark)",
-        background: "var(--bg-card)",
-      }}
-    >
-      <Image
-        src={photo.src}
-        alt={photo.alt}
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
-        className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-      />
-      {/* Category chip: fully ON the photo, visible at all widths */}
-      <span
-        className="absolute left-3 top-3 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest backdrop-blur-sm"
-        style={{ background: "rgba(10, 8, 6, 0.55)", color: "var(--text-primary)" }}
-      >
-        {photo.category}
-      </span>
-      {/* Name + room: desktop hover only. Mobile stays photo-first; the full
-          caption lives in the lightbox (and in alt for crawlers). */}
+/** Builds the tile renderer bound to the one photo that carries the HD label. */
+function makeRenderTile(creditSrc: string | undefined) {
+  return function renderTile(
+    _: RenderImageProps,
+    { photo, width, height }: RenderImageContext<WallPhoto>
+  ) {
+    return (
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 hidden translate-y-2 p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
-        style={{ background: "linear-gradient(to top, rgba(10, 8, 6, 0.78), transparent)" }}
-      >
-        <p className="font-display text-base" style={{ color: "var(--text-primary)" }}>
-          {photo.brand}
-        </p>
-        <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(245, 245, 245, 0.7)" }}>
-          {photo.room}
-        </p>
-      </div>
-      {/* Expand cue: always visible on touch, hover-reveal on desktop */}
-      <span
-        aria-hidden="true"
-        className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border backdrop-blur-sm transition-opacity duration-300 opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+        className="group relative h-full w-full overflow-hidden rounded-xl border"
         style={{
-          background: "rgba(10, 8, 6, 0.55)",
-          borderColor: "rgba(245, 245, 245, 0.3)",
-          color: "var(--text-primary)",
+          aspectRatio: `${width} / ${height}`,
+          borderColor: "var(--border-dark)",
+          background: "var(--bg-card)",
         }}
       >
-        ⤢
-      </span>
-    </div>
-  );
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+          className="object-cover transition-transform duration-[1.1s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+        />
+        {/* Category chip: fully ON the photo, visible at all widths */}
+        <span
+          className="absolute left-3 top-3 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-widest backdrop-blur-sm"
+          style={{ background: "rgba(10, 8, 6, 0.55)", color: "var(--text-primary)" }}
+        >
+          {photo.category}
+        </span>
+        {/* Name + room: desktop hover only. Mobile stays photo-first; the full
+            caption lives in the lightbox (and in alt for crawlers). */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 hidden translate-y-2 p-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 lg:block"
+          style={{ background: "linear-gradient(to top, rgba(10, 8, 6, 0.78), transparent)" }}
+        >
+          <p className="font-display text-base" style={{ color: "var(--text-primary)" }}>
+            {photo.brand}
+          </p>
+          <p className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "rgba(245, 245, 245, 0.7)" }}>
+            {photo.room}
+          </p>
+        </div>
+        {/* Expand cue: always visible on touch, hover-reveal on desktop */}
+        <span
+          aria-hidden="true"
+          className="absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full border backdrop-blur-sm transition-opacity duration-300 opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
+          style={{
+            background: "rgba(10, 8, 6, 0.55)",
+            borderColor: "rgba(245, 245, 245, 0.3)",
+            color: "var(--text-primary)",
+          }}
+        >
+          ⤢
+        </span>
+        {/* HD product label, first credited tile only. The offset wrapper keeps
+            it clear of the expand cue in the same corner. */}
+        {photo.credit && photo.src === creditSrc ? (
+          <span
+            className="pointer-events-none absolute inset-y-0 left-0"
+            style={{ right: "2.75rem" }}
+          >
+            <HDPhotoCredit credit={photo.credit} variant="overlay" />
+          </span>
+        ) : null}
+      </div>
+    );
+  };
 }
 
 export function PortfolioWall({ items }: { items: WorkItem[] }) {
@@ -96,6 +115,12 @@ export function PortfolioWall({ items }: { items: WorkItem[] }) {
     () => shown.map((item) => ({ ...item, src: item.image, width: item.w, height: item.h })),
     [shown]
   );
+
+  // HD first-instance rule: exactly one label per visible set, on the first
+  // credited photo. Recomputed on filter change so the label follows whichever
+  // credited photo is actually first on screen.
+  const creditSrc = useMemo(() => photos.find((p) => p.credit)?.src, [photos]);
+  const renderImage = useMemo(() => makeRenderTile(creditSrc), [creditSrc]);
 
   return (
     <div>
@@ -132,7 +157,7 @@ export function PortfolioWall({ items }: { items: WorkItem[] }) {
               photos={photos}
               targetRowHeight={300}
               spacing={10}
-              render={{ image: renderTile }}
+              render={{ image: renderImage }}
               onClick={({ index }) => setLightboxIndex(index)}
             />
           ) : (

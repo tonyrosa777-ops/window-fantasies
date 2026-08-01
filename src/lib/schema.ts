@@ -8,7 +8,7 @@
  *  - Product (per Hunter Douglas category)
  *  - FAQPage (on every AEO answer page)
  *  - BreadcrumbList
- *  - Person (Jim Garrity, Hunter Douglas Centurion dealer, 30+ years)
+ *  - Person (Jim Garrity, Authorized Hunter Douglas Dealer, 30+ years)
  *  - Review + AggregateRating markup from real reviews
  *
  * Site canonical: https://www.windowfantasies.com
@@ -76,7 +76,7 @@ function buildAreaServed() {
 }
 
 /* ============================================================================
-   Opening hours, by appointment. Window Fantasies has no walk-in showroom;
+   Opening hours, by appointment. Window Fantasies has no walk-in storefront;
    consultations are scheduled in the customer's home.
    ============================================================================ */
 
@@ -104,15 +104,15 @@ export function buildPersonSchema() {
     name: b.founderName,
     jobTitle: b.founderTitle,
     worksFor: { "@id": LOCAL_BUSINESS_ID },
-    description: `${b.founderName} is the ${b.founderTitle} of ${b.name}, an authorized Hunter Douglas Centurion dealer. A retired fire lieutenant with ${b.yearsInBusiness}+ years in window fashions, he personally measures, designs, and installs every custom treatment across New England.`,
+    description: `${b.founderName} is the ${b.founderTitle} of ${b.name}, an Authorized Hunter Douglas Dealer. A retired fire lieutenant with ${b.yearsInBusiness}+ years in window fashions, he personally measures, designs, and installs every custom treatment across New England.`,
     knowsAbout: [
       "Hunter Douglas window treatments",
       "Custom shades, blinds, shutters, and drapery",
-      "Silhouette, Duette, Luminette, and Pirouette shades",
+      "Silhouette® Window Shadings, Duette® Honeycomb Shades, Luminette® Privacy Sheers, and Pirouette® Window Shadings",
       "Plantation shutters",
-      "PowerView motorization and smart shades",
+      "PowerView® Automation and smart shades",
       "Window treatment measuring and installation",
-      "Hunter Douglas warranty repairs",
+      "Hunter Douglas Limited Lifetime Warranty repairs",
       "In-home design consultation",
     ],
     sameAs: buildSameAs().length > 0 ? buildSameAs() : undefined,
@@ -164,7 +164,7 @@ export function buildLocalBusinessSchema(opts: LocalBusinessOptions = {}) {
     "@id": opts.idOverride ?? LOCAL_BUSINESS_ID,
     name: opts.nameOverride ?? b.name,
     legalName: b.legalName,
-    description: `Authorized Hunter Douglas Centurion dealer based in Salem, NH, serving all of New England. ${b.yearsInBusiness}+ years of custom window treatments: shades, blinds, shutters, drapery, and PowerView motorization, measured, designed, and installed by hand. Free in-home consultation, guaranteed for life.`,
+    description: `Authorized Hunter Douglas Dealer based in Salem, NH, serving all of New England. ${b.yearsInBusiness}+ years of custom window treatments: shades, blinds, shutters, drapery, and PowerView® Automation, measured, designed, and installed by hand. Free in-home consultation. Products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms.`,
     url: SITE_URL,
     telephone: b.phoneFormatted,
     email: b.email,

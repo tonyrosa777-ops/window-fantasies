@@ -27,7 +27,7 @@ import { ConsultationClient } from "./ConsultationClient";
 
 export const metadata: Metadata = {
   title: "Request a Free In-Home Consultation",
-  description: `Request your free in-home consultation with ${siteConfig.business.founderName} of ${siteConfig.business.name}. Jim brings the Hunter Douglas showroom to you, measures your windows, and gives you an honest installed price. No pressure, guaranteed for life.`,
+  description: `Request your free in-home consultation with ${siteConfig.business.founderName} of ${siteConfig.business.name}. Jim brings the samples to you, measures your windows, and gives you an honest installed price. No pressure, and he stands behind every job.`,
 };
 
 const NEXT_STEPS = [
@@ -38,7 +38,7 @@ const NEXT_STEPS = [
   },
   {
     numeral: "02",
-    title: "He brings the showroom",
+    title: "He brings the samples",
     body: "Real Hunter Douglas samples at your door, and he measures every window himself.",
   },
   {
@@ -48,7 +48,7 @@ const NEXT_STEPS = [
   },
 ];
 
-const TRUST_CHIPS = ["Hunter Douglas Centurion Dealer", "Guaranteed for Life", "5.0 on Google"];
+const TRUST_CHIPS = ["Authorized Hunter Douglas Dealer", "Limited Lifetime Warranty", "5.0 on Google"];
 
 export default function RequestConsultationPage() {
   const { business } = siteConfig;
@@ -70,7 +70,7 @@ export default function RequestConsultationPage() {
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1 className="text-h1 hero-shimmer font-display mt-4" style={{ maxWidth: "22ch" }}>
-              Let Jim bring the showroom to you.
+              Let Jim bring the samples to you.
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
@@ -174,7 +174,7 @@ export default function RequestConsultationPage() {
                     <br />
                     {business.address.city}, {business.address.state} {business.address.zip}
                     <br />
-                    <span style={{ color: "var(--muted-on-light)" }}>By appointment. There is no walk-in showroom, Jim comes to you.</span>
+                    <span style={{ color: "var(--muted-on-light)" }}>By appointment. There is no walk-in storefront, Jim comes to you.</span>
                   </address>
                 </div>
               </div>

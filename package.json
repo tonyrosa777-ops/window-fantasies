@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run check:hd && next build",
     "start": "next start",
     "lint": "eslint",
-    "verify:email": "tsx scripts/verify-email.mts"
+    "verify:email": "tsx scripts/verify-email.mts",
+    "check:hd": "node scripts/hd-compliance-check.mjs"
   },
   "dependencies": {
     "@fal-ai/client": "^1.10.1",

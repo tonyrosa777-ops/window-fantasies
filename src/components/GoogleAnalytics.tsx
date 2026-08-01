@@ -1,7 +1,7 @@
 import Script from "next/script";
 
 /**
- * GoogleAnalytics — GA4 (gtag.js) for Window Fantasies.
+ * GoogleAnalytics: GA4 (gtag.js) for Window Fantasies.
  *
  * Loads via next/script (strategy="afterInteractive"), the documented Next way to
  * load analytics. GA4 Enhanced Measurement captures App Router client navigations
