@@ -233,7 +233,7 @@ section[style*="var(--bg-cream)"]::before {
 
 .hd-hero-slide {
   opacity: 0;
-  transition: opacity 1200ms ease-in-out;
+  transition: opacity 900ms ease-in-out;
   will-change: opacity, transform;
 }
 
@@ -244,8 +244,8 @@ section[style*="var(--bg-cream)"]::before {
 /* The drift runs continuously rather than on activation, so a slide is already
    mid-move when it fades in. Starting the zoom at the same instant as the fade
    reads as a lurch. */
-.hd-hero-slide[data-direction="in"]  { animation: hd-hero-push 28s ease-in-out infinite alternate; }
-.hd-hero-slide[data-direction="out"] { animation: hd-hero-pull 28s ease-in-out infinite alternate; }
+.hd-hero-slide[data-direction="in"]  { animation: hd-hero-push 16s ease-in-out infinite alternate; }
+.hd-hero-slide[data-direction="out"] { animation: hd-hero-pull 16s ease-in-out infinite alternate; }
 
 @keyframes hd-hero-push {
   from { transform: scale(1); }

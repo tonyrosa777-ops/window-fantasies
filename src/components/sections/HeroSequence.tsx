@@ -39,8 +39,14 @@ import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
    with the slide.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Seconds each photo holds before crossfading. */
-const SLIDE_MS = 7000;
+/**
+ * How long each photo holds before crossfading. 4s keeps all four products in
+ * front of a visitor inside a realistic hero dwell window: the full rotation is
+ * 16s, so someone who reads the headline and CTAs still sees three or four
+ * products rather than one. The 1.2s crossfade overlaps this, so the settled
+ * portion of each slide is ~2.8s.
+ */
+const SLIDE_MS = 4000;
 
 type Slide = {
   src: string;
