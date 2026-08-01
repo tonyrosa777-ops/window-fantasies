@@ -279,12 +279,12 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     headline: "You protect the sleep in this house.",
     body: [
       "A bedroom that never gets truly dark. A night shift that needs the noon sun gone. A nursery nap that a single sunbeam can end. You are not being fussy, you are guarding the one thing a home owes everyone in it, real rest.",
-      "True blackout exists, and most people have never seen it. Duette® Honeycomb Shades with LightLock® seal the light gap at the edges, the part ordinary blackout shades leak. Ask Jim to show you at the consultation, in your own bedroom window, so you can see actual dark.",
+      "Real darkness in a bedroom comes down to the edges. Duette® Honeycomb Shades with LightLock® seal the light gap at the sides, the part an ordinary room-darkening shade leaks. Ask Jim to show you at the consultation, in your own bedroom window, so you can see actual dark.",
     ],
     recommendation: {
       name: "Duette® Honeycomb Shades with LightLock®",
       reason:
-        "Cellular shades with side channels that seal out light at the edges, where every other shade leaks. True blackout for bedrooms, nurseries, and day sleepers, with energy savings all year.",
+        "Cellular shades with side channels that seal out light at the edges, where every other shade leaks. Room darkening for bedrooms, nurseries, and day sleepers, with energy savings all year.",
       href: "/products/shades",
       linkLabel: "See the Shades",
     },

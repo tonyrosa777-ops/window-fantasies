@@ -294,7 +294,7 @@ export default function ProductsIndexPage() {
                 className="mt-3 font-body"
                 style={{ color: "var(--text-secondary)", fontSize: "1rem", lineHeight: 1.65 }}
               >
-                {siteConfig.costAnchor.body}
+                {siteConfig.costAnchor.bodyNoFigure}
               </p>
             </div>
           </FadeUp>

@@ -25,11 +25,21 @@ import Image from "next/image";
    recolouring HD's art is a compliance violation. HD supplies the reversed
    art, so we use it instead of working around its absence.
 
+   ⚠️ PROVENANCE — the receipt, so this is never re-litigated. A compliance
+   reviewer will reasonably ask whether the white file is HD's official reversed
+   art or OUR recolour of their colour art, because one is permitted and the
+   other violates "never alter any elements". It is HD's own: downloaded from
+   Jim's Brite dealer account as "White Hunter Douglas Logo.png", asset type
+   "Logo", and recorded in assets/hunter-douglas-brite/manifest.json in the
+   private docs repo with its HD asset ID. Nothing here was recoloured. If these
+   files are ever replaced, replace the manifest receipt with them.
+
    THE RULES (HD Identity Guidelines)
    1. "Never alter any elements ... Always use the original and approved art."
       → NO recolor, NO CSS filter, NO rotation, NO crop, NO opacity, NO
         mix-blend-mode, NO drop-shadow, NO hover transform. If you need the mark
-        on a dark field, use `plate` — do NOT knock the art out to white.
+        on a dark field, use `tone="dark"`, which serves HD's OWN reversed file —
+        do NOT knock the colour art out to white yourself.
    2. "The symbol always appears to the right of the wordmark."
       → Never mirror or re-order. Use the vertical variants when width is tight.
    3. Minimum on-screen size: 135px wide horizontal, 100px wide vertical.
@@ -38,13 +48,12 @@ import Image from "next/image";
    4. Clear space equal to "X" on all four sides, free of other elements.
       → Enforced as padding derived from the rendered width, so it scales.
 
-   WHY A PLATE INSTEAD OF A WHITE LOGO
-   HD Gray #5B6770 on our --ink #070706 is unreadable, and recoloring their art
-   is a compliance violation. HD's own guidelines show the mark on both light
-   and dark tiles, so the unaltered full-color logo sits on a light plate. If
-   Jim later pulls the official REVERSED art from The Link → Marketing Services
-   Portal → "Hunter Douglas logo downloads", add it as a new file and a new
-   variant — never by restyling this one.
+   (A previous block here explained why a light PLATE was used instead of a white
+   logo, and told a future reader to swap in official reversed art if Jim ever
+   pulled it from the dealer portal. He did, and it is in use — see PROVENANCE
+   above. The plate and the `plate` prop are both gone. Rule 1 still stands
+   exactly as written: if you ever need a colourway we do not have, download it
+   from Brite. Never produce it by restyling a file we do.)
 
    Source of record: ../../../../hunter-douglas-media-kit.md (private repo).
    ═══════════════════════════════════════════════════════════════════════════ */

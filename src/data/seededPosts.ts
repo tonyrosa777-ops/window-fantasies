@@ -107,7 +107,7 @@ export const seededPosts: SeededPost[] = [
         items: [
           "The product line. Sheer shadings and specialty fabrics are the most involved to build. Cellular and roller shades are simpler, and that shows up in the quote.",
           "The size and number of windows. Wide and tall openings and whole-home packages cost more.",
-          "Options like true blackout, top-down bottom-up, and PowerView® Automation.",
+          "Options like room darkening, top-down bottom-up, and PowerView® Automation.",
           "Fabric and material choices, from woven woods to custom drapery.",
         ],
       },
@@ -414,7 +414,7 @@ export const seededPosts: SeededPost[] = [
           ],
           [
             "Shades",
-            "Soft fabric that raises, lowers, or glides, from sheer to true blackout",
+            "Soft fabric that raises, lowers, or glides, from sheer to room darkening",
             "Bedrooms, living rooms, any room where comfort and insulation matter",
             "The widest range of the three, set by your fabric and opacity choice",
             "Excellent with quality fabric, and built to be repaired rather than thrown away",
@@ -431,7 +431,7 @@ export const seededPosts: SeededPost[] = [
       { type: "h2", text: "Which is right for a bedroom?" },
       {
         type: "p",
-        text: "A shade, almost every time. Bedrooms need darkness for sleep and warmth in winter, and a honeycomb shade with a room-darkening or blackout fabric delivers both. Nothing tilts, nothing rattles, and the fabric hushes the room. For kids' rooms I spec them cordless as a matter of course.",
+        text: "A shade, almost every time. Bedrooms need darkness for sleep and warmth in winter, and a honeycomb shade with a room-darkening fabric delivers both. Nothing tilts, nothing rattles, and the fabric hushes the room. For kids' rooms I spec them cordless as a matter of course.",
       },
       { type: "h2", text: "Which is right for a kitchen or bathroom?" },
       {
@@ -518,7 +518,7 @@ export const seededPosts: SeededPost[] = [
       { type: "h3", text: "Custom drapery" },
       {
         type: "p",
-        text: "Drapery is the classic for a reason. Full-height panels soften a big glass wall, give you true blackout if you want it, and layer beautifully over a sheer or a cellular shade. For a formal room or a dramatic two-story window, custom drapery is still the most beautiful answer there is.",
+        text: "Drapery is the classic for a reason. Full-height panels soften a big glass wall, block the light when you want it, and layer beautifully over a sheer or a cellular shade. For a formal room or a dramatic two-story window, custom drapery is still the most beautiful answer there is.",
       },
       { type: "h2", text: "How do I choose between them?" },
       {

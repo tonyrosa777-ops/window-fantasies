@@ -140,6 +140,23 @@ export const HD_MARKS = {
   softtouch: mark("SoftTouch", "®", "", { short: "SoftTouch®" }),
   easyrise: mark("EasyRise", "™", "", { short: "EasyRise™", note: "TRAP: ™ not ®." }),
   simplelift: mark("SimpleLift", "™", "", { short: "SimpleLift™", note: "TRAP: ™ not ®." }),
+  softclose: mark("SoftClose", "®", "", {
+    short: "SoftClose®",
+    note:
+      "TRAP: ® not ™, and it sits next to a ™ mark in the SAME phrase, which is " +
+      "how it shipped wrong. HD's own list prints 'SoftClose® louvers with " +
+      "Quick Align™' — copy that pairing exactly rather than matching one " +
+      "symbol to its neighbour.",
+  }),
+  quickalign: mark("Quick Align", "™", "", { short: "Quick Align™" }),
+  ripplefold: mark("Ripplefold", "™", "", {
+    short: "Ripplefold™",
+    note:
+      "A Carole Fabrics drapery style. Carole is a Hunter Douglas PARTNER " +
+      "COMPANY, not an HD-manufactured line — HD's own page says 'From Carole " +
+      "Fabrics, a Hunter Douglas partner company'. Say partner company, never " +
+      "'Hunter Douglas Carole Fabrics'.",
+  }),
   vertiglide: mark("Vertiglide", "®", "", { short: "Vertiglide®" }),
   duolite: mark("Duolite", "®", "", { short: "Duolite®" }),
   clearview: mark("ClearView", "®", "", { short: "ClearView®" }),

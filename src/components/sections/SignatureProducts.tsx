@@ -45,7 +45,7 @@ const SIGNATURES: { name: string; blurb: string; img: string; alt: string; href:
   },
   {
     name: hdMark("duette"),
-    blurb: "Energy-efficient cellular shades, with true blackout via LightLock®. Takes a beating and still looks great.",
+    blurb: "Energy-efficient cellular shades, with room darkening via LightLock®. Takes a beating and still looks great.",
     img: "/images/signature/duette.webp",
     alt: "Custom Hunter Douglas Duette® Honeycomb Shades in a New England home, measured and installed by Window Fantasies.",
     href: "/products/shades",

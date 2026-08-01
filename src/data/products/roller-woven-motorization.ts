@@ -238,8 +238,15 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     slug: "skyline-gliding-window-panels",
     name: "Skyline® Gliding Window Panels",
     shortName: "Skyline® Panels",
-    siteCategory: "shades",
-    hdCategory: "Roller & Solar Shades",
+    // Hunter Douglas file this under BLINDS on their own consumer site
+    // (/hunter-douglas/blinds/vertical-blinds/skyline), and the media kit groups
+    // it as "Panel Shades" -- their two sources disagree. We follow the consumer
+    // site, because that is the taxonomy a reviewer compares against, and because
+    // /products/blinds already lists Skyline in its features: filing the page
+    // under "shades" meant the category that promoted it was not the category it
+    // linked back to.
+    siteCategory: "blinds",
+    hdCategory: "Panel Shades",
     tagline:
       "Skyline® Gliding Window Panels are built for the wide openings: fabric panels that glide across and stack tightly at the side.",
     body: [
@@ -388,22 +395,21 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     tagline:
       "PowerView® Automation runs your shades from an app, a remote, or a smart-home system.",
     body: [
-      "PowerView® Automation is the motorization system from Hunter Douglas, and it is the upgrade people tell me they wish they had done sooner. You control and schedule your shades with the PowerView® App on your phone or iPad, with a handheld remote, or through a smart-home system, and you can voice activate them through that system. It received the 2018 Red Dot Design Award.",
-      "The real argument for it is the windows nobody ever touches. The two-story wall of glass, the shade over the kitchen sink, the row of windows in a sunroom. Automated window coverings make rooms more comfortable through the day, and they can be programmed to open and close at different times of the day based on your needs and the outside temperature. Snowbirds buy it for a different reason: you can be in Florida in February and still run the shades in Salem.",
+      "PowerView® Automation is the motorization system from Hunter Douglas, and it is the upgrade people tell me they wish they had done sooner. You control and schedule your shades with the PowerView® App on your phone, with a handheld remote, or through a smart-home system, and you can voice activate them through that system.",
+      "The real argument for it is the windows nobody ever touches. The two-story wall of glass, the shade over the kitchen sink, the row of windows in a sunroom. Automated window coverings make rooms more comfortable through the day, and they can be programmed to open and close at different times of the day to suit how you actually live. Snowbirds buy it for a different reason: you can be in Florida in February and still run the shades in Salem.",
       "The PowerView® App is required for programmed operation.",
     ],
     features: [
-      "Control from the PowerView® App on your phone or iPad, a handheld remote, or a smart-home system",
+      "Control from the PowerView® App on your phone, a handheld remote, or a smart-home system",
       "Voice activation through your smart-home system",
-      "Shades can be programmed to open and close at different times of the day, based on your needs and outside temperatures",
-      "Recipient of the 2018 Red Dot Design Award",
-      "Available across the Hunter Douglas line, from roller and screen shades to woven woods, Roman shades and gliding panels",
+      "Shades can be programmed to open and close at different times of the day",
+      "Available on many Hunter Douglas lines, including roller and screen shades, woven woods, Roman shades and gliding panels",
       "Set up and programmed in your home by Jim, who does not leave until you have run it yourself once",
     ],
     faq: [
       {
         q: "What can I actually do with it?",
-        a: "Open and close one shade, or a whole room of them, from the app, a remote, or a smart-home system, and voice activate them through that system. You can also set shades to open and close at different times of the day based on your needs and the outside temperature. The PowerView® App is required for programmed operation.",
+        a: "Open and close one shade, or a whole room of them, from the app, a remote, or a smart-home system, and voice activate them through that system. You can also set shades to open and close at different times of the day. The PowerView® App is required for programmed operation.",
       },
       {
         q: "Can PowerView® Automation be added to shades I already own?",

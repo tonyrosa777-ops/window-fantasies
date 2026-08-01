@@ -140,9 +140,30 @@ export function HeroSequence() {
           intrinsically taller than the fold at those widths, so its padding-bottom
           lands off-screen and cannot reserve the strip. The photo runs the full
           section height, so the fix is to caption its true bottom edge instead of
-          a mid-photo band: still an on-photo corner caption, and clear of content. */}
+          a mid-photo band: still an on-photo corner caption, and clear of content.
+
+          ⚠️ ONE CREDIT PER SLIDE, not one credit reading SLIDES[active].credit.
+          A single shared caption swaps its text the instant `active` changes,
+          while the photograph underneath is only STARTING a 900ms crossfade — so
+          for most of that window the outgoing photo is still largely opaque
+          beneath a caption already naming the incoming product. That is not a
+          missing label, it is an affirmatively WRONG one, on HD's own creative,
+          on the homepage, at the exact criterion the last review failed us on.
+
+          Rendering a caption per slide and driving it from the SAME data-active
+          attribute and the SAME 900ms curve as its photo makes them fade as one
+          pair. They cannot desync, because nothing coordinates them — they are
+          the same state. Structural, not a timing workaround. */}
       <div className="absolute inset-x-0 top-0 bottom-0 sm:bottom-auto sm:h-[100svh] z-20 pointer-events-none">
-        <HDPhotoCredit credit={SLIDES[active].credit} variant="overlay" />
+        {SLIDES.map((s, i) => (
+          <div
+            key={s.src}
+            className="hd-hero-slide absolute inset-0"
+            data-active={i === active ? "true" : "false"}
+          >
+            <HDPhotoCredit credit={s.credit} variant="overlay" />
+          </div>
+        ))}
       </div>
     </>
   );

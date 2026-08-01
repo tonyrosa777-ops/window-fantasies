@@ -179,7 +179,7 @@ export default async function ServicePage({ params }: Props) {
       <Section
         tone="base"
         className="pt-32 sm:pt-36 lg:pt-40"
-        bgImage={isPowerView ? "/images/headers/powerview-motorization.webp" : undefined}
+        bgImage={isPowerView ? "/images/headers/powerview-automation.webp" : undefined}
         bgImageAlt={
           isPowerView
             ? "A bright New England great room with tall windows, its motorized Hunter Douglas shades resting at staggered heights."

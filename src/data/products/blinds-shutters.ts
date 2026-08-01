@@ -119,11 +119,6 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
         alt: "A close view of the headrail and hardware on Hunter Douglas Parkland® Wood Blinds.",
         credit: "Parkland® Wood Blinds by Hunter Douglas",
       },
-      {
-        src: "/images/product-lines/parkland-wood-blinds/parkland-wood-blinds-v-premier-before-living-room.webp",
-        alt: "The same living room photographed before the Hunter Douglas Parkland® Wood Blinds went in, with bare windows and full glare across the seating.",
-        credit: "Parkland® Wood Blinds by Hunter Douglas",
-      },
     ],
   },
 
@@ -395,7 +390,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "Hunter Douglas Heritance® Hardwood Shutters are genuine hardwood, dovetailed and finished, and they read as part of the house itself.",
     body: [
       "Hunter Douglas Heritance® Hardwood Shutters are made from 100% natural hardwood. Hunter Douglas uses Truemill® dovetail construction and their Integra™ finish, and the hardwood is harvested from responsibly managed forests. There are more than twenty colors, plus custom paints and stains when you are matching existing millwork.",
-      "Louvers come 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch. The wider louver reads bolder on a tall window, the 2 1/2 inch reads finer and more traditional. You also choose how the panels move: standard hinged panels that pull inward, a bi-fold track that folds them back, or a bypass track that slides one panel past another on a wide opening. Louvers tilt from a front tilt bar or from a hidden tilt with no bar on the face, and the optional SoftClose™ louvers with Quick Align™ shut in one touch, the way good cabinetry closes.",
+      "Louvers come 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch. The wider louver reads bolder on a tall window, the 2 1/2 inch reads finer and more traditional. You also choose how the panels move: standard hinged panels that pull inward, a bi-fold track that folds them back, or a bypass track that slides one panel past another on a wide opening. Louvers tilt from a front tilt bar or from a hidden tilt with no bar on the face, and the optional SoftClose® louvers with Quick Align™ shut in one touch, the way good cabinetry closes.",
       "A shutter is the one treatment people notice from the street, so the fit has to be right. Hunter Douglas makes this line for arches, angles, trapezoids, hexagons, circles and ovals, bay and corner windows, French doors, and sidelights. Hunter Douglas manufactures the shutter. My job is the measurement, the design, and the install, and I do all three myself.",
     ],
     features: [
@@ -404,7 +399,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "Louvers in 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch",
       "More than twenty colors, plus custom paints and stains",
       "Panels hinged, bi-fold, or on a bypass track, with a front tilt bar or a hidden tilt",
-      "Optional SoftClose™ louvers with Quick Align™ for one touch closure",
+      "Optional SoftClose® louvers with Quick Align™ for one touch closure",
     ],
     faq: [
       {
@@ -454,7 +449,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "Hunter Douglas NewStyle® Hybrid Shutters pair the look of finely painted wood with composite strength, for rooms that take a beating.",
     body: [
       "Hunter Douglas NewStyle® Hybrid Shutters combine the look of genuine wood with the durability of composite materials. Hunter Douglas gives them a low luster Finetech® finish, so they read like finely painted wood, and builds them with the same Truemill® dovetail construction used on their hardwood shutters. There are eight colors.",
-      "Louvers come 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch, and the panels work the way the hardwood ones do: hinged, bi-fold, or on a bypass track, with a front tilt bar or a hidden tilt. Add the optional SoftClose™ louvers with Quick Align™ and they close in one touch. This is the line I bring up for a high energy house, a playroom, a hallway where a door swings, anywhere the shutter is going to get handled every single day.",
+      "Louvers come 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch, and the panels work the way the hardwood ones do: hinged, bi-fold, or on a bypass track, with a front tilt bar or a hidden tilt. Add the optional SoftClose® louvers with Quick Align™ and they close in one touch. This is the line I bring up for a high energy house, a playroom, a hallway where a door swings, anywhere the shutter is going to get handled every single day.",
       "Hunter Douglas NewStyle® Hybrid Shutters also fit the openings people assume a shutter cannot cover: arches, angles, circles and ovals, bay and corner windows, French doors, and sidelights. Hunter Douglas builds every panel to your exact opening. I measure it, and I hang it.",
     ],
     features: [
@@ -463,7 +458,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "Truemill® dovetail construction",
       "Louvers in 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch",
       "Eight colors",
-      "Panels hinged, bi-fold, or on a bypass track, with optional SoftClose™ louvers with Quick Align™",
+      "Panels hinged, bi-fold, or on a bypass track, with optional SoftClose® louvers with Quick Align™",
     ],
     faq: [
       {
@@ -476,7 +471,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       },
       {
         q: "Can I get louvers that close softly?",
-        a: "Yes. SoftClose™ louvers with Quick Align™ are an option on this line. They close softly and in one touch, similar to the soft close hardware on high end cabinetry. Feel it once on a sample at the consultation and it is hard to go back.",
+        a: "Yes. SoftClose® louvers with Quick Align™ are an option on this line. They close softly and in one touch, similar to the soft close hardware on high end cabinetry. Feel it once on a sample at the consultation and it is hard to go back.",
       },
     ],
     photos: [
@@ -526,7 +521,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "UV resistant against warping, cracking, fading, chipping, peeling, and discoloring",
       "Interior aluminum bracing and resin blocks for strength",
       "Louvers in 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch, in three colors",
-      "Optional SoftClose™ louvers with Quick Align™ and a decorative sill cover",
+      "Optional SoftClose® louvers with Quick Align™ and a decorative sill cover",
       "Available with PowerView® Automation",
     ],
     faq: [

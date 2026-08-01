@@ -43,11 +43,18 @@ interface Props {
  * Carole Fabrics is absent from HD's 2025 trademark list, so it ships with no
  * symbol on purpose. Verify any change against HD_MARKS before editing.
  *
- * The photos here are the site's own room stills, not Hunter Douglas licensed
- * photography (HD's 12 licensed photos live in /images/window-fashions/ and are
- * referenced from workItems in site.ts). That is why no <HDPhotoCredit /> renders
- * on this band: HD's attribution requirement covers THEIR photography, and
- * captioning a non-HD photo "by Hunter Douglas" would misattribute it.
+ * ⚠️ These photographs ARE Hunter Douglas licensed photography, pulled from the
+ * Brite dealer library — every one traces to an HD asset ID through
+ * assets/hunter-douglas-brite/site-image-map.json in the private docs repo. An
+ * earlier version of this comment said they were the site's own room stills and
+ * used that to justify rendering no credit; that was true before the Brite swap
+ * and false after it, which is how /products/drapery shipped HD photography with
+ * zero attribution. Criterion 3 applies to every image on this page.
+ *
+ * Before editing any `alt` or `name` below, check the product against
+ * site-image-map.json. Five labels here named the wrong HD product because they
+ * were written for the AI stills these files replaced — swapping the bytes under
+ * a slot does not update the sentence describing it.
  */
 const signatureProducts: Record<
   string,
@@ -55,20 +62,21 @@ const signatureProducts: Record<
 > = {
   shades: [
     { name: "Silhouette® Window Shadings", line: "S-vane sheers that float diffused light into the room with daytime privacy.", image: "/images/product-lines/silhouette.webp", alt: "Hunter Douglas Silhouette® Window Shadings softening golden-hour light in a New England living room.", w: 2050, h: 1025 },
-    { name: "Duette® Honeycomb Shades", line: "Energy-efficient cellular shades with true blackout when the room needs it dark.", image: "/images/product-lines/duette.webp", alt: "Hunter Douglas Duette® Honeycomb Shades in a bright kitchen.", w: 900, h: 600 },
+    { name: "Duette® Honeycomb Shades", line: "Energy-efficient cellular shades with room darkening when the room needs it dark.", image: "/images/product-lines/duette.webp", alt: "Hunter Douglas Duette® Honeycomb Shades in a bright kitchen.", w: 900, h: 600 },
     { name: "Vignette® Modern Roman Shades", line: "Tailored modern Roman folds with no exposed cords or rings.", image: "/images/product-lines/vignette-roman.webp", alt: "Tailored Hunter Douglas Vignette® Modern Roman Shades in a refined living room with a grand piano.", w: 2560, h: 1714 },
   ],
   blinds: [
-    { name: "Parkland® Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.webp", alt: "Warm Hunter Douglas Parkland® Wood Blinds in a modern dining room.", w: 2050, h: 1025 },
-    { name: "Installation by hand", line: "Every blind measured and installed by hand, cleanly, over any opening.", image: "/images/product-lines/installed-by-hand.webp", alt: "Hunter Douglas wood blinds installed cleanly over a fireplace.", w: 2050, h: 1025 },
+    { name: "Parkland® Wood Blinds", line: "Classic real-wood warmth in more than fifty finishes.", image: "/images/product-lines/parkland-wood.webp", alt: "Warm Hunter Douglas Parkland® Wood Blinds layered behind drapery panels in a dining room.", w: 2050, h: 1025 },
+    { name: "EverWood® Alternative Wood Blinds", line: "The look of real wood, built to shrug off sun, steam, and daily handling.", image: "/images/product-lines/everwood-blinds.webp", alt: "Hunter Douglas EverWood® Alternative Wood Blinds across a bright living room window.", w: 2560, h: 1920 },
   ],
   shutters: [
-    { name: "Heritance® Hardwood Shutters", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.webp", alt: "Hunter Douglas hardwood plantation shutters in warm golden light.", w: 1025, h: 513 },
-    { name: "Palm Beach™ Polysatin™ Shutters", line: "Never warps, cracks, or fades. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.webp", alt: "Plantation shutters framing French doors with an ocean view.", w: 1025, h: 513 },
+    { name: "Heritance® Hardwood Shutters", line: "One hundred percent hardwood shutters with dovetail construction, timeless and built to last.", image: "/images/product-lines/heritance-shutter.webp", alt: "Hunter Douglas Heritance® Hardwood Shutters on a bi-fold track across a kitchen door.", w: 1025, h: 513 },
+    { name: "NewStyle® Hybrid Shutters", line: "Hardwood looks with composite durability, on hinged, bi-fold, or bypass panels.", image: "/images/product-lines/installed-by-hand.webp", alt: "Hunter Douglas NewStyle® Hybrid Shutters on a bi-fold track across a den opening.", w: 2050, h: 1025 },
+    { name: "Palm Beach™ Polysatin™ Shutters", line: "UV resistant against warping, cracking, and fading. Ideal for coastal homes, doors, and humid rooms.", image: "/images/product-lines/palmbeach-shutter.webp", alt: "A close detail of Hunter Douglas Palm Beach™ Polysatin™ Shutter louvers in a bedroom.", w: 1025, h: 513 },
   ],
   drapery: [
-    { name: "Carole Fabrics custom drapery", line: "More than four thousand fabrics, layered over sheers or hung on their own.", image: "/images/product-lines/carole-drapery.webp", alt: "Golden floor-length custom drapery layered over sheers in a formal New England living room.", w: 1025, h: 513 },
-    { name: "Luminette® Privacy Sheers", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.webp", alt: "Airy Hunter Douglas Luminette® Privacy Sheers with an ocean view.", w: 1025, h: 513 },
+    { name: "Provenance® Woven Wood Shades", line: "Woods, reeds, grasses and bamboo, woven to bring the outdoors in.", image: "/images/product-lines/carole-drapery.webp", alt: "Hunter Douglas Provenance® Woven Wood Shades in a warm, light-filled child's room.", w: 1025, h: 513 },
+    { name: "Luminette® Privacy Sheers", line: "Drapery softness with the light control of a shade, for doors and wide windows.", image: "/images/product-lines/luminette-panels.webp", alt: "A detail of Hunter Douglas Luminette® Privacy Sheers, vertical vanes rotating to diffuse the light.", w: 1025, h: 513 },
   ],
 };
 
@@ -458,7 +466,7 @@ export default async function ProductPage({ params }: Props) {
                     lineHeight: 1.6,
                   }}
                 >
-                  {siteConfig.costAnchor.body}
+                  {siteConfig.costAnchor.bodyNoFigure}
                 </p>
               </div>
             </div>
@@ -548,9 +556,14 @@ export default async function ProductPage({ params }: Props) {
                 </StaggerItem>
               ))}
             </StaggerContainer>
-            {/* One credit for the set, per HD's first-instance rule. */}
+            {/* One credit for the set, per HD's first-instance rule — but it must
+                name the SPECIFIC products, which is the whole point of criterion 3.
+                "Product photography by Hunter Douglas" names none of them. */}
             <div className="mt-6">
-              <HDPhotoCredit credit="Product photography by Hunter Douglas" tone="light" />
+              <HDPhotoCredit
+                credit={`${categoryLines.map((l) => l.name).join(" · ")} by Hunter Douglas`}
+                tone="light"
+              />
             </div>
           </Container>
         </Section>
@@ -600,6 +613,13 @@ export default async function ProductPage({ params }: Props) {
                   </div>
                 </div>
               ))}
+            </div>
+            {/* ⚠️ HD COMPLIANCE — criterion 3. These ARE Hunter Douglas licensed
+                photographs, so the band needs a credit naming the specific
+                products, not a generic "photography by Hunter Douglas". One
+                credit for the set, per HD's first-instance-per-section rule. */}
+            <div className="mt-6">
+              <HDPhotoCredit credit={`${signature.map((s) => s.name).join(" · ")} by Hunter Douglas`} />
             </div>
           </Container>
         </Section>

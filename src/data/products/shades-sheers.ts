@@ -106,7 +106,7 @@ export const SHADES_SHEERS: HDProductLine[] = [
       },
       {
         src: "/images/product-lines/silhouette-window-shadings/silhouette-window-shadings--04-lum-hard-stack-var-25643.webp",
-        alt: "Hunter Douglas Silhouette® Window Shadings across the windows of an open living room, with a vertical sheer panel drawn over the glass door.",
+        alt: "Hunter Douglas Silhouette® Window Shadings across the windows of an open living room, with Hunter Douglas Luminette® Privacy Sheers drawn over the glass door.",
         credit: hdPhotoCredit("silhouette"),
       },
       {

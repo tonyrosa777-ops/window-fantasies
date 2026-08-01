@@ -202,7 +202,10 @@ export interface ProductLine {
  */
 export interface CostAnchor {
   eyebrow: string;
+  /** Carries the category scale figure. NOT for /products surfaces — see costAnchor. */
   body: string;
+  /** Same message, no figure. Required on any surface whose products are all Hunter Douglas. */
+  bodyNoFigure: string;
 }
 
 export interface Industry {
@@ -434,7 +437,7 @@ export const siteConfig: SiteConfig = {
       emphasis: ["hand"],
     },
     subhead:
-      "Measured, designed, and installed by Jim himself. Backed by the Hunter Douglas Limited Lifetime Warranty. Motorized shades you control from your phone, or a beach in Florida.",
+      "Measured, designed, and installed by Jim himself. Backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. Motorized shades you control from your phone, or a beach in Florida.",
     trustMicrocopy: "Free in-home consultation. Jim brings the samples to you.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
     ctaSecondary: { label: "Take the Quiz", href: "/quiz" },
@@ -654,7 +657,7 @@ export const siteConfig: SiteConfig = {
   // Usage rules. Verify any change against src/data/hunterDouglas.ts.
   pastClients: [
     { name: "Silhouette® Window Shadings", industry: "Shades", description: "S-vane sheers that float between two sheers for diffused light and daytime privacy. The signature Hunter Douglas look." },
-    { name: "Duette® Honeycomb Shades", industry: "Shades", description: "Energy-efficient cellular shades from Hunter Douglas with true blackout via LightLock®. Takes a beating and still looks great." },
+    { name: "Duette® Honeycomb Shades", industry: "Shades", description: "Energy-efficient cellular shades from Hunter Douglas with room darkening via LightLock®. Takes a beating and still looks great." },
     { name: "Luminette® Privacy Sheers", industry: "Shades", description: "Drapery-like vertical sheers from Hunter Douglas with rotating vanes for doors and wide windows." },
     { name: "Pirouette® Window Shadings", industry: "Shades", description: "Soft fabric vanes over a single back sheer for a gentle, contoured look." },
     { name: "Plantation Shutters", industry: "Shutters", description: "Timeless hardwood and poly shutters from Hunter Douglas that never go out of style." },
@@ -664,14 +667,14 @@ export const siteConfig: SiteConfig = {
   // Portfolio items (real HD photos). Category typed to the union above.
   workItems: [
     {
-      brand: "Silhouette® Window Shadings",
-      credit: "Silhouette® Window Shadings by Hunter Douglas",
+      brand: "Pirouette® Window Shadings",
+      credit: "Pirouette® Window Shadings by Hunter Douglas",
       category: "Shades",
       room: "Living room",
       featured: true,
       image: "/images/window-fashions/p04.webp",
-      alt: "A premium New England living room with Hunter Douglas Silhouette® Window Shadings softening the daylight.",
-      blurb: "Silhouette® Window Shadings diffusing golden-hour light in a premium living room. Daytime privacy without losing the view.",
+      alt: "A premium New England living room with Hunter Douglas Pirouette® Window Shadings softening the daylight.",
+      blurb: "Pirouette® Window Shadings diffusing golden-hour light in a premium living room. Daytime privacy without losing the view.",
       w: 2050,
       h: 1025,
     },
@@ -693,7 +696,7 @@ export const siteConfig: SiteConfig = {
       room: "Kitchen",
       image: "/images/window-fashions/p06.webp",
       alt: "A bright kitchen with Hunter Douglas Duette® Honeycomb Shades.",
-      blurb: "Duette® Honeycomb Shades in a sunny kitchen. Energy-efficient, and available in true blackout.",
+      blurb: "Duette® Honeycomb Shades in a sunny kitchen. Energy-efficient, and available in room-darkening fabrics.",
       w: 900,
       h: 600,
     },
@@ -720,13 +723,13 @@ export const siteConfig: SiteConfig = {
       h: 1025,
     },
     {
-      brand: "Heritance® Hardwood Shutters",
-      credit: "Heritance® Hardwood Shutters by Hunter Douglas",
+      brand: "NewStyle® Hybrid Shutters",
+      credit: "NewStyle® Hybrid Shutters by Hunter Douglas",
       category: "Shutters",
-      room: "Family room",
+      room: "Dining room",
       image: "/images/window-fashions/p11.webp",
-      alt: "Hunter Douglas Heritance® Hardwood Shutters in warm golden light.",
-      blurb: "Heritance® Hardwood Shutters in golden light. Timeless, and built to last.",
+      alt: "Hunter Douglas NewStyle® Hybrid Shutters on a bypass track in warm golden light.",
+      blurb: "NewStyle® Hybrid Shutters on a bypass track. Timeless, and built to last.",
       w: 1025,
       h: 513,
     },
@@ -816,23 +819,23 @@ export const siteConfig: SiteConfig = {
       h: 1800,
     },
     {
-      brand: "Nursery Blackout Shades",
+      brand: "Nursery Room-Darkening Shades",
       category: "Shades",
       room: "Nursery",
       image: "/images/portfolio/pf-15.webp",
-      alt: "A soft nursery with blush blackout roller shades beside a wooden crib.",
-      blurb: "Gentle blackout roller shades in a warm, restful nursery.",
+      alt: "A soft nursery with blush room-darkening roller shades beside a wooden crib.",
+      blurb: "Gentle room-darkening roller shades in a warm, restful nursery.",
       w: 2400,
       h: 1800,
     },
     {
-      brand: "Media Room Blackout",
+      brand: "Media Room Darkening",
       category: "Shades",
       room: "Media room",
       featured: true,
       image: "/images/portfolio/pf-16.webp",
-      alt: "A walnut-paneled media room with a charcoal motorized blackout shade.",
-      blurb: "A motorized blackout shade darkening a warm walnut media room.",
+      alt: "A walnut-paneled media room with a charcoal motorized room-darkening shade.",
+      blurb: "A motorized room-darkening shade in a warm walnut media room.",
       w: 2400,
       h: 1800,
     },
@@ -884,18 +887,18 @@ export const siteConfig: SiteConfig = {
     {
       slug: "shades",
       name: "Shades",
-      shortDescription: "The flagship Hunter Douglas category. Silhouette® Window Shadings, Pirouette® Window Shadings, Luminette® Privacy Sheers, Duette® Honeycomb Shades, Vignette® Modern Roman Shades, Designer Roller Shades, and Designer Screen Shades. Diffused light, daytime privacy, and true blackout when you want it.",
+      shortDescription: "The flagship Hunter Douglas category. Silhouette® Window Shadings, Pirouette® Window Shadings, Luminette® Privacy Sheers, Duette® Honeycomb Shades, Vignette® Modern Roman Shades, Designer Roller Shades, and Designer Screen Shades. Diffused light, daytime privacy, and room darkening when you want it.",
       moqTiers: [],
       features: [
         "Silhouette® Window Shadings: S-vane sheers for diffused light and daytime privacy",
-        "Duette® Honeycomb Shades: energy efficient, with true blackout via LightLock®",
+        "Duette® Honeycomb Shades: energy efficient, with room darkening via LightLock®",
         "Luminette® Privacy Sheers: drapery-like vertical sheers for doors and wide windows",
         "Vignette® Modern Roman Shades: tailored folds, no exposed cords",
         "Designer Roller Shades and Designer Screen Shades: clean lines, sunglasses for your windows",
         "PowerView® Automation available across the line",
       ],
       imageSrc: "/images/products/shades.webp",
-      imageAlt: "Custom Hunter Douglas Duette® Honeycomb Shades filtering morning light in a calm New England bedroom, measured and installed by Window Fantasies.",
+      imageAlt: "Hunter Douglas Silhouette® Window Shadings filtering daylight over a freestanding tub in a calm New England bath, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
@@ -912,7 +915,6 @@ export const siteConfig: SiteConfig = {
         // 2025 list only under Alustra® Silhouette® fabrics, not as a blind.
         // Replaced with a blind HD actually lists, using HD's own descriptor
         // ("Soft Vertical Blinds") straight from src/data/hunterDouglas.ts.
-        "Cadence® Soft Vertical Blinds: soft fabric vanes for wide windows and sliding doors",
         "Skyline® Gliding Window Panels: gliding panels for tall or wide openings",
         "Precise light and privacy control",
         "Backed by the Hunter Douglas Limited Lifetime Warranty",
@@ -925,11 +927,11 @@ export const siteConfig: SiteConfig = {
     {
       slug: "shutters",
       name: "Shutters",
-      shortDescription: "Timeless and built to last. Hunter Douglas Heritance® Hardwood Shutters, Palm Beach™ Polysatin™ Shutters that never warp or fade, and NewStyle® Hybrid Shutters that pair a hardwood look with added strength.",
+      shortDescription: "Timeless and built to last. Hunter Douglas Heritance® Hardwood Shutters, Palm Beach™ Polysatin™ Shutters built UV resistant against warping and fading, and NewStyle® Hybrid Shutters that pair a hardwood look with added strength.",
       moqTiers: [],
       features: [
         "Heritance® Hardwood Shutters: 100 percent hardwood, dovetail construction",
-        "Palm Beach™ Polysatin™ Shutters: never warp, crack, or fade",
+        "Palm Beach™ Polysatin™ Shutters: UV resistant against warping, cracking, and fading",
         "NewStyle® Hybrid Shutters: wood and composite, hardwood look with strength",
         "Ideal for humid rooms, doors, and coastal homes",
         "A classic look that never dates the room",
@@ -946,18 +948,18 @@ export const siteConfig: SiteConfig = {
     {
       slug: "drapery",
       name: "Drapery",
-      shortDescription: "Soften a room and control the light. Hunter Douglas Carole Fabrics custom drapery with 4,000-plus fabric choices, Luminette® Privacy Sheers, and Provenance® Woven Wood Shades in natural materials.",
+      shortDescription: "Soften a room and control the light. Custom drapery from Carole Fabrics, a Hunter Douglas partner company, with 4,000-plus fabric choices, Luminette® Privacy Sheers, and Provenance® Woven Wood Shades in natural materials.",
       moqTiers: [],
       features: [
-        "Carole Fabrics custom drapery: 4,000-plus fabric and color choices",
+        "Carole Fabrics, a Hunter Douglas partner company: 4,000-plus fabric and color choices",
         "Layer over sheers or hang standalone",
         "Luminette® Privacy Sheers: light diffusing with integrated vanes",
         "Provenance® Woven Wood Shades: natural reeds, woods, and bamboo",
-        "Adds warmth, softness, and insulation",
+        "Pleated, non-pleated, and Ripplefold™ styles with premium hardware",
         "Coordinated with your shades and shutters",
       ],
       imageSrc: "/images/products/drapery.webp",
-      imageAlt: "Custom Hunter Douglas Carole Fabrics drapery in sage linen framing a New England dining room, measured and installed by Window Fantasies.",
+      imageAlt: "Hunter Douglas Luminette® Privacy Sheers diffusing daylight across a wide New England window wall, measured and installed by Window Fantasies.",
       imageW: 2528,
       imageH: 1685,
     },
@@ -973,9 +975,27 @@ export const siteConfig: SiteConfig = {
   // amount next to the Hunter Douglas name, and never publish a per-window,
   // per-product, or per-square-foot price. The real number comes from the
   // in-home measure, which is the whole point of this band.
+  /**
+   * ⚠️ HD COMPLIANCE — the figure and the no-figure variant are NOT interchangeable.
+   *
+   * HD bars dealers from publishing "web-based Hunter Douglas product price quotes".
+   * `body` carries a category scale figure that is deliberately decoupled from the
+   * HD name, and HD's own reviewer passed the pricing criteria with it live.
+   *
+   * What changed on 2026-08-01: the site gained 23 pages whose products are 100%
+   * Hunter Douglas. On a page titled "Hunter Douglas Product Lines", "a single
+   * high-end shade" is unambiguously an HD shade, so the same sentence stops being
+   * a category figure and starts reading as an HD price. Two independent compliance
+   * reviewers flagged it there.
+   *
+   * So: `bodyNoFigure` on every /products surface, `body` everywhere else, where the
+   * framing is genuinely category-level and unchanged since HD's review. Same
+   * conversion job either way — the free consultation is the point, not the number.
+   */
   costAnchor: {
     eyebrow: "Honest pricing, upfront",
     body: "Custom window treatments are a premium, made-to-measure purchase. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
+    bodyNoFigure: "Custom window treatments are a premium, made-to-measure purchase, and the price depends on the size of the opening, the product, and the options you choose. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
   },
 
   // Not used by Window Fantasies (the /industries route is removed). Empty but valid.
@@ -1223,7 +1243,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 14120,
       distance: "Cape Cod MA",
-      description: "On Cape Cod, sun and salt air call for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades that will not warp or fade. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
+      description: "On Cape Cod, sun and salt air call for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades built to resist warping and fading. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
       // Cape Cod has no sibling town pages yet; link the real MA pages so the band renders.
       nearbyAreas: ["boston-ma", "cambridge-ma"],
     },
@@ -1373,7 +1393,7 @@ export const siteConfig: SiteConfig = {
     },
     {
       q: "Are Hunter Douglas shades worth the price?",
-      a: "For most homeowners, yes. You are buying the luxury end of the window: a custom product built for your exact opening, backed by the Hunter Douglas Limited Lifetime Warranty, and serviced by the person who installed it. They last for years, they hold their look, and options like blackout and motorization solve real problems. Jim will also tell you honestly if a simpler product fits your situation better. He sells you what you deserve, not the most expensive thing on the truck.",
+      a: "For most homeowners, yes. You are buying the luxury end of the window: a custom product built for your exact opening, backed by the Hunter Douglas Limited Lifetime Warranty, and serviced by the person who installed it. They last for years, they hold their look, and options like room darkening and motorization solve real problems. Jim will also tell you honestly if a simpler product fits your situation better. He sells you what you deserve, not the most expensive thing on the truck.",
       category: "Value",
     },
     {
