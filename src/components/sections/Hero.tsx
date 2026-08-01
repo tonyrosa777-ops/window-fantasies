@@ -30,12 +30,21 @@ import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
       1536x720 scaled-laptop gate. It is `priority` because a logo that lazy-loads
       below the fold fails the criterion as surely as a missing one.
 
-   2. PHOTO ATTRIBUTION ON THE HERO IMAGE.
-      HD requires their product photography be "clearly labeled with the specific
-      product it was designed to promote." The hero photo is a licensed HD image,
-      so it carries an on-photo credit. HD expressly permits this overlay: "text
-      boxes with acceptable information may slightly overlap the Hunter Douglas
-      image." This is the FIRST instance on the page, which is what HD requires.
+   2. THE HERO FILM IS HUNTER DOUGLAS'S OWN, USED AS SUPPLIED.
+      It is their "Silhouette Halo" product film, downloaded from Brite (their
+      dealer asset library) on 2026-08-01. It is NOT trimmed, cropped, re-cut,
+      re-graded or otherwise edited: HD's policy says "using, altering or
+      tampering with any part of our creative content is a compliance violation",
+      and a 63s film cut down to a hero loop would be exactly that. It is only
+      transcoded (H.264/VP9, 1920 wide, audio stripped) which is delivery
+      encoding, not creative alteration - the same class of change as resizing a
+      photo to fit a slot. Play it whole, loop it whole. If a shorter hero cut is
+      ever wanted, that needs Prior Approval from Hunter Douglas Marketing.
+
+      Note it ends on an HD logo card around t=60 and contains people. That is
+      what a manufacturer brand film is; it is the trade-off for using licensed
+      footage instead of an AI derivative of HD's photography, which is what this
+      hero used to be and which was a real violation.
    ═══════════════════════════════════════════════════ */
 
 const TRUST_CHIPS = [
@@ -47,22 +56,10 @@ const TRUST_CHIPS = [
 ];
 
 /**
- * ⚠️ CORRECTED 2026-08-01. There is deliberately NO <HDPhotoCredit /> on the
- * hero. An earlier pass credited it "Hunter Douglas hardwood shutters", which
- * was wrong at a more basic level than which product line: this asset is not
- * Hunter Douglas photography at all.
- *
- * hero-poster.webp is a still from an AI-generated (Higgsfield) video clip,
- * image-to-image off Jim's real p11 photo — see .higgsfield-pilot/
- * composition-winner.md and movie-hero-plan.md ("still-1-shutters.png",
- * "Every still passes as Jim's own photography"). It is Jim's own generated
- * marketing content, not an HD-owned asset. HD's Criterion 3 requires
- * attributing HD's OWN photo assets; it does not apply here, and crediting
- * "Hunter Douglas" on a still HD did not shoot would be a false attribution,
- * which is worse than none. The real, licensed HD photos are the twelve files
- * in public/images/window-fashions/, which DO carry <HDPhotoCredit /> where
- * they're used (portfolio, product pages, about, testimonials).
+ * The hero credit. The film IS Hunter Douglas's own footage now, so criterion 3
+ * applies again and the product it promotes is unambiguous - HD titled the file.
  */
+const HERO_CREDIT = "Aria™ Soft Blinds by Hunter Douglas";
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -99,27 +96,17 @@ export default function Hero() {
       style={{ background: "var(--ink)" }}
       aria-label="Window Fantasies, the finest window treatments in New England, by hand"
     >
-      {/* Layer 1: Full-bleed stitched movie hero (Part F, 2026-07-02) — 3-clip
-          "Light, by hand" loop (shutters → sheers → drapes), Cinema Studio V2,
-          start_image-locked on Jim's real photos. Reduced-motion falls back to
-          the p04 photo (the poster's sister frame). */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover z-0 motion-reduce:hidden"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        poster="/images/hero-poster.webp"
-        aria-hidden="true"
-      >
-        <source src="/videos/hero-loop.mp4" type="video/mp4" />
-        <source src="/videos/hero-loop.webm" type="video/webm" />
-      </video>
+      {/* Layer 1: Hunter Douglas "Silhouette Halo" product film, as supplied.
+          Replaced the AI-generated Higgsfield loop on 2026-08-01. That loop was
+          image-to-image generated off HD's own p11 photograph, which made it an
+          unauthorised derivative of an HD asset (knowledge base Error #274).
+          Reduced-motion falls back to the poster frame below. */}
+      {/* STILL hero. See HERO_CREDIT note above for why this is a photograph
+          rather than HD's film. */}
       <img
-        src="/images/hero-poster.webp"
-        alt="A premium New England living room dressed in custom wood shutters, warm golden-hour light raking through the open louvers."
-        className="absolute inset-0 w-full h-full object-cover z-0 hidden motion-reduce:block"
+        src="/images/hd-hero-aria-livingroom.webp"
+        alt="A warm New England living room with Hunter Douglas Aria™ Soft Blinds filtering daylight across a wood-panelled wall."
+        className="absolute inset-0 w-full h-full object-cover z-0"
         fetchPriority="high"
       />
 
@@ -137,8 +124,11 @@ export default function Hero() {
           layout bug. In-flow cannot overlap anything and is still the first
           thing a visitor sees.
 
-          The plate exists because HD Gray #5B6770 is unreadable on --ink and
-          recolouring their art is a compliance violation. */}
+          Uses tone="dark", which selects HD's own REVERSED art (white wordmark
+          + orange symbol). The light "plate" this used to sit on is gone: it only
+          existed because the Media Kit copy was gray-on-transparent and unreadable
+          on --ink, and recolouring HD's art is a violation. HD ships reversed art;
+          we use it. */}
       <motion.div
         className="hidden sm:block absolute z-20 right-6 lg:right-12"
         style={{ top: "calc(clamp(5rem, 8svh, 7rem) + clamp(0.75rem, 2svh, 1.5rem))" }}
@@ -147,13 +137,7 @@ export default function Hero() {
         transition={{ duration: 0.5, delay: 0.15 }}
       >
         <span className="flex flex-col items-center gap-1.5">
-          <HunterDouglasLogo
-            variant="horizontal"
-            width={200}
-            plate
-            priority
-            className="block"
-          />
+          <HunterDouglasLogo variant="horizontal" width={200} tone="dark" priority className="block" />
           {/* The hero background is a moving video, so this line can land on a
               bright frame at any moment. It carries its own scrim rather than
               relying on the band gradient, which varies across the loop. */}
@@ -189,6 +173,11 @@ export default function Hero() {
       {/* Layer 3: Content, lower-left — 100svh centering lives on THIS wrapper so the
           trust strip below stays inside the same band without moving the fold (Error #133 gates). */}
       <div className="relative min-h-[100svh] flex items-center">
+      {/* ⚠️ HD COMPLIANCE — attribution for Hunter Douglas's own footage.
+          Anchored INSIDE the 100svh wrapper, not the outer <section>: the section
+          also holds the trust strip, so a credit anchored there lands below the
+          fold, away from the thing it labels. */}
+      <HDPhotoCredit credit={HERO_CREDIT} variant="overlay" />
       <div
         ref={ref}
         className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 w-full"
@@ -211,7 +200,7 @@ export default function Hero() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.05 }}
           >
-            <HunterDouglasLogo variant="horizontal" width={150} plate priority className="block" />
+            <HunterDouglasLogo variant="horizontal" width={150} tone="dark" priority className="block" />
             <span
               className="font-mono uppercase tracking-widest rounded-full whitespace-nowrap"
               style={{

@@ -8,12 +8,22 @@ import Image from "next/image";
    its listing on the hunterdouglas.com dealer locator.
 
    THE ART
-   The three PNGs in /public/brand are the ORIGINAL APPROVED ART, extracted from
-   the Hunter Douglas Media Kit that HD themselves sent Jim on 2026-07-31. The
-   wordmark renders in HD Gray #5B6770 (verified pixel-exact against HD's
-   published spec) and the symbol in HD Orange. Confirmed current on 2026-07-31
-   against the live mark on hunterdouglas.com — identical wordmark letterforms,
-   identical symbol geometry, identical arrangement.
+   The PNGs in /public/brand are HD's OFFICIAL LOGO FILES, downloaded 2026-08-01
+   from Brite (hdbrite.com -> Pinnacle -> Marketing Resource Center), the source
+   HD themselves direct dealers to. 2400x346, i.e. ~3x the resolution of the
+   copy previously extracted from the Media Kit PDF.
+
+   Two colourways, and picking the right one matters:
+     - `hunter-douglas-logo-horizontal.png`       HD Gray #5B6770 wordmark +
+                                                  orange symbol. For LIGHT bands.
+     - `hunter-douglas-logo-horizontal-white.png` WHITE wordmark + orange symbol
+                                                  #F08200. HD's own REVERSED art,
+                                                  for DARK bands.
+   The reversed file is why this component no longer paints a light "plate"
+   behind the logo on the dark hero. That plate existed only because the Media
+   Kit copy was the gray-on-transparent version, unreadable on --ink, and
+   recolouring HD's art is a compliance violation. HD supplies the reversed
+   art, so we use it instead of working around its absence.
 
    THE RULES (HD Identity Guidelines)
    1. "Never alter any elements ... Always use the original and approved art."
@@ -39,11 +49,21 @@ import Image from "next/image";
    Source of record: ../../../../hunter-douglas-media-kit.md (private repo).
    ═══════════════════════════════════════════════════════════════════════════ */
 
-/** Native pixel dimensions of the approved art, for correct aspect ratio. */
+/**
+ * Native pixel dimensions of the official art, for correct aspect ratio.
+ * `onDark` is HD's reversed colourway; `src` is the standard one.
+ */
 const ART = {
-  horizontal: { src: "/brand/hunter-douglas-logo-horizontal.png", w: 829, h: 119, minWidth: 135 },
-  "vertical-a": { src: "/brand/hunter-douglas-logo-vertical-a.png", w: 464, h: 407, minWidth: 100 },
-  "vertical-b": { src: "/brand/hunter-douglas-logo-vertical-b.png", w: 643, h: 402, minWidth: 100 },
+  horizontal: {
+    src: "/brand/hunter-douglas-logo-horizontal.png",
+    onDark: "/brand/hunter-douglas-logo-horizontal-white.png",
+    w: 2400, h: 346, minWidth: 135,
+  },
+  "vertical-a": {
+    src: "/brand/hunter-douglas-logo-vertical-a.png",
+    onDark: "/brand/hunter-douglas-logo-vertical-a-white.png",
+    w: 981, h: 858, minWidth: 100,
+  },
 } as const;
 
 export type HunterDouglasLogoVariant = keyof typeof ART;
@@ -53,8 +73,12 @@ type Props = {
   variant?: HunterDouglasLogoVariant;
   /** Rendered width in px. Clamped up to HD's minimum for the variant. */
   width?: number;
-  /** Light plate behind the logo, for placing the unaltered art on dark bands. */
-  plate?: boolean;
+  /**
+   * Tone of the band this sits on. Selects HD's own colourway:
+   * "light" -> gray wordmark, "dark" -> HD's reversed white wordmark.
+   * Never recolour the art to fit a band; pick the right file.
+   */
+  tone?: "light" | "dark";
   /** Prioritize the image (the hero lockup is above the fold). */
   priority?: boolean;
   className?: string;
@@ -63,11 +87,12 @@ type Props = {
 export function HunterDouglasLogo({
   variant = "horizontal",
   width = 220,
-  plate = false,
+  tone = "light",
   priority = false,
   className,
 }: Props) {
   const art = ART[variant];
+  const src = tone === "dark" ? art.onDark : art.src;
 
   // HD minimum on-screen size. Clamp up rather than render an illegible mark —
   // an undersized logo fails the same criterion as a missing one.
@@ -79,7 +104,7 @@ export function HunterDouglasLogo({
 
   const logo = (
     <Image
-      src={art.src}
+      src={src}
       alt="Hunter Douglas"
       width={art.w}
       height={art.h}
@@ -115,26 +140,11 @@ export function HunterDouglasLogo({
   // entirely. Only when there is no className do we default to inline-block.
   const wrapperClass = className ?? "inline-block";
 
-  if (!plate) {
-    return (
-      <span className={wrapperClass} style={{ padding: clearSpace }}>
-        {logo}
-      </span>
-    );
-  }
-
+  // Clear space is the only wrapper styling. No plate, no border, no shadow:
+  // with HD's reversed art available, the mark sits directly on the band in its
+  // correct colourway, which is what their identity guidelines actually ask for.
   return (
-    <span
-      className={wrapperClass}
-      style={{
-        padding: clearSpace,
-        background: "var(--cream)",
-        borderRadius: "0.375rem",
-        // Warm hairline so the plate reads as an intentional brand tile on the
-        // dark hero rather than a transparent PNG that failed to load.
-        boxShadow: "0 2px 14px rgba(7, 7, 6, 0.45)",
-      }}
-    >
+    <span className={wrapperClass} style={{ padding: clearSpace }}>
       {logo}
     </span>
   );
