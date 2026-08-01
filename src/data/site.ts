@@ -948,10 +948,10 @@ export const siteConfig: SiteConfig = {
     {
       slug: "drapery",
       name: "Drapery",
-      shortDescription: "Soften a room and control the light. Custom drapery from Carole Fabrics, a Hunter Douglas partner company, with 4,000-plus fabric choices, Luminette® Privacy Sheers, and Provenance® Woven Wood Shades in natural materials.",
+      shortDescription: "Soften a room and control the light. Carole Fabrics™ Custom Drapery and Side Panels, from a Hunter Douglas partner company, with 4,000-plus fabric choices, Luminette® Privacy Sheers, and Provenance® Woven Wood Shades in natural materials.",
       moqTiers: [],
       features: [
-        "Carole Fabrics, a Hunter Douglas partner company: 4,000-plus fabric and color choices",
+        "Carole Fabrics™ Custom Drapery and Side Panels, from a Hunter Douglas partner company: 4,000-plus fabric and color choices",
         "Layer over sheers or hang standalone",
         "Luminette® Privacy Sheers: light diffusing with integrated vanes",
         "Provenance® Woven Wood Shades: natural reeds, woods, and bamboo",

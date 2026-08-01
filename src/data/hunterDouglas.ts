@@ -140,13 +140,18 @@ export const HD_MARKS = {
   softtouch: mark("SoftTouch", "®", "", { short: "SoftTouch®" }),
   easyrise: mark("EasyRise", "™", "", { short: "EasyRise™", note: "TRAP: ™ not ®." }),
   simplelift: mark("SimpleLift", "™", "", { short: "SimpleLift™", note: "TRAP: ™ not ®." }),
-  softclose: mark("SoftClose", "®", "", {
-    short: "SoftClose®",
+  softclose: mark("SoftClose", "™", "", {
+    short: "SoftClose™",
     note:
-      "TRAP: ® not ™, and it sits next to a ™ mark in the SAME phrase, which is " +
-      "how it shipped wrong. HD's own list prints 'SoftClose® louvers with " +
-      "Quick Align™' — copy that pairing exactly rather than matching one " +
-      "symbol to its neighbour.",
+      "⚠️ HD's OWN TWO SOURCES DISAGREE, and we deliberately follow the live site " +
+      "rather than the trademark list here. The 2025 list prints 'SoftClose® " +
+      "louvers with Quick Align™'. But hunterdouglas.com prints ™ in two " +
+      "independent places (the SoftClose Louvers enhancement page and the Palm " +
+      "Beach™ product page), and HD's own launch press release says 'patented " +
+      "SoftClose™ Louvers'. No USPTO registration for SOFTCLOSE could be found. " +
+      "® on an unregistered mark is improper marking, so ™ is both better " +
+      "evidenced AND the safe error — ™ is fine either way, ® is only fine if " +
+      "registered. Question is open with HD; do not flip this without their answer.",
   }),
   quickalign: mark("Quick Align", "™", "", { short: "Quick Align™" }),
   ripplefold: mark("Ripplefold", "™", "", {
@@ -159,7 +164,18 @@ export const HD_MARKS = {
   }),
   vertiglide: mark("Vertiglide", "®", "", { short: "Vertiglide®" }),
   duolite: mark("Duolite", "®", "", { short: "Duolite®" }),
-  clearview: mark("ClearView", "®", "", { short: "ClearView®" }),
+  clearview: mark("ClearView", "®", "", {
+    short: "ClearView®",
+    note:
+      "⚠️ THE SYMBOL DEPENDS ON THE PRODUCT — this entry is the Silhouette®/" +
+      "Pirouette®/Duette® case. HD's own trademark list prints ClearView® under " +
+      "those three, and ClearView™ under the Designer Banded Shades entries. " +
+      "That is HD's designation, not an inconsistency to normalise, so the site " +
+      "matches it per product. For this reason ClearView is intentionally NOT in " +
+      "the lint gate's symbol list, which allows only one symbol per mark. " +
+      "Confirming with HD; until then, copy whichever form HD's list uses for the " +
+      "product you are writing about.",
+  }),
   architella: mark("Architella", "®", "", { short: "Architella®" }),
   aria: mark("Aria", "™", "Soft Blinds", {
     short: "Aria™",
@@ -178,11 +194,16 @@ export const HD_MARKS = {
    * Deliberately carries no symbol — inventing one would itself be a violation.
    * A clarification request is on record with HD; update when they answer.
    */
-  carole: mark("Carole Fabrics", null, "custom drapery", {
-    short: "Carole Fabrics",
+  carole: mark("Carole Fabrics", "™", "Custom Drapery and Side Panels", {
+    short: "Carole Fabrics™",
     note:
-      "UNRESOLVED: absent from HD's 2025 trademark list. Ships with no symbol on " +
-      "purpose. Do not guess ® or ™ — wait for HD's written answer.",
+      "RESOLVED 2026-08-01 by checking HD's live site, not by guessing. Carole is " +
+      "absent from HD's 2025 trademark list, which is why this shipped bare — but " +
+      "hunterdouglas.com titles the page 'Carole Fabrics™ Custom Drapery and Side " +
+      "Panels', so both the symbol and the descriptor come straight from HD. " +
+      "⚠️ Carole is a Hunter Douglas PARTNER COMPANY ('From Carole Fabrics, a " +
+      "Hunter Douglas partner company' — their words). Never write 'Hunter Douglas " +
+      "Carole Fabrics' or present it as an HD-manufactured line.",
   }),
 } as const satisfies Record<string, HunterDouglasMark>;
 

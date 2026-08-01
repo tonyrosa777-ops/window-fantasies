@@ -24,8 +24,16 @@
  * "Designer Banded Shades" carry NO symbol: they are absent from HD's 2025
  * trademark list, and asserting a registration HD does not assert is its own
  * violation. Skyline®, Provenance®, Alustra®, Woven Textures®, PowerView®,
- * Duolite®, ClearView®, LiteRise®, UltraGlide®, SoftTouch® take ®. EasyRise™
- * takes ™. See src/data/hunterDouglas.ts before editing any name here.
+ * Duolite®, LiteRise®, UltraGlide®, SoftTouch® take ®. EasyRise™ takes ™.
+ *
+ * ⚠️ ClearView is BOTH, depending on the product. HD's own trademark list prints
+ * ClearView® under Silhouette®, Pirouette® and Duette®, but ClearView™ under the
+ * Designer Banded Shades entries. That is HD's designation, not an inconsistency
+ * we get to normalise: this file is Designer Banded, so it uses ClearView™, while
+ * shades-sheers.ts uses ClearView® on Silhouette and Pirouette. Because the symbol
+ * varies by product, ClearView is deliberately NOT in the lint gate's symbol list
+ * — a gate that forces one symbol would force a violation on the other product.
+ * See src/data/hunterDouglas.ts before editing any name here.
  *
  * POWERVIEW LEGAL COPY. The last paragraph of the powerview-gen-3 body is
  * mandatory manufacturer legal copy and is reproduced verbatim. Do not
@@ -181,14 +189,14 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     body: [
       "Hunter Douglas Designer Banded Shades are a roller and a sheer in the same shade. Alternating bands of sheer and solid fabric run down one piece of fabric. Line the bands up and you get light and your view. Stagger them and the solid bands close the gaps. One shade, two jobs, changed with one pull.",
       "This is what I show the person who cannot decide between a shade and a sheer. Designer Banded Shades create varying dimensions of light through the day, and that is the part you feel in a room rather than see in a photograph. The bands come in a medium or a large height, and the fabrics run through colors, textures and geometric patterns.",
-      "The headrail is covered in the same fabric, so the top of the window looks finished instead of mechanical. Opacities are light filtering and light dimming. If the view is the whole reason for the window, ask me about ClearView® sheers, which give you a better look through the open bands.",
+      "The headrail is covered in the same fabric, so the top of the window looks finished instead of mechanical. Opacities are light filtering and light dimming. If the view is the whole reason for the window, ask me about ClearView™ sheers, which give you a better look through the open bands.",
     ],
     features: [
       "Alternating sheer and solid bands: aligned for light and view, staggered for privacy",
       "Light filtering and light dimming fabric opacities",
       "A medium or large band height, which changes the whole look of the window",
       "A fabric-covered headrail for a finished top",
-      "Optional ClearView® sheers for superior view-through",
+      "Optional ClearView™ sheers for superior view-through",
       "Control options including PowerView® Automation, a beaded loop, the UltraGlide® wand, LiteRise® push and pull, and SoftTouch® Motorization",
     ],
     faq: [
@@ -201,7 +209,7 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
         a: "Yes. Designer Banded Shades are made for patio and sliding-glass doors and for French doors, along with bay and corner windows. Doors are where the measure matters most, because the treatment has to clear the handle and the swing. I take those measurements myself.",
       },
       {
-        q: "What are ClearView® sheers?",
+        q: "What are ClearView™ sheers?",
         a: "A sheer built for superior view-through, so what you see through the open bands is sharper. On a window where the view is the reason you are spending the money, it is worth asking about. On an interior window that faces a fence, I will tell you to skip it.",
       },
     ],

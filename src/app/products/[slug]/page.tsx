@@ -40,8 +40,10 @@ interface Props {
  * ⚠️ COMPLIANCE: every `name` and every mark written into `alt` carries its own
  * ® or ™ plus HD's official category descriptor, per the Trademark Usage rules
  * in src/data/hunterDouglas.ts. Palm Beach™ and Polysatin™ are BOTH ™, never ®.
- * Carole Fabrics is absent from HD's 2025 trademark list, so it ships with no
- * symbol on purpose. Verify any change against HD_MARKS before editing.
+ * Carole Fabrics™ is absent from HD's 2025 trademark list, but their LIVE site
+ * titles the page "Carole Fabrics™ Custom Drapery and Side Panels" and calls Carole
+ * "a Hunter Douglas partner company" -- so it takes ™ plus that descriptor, and is
+ * never presented as an HD-manufactured line. Verify any change against HD_MARKS.
  *
  * ⚠️ These photographs ARE Hunter Douglas licensed photography, pulled from the
  * Brite dealer library — every one traces to an HD asset ID through

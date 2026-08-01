@@ -188,7 +188,18 @@ const MARKS = [
   { name: "SoftTouch", sym: "®" },
   { name: "Vertiglide", sym: "®" },
   { name: "Duolite", sym: "®" },
-  { name: "ClearView", sym: "®" },
+  // ClearView is deliberately ABSENT. HD's own trademark list prints ClearView®
+  // under Silhouette®/Pirouette®/Duette® but ClearView™ under Designer Banded
+  // Shades, so the correct symbol depends on which product the sentence is about.
+  // This check has one symbol per mark and cannot express that, so pinning it
+  // here would force a violation on whichever product lost the coin toss. The
+  // per-product rule lives in the note on HD_MARKS.clearview instead.
+  //
+  // SoftClose is absent for a different reason: HD's list says SoftClose®, but
+  // their live site says SoftClose™ in two places, their own launch press release
+  // says SoftClose™, and no USPTO registration could be found. ® on an
+  // unregistered mark is improper marking, so the site uses ™ and the conflict is
+  // an open question to HD. Do not add either mark here until HD answers.
   { name: "Modern Precious Metals", sym: "®" },
   { name: "Palm Beach", sym: "™" },
   { name: "Nantucket", sym: "™" },

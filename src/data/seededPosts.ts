@@ -15,7 +15,8 @@
  *  - Product marks carry their own ® or ™ AND the official category descriptor on
  *    first use: "Silhouette® Window Shadings", never the bare mark as a generic
  *    descriptor. PowerView® is an Automation product, never a Motorization one.
- *    Carole Fabrics takes NO symbol. Look every mark up in HD_MARKS via hdMark().
+ *    Carole Fabrics takes ™ (HD's live site: "Carole Fabrics™ Custom Drapery and
+ *    Side Panels"). Look every mark up in HD_MARKS via hdMark().
  *  - The warranty has exactly one legal name, HD_WARRANTY_NAME, and its coverage is
  *    never stated as absolute: attach HD_WARRANTY_QUALIFIER or the word "covered".
  *    Dropping "Limited" from the name, promising HD's product will last forever, or
