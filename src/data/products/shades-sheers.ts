@@ -57,6 +57,36 @@ export type HDProductLine = {
   faq: { q: string; a: string }[];
   /** Photos, from product-lines.json. First is the page hero. */
   photos: { src: string; alt: string; credit: string }[];
+  /**
+   * Hunter Douglas's "more accessible price point" selection, where a line has
+   * one. Launched 14 July 2026 for Designer Roller and Designer Screen Shades.
+   *
+   * ⚠️ THREE COMPLIANCE RULES, all load-bearing:
+   *
+   *  1. NEVER print HD's internal name for this programme. Their dealer bulletin
+   *     calls it "Roller Grid Zero" — a PRICE-GRID designation that appears
+   *     nowhere on the consumer sell sheet, nowhere in the trademark list, and
+   *     nowhere in HD's consumer material. That makes it a non-consumer-facing
+   *     designation, the same class as "Centurion" and "Pinnacle Tier", and
+   *     criterion 8 bars those outright. Use HD's own consumer wording instead.
+   *  2. NO PRICES, NO FIGURES, NO RANGES. The whole programme is a price grid,
+   *     which makes this the single easiest place on the site to publish an HD
+   *     price by accident. HD's own sell sheet names no number either — it says
+   *     "a more accessible price point" and stops. So do we.
+   *  3. FABRIC NAMES SHIP BARE. None of Valentina, Dakota, Claire, Owen, Omni,
+   *     Santorini, Wisp or Morocco appears in HD's trademark list, and HD's own
+   *     sell sheet prints them without symbols. Inventing a ® or ™ is itself a
+   *     violation — same call as Carole Fabrics.
+   *
+   * Source: HD sell sheet "2026-ss-drs-dss-intro-grid.pdf" (REV 4/26) and the
+   * Spring Launch 2026 dealer bulletin. Both captured in the docs repo.
+   */
+  valueCollection?: {
+    /** HD's own positioning sentence. Do not paraphrase into a price claim. */
+    intro: string;
+    /** Fabric styles exactly as HD prints them: bare, uppercase style + opacity. */
+    fabrics: { style: string; opacity: string; colors: string[] }[];
+  };
 };
 
 export const SHADES_SHEERS: HDProductLine[] = [

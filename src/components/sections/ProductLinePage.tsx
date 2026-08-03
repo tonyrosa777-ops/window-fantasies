@@ -50,7 +50,17 @@ export function ProductLinePage({ line }: Props) {
   // scheduling claim without the disclosure.
   const promotesScheduling =
     /schedule|automatic|app\b|from your phone/i.test(
-      [line.tagline, ...line.body, ...line.features, ...line.faq.map((f) => f.a)].join(" "),
+      [
+        line.tagline,
+        ...line.body,
+        ...line.features,
+        ...line.faq.map((f) => f.a),
+        // valueCollection copy is scanned too. It is the newest field on this
+        // type and it names PowerView®, so leaving it out of the derivation
+        // would be exactly the silent gap this derivation exists to prevent:
+        // new copy shipping a scheduling claim with no footnote.
+        line.valueCollection?.intro ?? "",
+      ].join(" "),
     );
   // The writers append the exact sentence as a final body paragraph; if it is
   // already there, do not render it twice.
@@ -152,6 +162,55 @@ export function ProductLinePage({ line }: Props) {
             <div className="mt-5">
               <HDPhotoCredit credit={hero?.credit ?? ""} />
             </div>
+          </Container>
+        </Section>
+      ) : null}
+
+      {/* Hunter Douglas's more-accessible-price-point selection, where the line
+          has one. See the compliance block on HDProductLine.valueCollection:
+          no internal grid name, no prices, fabric names bare. This band exists
+          to answer "is there a Hunter Douglas option that costs less" honestly,
+          without quoting a number the policy forbids us to publish. */}
+      {line.valueCollection ? (
+        <Section tone="cream">
+          <Container size="wide">
+            <FadeUp className="max-w-3xl">
+              <Eyebrow>A more accessible price point</Eyebrow>
+              <h2 className="mt-3 font-display text-h2" style={{ color: "var(--text-on-light)" }}>
+                Real Hunter Douglas, for a tighter budget.
+              </h2>
+              <p className="mt-4 font-body text-base md:text-lg leading-relaxed" style={{ color: "var(--muted-on-light)" }}>
+                {line.valueCollection.intro}
+              </p>
+            </FadeUp>
+            <StaggerContainer staggerDelay={0.06} className="mt-10 flex flex-wrap justify-center gap-5">
+              {line.valueCollection.fabrics.map((f) => (
+                <StaggerItem
+                  key={f.style}
+                  className="basis-full sm:basis-[calc(50%-0.625rem)] lg:basis-[calc(25%-0.94rem)]"
+                >
+                  <div
+                    className="h-full rounded-[8px] border p-5 flex flex-col gap-2"
+                    style={{ background: "var(--bg-card-light)", borderColor: "var(--border-light)" }}
+                  >
+                    <h3 className="font-display text-lg" style={{ color: "var(--text-on-light)" }}>
+                      {f.style}
+                    </h3>
+                    <p className="font-mono text-[0.7rem] uppercase tracking-widest" style={{ color: "var(--gold-deep)" }}>
+                      {f.opacity}
+                    </p>
+                    <p className="font-body text-sm leading-relaxed" style={{ color: "var(--muted-on-light)" }}>
+                      {f.colors.join(" · ")}
+                    </p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+            <FadeUp className="mt-8 text-center">
+              <Button href="/request-a-consultation" variant="primary" size="lg">
+                Ask Jim to bring these samples
+              </Button>
+            </FadeUp>
           </Container>
         </Section>
       ) : null}

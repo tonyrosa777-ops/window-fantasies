@@ -112,6 +112,16 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
         credit: "Designer Screen Shades by Hunter Douglas",
       },
     ],
+    valueCollection: {
+      intro:
+        "Hunter Douglas has brought select fabrics within the Designer Roller and Designer Screen collections to a more accessible price point. Hunter Douglas says these fabrics offer the same on-trend aesthetics, light-control and privacy options customers expect, made possible through increased scale and sourcing efficiencies, without compromising performance or style. They are available across key solutions including PowerView® Gen 3 Automation, and many of the same fabrics are offered on Skyline® Gliding Window Panels, so a whole-home look coordinates. Jim brings these samples on the consultation alongside the full collection, and you get one honest installed price for whichever you choose.",
+      fabrics: [
+        { style: "Omni", opacity: "10%, 5% and 3% openness", colors: ["Alpine Snow", "Granite Gray", "New Neutral", "Burnt Umber", "Primal", "Carbon"] },
+        { style: "Santorini", opacity: "5% openness", colors: ["Windmill"] },
+        { style: "Wisp", opacity: "5% openness", colors: ["Mason", "Bumble", "Carpenter"] },
+        { style: "Morocco", opacity: "0% openness", colors: ["Bright White", "Light Crème", "Lantern"] },
+      ],
+    },
   },
 
   {
@@ -176,6 +186,16 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
         credit: "Designer Roller Shades by Hunter Douglas",
       },
     ],
+    valueCollection: {
+      intro:
+        "Hunter Douglas has brought select fabrics within the Designer Roller and Designer Screen collections to a more accessible price point. Hunter Douglas says these fabrics offer the same on-trend aesthetics, light-control and privacy options customers expect, made possible through increased scale and sourcing efficiencies, without compromising performance or style. They are available across key solutions including PowerView® Gen 3 Automation, and many of the same fabrics are offered on Skyline® Gliding Window Panels, so a whole-home look coordinates. Jim brings these samples on the consultation alongside the full collection, and you get one honest installed price for whichever you choose.",
+      fabrics: [
+        { style: "Valentina", opacity: "Opaque", colors: ["Soft White", "Bone China", "Shadow Grey"] },
+        { style: "Dakota", opacity: "Semi-Opaque", colors: ["Spirit White", "Fresh Cream", "Crushed Pearl", "Glaucous", "Gunmetal", "Raven"] },
+        { style: "Claire", opacity: "Semi-Opaque", colors: ["Whitecaps", "Opaline", "Basalt"] },
+        { style: "Owen", opacity: "Semi-Opaque", colors: ["Salt", "Oregano", "Clove"] },
+      ],
+    },
   },
 
   {
