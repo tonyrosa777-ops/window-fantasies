@@ -216,9 +216,9 @@ export default function ProductsIndexPage() {
                         <p className="font-mono text-[0.7rem] uppercase tracking-widest mb-4" style={{ color: "var(--text-muted)" }}>
                           {g.hdCategory}
                         </p>
-                        <StaggerContainer staggerDelay={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                        <StaggerContainer staggerDelay={0.05} className="flex flex-wrap justify-center gap-5">
                           {g.lines.map((line) => (
-                            <StaggerItem key={line.slug} className="h-full">
+                            <StaggerItem key={line.slug} className="h-full basis-full sm:basis-[calc(50%-0.625rem)] lg:basis-[calc(33.333%-0.833rem)]">
                               <Link
                                 href={`/products/${line.slug}`}
                                 className="group flex flex-col h-full rounded-[8px] overflow-hidden border transition-all duration-300 hover:-translate-y-1"

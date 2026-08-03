@@ -370,6 +370,56 @@ if (!/HD_SEPARATE_ENTITIES_DISCLAIMER/.test(footer)) {
     "Render HD_SEPARATE_ENTITIES_DISCLAIMER from src/data/hunterDouglas.ts.");
 }
 
+/* ── Portfolio items: every HD photograph labelled, and labelled consistently ──
+ *
+ * On 2026-08-03 the portfolio was found with EIGHT category pills contradicting
+ * the photograph beneath them (a "DRAPERY" pill over Modern Precious Metals®
+ * Aluminum Blinds), TWELVE invented product names, and TWELVE licensed HD photos
+ * carrying no credit at all. Same root cause as the R-007 alt-text problem: the
+ * metadata was written for the AI stills these files replaced.
+ *
+ * The missing credits were the serious half. PortfolioWall picks one credit for
+ * the visible set via photos.find(p => p.credit), so filtering to any of those
+ * twelve rendered ZERO Hunter Douglas attribution — a live criterion 3 failure.
+ *
+ * This check deliberately verifies SELF-CONSISTENCY rather than reading the Brite
+ * manifest: site-image-map.json lives in the private docs repo and does not exist
+ * in this repo's Vercel checkout, so a check that read it would pass locally and
+ * crash the production build. Ground truth still comes from the manifest — see
+ * the quarterly runbook — but what CI can enforce is that every item is credited
+ * and that its category does not contradict the product it names.
+ */
+const siteData = readFileSync(join(SRC, "data", "site.ts"), "utf8");
+const workItemBlocks = [...siteData.matchAll(/\{\s*brand:\s*"([^"]+)",([\s\S]*?)\n    \},/g)];
+/** A product noun in the brand string implies its category. */
+const CATEGORY_BY_NOUN = [
+  { re: /\bShutters\b/i, cat: "Shutters" },
+  { re: /\bBlinds\b/i, cat: "Blinds" },
+  { re: /\b(Shades|Shadings|Sheers|Panels)\b/i, cat: "Shades" },
+];
+for (const [, brand, body] of workItemBlocks) {
+  const image = (/image:\s*"([^"]+)"/.exec(body) || [, "?"])[1];
+  const category = (/category:\s*"([^"]+)"/.exec(body) || [, ""])[1];
+  const credit = (/credit:\s*"([^"]+)"/.exec(body) || [, ""])[1];
+
+  if (!credit) {
+    report("src/data/site.ts", 0, "portfolio-missing-credit",
+      `Portfolio item "${brand}" (${image}) has no credit.`,
+      'Every photograph in workItems is licensed Hunter Douglas photography. Add credit: "<Product> by Hunter Douglas". PortfolioWall shows one credit for the visible set, so an uncredited item can render a filtered view with NO attribution at all.');
+  } else if (credit.replace(/[®™]/g, "").split(" by ")[0].trim() !== brand.replace(/[®™]/g, "").trim()) {
+    report("src/data/site.ts", 0, "portfolio-credit-brand-mismatch",
+      `Portfolio item brand "${brand}" and credit "${credit}" name different products.`,
+      "The credit must name the same product as the brand. Check both against assets/hunter-douglas-brite/site-image-map.json in the docs repo.");
+  }
+
+  const implied = CATEGORY_BY_NOUN.find((c) => c.re.test(brand));
+  if (implied && category && category !== implied.cat) {
+    report("src/data/site.ts", 0, "portfolio-category-contradicts-product",
+      `Portfolio item "${brand}" is tagged "${category}" but its name says ${implied.cat}.`,
+      `The category pill renders OVER the photograph, so a wrong one misattributes Hunter Douglas's own creative. Set category: "${implied.cat}", or correct the brand if the photo is something else.`);
+  }
+}
+
 /* ── The brand logo must be mounted above the fold on the homepage hero ── */
 const hero = readFileSync(join(SRC, "components", "sections", "Hero.tsx"), "utf8");
 if (!/HunterDouglasLogo/.test(hero)) {

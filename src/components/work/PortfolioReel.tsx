@@ -73,7 +73,7 @@ export function PortfolioReel({ items }: { items: WorkItem[] }) {
         <div className="flex touch-pan-y">
           {items.map((item, i) => (
             <div
-              key={item.brand}
+              key={item.image}
               className="min-w-0 flex-[0_0_88%] pl-3 sm:flex-[0_0_72%] sm:pl-4 lg:flex-[0_0_58%] lg:pl-6"
             >
               <button
@@ -162,7 +162,7 @@ export function PortfolioReel({ items }: { items: WorkItem[] }) {
       <div className="mt-6 flex justify-center gap-2" role="tablist" aria-label="Featured installs">
         {items.map((item, i) => (
           <button
-            key={item.brand}
+            key={item.image}
             type="button"
             role="tab"
             aria-selected={i === selected}

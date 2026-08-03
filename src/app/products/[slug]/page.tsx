@@ -526,9 +526,9 @@ export default async function ProductPage({ params }: Props) {
                 Open any of them to see what it does, then let Jim bring the samples to you.
               </p>
             </FadeUp>
-            <StaggerContainer staggerDelay={0.05} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <StaggerContainer staggerDelay={0.05} className="flex flex-wrap justify-center gap-5">
               {categoryLines.map((line) => (
-                <StaggerItem key={line.slug} className="h-full">
+                <StaggerItem key={line.slug} className="h-full basis-full sm:basis-[calc(50%-0.625rem)] lg:basis-[calc(33.333%-0.833rem)]">
                   <Link
                     href={`/products/${line.slug}`}
                     className="group flex flex-col h-full rounded-[8px] overflow-hidden border transition-all duration-300 hover:-translate-y-1"
