@@ -394,6 +394,7 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "A shutter is the one treatment people notice from the street, so the fit has to be right. Hunter Douglas makes this line for arches, angles, trapezoids, hexagons, circles and ovals, bay and corner windows, French doors, and sidelights. Hunter Douglas manufactures the shutter. My job is the measurement, the design, and the install, and I do all three myself.",
     ],
     features: [
+      "Its 28 colors also match the Hunter Douglas Decorative Window Fashion Support, for mounting treatments in arched or Palladian windows",
       "100% natural hardwood, harvested from responsibly managed forests",
       "Truemill® dovetail construction and the Integra™ finish",
       "Louvers in 2 1/2 inch, 3 1/2 inch, or 4 1/2 inch",
@@ -402,6 +403,10 @@ export const BLINDS_SHUTTERS: HDProductLine[] = [
       "Optional SoftClose™ louvers with Quick Align™ for one touch closure",
     ],
     faq: [
+      {
+        q: "What about an arched or Palladian window with nothing to mount to?",
+        a: "There is a real answer for that now. The Hunter Douglas Decorative Window Fashion Support lets me mount a shade, shading or blind in a window that has no mullion and no horizontal surface to fix to, which is the usual problem with a Palladian or a tall arched opening. It is genuine hardwood and comes in all 28 colors offered on Heritance® Hardwood Shutters, plus custom colors, so it reads as part of the woodwork instead of a bracket. Hunter Douglas redesigned it in 2026 with a cleaner look and simpler installation, at no price increase. Bring me to the window and I will tell you honestly whether it is the right call.",
+      },
       {
         q: "Are Heritance® Hardwood Shutters real wood?",
         a: "Yes, 100% natural hardwood, built by Hunter Douglas with Truemill® dovetail construction and finished with their Integra™ finish. If the room is a bath, a laundry, or anywhere with steady moisture, I will point you at Palm Beach™ Polysatin™ Shutters instead and explain the tradeoff.",

@@ -111,6 +111,11 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
         alt: "A close look at the woven fabric of a Designer Screen Shade above a window bench stacked with gray and taupe pillows.",
         credit: "Designer Screen Shades by Hunter Douglas",
       },
+      {
+        src: "/images/product-lines/designer-screen-shades/designer-screen-shades-2025-standard-stipple-1-living-room.webp",
+        alt: "A Designer Screen Shade in a 1 percent openness fabric holding the view across a bright living room.",
+        credit: "Designer Screen Shades by Hunter Douglas",
+      },
     ],
     valueCollection: {
       intro:
@@ -135,10 +140,13 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     body: [
       "Hunter Douglas Designer Roller Shades are the most versatile thing I hang. One flat fabric on a roller, a clean line across the top, nothing fussy to look at. They belong in a modern condo and they belong in an 1890s colonial, and people are always surprised how different two rollers can look depending on the fabric.",
       "The selection is the real story. Designer Roller Shades come in over 370 fabric options, from sheer to opaque, sourced from around the world, in textures, prints and patterns. That range is why I can put a roller in a room where somebody walked in convinced they wanted drapery.",
+      "Hunter Douglas extended the collection for 2026, and it is a real extension rather than a refresh: 42 new fabric styles and 120 additional SKUs, about a third of the collection. The new fabrics run from sheer through semi-sheer and semi-opaque to opaque, so the same style often comes in more than one opacity and you are not forced to change the look to change the light. Hunter Douglas keeps about 60 percent of the line exclusive to them. Several of the new styles belong to the Eco Collection, and Duolite® and Dual Roller together gained 18 more options.",
       "They move on a Beaded Loop, smoothly and evenly, and there are cordless and motorized options if you would rather have no cord at all. Add a decorative accent at the top or the bottom and a plain roller starts reading as custom, which it is.",
     ],
     features: [
       "Over 370 fabric options, from sheer to opaque, including exclusive fabrics",
+      "42 new fabric styles and 120 additional SKUs added for 2026, roughly a third of the collection",
+      "An Eco Collection among the new styles, including GreenScreen® and Sea-Tex™ fabrics",
       "Globally sourced fabrics in textures, prints and patterns",
       "Beaded Loop control that moves the shade smoothly and evenly",
       "Decorative accents available for the top or the bottom",
@@ -178,6 +186,16 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
       {
         src: "/images/product-lines/designer-roller-shades/designer-roller-shades--cc-abilene-livingroomdetail.webp",
         alt: "A close view of two textured Designer Roller Shades meeting at a corner window above a marble table.",
+        credit: "Designer Roller Shades by Hunter Douglas",
+      },
+      {
+        src: "/images/product-lines/designer-roller-shades/designer-roller-shades-2023-pv-eastbourne-living-room.webp",
+        alt: "Designer Roller Shades in a soft neutral fabric across a bright living-room window wall.",
+        credit: "Designer Roller Shades by Hunter Douglas",
+      },
+      {
+        src: "/images/product-lines/designer-roller-shades/designer-roller-shades-2023-pv-nyla-living-room-office.webp",
+        alt: "A Designer Roller Shade lowered behind a desk in a living-room office, filtering the daylight across the work surface.",
         credit: "Designer Roller Shades by Hunter Douglas",
       },
       {
@@ -283,6 +301,7 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
       "Ceiling mount them and Skyline® Gliding Window Panels stop being a window treatment and become a room divider. In an open floor plan that is a real solution, and it is one of the few times I get to fix a problem that has nothing to do with a window.",
     ],
     features: [
+      "Shares the Designer Roller and Designer Screen fabric collection, including the 2026 line extension, so panels coordinate with the shades in the rest of the house",
       "Fabric panels that glide across the opening and stack tightly when open",
       "Over 450 color choices in the fabric collection",
       "Panel widths of 11½ inches or 17 inches",
@@ -308,6 +327,11 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
       {
         src: "/images/product-lines/skyline-gliding-window-panels/skyline-gliding-window-panels--wand-control-denton-kitchen.webp",
         alt: "Skyline® Gliding Window Panels drawn across a wide dining room window above a built-in bench, with a second set on the corner window beside it.",
+        credit: "Skyline® Gliding Window Panels by Hunter Douglas",
+      },
+      {
+        src: "/images/product-lines/skyline-gliding-window-panels/skyline-gliding-window-panels-2025-sky-pv-wisp-5-living-room.webp",
+        alt: "Skyline® Gliding Window Panels in a Wisp 5 percent openness fabric across a living-room slider.",
         credit: "Skyline® Gliding Window Panels by Hunter Douglas",
       },
     ],
@@ -429,12 +453,17 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     ],
     features: [
       "Control from the PowerView® App on your phone, a handheld remote, or a smart-home system",
+      "PowerView® Tap, a wall-mount or tabletop control with a three-button rocker for up, stop and down, plus double-click actions you set in the app",
       "Voice activation through your smart-home system",
       "Shades can be programmed to open and close at different times of the day",
       "Available on many Hunter Douglas lines, including roller and screen shades, woven woods, Roman shades and gliding panels",
       "Set up and programmed in your home by Jim, who does not leave until you have run it yourself once",
     ],
     faq: [
+      {
+        q: "Do I have to use my phone every time?",
+        a: "No, and most people do not. There is a handheld remote, and Hunter Douglas added PowerView® Tap in August 2026: a small white control with a three-button rocker for up, stop and down that you can wall-mount by the door or leave on a side table. It has double-click actions you set in the PowerView® App, so one button can move a whole room. Your shades also work with a smart-home system if you already run one.",
+      },
       {
         q: "What can I actually do with it?",
         a: "Open and close one shade, or a whole room of them, from the app, a remote, or a smart-home system, and voice activate them through that system. You can also set shades to open and close at different times of the day. The PowerView® App is required for programmed operation.",
