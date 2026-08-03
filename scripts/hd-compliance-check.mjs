@@ -211,6 +211,44 @@ const MARKS = [
 /** Marks may not be pluralized. */
 const PLURALS = /\b(Silhouettes|Duettes|Luminettes|Pirouettes|Vignettes|Sonnettes|Applauses|Provenances|Parklands|Heritances)\b/;
 
+/* ───────────────── Discount advertising (DORMANT until the first promo) ─────────────────
+ *
+ * The site publishes no prices and no discounts today, so none of this fires. It
+ * exists because the waiver program obliges Jim to "make quarterly updates to
+ * advertise Hunter Douglas promotions" — and the first promotion he posts
+ * activates an entire section of HD's policy that has been inert until now.
+ *
+ * That is the dangerous moment. Everything else in this file guards copy that
+ * already exists; these rules guard copy nobody has written yet, on a deadline,
+ * probably in a hurry, possibly by someone who was not here for this project.
+ *
+ * HD's Discount Compliance Guidelines, in short:
+ *   - RESTRICTED products may NEVER carry a percentage-off ad. Dollar amounts
+ *     only ("$100 off" is fine, "20% off" is not). Most of Jim's flagship line
+ *     is on this list.
+ *   - Everything else is capped at 10%, 25% or 30% depending on the product.
+ *   - Restricted products must be VISIBLY EXCLUDED from any "% off" promotion,
+ *     with a disclaimer.
+ *   - A mail-in rebate promotion requires the full rebate legal copy on the
+ *     first click from the ad.
+ */
+const DISCOUNT_ANY = /\b\d{1,3}\s*%\s*(off|discount)|\b(percent off)\b/i;
+const REBATE = /\brebate\b/i;
+const REBATE_LEGAL = /mail-in rebate|rebate legal|Manufacturer'?s Certification/i;
+
+/** Percentage-off advertising is prohibited outright on these. */
+const RESTRICTED_PRODUCTS = [
+  "Alustra", "Design Studio", "Architella", "Luminette", "Pirouette",
+  "Silhouette", "Solera", "Sonnette", "Skyline", "Vignette", "PowerView",
+];
+
+/** Maximum advertised percentage discount, by product. */
+const DISCOUNT_CAPS = [
+  { cap: 10, products: ["Cadence", "Heritance"] },
+  { cap: 25, products: ["Designer Banded", "Designer Roller", "Designer Screen", "Duette", "NewStyle", "Palm Beach", "Somner"] },
+  { cap: 30, products: ["Applause", "EverWood", "Modern Precious Metals", "Nantucket", "Parkland", "Provenance", "Vertical Solutions"] },
+];
+
 /** Copy promising scheduled/automatic/app-driven operation triggers HD's footnote. */
 const SCHEDULING = /\b(on a schedule|schedule (?:your )?shades|shades? (?:to )?open and close automatically|programmed operation|automatic(?:ally)? (?:open|close|raise|lower)|sunrise|sunset routine)\b/i;
 const POWERVIEW_FOOTNOTE = /PowerView® App is required for programmed operation/;
@@ -258,6 +296,28 @@ for (const file of walk(SRC)) {
         report(rel, n, "plural-mark", "Hunter Douglas marks may not be pluralized.",
           "Pluralize the category descriptor instead, e.g. Silhouette® Window Shadings.");
       }
+      // ── Discount rules. Inert while the site advertises no discounts. ──
+      const pct = /\b(\d{1,3})\s*%\s*(?:off|discount)/i.exec(line);
+      if (pct) {
+        const amount = Number(pct[1]);
+        for (const p of RESTRICTED_PRODUCTS) {
+          if (new RegExp(`\\b${p}`, "i").test(line)) {
+            report(rel, n, "restricted-product-percentage-discount",
+              `"${p}" is on Hunter Douglas's Restricted Product Line, which may NEVER be advertised at a percentage off.`,
+              `Use a dollar-amount deduction instead ("$100 off"), or drop ${p} from this promotion and state the exclusion with a disclaimer.`);
+          }
+        }
+        for (const { cap, products } of DISCOUNT_CAPS) {
+          for (const p of products) {
+            if (new RegExp(`\\b${p}`, "i").test(line) && amount > cap) {
+              report(rel, n, "discount-exceeds-cap",
+                `${amount}% off "${p}" exceeds Hunter Douglas's ${cap}% advertised maximum for that product.`,
+                `Lower it to ${cap}% or less, or advertise a dollar amount.`);
+            }
+          }
+        }
+      }
+
       for (const m of MARKS) {
         // The mark, not already followed by a trademark symbol.
         const bare = new RegExp(`\\b${m.name}\\b(?![\\u00ae\\u2122])`, "g");
@@ -271,6 +331,22 @@ for (const file of walk(SRC)) {
       }
     }
   });
+
+  // File-level: a percentage-off promotion must visibly exclude the Restricted
+  // Product Line. HD requires the exclusion stated, not merely implied by absence.
+  if (!isRuleDoc && DISCOUNT_ANY.test(code) &&
+      !/exclu(?:de|des|ded|sion)/i.test(code)) {
+    report(rel, 0, "missing-restricted-exclusion",
+      "This file advertises a percentage discount but states no exclusion.",
+      "Hunter Douglas requires Restricted Products to be VISIBLY EXCLUDED from any '% off' promotion, with a disclaimer. Name the excluded lines on the page.");
+  }
+
+  // File-level: a rebate promotion requires HD's mail-in rebate legal copy.
+  if (!isRuleDoc && REBATE.test(code) && !REBATE_LEGAL.test(raw)) {
+    report(rel, 0, "missing-rebate-legal",
+      "This file mentions a rebate but carries no rebate legal copy.",
+      "Hunter Douglas requires the full mail-in rebate legal copy as the first click from the ad. Pull the current wording from Brite before publishing.");
+  }
 
   // File-level: scheduling copy must carry HD's mandatory footnote somewhere.
   if (!isRuleDoc && SCHEDULING.test(code) &&
