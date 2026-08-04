@@ -20,7 +20,7 @@ import { buildHomepageSchema } from "@/lib/schema";
  *   #  | Band                          | Tone
  *   -- | ----------------------------- | ---------
  *    1 | Hero (photo) + trust strip    | dark (ink)
- *    2 | Product categories            | light (cream)
+    2 | Product categories            | light (cream)
  *    3 | Why / he comes to you         | dark (elevated)
  *    4 | 3-step process                | light (cream)
  *    5 | Jim's story teaser            | dark (base)

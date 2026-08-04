@@ -10,6 +10,8 @@ import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 import { POWERVIEW_APP_DISCLOSURE } from "@/data/hunterDouglas";
 import { siteConfig } from "@/data/site";
+import { CURRENT_PROMOTION } from "@/data/promotion";
+import { PromotionCard } from "@/components/sections/PromotionCard";
 import type { HDProductLine } from "@/data/products";
 
 /**
@@ -105,6 +107,11 @@ export function ProductLinePage({ line }: Props) {
       {/* The product itself */}
       <Section tone="cream">
         <Container size="wide">
+          {/* Current HD offer, ONLY on qualifying lines, and INSIDE this band so
+              the page's tone alternation is unaffected. */}
+          {CURRENT_PROMOTION.active && CURRENT_PROMOTION.qualifyingSlugs.includes(line.slug) ? (
+            <div className="mb-12"><PromotionCard tone="cream" /></div>
+          ) : null}
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-start">
             <FadeUp>
               <div className="flex flex-col gap-5">

@@ -30,7 +30,7 @@
  * Exit 0 = clean. Exit 1 = findings, printed with file:line.
  */
 
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -368,6 +368,51 @@ if (!/HD_SEPARATE_ENTITIES_DISCLAIMER/.test(footer)) {
   report("src/components/layout/Footer.tsx", 0, "missing-disclosure",
     "The separate-entities disclaimer is absent.",
     "Render HD_SEPARATE_ENTITIES_DISCLAIMER from src/data/hunterDouglas.ts.");
+}
+
+/* ── The current promotion, if one is active ────────────────────────────────
+ *
+ * Promotions rotate quarterly and are edited under deadline, usually by someone
+ * who did not write the compliance block in src/data/promotion.ts. These are the
+ * three ways a promotion goes wrong on a Hunter Douglas dealer site.
+ */
+const promoPath = join(SRC, "data", "promotion.ts");
+if (existsSync(promoPath)) {
+  const promoRaw = readFileSync(promoPath, "utf8");
+  const promo = stripComments(promoRaw);
+  const isActive = /active:\s*true/.test(promo);
+  if (isActive) {
+    // 1. No price, ever. HD bars web-published HD product price quotes, and a
+    //    promotion is the likeliest place to slip one in.
+    if (/\$\s?\d/.test(promo)) {
+      report("src/data/promotion.ts", 0, "promotion-publishes-a-price",
+        "The active promotion contains a dollar figure.",
+        "Hunter Douglas bars dealers from publishing HD product prices. State the offer and route to the consultation, as HD's own promotions page does.");
+    }
+    // 2. A percentage on a Restricted product is prohibited outright.
+    const pct = /(\d{1,3})\s*%/.exec(promo);
+    if (pct) {
+      for (const rp of RESTRICTED_PRODUCTS) {
+        if (new RegExp(`\b${rp}`, "i").test(promo)) {
+          report("src/data/promotion.ts", 0, "promotion-percentage-on-restricted-product",
+            `The active promotion advertises ${pct[1]}% on "${rp}", which is on HD's Restricted Product Line.`,
+            "Restricted products may never be advertised at a percentage off. Use a dollar amount, or a free-with-purchase premium.");
+        }
+      }
+    }
+    // 3. An end date HD has not published is a term we invented. HD's own page
+    //    says "Limited Time" and "See a participating expert for terms".
+    if (/expires|ends on|valid (?:until|through)|offer ends/i.test(promo)) {
+      report("src/data/promotion.ts", 0, "promotion-states-an-end-date",
+        "The active promotion states a deadline.",
+        "Hunter Douglas publishes no end date on their consumer promotions page. Quoting one states a term HD did not set. Route to Jim for terms instead.");
+    }
+    if (!/qualifyingProducts:\s*\[[^\]]*\S/.test(promo)) {
+      report("src/data/promotion.ts", 0, "promotion-names-no-products",
+        "The active promotion names no qualifying products.",
+        "A promotion must say what it applies to, or it misleads. Populate qualifyingProducts.");
+    }
+  }
 }
 
 /* ── Portfolio items: every HD photograph labelled, and labelled consistently ──

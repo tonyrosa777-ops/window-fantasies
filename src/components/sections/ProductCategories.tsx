@@ -26,6 +26,7 @@
  */
 
 import Link from "next/link";
+import { PromotionCard } from "@/components/sections/PromotionCard";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { FadeUp } from "@/components/animations/FadeUp";
@@ -40,6 +41,10 @@ export function ProductCategories() {
   return (
     <section id="product-categories" className="relative py-20 md:py-28" style={{ background: "var(--bg-cream)" }}>
       <Container size="wide">
+        {/* Current HD offer, rendered INSIDE this band so the page's
+            dark/light alternation is unaffected (Pattern #98). */}
+        <PromotionCard tone="cream" />
+
         <FadeUp className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <p className="eyebrow" style={{ color: "var(--gold-deep)" }}>
             What Jim fits
