@@ -40,6 +40,12 @@
  * paraphrase it, and do not add scheduling or app-control copy to another line
  * without carrying that sentence onto that line's page too.
  *
+ * POWERVIEW AWARD. The award paragraph and bullet come from POWERVIEW_AWARD_* in
+ * src/data/hunterDouglas.ts, which HD supplied by email on 2026-08-07. That is
+ * the only award this line may claim. The site previously carried a 2018 Red Dot
+ * Design Award that traced to Jim's old website rather than to HD — read the
+ * comment on those constants before touching this.
+ *
  * Photo paths and room labels come from
  * assets/hunter-douglas-brite/product-lines.json. Alt text describes what each
  * frame actually shows; the credit names Hunter Douglas as photographer and
@@ -47,6 +53,10 @@
  */
 
 import type { HDProductLine } from "./shades-sheers";
+import {
+  POWERVIEW_AWARD_BULLET,
+  POWERVIEW_AWARD_SENTENCE,
+} from "@/data/hunterDouglas";
 
 export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
   /* ───────────────────────── Roller & Solar Shades ───────────────────────── */
@@ -449,6 +459,7 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
     body: [
       "PowerView® Automation is the motorization system from Hunter Douglas, and it is the upgrade people tell me they wish they had done sooner. You control and schedule your shades with the PowerView® App on your phone, with a handheld remote, or through a smart-home system, and you can voice activate them through that system.",
       "The real argument for it is the windows nobody ever touches. The two-story wall of glass, the shade over the kitchen sink, the row of windows in a sunroom. Automated window coverings make rooms more comfortable through the day, and they can be programmed to open and close at different times of the day to suit how you actually live. Snowbirds buy it for a different reason: you can be in Florida in February and still run the shades in Salem.",
+      `The industry noticed too. ${POWERVIEW_AWARD_SENTENCE} The Mark of Excellence Awards recognize the best in custom integration and installed technology, and manufacturers, distributors and systems integrators compete across more than twenty categories for it.`,
       "The PowerView® App is required for programmed operation.",
     ],
     features: [
@@ -457,6 +468,7 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
       "Voice activation through your smart-home system",
       "Shades can be programmed to open and close at different times of the day",
       "Available on many Hunter Douglas lines, including roller and screen shades, woven woods, Roman shades and gliding panels",
+      POWERVIEW_AWARD_BULLET,
       "Set up and programmed in your home by Jim, who does not leave until you have run it yourself once",
     ],
     faq: [

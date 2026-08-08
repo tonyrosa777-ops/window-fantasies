@@ -150,6 +150,17 @@ const BANNED = [
     fix: "Describe the office, sample library, or by-appointment space instead.",
   },
   {
+    // The site once claimed PowerView® Automation won a 2018 Red Dot Design
+    // Award. It did not — the claim traced to Jim's OLD website, and Red Dot's
+    // own database lists that award against the PowerView Hub Kit. HD supplied
+    // the real award on 2026-08-07 (2023 Mark of Excellence). This rule exists
+    // because the false claim survived a full site rebuild by being copied
+    // forward, and a plausible-sounding award is exactly what gets re-added.
+    re: /\bRed\s+Dot\b/i,
+    why: "Unsubstantiated Hunter Douglas award claim. It traced to a previous website, not to HD.",
+    fix: "Use POWERVIEW_AWARD_SENTENCE / POWERVIEW_AWARD_BULLET from src/data/hunterDouglas.ts. Any other award needs HD-supplied copy first.",
+  },
+  {
     // Competing window-treatment brands. HD will deny advertising naming them.
     re: /\b(Gotcha Covered|Love Is Blinds|Acadia Shutters|Covering Windows|Alta\/CBG|Levolor|Graber|Budget Blinds|3 Day Blinds|Blinds\.com|Select Blinds|The Shade Store|Smith \+ Noble)\b/i,
     why: "Competitor window-treatment brand.",
@@ -194,18 +205,17 @@ const MARKS = [
   // This check has one symbol per mark and cannot express that, so pinning it
   // here would force a violation on whichever product lost the coin toss. The
   // per-product rule lives in the note on HD_MARKS.clearview instead.
-  //
-  // SoftClose is absent for a different reason: HD's list says SoftClose®, but
-  // their live site says SoftClose™ in two places, their own launch press release
-  // says SoftClose™, and no USPTO registration could be found. ® on an
-  // unregistered mark is improper marking, so the site uses ™ and the conflict is
-  // an open question to HD. Do not add either mark here until HD answers.
   { name: "Modern Precious Metals", sym: "®" },
   { name: "Palm Beach", sym: "™" },
   { name: "Nantucket", sym: "™" },
   { name: "EasyRise", sym: "™" },
   { name: "SimpleLift", sym: "™" },
   { name: "Aria", sym: "™" },
+  // SoftClose was held OUT of this list while HD's own two sources disagreed:
+  // their 2025 trademark list printed ®, their live site and launch press release
+  // printed ™. The site shipped ™ and asked. HD answered on 2026-08-07 —
+  // SoftClose™ — so the mark is now enforced like any other.
+  { name: "SoftClose", sym: "™" },
 ];
 
 /** Marks may not be pluralized. */

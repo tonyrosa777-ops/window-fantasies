@@ -143,15 +143,15 @@ export const HD_MARKS = {
   softclose: mark("SoftClose", "™", "", {
     short: "SoftClose™",
     note:
-      "⚠️ HD's OWN TWO SOURCES DISAGREE, and we deliberately follow the live site " +
-      "rather than the trademark list here. The 2025 list prints 'SoftClose® " +
-      "louvers with Quick Align™'. But hunterdouglas.com prints ™ in two " +
-      "independent places (the SoftClose Louvers enhancement page and the Palm " +
-      "Beach™ product page), and HD's own launch press release says 'patented " +
-      "SoftClose™ Louvers'. No USPTO registration for SOFTCLOSE could be found. " +
-      "® on an unregistered mark is improper marking, so ™ is both better " +
-      "evidenced AND the safe error — ™ is fine either way, ® is only fine if " +
-      "registered. Question is open with HD; do not flip this without their answer.",
+      "✅ CONFIRMED BY HD 2026-08-07. We asked because HD's own two sources " +
+      "disagreed: the 2025 trademark list printed 'SoftClose® louvers with Quick " +
+      "Align™', while hunterdouglas.com printed ™ in two independent places and " +
+      "HD's own launch press release said 'patented SoftClose™ Louvers'. We " +
+      "shipped ™ on the reasoning that ® on an unregistered mark is improper " +
+      "marking, so ™ was both better evidenced and the safe error. DSM Caroline " +
+      "Villalobos answered the question directly: SoftClose™. The 2025 list's ® " +
+      "was the outdated entry, and the 2026 list prints ™. Settled — this mark " +
+      "is now enforced by the lint gate.",
   }),
   quickalign: mark("Quick Align", "™", "", { short: "Quick Align™" }),
   ripplefold: mark("Ripplefold", "™", "", {
@@ -186,7 +186,10 @@ export const HD_MARKS = {
       "failed HD's descriptor rule. HD's own dealer library settles it: Aria™ " +
       "Soft Blinds is a current product line with 12 photographs and 3 videos, " +
       "filed under Horizontal Blinds. The trademark list is authoritative for the " +
-      "SYMBOL; the product catalogue is authoritative for whether a product exists.",
+      "SYMBOL; the product catalogue is authoritative for whether a product exists. " +
+      "✅ CONFIRMED BY HD 2026-08-07 — DSM Caroline Villalobos named Aria™ as one " +
+      "of the two marks on the 2026 trademark list, which is what the 2025 list " +
+      "we had was missing.",
   }),
 
   /**
@@ -270,6 +273,33 @@ export const JIM_WORKMANSHIP_PROMISE = "Jim stands behind every install he does"
  */
 export const POWERVIEW_APP_DISCLOSURE =
   "The PowerView® App is required for programmed operation.";
+
+/**
+ * The ONLY award this site may claim for PowerView® Automation, supplied by
+ * Hunter Douglas on 2026-08-07 in answer to our own question.
+ *
+ * ⛔ THE PREVIOUS SITE CLAIMED A 2018 RED DOT DESIGN AWARD AND IT WAS WRONG.
+ * That claim traced to Jim's old website rather than to anything HD published,
+ * and Red Dot's own database lists the award against the PowerView Hub Kit, not
+ * PowerView® Automation. It was removed during the 2026-07-31 remediation and
+ * the correct wording was requested from HD. DSM Caroline Villalobos sent the
+ * award copy below; these two strings are derived from it directly.
+ *
+ * HD's policy requires a dealer's product claims to correlate with the claims
+ * Hunter Douglas itself makes, so this is exactly the kind of claim that must
+ * never be written from memory or from a search result. If a newer award
+ * supersedes it, replace these strings from HD-supplied copy — do not append a
+ * second award found elsewhere.
+ *
+ * (HD's own copy uses an em dash and omits the ®; both are corrected here per
+ * the site's copy rules and HD's own trademark rules.)
+ */
+export const POWERVIEW_AWARD_SENTENCE =
+  "PowerView® Automation (Gen 3) won a 2023 Mark of Excellence Award from the Smart Home Division of the Consumer Technology Association, named Automated Shade Product of the Year.";
+
+/** The same award, as a feature bullet. */
+export const POWERVIEW_AWARD_BULLET =
+  "Winner of a 2023 Mark of Excellence Award, named Automated Shade Product of the Year by the Smart Home Division of the Consumer Technology Association";
 
 /**
  * Required attribution. HD requires a dated copyright on advertising creative.
