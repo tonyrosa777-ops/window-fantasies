@@ -99,6 +99,31 @@ const BANNED = [
     fix: "Remove the claim.",
   },
   {
+    // Added 2026-08-07 from HD's 2026 prohibited-statements list. The gate had
+    // only the seven phrases the 2026-07-31 review made urgent; reading the full
+    // 2026 list showed HD enumerates ~25. These are the rest, and they are the
+    // ones a marketing-minded writer reaches for without thinking.
+    re: /\b(biggest sale ever|cheapest price|discount pric|guaranteed most competitive|low price guarantee|lowest prices of the season|nobody beats our|no sales tax|only dealer|prices too low to advertise|the (?:best|better) price|warehouse pric|unbeatable guarantee)\b/i,
+    why: "Expressly prohibited statement in HD's 2026 Advertising Compliance Guidelines.",
+    fix: "Remove the claim. HD's sanctioned alternatives are on the Messaging Suggestions page: free quote, free in-home appointment, complimentary design consultation.",
+  },
+  {
+    // "We are Hunter Douglas" / "Hunter Douglas <City>" both assert that the
+    // dealer IS the manufacturer, which is the substance of the separate-entities
+    // requirement. The city form is the local-SEO temptation on a site that
+    // already runs 30 service-area pages, so it is worth its own rule.
+    re: /\bwe are Hunter\s+Douglas\b|\bHunter\s+Douglas\s+(?:of\s+)?(?:Salem|Nashua|Windham|Derry|Londonderry|Manchester|Andover|Methuen|Haverhill|Lawrence|Boston|New Hampshire|Massachusetts|New England)\b/i,
+    why: "Asserts the dealer is Hunter Douglas, or brands a location as Hunter Douglas. Both are expressly prohibited.",
+    fix: 'Name the two companies separately: "Window Fantasies, an Authorized Hunter Douglas Dealer serving Salem, NH".',
+  },
+  {
+    // HD reserves its own tagline. Not a temptation today, but it is exactly the
+    // kind of phrase that gets lifted from HD's consumer site into dealer copy.
+    re: /\bArt of Window Dressing\b/i,
+    why: "HD's own trademarked tagline. Dealers may not use it or any derivation.",
+    fix: "Use the site's own tagline.",
+  },
+  {
     re: /\b(certified install|Certified Installation)\b/i,
     why: "Implies a Hunter Douglas certification program that has no consumer-facing existence.",
     fix: 'Use "installed by hand" or "installation by Jim".',
@@ -246,17 +271,50 @@ const DISCOUNT_ANY = /\b\d{1,3}\s*%\s*(off|discount)|\b(percent off)\b/i;
 const REBATE = /\brebate\b/i;
 const REBATE_LEGAL = /mail-in rebate|rebate legal|Manufacturer'?s Certification/i;
 
-/** Percentage-off advertising is prohibited outright on these. */
+/**
+ * Percentage-off advertising is prohibited outright on these.
+ *
+ * SYNCED TO HD'S 2026 LIST 2026-08-07. The 2026 policy CHANGED this list, and a
+ * stale copy fails in both directions — it would have allowed a percentage on a
+ * newly-restricted product and blocked one on a product HD has since freed:
+ *   + Aura     ADDED   (Aura® Illuminated Shades, a product line that did not
+ *                       exist when the 2025 list was written)
+ *   − Design Studio  REMOVED from the restricted list
+ *   − Solera         REMOVED from the restricted list
+ * "Architella" covers HD's "Duette® Architella® Collection" entry; plain Duette®
+ * Honeycomb Shades are NOT restricted (they sit at the 25% cap below).
+ */
 const RESTRICTED_PRODUCTS = [
-  "Alustra", "Design Studio", "Architella", "Luminette", "Pirouette",
-  "Silhouette", "Solera", "Sonnette", "Skyline", "Vignette", "PowerView",
+  "Alustra", "Aura", "Architella", "Luminette", "Pirouette",
+  "Silhouette", "Sonnette", "Skyline", "Vignette", "PowerView",
 ];
 
-/** Maximum advertised percentage discount, by product. */
+/**
+ * Maximum advertised percentage discount, by product. Synced to HD's 2026 list.
+ *
+ * ⚠️ Cadence is deliberately RETAINED at 10% even though HD's 2026 list dropped
+ * it from the discount tables entirely (it appears in the 2026 trademark list as
+ * Cadence® Soft Vertical Blinds, just not in the discount section). A product on
+ * neither the restricted list nor a cap list is ambiguous, not unlimited. Keeping
+ * the last cap HD published cannot create a violation; dropping it could. If HD
+ * clarifies, update — do not "fix" this by deleting it.
+ */
 const DISCOUNT_CAPS = [
   { cap: 10, products: ["Cadence", "Heritance"] },
   { cap: 25, products: ["Designer Banded", "Designer Roller", "Designer Screen", "Duette", "NewStyle", "Palm Beach", "Somner"] },
   { cap: 30, products: ["Applause", "EverWood", "Modern Precious Metals", "Nantucket", "Parkland", "Provenance", "Vertical Solutions"] },
+];
+
+/**
+ * Shutter minimum advertised price per square foot (2026 policy, unchanged from
+ * 2025). Dormant while the site publishes no prices — which is the correct state,
+ * since HD separately bars web-based price quotes on a dealer's independent site.
+ * Encoded so a future promotion cannot undercut them by accident.
+ */
+const SHUTTER_SQFT_MINIMUMS = [
+  { product: "Heritance", min: null }, // price per sq. ft. not permitted at all
+  { product: "NewStyle", min: 23 },
+  { product: "Palm Beach", min: 22 },
 ];
 
 /** Copy promising scheduled/automatic/app-driven operation triggers HD's footnote. */
@@ -421,6 +479,26 @@ if (existsSync(promoPath)) {
       report("src/data/promotion.ts", 0, "promotion-names-no-products",
         "The active promotion names no qualifying products.",
         "A promotion must say what it applies to, or it misleads. Populate qualifyingProducts.");
+    }
+    // 5. Shutter price-per-sq-ft floors. HD sets a minimum advertised price per
+    //    square foot on two shutter lines and forbids the unit outright on the
+    //    third. This should never fire — the site publishes no prices at all —
+    //    but a "$19 per sq ft" promotion is a specific, plausible mistake and it
+    //    is cheaper to encode the floors than to remember them.
+    const sqft = /\$\s?(\d+(?:\.\d+)?)\s*(?:per|\/)\s*sq(?:uare)?\.?\s*(?:ft|foot)/i.exec(promo);
+    if (sqft) {
+      for (const s of SHUTTER_SQFT_MINIMUMS) {
+        if (!new RegExp(`\\b${s.product}`, "i").test(promo)) continue;
+        if (s.min === null) {
+          report("src/data/promotion.ts", 0, "promotion-sqft-price-not-permitted",
+            `The active promotion advertises a per-square-foot price alongside "${s.product}".`,
+            `Hunter Douglas does not permit a price per sq. ft. on ${s.product}. Remove the unit price.`);
+        } else if (Number(sqft[1]) < s.min) {
+          report("src/data/promotion.ts", 0, "promotion-below-sqft-minimum",
+            `The active promotion advertises $${sqft[1]}/sq. ft. on "${s.product}", below HD's $${s.min} minimum.`,
+            `Raise it to at least $${s.min} per sq. ft., or drop the unit price.`);
+        }
+      }
     }
   }
 }

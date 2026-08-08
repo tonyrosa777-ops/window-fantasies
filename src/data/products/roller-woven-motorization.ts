@@ -21,19 +21,19 @@
  *   powerview-gen-3          more-products-services/services/window-covering-automation.md
  *
  * TRADEMARK NOTE. "Designer Screen Shades", "Designer Roller Shades" and
- * "Designer Banded Shades" carry NO symbol: they are absent from HD's 2025
- * trademark list, and asserting a registration HD does not assert is its own
- * violation. Skyline®, Provenance®, Alustra®, Woven Textures®, PowerView®,
- * Duolite®, LiteRise®, UltraGlide®, SoftTouch® take ®. EasyRise™ takes ™.
+ * "Designer Banded Shades" carry NO symbol: they are absent from HD's trademark
+ * list (2025 AND 2026 — re-verified 2026-08-07), and asserting a registration HD
+ * does not assert is its own violation. Skyline®, Provenance®, Alustra®, Woven
+ * Textures®, PowerView®, Duolite®, LiteRise®, UltraGlide®, SoftTouch® take ®.
+ * EasyRise™ takes ™.
  *
- * ⚠️ ClearView is BOTH, depending on the product. HD's own trademark list prints
- * ClearView® under Silhouette®, Pirouette® and Duette®, but ClearView™ under the
- * Designer Banded Shades entries. That is HD's designation, not an inconsistency
- * we get to normalise: this file is Designer Banded, so it uses ClearView™, while
- * shades-sheers.ts uses ClearView® on Silhouette and Pirouette. Because the symbol
- * varies by product, ClearView is deliberately NOT in the lint gate's symbol list
- * — a gate that forces one symbol would force a violation on the other product.
- * See src/data/hunterDouglas.ts before editing any name here.
+ * ⚠️ ClearView is BOTH, depending on the product. This file is Designer Banded,
+ * so it uses ClearView™. The full per-product table (Silhouette® → ®, Duette® →
+ * ®, Pirouette® → ™, Alustra® Pirouette® → ®, Designer Banded → ™) lives on the
+ * note in HD_MARKS.clearview and is verified against HD's 2026 list. Because the
+ * symbol varies by product, ClearView is deliberately NOT in the lint gate's
+ * symbol list — a gate that forces one symbol would force a violation on the
+ * other product. See src/data/hunterDouglas.ts before editing any name here.
  *
  * POWERVIEW LEGAL COPY. The last paragraph of the powerview-gen-3 body is
  * mandatory manufacturer legal copy and is reproduced verbatim. Do not

@@ -176,7 +176,7 @@ export const SHADES_SHEERS: HDProductLine[] = [
       "A single 5 inch vane size",
       "UV protection that helps keep furniture and flooring from fading",
       "More than 90 fabric and color choices",
-      "Superior view-through with ClearView® sheers",
+      "Superior view-through with ClearView™ sheers",
       "Exclusive fabrics from The Alustra® Collection",
     ],
     faq: [
@@ -186,7 +186,7 @@ export const SHADES_SHEERS: HDProductLine[] = [
       },
       {
         q: "Can I still see out?",
-        a: "Yes, through the back sheer. With the vanes open you get a soft, filtered view, and ClearView® sheers are the option when the view is the reason you bought the house. A sheer filters light rather than stopping it, so if a room has to go dark I will show you the two-fabric option instead.",
+        a: "Yes, through the back sheer. With the vanes open you get a soft, filtered view, and ClearView™ sheers are the option when the view is the reason you bought the house. A sheer filters light rather than stopping it, so if a room has to go dark I will show you the two-fabric option instead.",
       },
       {
         q: "Will they fit my windows?",
@@ -430,13 +430,13 @@ export const SHADES_SHEERS: HDProductLine[] = [
     body: [
       "Applause® Honeycomb Shades are the straightforward cellular shade in the Hunter Douglas line. A double-cellular honeycomb that insulates, in a tighter selection of fabrics, colors, and operating systems than the flagship. It helps keep the house comfortable whether the temperature is hot or cold, which in New Hampshire is both, sometimes in the same week.",
       "I specify these when a house needs cellular shades on a lot of windows and the priority is comfort rather than a big fabric decision at every opening. Pleats come in 3/4 inch or a double pleat. A Top-Down or Top-Down/Bottom-Up design drops the top rail for daylight while the bottom stays closed, and the Duolite® system puts two fabrics on one headrail so a single window handles light control and privacy.",
-      "For a slider or a set of French doors, the cordless Vertiglide® system runs the same cellular fabric vertically. Applause® Honeycomb Shades are available with PowerView® Automation, and also run on the UltraGlide® retractable wand, the cordless LiteRise® push and pull system, or the EasyRise™ cord loop. Hunter Douglas builds them for arches, angles, cut-outs, skylights, and sidelights, and they carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms.",
+      "For a slider or a set of French doors, the cordless Vertiglide™ system runs the same cellular fabric vertically. Applause® Honeycomb Shades are available with PowerView® Automation, and also run on the UltraGlide® retractable wand, the cordless LiteRise® push and pull system, or the EasyRise™ cord loop. Hunter Douglas builds them for arches, angles, cut-outs, skylights, and sidelights, and they carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms.",
       POWERVIEW_APP_DISCLOSURE,
     ],
     features: [
       "An insulating, double-cellular design for year-round comfort",
       "Pleat sizes in 3/4 inch or a double pleat",
-      "The cordless Vertiglide® system for sliding-glass and French doors",
+      "The cordless Vertiglide™ system for sliding-glass and French doors",
       "Top-Down, Top-Down/Bottom-Up, and Duolite® designs for light control and privacy in one shade",
       "Cordless, corded, and motorized operation, including the LiteRise® system and PowerView® Automation",
       "Built for arches, angles, trapezoids, bay and corner windows, cut-outs, skylights, and sidelights",
@@ -448,7 +448,7 @@ export const SHADES_SHEERS: HDProductLine[] = [
       },
       {
         q: "What can I do about a sliding door?",
-        a: "The cordless Vertiglide® system runs the same cellular fabric vertically, so a slider or a set of French doors gets the same insulating honeycomb the windows get. Cordless matters on a door, where a hanging cord is always in the way of the thing you are trying to walk through.",
+        a: "The cordless Vertiglide™ system runs the same cellular fabric vertically, so a slider or a set of French doors gets the same insulating honeycomb the windows get. Cordless matters on a door, where a hanging cord is always in the way of the thing you are trying to walk through.",
       },
       {
         q: "Do these work on skylights?",

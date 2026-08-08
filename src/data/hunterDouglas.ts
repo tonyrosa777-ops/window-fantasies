@@ -105,6 +105,7 @@ export const HD_MARKS = {
   newstyle: mark("NewStyle", "®", "Hybrid Shutters"),
   powerview: mark("PowerView", "®", "Automation", {
     short: "PowerView®",
+    restricted: true,
     note:
       'HD requires the name "PowerView® Automation". Do NOT write "PowerView ' +
       'Motorization". Promoting the SCHEDULING benefit additionally requires the ' +
@@ -162,21 +163,47 @@ export const HD_MARKS = {
       "Fabrics, a Hunter Douglas partner company'. Say partner company, never " +
       "'Hunter Douglas Carole Fabrics'.",
   }),
-  vertiglide: mark("Vertiglide", "®", "", { short: "Vertiglide®" }),
+  vertiglide: mark("Vertiglide", "™", "", {
+    short: "Vertiglide™",
+    note:
+      "CORRECTED 2026-08-07 from ® to ™, and this is the ONLY symbol the 2026 " +
+      "trademark-list diff turned up as wrong. HD's 2025 list was internally " +
+      "split — Vertiglide® ×4 against Vertiglide™ ×3 — and the site picked ®. " +
+      "HD's 2026 list resolves it: ™ in all five instances, ® in none. " +
+      "Improper ® marking is exactly the violation HD's trademark criterion " +
+      "exists to catch, so this is a real fix, not a cosmetic one.",
+  }),
   duolite: mark("Duolite", "®", "", { short: "Duolite®" }),
   clearview: mark("ClearView", "®", "", {
     short: "ClearView®",
     note:
-      "⚠️ THE SYMBOL DEPENDS ON THE PRODUCT — this entry is the Silhouette®/" +
-      "Pirouette®/Duette® case. HD's own trademark list prints ClearView® under " +
-      "those three, and ClearView™ under the Designer Banded Shades entries. " +
-      "That is HD's designation, not an inconsistency to normalise, so the site " +
-      "matches it per product. For this reason ClearView is intentionally NOT in " +
-      "the lint gate's symbol list, which allows only one symbol per mark. " +
-      "Confirming with HD; until then, copy whichever form HD's list uses for the " +
-      "product you are writing about.",
+      "⚠️ THE SYMBOL DEPENDS ON THE PRODUCT. Do not normalise it, and do not add " +
+      "it to the lint gate, which allows one symbol per mark and would therefore " +
+      "force a violation on whichever product lost. Copy whichever form HD's " +
+      "list uses for the product you are writing about:\n" +
+      "  Silhouette®  → ClearView®  (Silhouette® ClearView® Mystere™/Nouveau™/" +
+      "Originale™, Silhouette® Halo® ClearView® Elan®)\n" +
+      "  Duette®      → ClearView®  (Duette® ClearView® Sheer)\n" +
+      "  Pirouette®   → ClearView™  (Pirouette® with ClearView™)\n" +
+      "  Alustra® Pirouette® → ClearView®  (Pirouette® Alustra® ClearView® Apollo™)\n" +
+      "  Designer Banded Shades → ClearView™  (Fairy Glen / Mali / Skye)\n" +
+      "VERIFIED AGAINST HD'S 2026 LIST 2026-08-07, which CHANGED the Pirouette " +
+      "case: the 2025 list printed ClearView® there, the 2026 list prints " +
+      "ClearView™ on the standard line while keeping ® on the Alustra® one. The " +
+      "site was updated to match. This is HD's own designation, inconsistent on " +
+      "its face, and it stays split because copying HD is the defensible position " +
+      "and inventing consistency they do not assert is not.",
   }),
-  architella: mark("Architella", "®", "", { short: "Architella®" }),
+  architella: mark("Architella", "®", "", {
+    short: "Architella®",
+    restricted: true,
+    note:
+      "The Duette® Architella® Collection is on HD's Restricted Product Line, so " +
+      "it may never be advertised at a percentage off — dollar amounts only. " +
+      "Plain Duette® Honeycomb Shades are NOT restricted (25% cap). The flag was " +
+      "missing here until the 2026 list diff on 2026-08-07; the build gate always " +
+      "had it, but the two lists disagreeing is its own trap.",
+  }),
   aria: mark("Aria", "™", "Soft Blinds", {
     short: "Aria™",
     note:
