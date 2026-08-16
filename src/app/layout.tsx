@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: `${siteConfig.business.name} | ${siteConfig.business.tagline}`,
     template: `%s | ${siteConfig.business.name}`,
   },
-  description: `Authorized Hunter Douglas Dealer in Salem, NH. ${siteConfig.business.yearsInBusiness}+ years of custom window treatments, shades, blinds, shutters, drapery and motorization, measured, designed and installed by hand across New England. Free in-home consultation, and Jim stands behind every install he does.`,
+  description: `Authorized Hunter Douglas Dealer in Salem, NH. ${siteConfig.business.yearsInBusiness}+ years of custom window treatments, shades, blinds, shutters, drapery and motorization, measured, designed and installed across New England. Free in-home consultation, and we stand behind every install.`,
   // Resolve absolute URLs (og:image, canonical) off an explicit override first,
   // then Vercel's stable production domain (window-fantasies.vercel.app today,
   // windowfantasies.com once the custom domain is connected), then the final
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.business.name} | ${siteConfig.business.tagline}`,
-    description: `Custom Hunter Douglas window treatments, measured and installed by hand across New England. Authorized Hunter Douglas Dealer. Free in-home consultation, and Jim stands behind every install he does.`,
+    description: `Custom Hunter Douglas window treatments, measured and installed across New England. Authorized Hunter Douglas Dealer. Free in-home consultation, and we stand behind every install.`,
   },
   robots: {
     index: true,

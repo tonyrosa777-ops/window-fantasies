@@ -70,8 +70,8 @@ export default function OpengraphImage() {
               gap: "0.25em",
             }}
           >
-            <span>The finest window treatments in New England,</span>
-            <span style={{ color: "#F4E185", fontStyle: "italic" }}>by hand.</span>
+            <span>Measure, design, and install.</span>
+            <span style={{ color: "#F4E185", fontStyle: "italic" }}>We do it all.</span>
           </div>
         </div>
 
@@ -91,7 +91,7 @@ export default function OpengraphImage() {
                 {b.name}
               </span>
               <span style={{ fontSize: "22px", color: "rgba(246, 241, 225,0.72)", fontFamily: "sans-serif" }}>
-                Measured, designed, and installed by {b.founderName}
+                Authorized Hunter Douglas Dealer, Salem NH
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", alignItems: "flex-end" }}>

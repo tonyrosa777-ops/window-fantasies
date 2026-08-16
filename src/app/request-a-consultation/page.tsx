@@ -27,7 +27,7 @@ import { ConsultationClient } from "./ConsultationClient";
 
 export const metadata: Metadata = {
   title: "Request a Free In-Home Consultation",
-  description: `Request your free in-home consultation with ${siteConfig.business.founderName} of ${siteConfig.business.name}. Jim brings the samples to you, measures your windows, and gives you an honest installed price. No pressure, and he stands behind every job.`,
+  description: `Request your free in-home consultation with ${siteConfig.business.name}. We bring the samples to you, measure your windows, and give you an honest installed price. No pressure, and we stand behind every job.`,
 };
 
 const NEXT_STEPS = [

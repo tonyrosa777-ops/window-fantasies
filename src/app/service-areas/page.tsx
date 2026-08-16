@@ -21,7 +21,7 @@ import { StaggerContainer, StaggerItem } from "@/components/animations/Stagger";
 export const metadata: Metadata = {
   title: "Service Areas",
   description:
-    "Custom Hunter Douglas window treatments across all of New England: New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Jim brings the samples to your home, measures and installs by hand, backed by the Hunter Douglas Limited Lifetime Warranty.",
+    "Custom Hunter Douglas window treatments across all of New England: New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Window Fantasies brings the samples to your home, measures and installs everything, backed by the Hunter Douglas Limited Lifetime Warranty.",
 };
 
 /**
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 const PAGE_EYEBROW = "Service Areas. All of New England.";
 const PAGE_H1 = "Custom window treatments across all of New England.";
 const PAGE_SUBHEAD =
-  "There is no store to drive to, and that is on purpose. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and measures and installs everything by hand. From the office in Salem NH he serves New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod.";
+  "There is no store to drive to, and that is on purpose. We bring the real Hunter Douglas samples to your home, hold them in your own windows, and measure and install everything ourselves. From the office in Salem NH we serve New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod.";
 
 export default function ServiceAreasIndexPage() {
   const areas = siteConfig.serviceAreas;
@@ -193,7 +193,7 @@ export default function ServiceAreasIndexPage() {
               className="mt-4 font-body mx-auto"
               style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "60ch" }}
             >
-              Jim works out of Salem, New Hampshire and serves New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Longer trips may carry a travel charge, and he will tell you that upfront before anything happens.
+              We work out of Salem, New Hampshire and serve New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Longer trips may carry a travel charge, and we will tell you that upfront before anything happens.
             </p>
           </FadeUp>
         </Container>
@@ -222,7 +222,7 @@ export default function ServiceAreasIndexPage() {
                   Request a Free In-Home Consultation
                 </Button>
                 <Button href={`tel:${siteConfig.business.phone}`} variant="secondary" size="lg" tone="light">
-                  Call Jim at {siteConfig.business.phoneFormatted}
+                  Call us at {siteConfig.business.phoneFormatted}
                 </Button>
               </div>
             </div>

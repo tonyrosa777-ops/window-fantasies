@@ -36,13 +36,13 @@ export function ServiceAreaTeaser() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <FadeUp className="order-2 lg:order-1 flex flex-col gap-5">
             <p className="eyebrow" style={{ color: "var(--gold-deep)" }}>
-              Where Jim works
+              Where we work
             </p>
             <h2 className="font-display text-h2" style={{ color: "var(--text-on-light)", lineHeight: 1.15 }}>
               All of New England, from the tip of the Cape to Maine and Vermont.
             </h2>
             <p className="font-body text-base md:text-lg" style={{ color: "var(--muted-on-light)", lineHeight: 1.6 }}>
-              Jim travels. New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. There is no place in New England he will not go for the right project, though longer distances may carry a travel charge. He will tell you upfront.
+              We travel. New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. There is no place in New England we will not go for the right project, though longer distances may carry a travel charge. We will tell you upfront.
             </p>
             <ul className="flex flex-wrap gap-2.5 pt-1">
               {featured.map((a) => (

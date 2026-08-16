@@ -95,7 +95,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
       {
         label: "I have windows I can barely reach, let alone adjust",
         detail:
-          "Two-story great rooms, glass over the tub, a whole wall of windows. Beautiful to look at, a chore to operate by hand.",
+          "Two-story great rooms, glass over the tub, a whole wall of windows. Beautiful to look at, a chore to operate manually.",
         type: "smart-home",
       },
       {
@@ -214,7 +214,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
         type: "light-sculptor",
       },
       {
-        label: "Tall ones, high ones, or just too many to manage by hand",
+        label: "Tall ones, high ones, or just too many to manage on your own",
         detail:
           "Count them. Past six or eight windows, motorization stops being a luxury and starts being the practical answer.",
         type: "smart-home",

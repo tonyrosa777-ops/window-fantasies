@@ -166,14 +166,14 @@ export default function TestimonialsPage() {
                 lineHeight: 1.6,
               }}
             >
-              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, measures your windows, and gives you an honest installed price at your kitchen table. He stands behind every job.
+              Request a free in-home consultation. We bring the real Hunter Douglas samples to your home, measure your windows, and give you an honest installed price at your kitchen table. We stand behind every job.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Button href="/request-a-consultation" variant="primary" size="lg">
                 Request a Free In-Home Consultation
               </Button>
               <Button href={`tel:${siteConfig.business.phone}`} variant="secondary" size="lg" tone="light">
-                Call Jim at {siteConfig.business.phoneFormatted}
+                Call us at {siteConfig.business.phoneFormatted}
               </Button>
             </div>
           </div>

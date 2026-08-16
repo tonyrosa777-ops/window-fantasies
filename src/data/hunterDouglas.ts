@@ -213,7 +213,7 @@ export const HD_MARKS = {
       "failed HD's descriptor rule. HD's own dealer library settles it: Aria™ " +
       "Soft Blinds is a current product line with 12 photographs and 3 videos, " +
       "filed under Horizontal Blinds. The trademark list is authoritative for the " +
-      "SYMBOL; the product catalogue is authoritative for whether a product exists. " +
+      "SYMBOL; the product catalog is authoritative for whether a product exists. " +
       "✅ CONFIRMED BY HD 2026-08-07 — DSM Caroline Villalobos named Aria™ as one " +
       "of the two marks on the 2026 trademark list, which is what the 2025 list " +
       "we had was missing.",

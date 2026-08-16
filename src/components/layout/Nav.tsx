@@ -62,10 +62,16 @@ const drawerLinks = [
 
 const Wordmark = ({ className }: { className?: string }) => (
   <span
-    className={cn("font-display leading-none tracking-tight", className)}
+    className={cn("font-display leading-none tracking-tight whitespace-nowrap", className)}
     style={{ color: "var(--text-primary)" }}
   >
     Window <span style={{ color: "var(--primary)" }}>Fantasies</span>
+    <span
+      className="ml-1.5 font-body text-[0.42em] font-semibold uppercase tracking-[0.18em] align-[0.35em]"
+      style={{ color: "var(--text-secondary)" }}
+    >
+      LLC
+    </span>
   </span>
 );
 
@@ -104,11 +110,14 @@ export function Nav() {
         }}
       >
         <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-12 flex items-center justify-between h-20 md:h-24 lg:h-28">
-          <Link href="/" aria-label="Window Fantasies home">
-            <Wordmark className="text-xl md:text-2xl" />
+          <Link href="/" aria-label="Window Fantasies LLC home">
+            {/* Bigger than the old 24px wordmark + carries the LLC suffix. Capped a
+                touch at xl so the inline nav row keeps comfortable slack at the 1280
+                wrap band (Error #133); below xl it renders at the full 30px. */}
+            <Wordmark className="text-2xl md:text-3xl xl:text-[1.6rem]" />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-6">
+          <nav className="hidden xl:flex items-center gap-5">
             {links.map((l) => (
               <Link
                 key={l.href}
@@ -142,7 +151,7 @@ export function Nav() {
               href={`tel:${siteConfig.business.phone}`}
               className="flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-semibold"
               style={{ background: "var(--primary)", color: "var(--ink)" }}
-              aria-label={`Call Jim at ${siteConfig.business.phoneFormatted}`}
+              aria-label={`Call Window Fantasies at ${siteConfig.business.phoneFormatted}`}
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               Call
@@ -174,7 +183,7 @@ export function Nav() {
             aria-label="Navigation menu"
           >
             <div className="flex items-center justify-between h-20 px-6 border-b border-[var(--border-dark)]">
-              <Wordmark className="text-xl" />
+              <Wordmark className="text-2xl" />
               <button
                 type="button"
                 onClick={() => setOpen(false)}

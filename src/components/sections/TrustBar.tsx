@@ -32,7 +32,7 @@ export function TrustSignals() {
       <Container size="wide">
         <FadeUp className="text-center mb-8">
           <p className="eyebrow" style={{ color: "var(--primary)" }}>
-            Why homeowners trust Jim
+            Why homeowners trust Window Fantasies
           </p>
         </FadeUp>
         <StaggerContainer

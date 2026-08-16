@@ -45,8 +45,8 @@ interface Props {
 const TRUST_CHECKLIST = [
   "Authorized Hunter Douglas Dealer",
   "Hunter Douglas Limited Lifetime Warranty",
-  "Measured, designed, and installed by hand",
-  "Free in-home consultation, Jim brings the samples to you",
+  "Measured, designed, and installed with care",
+  "Free in-home consultation, we bring the samples to you",
   "Repairs even if you bought it elsewhere",
 ];
 
@@ -55,11 +55,11 @@ const cityFaqs = (area: ServiceArea) => {
   const faqs = [
     {
       q: `Do you serve ${city}?`,
-      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
+      a: `Yes. Window Fantasies serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. We bring the real Hunter Douglas samples to your ${city} home, hold them in your own windows, and measure and install everything ourselves.`,
     },
     {
       q: `How much do Hunter Douglas window treatments cost in ${city}?`,
-      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
+      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: we measure your actual ${city} windows and give you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
     },
     {
       q: `Do you repair blinds and shades in ${city}?`,
@@ -183,7 +183,7 @@ export default function CityPageClient({ area }: Props) {
                 variant="secondary"
                 size="lg"
               >
-                Call Jim at {business.phoneFormatted}
+                Call us at {business.phoneFormatted}
               </Button>
             </div>
           </FadeUp>
@@ -217,11 +217,11 @@ export default function CityPageClient({ area }: Props) {
                   maxWidth: "60ch",
                 }}
               >
-                I work out of an office in Salem, NH, and I serve {area.city} and the
-                rest of New England myself. I measure it, I design it, and I install it,
-                which means one phone number, one accountable person, and someone who
-                actually knows how to fit these products to your home. No sales team, no
-                subcontractors, no call center. When you call, you get Jim.
+                We work out of an office in Salem, NH, and we serve {area.city} and the
+                rest of New England. We measure it, we design it, and we install it,
+                which means one phone number, one accountable company, and people who
+                actually know how to fit these products to your home. When you call, we
+                answer.
               </p>
               <p
                 className="mt-4 font-body"
@@ -232,12 +232,12 @@ export default function CityPageClient({ area }: Props) {
                   maxWidth: "60ch",
                 }}
               >
-                Homeowners in {area.city} rely on me for custom Hunter Douglas shades,
+                Homeowners in {area.city} rely on us for custom Hunter Douglas shades,
                 blinds, shutters, drapery, and PowerView® Automation, along with
                 repairs even on treatments bought elsewhere. There is no store to
-                drive to. I bring the real samples to your home, hold them in your own
+                drive to. We bring the real samples to your home, hold them in your own
                 windows, and show you exactly what you are getting before you spend a
-                dollar. Everyone gets the same me, and everything is backed by the
+                dollar. Everyone gets the same care, and everything is backed by the
                 Hunter Douglas Limited Lifetime Warranty.
               </p>
 
@@ -524,15 +524,15 @@ export default function CityPageClient({ area }: Props) {
             <FadeUp>
               <Eyebrow className="mb-4">Nearby Service Areas</Eyebrow>
               <h2 className="font-display text-h2" style={{ color: "var(--text-primary)" }}>
-                Other cities I serve nearby.
+                Other cities we serve nearby.
               </h2>
               <p
                 className="mt-4 font-body"
                 style={{ color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: "60ch" }}
               >
-                Have a home in a neighboring town, or family nearby who could use Jim?
-                He serves all of these towns too, with the same in-home consultation and
-                the same Jim on the other end of the phone.
+                Have a home in a neighboring town, or family nearby who could use us?
+                We serve all of these towns too, with the same in-home consultation and
+                the same care on the other end of the phone.
               </p>
             </FadeUp>
 
@@ -587,14 +587,14 @@ export default function CityPageClient({ area }: Props) {
                   lineHeight: 1.6,
                 }}
               >
-                The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to. Jim stands behind every install he does.
+                The in-home consultation is free. We bring the real Hunter Douglas samples, measure your windows, and give you an honest installed price at your kitchen table. No pressure, no store to drive to. We stand behind every install.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
                   Request a Free In-Home Consultation
                 </Button>
                 <Button href={`tel:${business.phone}`} variant="secondary" size="lg" tone="light">
-                  Call Jim at {business.phoneFormatted}
+                  Call us at {business.phoneFormatted}
                 </Button>
               </div>
             </div>

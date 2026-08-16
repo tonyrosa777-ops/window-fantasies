@@ -40,7 +40,7 @@ export default function ContactPage() {
               className="text-h1 hero-shimmer font-display mt-4"
               style={{ maxWidth: "22ch" }}
             >
-              One phone number. One person. Everyone gets the same Jim.
+              One phone number. One team. Everyone gets the same care.
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 maxWidth: "65ch",
               }}
             >
-              {hero.trustMicrocopy} Send the form below, call, or email. Whichever is easiest. I answer every message personally.
+              {hero.trustMicrocopy} Send the form below, call, or email. Whichever is easiest. We answer every message personally.
             </p>
           </FadeUp>
         </Container>

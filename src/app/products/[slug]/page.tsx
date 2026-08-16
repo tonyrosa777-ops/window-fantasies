@@ -233,14 +233,14 @@ export default async function ProductPage({ params }: Props) {
                   Request Your Free In-Home Consultation
                 </Button>
                 <Button href="tel:+16038915755" variant="secondary" size="lg">
-                  Call Jim
+                  Call Us
                 </Button>
               </div>
 
               <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-widest" style={{ color: "var(--text-muted)" }}>
                 <li>Authorized Hunter Douglas Dealer</li>
                 <li aria-hidden="true">·</li>
-                <li>Measured &amp; installed by hand</li>
+                <li>Measured &amp; installed with care</li>
                 <li aria-hidden="true">·</li>
                 <li>Hunter Douglas Limited Lifetime Warranty</li>
               </ul>
@@ -420,7 +420,7 @@ export default async function ProductPage({ params }: Props) {
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", lineHeight: 1.6, maxWidth: "50ch" }}
               >
-                Every {product.name.toLowerCase()} order is measured, designed, and installed by Jim himself. No sales team, no subcontractors, one person accountable from the first sample to the final install.
+                Every {product.name.toLowerCase()} order is measured, designed, and installed by Window Fantasies. One company, accountable from the first sample to the final install.
               </p>
 
               {powerViewNote && (
@@ -519,7 +519,7 @@ export default async function ProductPage({ params }: Props) {
                 Every {product.name.toLowerCase()} line
               </p>
               <h2 className="mt-4 font-display text-h2" style={{ color: "var(--text-on-light)" }}>
-                The Hunter Douglas {product.name.toLowerCase()} Jim installs.
+                The Hunter Douglas {product.name.toLowerCase()} we install.
               </h2>
               <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
                 Each one is a different answer to light, privacy and how a room is used.
@@ -583,7 +583,7 @@ export default async function ProductPage({ params }: Props) {
                 The pieces homeowners ask for by name.
               </h2>
               <p className="mt-4 font-body" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-                A look at the Hunter Douglas {product.name.toLowerCase()} Jim installs most across New England. See any of them in your own light at a free in-home consultation.
+                A look at the Hunter Douglas {product.name.toLowerCase()} we install most across New England. See any of them in your own light at a free in-home consultation.
               </p>
             </div>
             <div
@@ -642,7 +642,7 @@ export default async function ProductPage({ params }: Props) {
                 lineHeight: 1.6,
               }}
             >
-              Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, holds them in your windows, measures every opening, and gives you an honest installed price at your kitchen table. No pressure, and Jim stands behind every install he does.
+              Request a free in-home consultation. We bring the real Hunter Douglas samples to your home, hold them in your windows, measure every opening, and give you an honest installed price at your kitchen table. No pressure, and we stand behind every install.
             </p>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Button href="/request-a-consultation" variant="primary" size="lg">

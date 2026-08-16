@@ -151,7 +151,7 @@ export const seededPosts: SeededPost[] = [
           "Control from your phone, your voice, or a simple wall remote.",
           "Set schedules so shades open in the morning and close at sunset on their own.",
           "Adjust from anywhere, so the house looks lived in even when you travel.",
-          "Reach the high windows and stairwell openings you could never reach by hand.",
+          "Reach the high windows and stairwell openings you could never reach on your own.",
         ],
       },
       { type: "h2", text: "Sunglasses for your windows" },

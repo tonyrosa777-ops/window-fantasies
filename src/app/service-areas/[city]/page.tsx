@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!area) return {};
   const title = `Window Treatments in ${area.city}, ${area.state}`;
   const ogTitle = `${title} | ${siteConfig.business.name}`;
-  const description = `Custom Hunter Douglas shades, blinds, shutters, drapery, and PowerView® Automation for ${area.city}, ${area.state} homes. Jim brings the samples to you, measures and installs by hand, backed by the Hunter Douglas Limited Lifetime Warranty. Free in-home consultation.`;
+  const description = `Custom Hunter Douglas shades, blinds, shutters, drapery, and PowerView® Automation for ${area.city}, ${area.state} homes. We bring the samples to you, measure and install everything, backed by the Hunter Douglas Limited Lifetime Warranty. Free in-home consultation.`;
   return {
     title,
     description,
@@ -44,11 +44,11 @@ function cityFaqs(area: { city: string; state: string }) {
   const faqs = [
     {
       q: `Do you serve ${city}?`,
-      a: `Yes. Jim serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. Jim brings the real Hunter Douglas samples to your ${city} home, holds them in your own windows, and measures and installs everything by hand.`,
+      a: `Yes. Window Fantasies serves ${city} and all of New England from the office in Salem, NH. There is no store to drive to. We bring the real Hunter Douglas samples to your ${city} home, hold them in your own windows, and measure and install everything ourselves.`,
     },
     {
       q: `How much do Hunter Douglas window treatments cost in ${city}?`,
-      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: Jim measures your actual ${city} windows and gives you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
+      a: `Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and most homes have more than one window. That is why the in-home consultation is free: we measure your actual ${city} windows and give you a real installed price at your kitchen table, with no obligation. Yes, it is an investment, and it is built to last.`,
     },
     {
       q: `Do you repair blinds and shades in ${city}?`,

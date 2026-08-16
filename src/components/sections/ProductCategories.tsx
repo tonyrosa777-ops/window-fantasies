@@ -47,13 +47,13 @@ export function ProductCategories() {
 
         <FadeUp className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <p className="eyebrow" style={{ color: "var(--gold-deep)" }}>
-            What Jim fits
+            What we fit
           </p>
           <h2 className="mt-4 font-display text-h2" style={{ color: "var(--text-on-light)" }}>
-            Four ways to dress a window, measured and fitted by Jim.
+            Four ways to dress a window, measured and fitted by Window Fantasies.
           </h2>
           <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
-            Every Hunter Douglas product is custom-built for your exact opening, and Jim fits it by hand. Start with the category, and he will help you find the right piece for the room.
+            Every Hunter Douglas product is custom-built for your exact opening, and we fit it to your windows. Start with the category, and we will help you find the right piece for the room.
           </p>
         </FadeUp>
 

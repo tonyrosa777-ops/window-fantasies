@@ -95,7 +95,7 @@ export function ProductLinePage({ line }: Props) {
                 See it in your own light
               </Button>
               <Button href="tel:+16038915755" variant="secondary" size="lg">
-                Call Jim
+                Call Us
               </Button>
             </div>
           </FadeUp>
@@ -258,8 +258,8 @@ export function ProductLinePage({ line }: Props) {
             <Eyebrow>The next step</Eyebrow>
             <h2 className="mt-3 font-display text-h2">See {line.shortName} in your own windows.</h2>
             <p className="mt-4 font-body text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--text-secondary)" }}>
-              A photograph can only tell you so much. Jim brings the real Hunter Douglas
-              samples to your home, holds them in your own windows, and shows you how they
+              A photograph can only tell you so much. We bring the real Hunter Douglas
+              samples to your home, hold them in your own windows, and show you how they
               behave in your light. The consultation is free, and you get an honest
               installed price at your kitchen table.
             </p>

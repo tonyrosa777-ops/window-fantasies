@@ -23,7 +23,7 @@ import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "Custom Hunter Douglas shades, blinds, shutters, and drapery installed in New England homes by Jim Garrity of Window Fantasies. Measured, designed, and installed by hand.",
+    "Custom Hunter Douglas shades, blinds, shutters, and drapery for New England homes, measured, designed, and installed by Window Fantasies.",
 };
 
 export default function PortfolioPage() {
@@ -51,7 +51,7 @@ export default function PortfolioPage() {
           </FadeUp>
           <FadeUp delay={0.2}>
             <p className="mt-6 font-body" style={{ color: "var(--text-secondary)", fontSize: "1.125rem", lineHeight: 1.6, maxWidth: "60ch" }}>
-              Swipe through the treatments Jim measures, designs, and installs by hand. Tap any photo for the full frame and the story behind it.
+              Swipe through the treatments we measure, design, and install ourselves. Tap any photo for the full frame and the story behind it.
             </p>
           </FadeUp>
         </Container>
@@ -108,10 +108,10 @@ export default function PortfolioPage() {
                 Ready to picture it in your home?
               </h2>
               <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}>
-                Every one of these was measured, designed, and installed by Jim himself, and he stands behind every job. He brings the real samples to you, holds them in your windows, and gives you an honest installed price. Free, and no pressure.
+                Every one of these was measured, designed, and installed by Window Fantasies, and we stand behind every job. We bring the real samples to you, hold them in your windows, and give you an honest installed price. Free, and no pressure.
               </p>
               <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}>
-                Most of the lines in these rooms can also be fitted with Hunter Douglas PowerView® Automation, including the high windows and stairwell openings nobody can reach by hand.{" "}
+                Most of the lines in these rooms can also be fitted with Hunter Douglas PowerView® Automation, including the high windows and stairwell openings nobody can reach on their own.{" "}
                 <Link
                   href="/services/powerview-automation"
                   className="underline underline-offset-4"

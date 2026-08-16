@@ -46,7 +46,7 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
   "Get Started": [
     { label: "Request a Free Consultation", href: "/request-a-consultation" },
-    { label: "Ask Jim About a Repair", href: "/request-a-consultation" },
+    { label: "Ask Us About a Repair", href: "/request-a-consultation" },
   ],
 };
 
@@ -77,8 +77,11 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
             <Link href="/" className="block">
-              <span className="font-display text-2xl leading-none tracking-tight" style={{ color: "var(--text-primary)" }}>
+              <span className="font-display text-2xl leading-none tracking-tight whitespace-nowrap" style={{ color: "var(--text-primary)" }}>
                 Window <span style={{ color: "var(--primary)" }}>Fantasies</span>
+                <span className="ml-1.5 font-body text-[0.42em] font-semibold uppercase tracking-[0.18em] align-[0.35em]" style={{ color: "var(--text-secondary)" }}>
+                  LLC
+                </span>
               </span>
             </Link>
             <p className="font-body text-base max-w-sm" style={{ color: "var(--text-secondary)" }}>
@@ -100,7 +103,7 @@ export function Footer() {
                   <br />
                   {b.address.city}, {b.address.state} {b.address.zip}
                   <br />
-                  <span style={{ color: "var(--text-muted)" }}>By appointment. Jim brings the samples to you.</span>
+                  <span style={{ color: "var(--text-muted)" }}>By appointment. We bring the samples to you.</span>
                 </span>
               </div>
             </div>

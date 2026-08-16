@@ -415,7 +415,7 @@ export const siteConfig: SiteConfig = {
   business: {
     name: "Window Fantasies",
     legalName: "Window Fantasies LLC",
-    tagline: "The finest window treatments in New England, by hand.",
+    tagline: "Measure, design, and install. We do it all.",
     founderName: "Jim Garrity",
     founderTitle: "Owner",
     yearsInBusiness: 30,
@@ -431,14 +431,14 @@ export const siteConfig: SiteConfig = {
 
   hero: {
     eyebrow: "Authorized Hunter Douglas Dealer · All of New England",
-    h1: "The finest window treatments in New England, by hand.",
+    h1: "Measure, design, and install. We do it all.",
     h1WithEmphasis: {
-      text: "The finest window treatments in New England, by hand.",
-      emphasis: ["hand"],
+      text: "Measure, design, and install. We do it all.",
+      emphasis: ["all"],
     },
     subhead:
-      "Measured, designed, and installed by Jim himself. Backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. Motorized shades you control from your phone, or a beach in Florida.",
-    trustMicrocopy: "Free in-home consultation. Jim brings the samples to you.",
+      "Windows are your connection to the outside world, and how much of that do you really control? Window Fantasies helps you take back your view, with custom Hunter Douglas shades, blinds, shutters, and drapery, backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. We bring the samples to your home, and we handle it all: measure, design, and install.",
+    trustMicrocopy: "Free in-home consultation. We bring the samples to you.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
     ctaSecondary: { label: "Take the Quiz", href: "/quiz" },
   },
@@ -448,28 +448,28 @@ export const siteConfig: SiteConfig = {
     {
       icon: "home",
       title: "Shop at home, on purpose",
-      body: "You cannot judge a shade under fluorescent store lights. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you how they look in your light, at your time of day.",
+      body: "You cannot judge a shade under fluorescent store lights. We bring the real Hunter Douglas samples to your home, hold them in your own windows, and show you how they look in your light, at your time of day.",
     },
     {
       icon: "shield",
       title: "Backed by the Hunter Douglas Limited Lifetime Warranty",
-      body: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and Jim stands behind every install he does. You bought Hunter Douglas, you call Jim, and he answers. That is the whole promise.",
+      body: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and we stand behind every install we do. You bought Hunter Douglas, you call Window Fantasies, and we answer. That is the whole promise.",
     },
     {
       icon: "wrench",
       title: "Repairs, even if you bought it elsewhere",
-      body: "Broke a shade you bought from a shop that closed? Jim still helps. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, and Jim can take the blind up to the authorized service center and bring it back.",
+      body: "Broke a shade you bought from a shop that closed? We still help. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms, and we can take the blind up to the authorized service center and bring it back.",
     },
     {
       icon: "handshake",
       title: "No pressure, ever",
-      body: "Jim sells you what you deserve, not what he wants to move. Whether you live in a trailer or a penthouse, you get the same education, the same honesty, and the same Jim.",
+      body: "We sell you what you deserve, not what we want to move. Whether you live in a trailer or a penthouse, you get the same education, the same honesty, and the same care.",
     },
   ],
 
   about: {
     eyebrow: "About Jim",
-    h1: "A retired firefighter who measures, designs, and installs it all by hand.",
+    h1: "A retired firefighter who will change your view.",
     paragraphs: [
       "I am Jim Garrity. I am a retired fire lieutenant out of Methuen, and I have spent more than thirty years in window fashions. A few years ago I bought Window Fantasies outright, and I moved the Hunter Douglas dealership the previous owner spent decades earning down to Salem, New Hampshire.",
       "I am an Authorized Hunter Douglas Dealer, and I have earned that standing over three decades. What it means for you is simple: you get the full line, the newest products, and someone who actually knows how to fit them to your home.",
@@ -484,7 +484,7 @@ export const siteConfig: SiteConfig = {
       { title: "Retired Fire Lieutenant", description: "A career in the Methuen Fire Department. Same calm-under-pressure, tell-you-the-truth approach brought to every home consultation." },
       { title: "Hunter Douglas Limited Lifetime Warranty", description: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, and Jim services them personally. He repairs even treatments bought elsewhere." },
       { title: "BBB A+ Accredited", description: "Accredited by the Better Business Bureau with an A+ rating." },
-      { title: "Measure, Design, and Install by Hand", description: "Jim personally handles every step. No sales team, no subcontractors, no call center. When you call, you get Jim." },
+      { title: "Measure, Design, and Install. We Do It All.", description: "Window Fantasies handles every step in-house, from the first measurement to the final install, and stands behind the work. One company, accountable start to finish." },
     ],
     photo: { src: "/images/about/jim-headshot.jpg", alt: "Jim Garrity, the owner of Window Fantasies. Retired Methuen fire lieutenant and Authorized Hunter Douglas Dealer." },
     cta: { label: "Request a Free Consultation", href: CONSULT_HREF },
@@ -495,11 +495,11 @@ export const siteConfig: SiteConfig = {
     {
       slug: "in-home-consultation",
       name: "Free In-Home Consultation",
-      shortDescription: "Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and gives you an installed price at your kitchen table. No cost, no pressure.",
-      longDescription: "There is no store to drive to, and that is by design. A shade looks one way in a store and another way in your home. Jim comes to you with the actual Hunter Douglas samples, holds them in your windows, and shows you how each one behaves in your light. You get an education first, then an honest, installed price. The consultation is always free.",
+      shortDescription: "We bring the real Hunter Douglas samples to your home, hold them in your own windows, and give you an installed price at your kitchen table. No cost, no pressure.",
+      longDescription: "There is no store to drive to, and that is by design. A shade looks one way in a store and another way in your home. We come to you with the actual Hunter Douglas samples, hold them in your windows, and show you how each one behaves in your light. You get an education first, then an honest, installed price. The consultation is always free.",
       features: [
         "Real Hunter Douglas samples viewed in your own light",
-        "Jim measures every window himself",
+        "We measure every window for you",
         "Installed price quoted at your kitchen table",
         "Price includes install and removal of your old treatments",
         "Educate first, never a hard sell",
@@ -515,8 +515,8 @@ export const siteConfig: SiteConfig = {
     {
       slug: "interior-design",
       name: "Interior Design Guidance",
-      shortDescription: "Not sure what fits the room? Jim reads the light, the architecture, and how you live, then matches the right Hunter Douglas product to it. Design help built into every consultation.",
-      longDescription: "Choosing window treatments is a design decision, not just a purchase. Jim looks at how the light moves through the room, the style of the home, and how you actually use the space, then recommends what belongs there. Sheers for diffused light, cellular for a bedroom you want dark, shutters for a timeless look. The guidance comes standard.",
+      shortDescription: "Not sure what fits the room? We read the light, the architecture, and how you live, then match the right Hunter Douglas product to it. Design help built into every consultation.",
+      longDescription: "Choosing window treatments is a design decision, not just a purchase. We look at how the light moves through the room, the style of the home, and how you actually use the space, then recommend what belongs there. Sheers for diffused light, cellular for a bedroom you want dark, shutters for a timeless look. The guidance comes standard.",
       features: [
         "Product matched to your room and your light",
         "Fabric, color, and texture guidance with real samples",
@@ -536,11 +536,11 @@ export const siteConfig: SiteConfig = {
       slug: "free-estimates",
       name: "Free Estimates",
       shortDescription: "Every quote is free and it is the real, installed number. It includes installation and removal of your existing treatments. No surprise add-ons after the fact.",
-      longDescription: "Hunter Douglas is custom and premium, so pricing comes from a real measurement, not a guess online. Jim gives you the installed price at your table, and it already includes taking down and hauling away your old blinds. You will know exactly what you are spending before you commit to anything.",
+      longDescription: "Hunter Douglas is custom and premium, so pricing comes from a real measurement, not a guess online. We give you the installed price at your table, and it already includes taking down and hauling away your old blinds. You will know exactly what you are spending before you commit to anything.",
       features: [
         "Installed price, not a teaser",
         "Includes removal and disposal of old treatments",
-        "Priced from Jim's own measurements",
+        "Priced from our own measurements",
         "No obligation to buy",
         "Straight answers on cost, always",
         "Financing questions welcome",
@@ -554,15 +554,15 @@ export const siteConfig: SiteConfig = {
     },
     {
       slug: "measuring-and-installation",
-      name: "Measuring and Installation by Hand",
-      shortDescription: "Jim measures every opening and installs every treatment himself. Custom Hunter Douglas treatments are built for your exact window, so a precise measure and a clean install are everything.",
-      longDescription: "Custom window treatments are fabricated to your exact opening, which means the measure has to be right the first time. Jim takes every measurement personally and installs the finished product himself. No subcontractors, no handoffs. The people who measure and install are the same person who quoted you.",
+      name: "Measuring and Installation",
+      shortDescription: "We measure every opening and install every treatment ourselves. Custom Hunter Douglas treatments are built for your exact window, so a precise measure and a clean install are everything.",
+      longDescription: "Custom window treatments are fabricated to your exact opening, which means the measure has to be right the first time. We take every measurement ourselves and install the finished product ourselves. No subcontractors, no handoffs. The people who measure and install are the same people who quoted you.",
       features: [
-        "Precise measurement of every opening by Jim",
+        "Precise measurement of every opening",
         "Products fabricated for your exact windows",
-        "Clean installation, done by hand",
+        "A clean install, handled start to finish",
         "Old treatments removed and disposed of",
-        "One person accountable from measure to install",
+        "One company accountable from measure to install",
         "Backed by the Hunter Douglas Limited Lifetime Warranty",
       ],
       pricingNote: "Installation is included in your quoted price.",
@@ -575,29 +575,29 @@ export const siteConfig: SiteConfig = {
     {
       slug: "installs-and-repairs",
       name: "Installs and Repairs",
-      shortDescription: "New installs and repairs, both. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty. Jim can pick up, deliver to the authorized service center, and reinstall for you.",
-      longDescription: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs nothing. The authorized service center is Goedecke Design in Bedford, New Hampshire, the hospital for your blind. You can drive it there yourself at no charge, or Jim can take it down, drive it up, and reinstall it for a flat service fee that covers his time and travel. He will tell you the number straight up, before anything happens.",
+      shortDescription: "New installs and repairs, both. Covered repairs are handled under the Hunter Douglas Limited Lifetime Warranty. We can pick up, deliver to the authorized service center, and reinstall for you.",
+      longDescription: "Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs nothing. The authorized service center is Goedecke Design in Bedford, New Hampshire, the hospital for your blind. You can drive it there yourself at no charge, or we can take it down, drive it up, and reinstall it for a flat service fee that covers the time and travel. We will tell you the number straight up, before anything happens.",
       features: [
         "New Hunter Douglas installs across New England",
         "Covered repairs handled under the Hunter Douglas Limited Lifetime Warranty",
         "Authorized service center: Goedecke Design, Bedford NH",
         "No-charge option: drop your blind off yourself",
-        "Full-service option: Jim handles pickup, repair, and reinstall",
+        "Full-service option: we handle pickup, repair, and reinstall",
         "The service fee is disclosed upfront, no surprises",
       ],
-      pricingNote: "A covered repair is handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms. A flat service fee applies if Jim handles pickup and reinstall.",
-      notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
+      pricingNote: "A covered repair is handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms. A flat service fee applies if we handle pickup and reinstall.",
+      notSureNote: "Not sure if yours is Hunter Douglas? Call us, we will tell you.",
       imageSrc: "/images/services/installs-and-repairs.webp",
       imageW: 2528,
       imageH: 1685,
       imageAlt: "Plantation shutters framing French doors with an ocean view.",
-      cta: { label: "Ask Jim About a Repair", href: CONSULT_HREF },
+      cta: { label: "Ask Us About a Repair", href: CONSULT_HREF },
     },
     {
       slug: "blind-and-shade-repairs",
       name: "Blind and Shade Repairs",
-      shortDescription: "Here is the good news: the fix is often covered under the Hunter Douglas Limited Lifetime Warranty. Cords, mechanisms, motors, and fabric, Jim gets it repaired, even if you bought it somewhere else or from a shop that has closed.",
-      longDescription: "Start with the good news: Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so the fix is often covered. A shade you love should not go in the trash over a broken cord or a tired mechanism. Jim handles Hunter Douglas repairs of all kinds, and he helps even when you did not buy it from him or the original shop is long gone. Tell Jim what broke and he will tell you the honest path forward.",
+      shortDescription: "Here is the good news: the fix is often covered under the Hunter Douglas Limited Lifetime Warranty. Cords, mechanisms, motors, and fabric, we get it repaired, even if you bought it somewhere else or from a shop that has closed.",
+      longDescription: "Start with the good news: Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so the fix is often covered. A shade you love should not go in the trash over a broken cord or a tired mechanism. We handle Hunter Douglas repairs of all kinds, and we help even when you did not buy it from us or the original shop is long gone. Tell us what broke and we will tell you the honest path forward.",
       features: [
         "Covered repairs handled under the Hunter Douglas Limited Lifetime Warranty",
         "Cord, mechanism, and hardware repairs",
@@ -607,25 +607,25 @@ export const siteConfig: SiteConfig = {
         "Flat, disclosed service fee for full pickup and reinstall",
       ],
       pricingNote: "A covered repair is handled under the Hunter Douglas Limited Lifetime Warranty, subject to its terms. Flat service fee for full pickup and reinstall, disclosed upfront.",
-      notSureNote: "Not sure if yours is Hunter Douglas? Call Jim, he will tell you.",
+      notSureNote: "Not sure if yours is Hunter Douglas? Call us, we will tell you.",
       imageSrc: "/images/services/blind-and-shade-repairs.webp",
       imageW: 2528,
       imageH: 1685,
       imageAlt: "A bright kitchen with cellular honeycomb shades and someone reading nearby.",
-      cta: { label: "Ask Jim About a Repair", href: CONSULT_HREF },
+      cta: { label: "Ask Us About a Repair", href: CONSULT_HREF },
     },
     {
       slug: "powerview-automation",
       name: "PowerView® Automation",
       shortDescription: "Adjust your shades from your phone, your voice, or from a beach in Florida. Hunter Douglas PowerView® Automation moves your treatments on a schedule or on command. Sunglasses for your windows.",
-      longDescription: "Hunter Douglas PowerView® Automation is motorization done right. Your shades move on a schedule, react to the sun, or respond to your voice, and you can control them from anywhere. Snowbirds run their New England shades from Florida. Think of solar and sheer shades as sunglasses for your windows: they cut glare and UV while you still see out. Jim sets it all up and shows you how to use it.",
+      longDescription: "Hunter Douglas PowerView® Automation is motorization done right. Your shades move on a schedule, react to the sun, or respond to your voice, and you can control them from anywhere. Snowbirds run their New England shades from Florida. Think of solar and sheer shades as sunglasses for your windows: they cut glare and UV while you still see out. We set it all up and show you how to use it.",
       features: [
         "Control from phone, voice, or a wall remote",
         "Schedule shades to open and close automatically",
         "Adjust from anywhere, even out of state",
         "Great for hard-to-reach and high windows",
         "Cuts glare and UV, sunglasses for your windows",
-        "Jim configures it and teaches you to use it",
+        "We configure it and teach you to use it",
       ],
       // HD mandatory legal copy: any creative promoting the PowerView scheduling
       // benefit must carry this sentence. Rendered by <PowerViewDisclosure />.
@@ -1006,8 +1006,8 @@ export const siteConfig: SiteConfig = {
    */
   costAnchor: {
     eyebrow: "Honest pricing, upfront",
-    body: "Custom window treatments are a premium, made-to-measure purchase. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
-    bodyNoFigure: "Custom window treatments are a premium, made-to-measure purchase, and the price depends on the size of the opening, the product, and the options you choose. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
+    body: "Custom window treatments are a premium, made-to-measure purchase. As a sense of scale, a single high-end shade can run around $1,600. That is exactly why the in-home consultation is free: we measure your actual windows and give you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
+    bodyNoFigure: "Custom window treatments are a premium, made-to-measure purchase, and the price depends on the size of the opening, the product, and the options you choose. That is exactly why the in-home consultation is free: we measure your actual windows and give you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
   },
 
   // Not used by Window Fantasies (the /industries route is removed). Empty but valid.
@@ -1021,7 +1021,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 30089,
       distance: "Home base",
-      description: "Salem is home. The office is at 280 Main Street, and that is where the sample books live between visits. Most consultations start close to here, and Jim can often be at a Salem home the same week. There is no showroom to visit, Jim brings the Hunter Douglas samples to you.",
+      description: "Salem is home. The office is at 280 Main Street, and that is where the sample books live between visits. Most consultations start close to here, and we can often be at a Salem home the same week. There is no showroom to visit, we bring the Hunter Douglas samples to you.",
       nearbyAreas: ["windham-nh", "derry-nh", "methuen-ma", "atkinson-nh", "hampstead-nh"],
     },
     {
@@ -1030,7 +1030,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 15817,
       distance: "Southern NH",
-      description: "Windham homeowners rely on Window Fantasies for custom Hunter Douglas shades, blinds, shutters, and drapery. Jim brings the samples to your home so you see every color in your own light.",
+      description: "Windham homeowners rely on Window Fantasies for custom Hunter Douglas shades, blinds, shutters, and drapery. We bring the samples to your home so you see every color in your own light.",
       nearbyAreas: ["salem-nh", "derry-nh", "londonderry-nh", "nashua-nh", "hampstead-nh"],
     },
     {
@@ -1039,7 +1039,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 91322,
       distance: "Southern NH",
-      description: "Nashua is one of the most active markets Jim serves. Custom window treatments for condos, single-family homes, and lakeside properties, all measured, designed, and installed by hand.",
+      description: "Nashua is one of the most active markets we serve. Custom window treatments for condos, single-family homes, and lakeside properties, all measured, designed, and installed with care.",
       nearbyAreas: ["windham-nh", "manchester-nh", "salem-nh", "londonderry-nh", "derry-nh"],
     },
     {
@@ -1048,7 +1048,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 115644,
       distance: "Southern NH",
-      description: "Manchester is New Hampshire's largest city and a steady market for premium Hunter Douglas treatments. From downtown condos to established neighborhoods, Jim measures and installs everything himself.",
+      description: "Manchester is New Hampshire's largest city and a steady market for premium Hunter Douglas treatments. From downtown condos to established neighborhoods, we measure and install everything ourselves.",
       nearbyAreas: ["bedford-nh", "londonderry-nh", "derry-nh", "nashua-nh", "salem-nh"],
     },
     {
@@ -1057,7 +1057,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 34317,
       distance: "Southern NH",
-      description: "Derry homeowners choose Window Fantasies for custom shades, shutters, and motorized shades. One person from measure to install, and Jim stands behind every install.",
+      description: "Derry homeowners choose Window Fantasies for custom shades, shutters, and motorized shades. One company from measure to install, and we stand behind every install.",
       nearbyAreas: ["londonderry-nh", "windham-nh", "salem-nh", "hampstead-nh", "manchester-nh"],
     },
     {
@@ -1066,7 +1066,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 26368,
       distance: "Southern NH",
-      description: "Londonderry families use Jim for everything from one set of Hunter Douglas Luminette® Privacy Sheers on a patio door to a whole-home package. Samples viewed in your home, installed price at your table.",
+      description: "Londonderry families rely on Window Fantasies for everything from one set of Hunter Douglas Luminette® Privacy Sheers on a patio door to a whole-home package. Samples viewed in your home, installed price at your table.",
       nearbyAreas: ["derry-nh", "manchester-nh", "windham-nh", "salem-nh", "bedford-nh"],
     },
     {
@@ -1075,7 +1075,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 7193,
       distance: "Southern NH",
-      description: "Atkinson is one of the closest towns to Jim's Salem office. Custom Hunter Douglas shades, blinds, shutters, and drapery, measured and installed by hand.",
+      description: "Atkinson is one of the closest towns to our Salem office. Custom Hunter Douglas shades, blinds, shutters, and drapery, measured and installed with care.",
       nearbyAreas: ["salem-nh", "hampstead-nh", "windham-nh", "haverhill-ma", "plaistow-nh"],
     },
     {
@@ -1084,7 +1084,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 8998,
       distance: "Southern NH",
-      description: "Hampstead homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, no store to drive to, and Jim stands behind every install.",
+      description: "Hampstead homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, no store to drive to, and we stand behind every install.",
       nearbyAreas: ["atkinson-nh", "derry-nh", "salem-nh", "windham-nh", "plaistow-nh"],
     },
     {
@@ -1093,7 +1093,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 7609,
       distance: "Southern NH",
-      description: "Plaistow homeowners choose Jim for custom Hunter Douglas treatments and repairs. He handles the measure, the design, and the install himself.",
+      description: "Plaistow homeowners choose Window Fantasies for custom Hunter Douglas treatments and repairs. We handle the measure, the design, and the install ourselves.",
       nearbyAreas: ["atkinson-nh", "haverhill-ma", "salem-nh", "hampstead-nh", "kingston-nh"],
     },
     {
@@ -1102,7 +1102,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 6202,
       distance: "Southern NH",
-      description: "Kingston homeowners use Window Fantasies for custom shades, shutters, and motorized shades. One accountable person, and Jim stands behind every install.",
+      description: "Kingston homeowners use Window Fantasies for custom shades, shutters, and motorized shades. One accountable company, and we stand behind every install.",
       nearbyAreas: ["hampstead-nh", "plaistow-nh", "exeter-nh", "salem-nh", "atkinson-nh"],
     },
     {
@@ -1111,7 +1111,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 24011,
       distance: "Southern NH",
-      description: "Bedford is home to some of the region's finest properties, and to Goedecke Design, the authorized service center. Jim installs and services premium treatments across Bedford.",
+      description: "Bedford is home to some of the region's finest properties, and to Goedecke Design, the authorized service center. We install and service premium treatments across Bedford.",
       nearbyAreas: ["manchester-nh", "nashua-nh", "londonderry-nh", "derry-nh", "salem-nh"],
     },
     {
@@ -1120,7 +1120,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 21956,
       distance: "Seacoast NH",
-      description: "Portsmouth and the Seacoast are a core market for Window Fantasies. Coastal homes, condos, and historic properties, all fitted with custom Hunter Douglas treatments measured and installed by hand.",
+      description: "Portsmouth and the Seacoast are a core market for Window Fantasies. Coastal homes, condos, and historic properties, all fitted with custom Hunter Douglas treatments measured and installed with care.",
       nearbyAreas: ["exeter-nh", "hampton-nh", "stratham-nh", "dover-nh", "newburyport-ma"],
     },
     {
@@ -1129,7 +1129,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 16097,
       distance: "Seacoast NH",
-      description: "Exeter homeowners choose Jim for custom shades, shutters, and drapery. Samples viewed in your own light, and Jim stands behind every install.",
+      description: "Exeter homeowners choose Window Fantasies for custom shades, shutters, and drapery. Samples viewed in your own light, and we stand behind every install.",
       nearbyAreas: ["stratham-nh", "hampton-nh", "portsmouth-nh", "kingston-nh", "seabrook-nh"],
     },
     {
@@ -1138,7 +1138,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 15853,
       distance: "Seacoast NH",
-      description: "Hampton and the beaches are perfect for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades that stand up to sun and salt air. Jim measures and installs it all himself.",
+      description: "Hampton and the beaches are perfect for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades that stand up to sun and salt air. We measure and install it all ourselves.",
       nearbyAreas: ["seabrook-nh", "exeter-nh", "portsmouth-nh", "stratham-nh", "newburyport-ma"],
     },
     {
@@ -1147,7 +1147,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 7255,
       distance: "Seacoast NH",
-      description: "Stratham homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, one person from measure to install.",
+      description: "Stratham homeowners rely on Window Fantasies for premium custom window treatments. In-home consultation, one company from measure to install.",
       nearbyAreas: ["exeter-nh", "portsmouth-nh", "hampton-nh", "dover-nh", "seabrook-nh"],
     },
     {
@@ -1156,7 +1156,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 8693,
       distance: "Seacoast NH",
-      description: "Seabrook homeowners choose Jim for custom Hunter Douglas treatments and repairs. The same care whether it is one window or the whole home.",
+      description: "Seabrook homeowners choose Window Fantasies for custom Hunter Douglas treatments and repairs. The same care whether it is one window or the whole home.",
       nearbyAreas: ["hampton-nh", "exeter-nh", "newburyport-ma", "amesbury-ma", "portsmouth-nh"],
     },
     {
@@ -1165,7 +1165,7 @@ export const siteConfig: SiteConfig = {
       state: "NH",
       population: 32741,
       distance: "Seacoast NH",
-      description: "Dover homeowners use Window Fantasies for shades, blinds, shutters, and motorization. Serviced personally by Jim, who stands behind every install.",
+      description: "Dover homeowners use Window Fantasies for shades, blinds, shutters, and motorization. Serviced by Window Fantasies, and we stand behind every install.",
       nearbyAreas: ["portsmouth-nh", "stratham-nh", "exeter-nh", "hampton-nh", "newburyport-ma"],
     },
     {
@@ -1174,7 +1174,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 53059,
       distance: "Merrimack Valley MA",
-      description: "Methuen is Jim's home ground. He spent his firefighting career here, and he serves Methuen homes with custom Hunter Douglas treatments measured and installed by hand.",
+      description: "Methuen is home ground for Window Fantasies. Our founder spent his firefighting career here, and we serve Methuen homes with custom Hunter Douglas treatments measured and installed with care.",
       nearbyAreas: ["andover-ma", "haverhill-ma", "lawrence-ma", "salem-nh", "north-andover-ma"],
     },
     {
@@ -1183,7 +1183,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 36569,
       distance: "Merrimack Valley MA",
-      description: "Andover's established homes are a strong fit for premium Hunter Douglas shades, shutters, and drapery. Jim brings the samples to you and installs everything himself.",
+      description: "Andover's established homes are a strong fit for premium Hunter Douglas shades, shutters, and drapery. We bring the samples to you and install everything ourselves.",
       nearbyAreas: ["north-andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
@@ -1192,7 +1192,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 30915,
       distance: "Merrimack Valley MA",
-      description: "North Andover homeowners choose Window Fantasies for custom window treatments, measured and installed by hand, and Jim stands behind every install.",
+      description: "North Andover homeowners choose Window Fantasies for custom window treatments, measured and installed with care, and we stand behind every install.",
       nearbyAreas: ["andover-ma", "methuen-ma", "haverhill-ma", "lawrence-ma", "plaistow-nh"],
     },
     {
@@ -1201,7 +1201,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 67787,
       distance: "Merrimack Valley MA",
-      description: "Haverhill homeowners use Jim for custom Hunter Douglas treatments and repairs. Samples viewed in your home, installed price at your table.",
+      description: "Haverhill homeowners rely on Window Fantasies for custom Hunter Douglas treatments and repairs. Samples viewed in your home, installed price at your table.",
       nearbyAreas: ["methuen-ma", "andover-ma", "north-andover-ma", "plaistow-nh", "atkinson-nh"],
     },
     {
@@ -1210,7 +1210,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 89143,
       distance: "Merrimack Valley MA",
-      description: "Lawrence homeowners rely on Window Fantasies for premium custom treatments. One accountable person, and Jim stands behind every install.",
+      description: "Lawrence homeowners rely on Window Fantasies for premium custom treatments. One accountable company, and we stand behind every install.",
       nearbyAreas: ["methuen-ma", "andover-ma", "north-andover-ma", "haverhill-ma", "salem-nh"],
     },
     {
@@ -1219,7 +1219,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 18289,
       distance: "North Shore MA",
-      description: "Newburyport's coastal and historic homes are a beautiful fit for custom shutters, sheers, and drapery. Jim measures, designs, and installs it all by hand.",
+      description: "Newburyport's coastal and historic homes are a beautiful fit for custom shutters, sheers, and drapery. We measure, design, and install it all ourselves.",
       nearbyAreas: ["amesbury-ma", "seabrook-nh", "hampton-nh", "haverhill-ma", "portsmouth-nh"],
     },
     {
@@ -1228,7 +1228,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 17366,
       distance: "North Shore MA",
-      description: "Amesbury homeowners choose Jim for custom Hunter Douglas window treatments, serviced personally by Jim.",
+      description: "Amesbury homeowners choose Window Fantasies for custom Hunter Douglas window treatments, serviced personally by our team.",
       nearbyAreas: ["newburyport-ma", "seabrook-nh", "haverhill-ma", "hampton-nh", "plaistow-nh"],
     },
     {
@@ -1237,7 +1237,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 675647,
       distance: "Greater Boston MA",
-      description: "Jim serves Boston condos and towers, including the South End, with high-end custom Hunter Douglas treatments and PowerView® Automation. There is no place in New England he will not travel.",
+      description: "Window Fantasies serves Boston condos and towers, including the South End, with high-end custom Hunter Douglas treatments and PowerView® Automation. There is no place in New England we will not travel.",
       nearbyAreas: ["cambridge-ma", "andover-ma", "lawrence-ma", "methuen-ma", "north-andover-ma"],
     },
     {
@@ -1246,7 +1246,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 118403,
       distance: "Greater Boston MA",
-      description: "Cambridge homeowners and condo owners use Window Fantasies for custom shades, sheers, and motorization. Jim brings the samples to your home and installs everything himself.",
+      description: "Cambridge homeowners and condo owners use Window Fantasies for custom shades, sheers, and motorization. We bring the samples to your home and install everything ourselves.",
       nearbyAreas: ["boston-ma", "andover-ma", "methuen-ma", "lawrence-ma", "haverhill-ma"],
     },
     {
@@ -1255,7 +1255,7 @@ export const siteConfig: SiteConfig = {
       state: "MA",
       population: 14120,
       distance: "Cape Cod MA",
-      description: "On Cape Cod, sun and salt air call for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades built to resist warping and fading. Jim travels the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
+      description: "On Cape Cod, sun and salt air call for Hunter Douglas Palm Beach™ Polysatin™ Shutters and solar shades built to resist warping and fading. We travel the Cape for custom Hunter Douglas installs, from the bridge to the tip.",
       // Cape Cod has no sibling town pages yet; link the real MA pages so the band renders.
       nearbyAreas: ["boston-ma", "cambridge-ma"],
     },
@@ -1265,7 +1265,7 @@ export const siteConfig: SiteConfig = {
       state: "ME",
       population: 68408,
       distance: "Southern Maine",
-      description: "Southern Maine is part of the range. Portland homes and condos get the same custom Hunter Douglas treatments and hand installation as everywhere else Jim serves. Distance may carry a travel charge.",
+      description: "Southern Maine is part of the range. Portland homes and condos get the same custom Hunter Douglas treatments and professional installation as everywhere else we serve. Distance may carry a travel charge.",
       // No other Maine pages exist yet; the nearest real pages are the NH Seacoast towns.
       nearbyAreas: ["portsmouth-nh", "dover-nh", "hampton-nh", "exeter-nh", "stratham-nh"],
     },
@@ -1275,7 +1275,7 @@ export const siteConfig: SiteConfig = {
       state: "VT",
       population: 44743,
       distance: "Vermont",
-      description: "Vermont is on the map too. Jim travels for the right project, bringing custom Hunter Douglas treatments, motorization, and hand installation to Burlington-area homes. Distance may carry a travel charge.",
+      description: "Vermont is on the map too. We travel for the right project, bringing custom Hunter Douglas treatments, motorization, and professional installation to Burlington-area homes. Distance may carry a travel charge.",
       nearbyAreas: ["portland-me", "manchester-nh", "nashua-nh", "salem-nh", "bedford-nh"],
     },
   ],
@@ -1393,49 +1393,49 @@ export const siteConfig: SiteConfig = {
   stats: [
     { number: "30", suffix: "+", label: "Years in window fashions across New England" },
     { number: "5.0", label: "Star rating on Google, in customers' own words" },
-    { number: "1", label: "Person who measures, designs, and installs it all. Jim." },
+    { number: "4", label: "New England states we cover, plus Cape Cod" },
   ],
 
   // Answer-first FAQ built from the market's real buyer questions (AEO).
   faq: [
     {
       q: "How much do Hunter Douglas window treatments cost in New Hampshire?",
-      a: "Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. That is exactly why the in-home consultation is free: Jim measures your actual windows and gives you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
+      a: "Custom window treatments are a premium, made-to-measure purchase, so pricing depends on the window size, the product, and the options. As a rough sense of scale, a single high-end shade can run around $1,600, and many homes have far more than one window. That is exactly why the in-home consultation is free: we measure your actual windows and give you a real installed price at your kitchen table, with no obligation and no surprises. Yes, it is an investment, and it is built to last.",
       category: "Cost",
     },
     {
       q: "Are Hunter Douglas shades worth the price?",
-      a: "For most homeowners, yes. You are buying the luxury end of the window: a custom product built for your exact opening, backed by the Hunter Douglas Limited Lifetime Warranty, and serviced by the person who installed it. They last for years, they hold their look, and options like room darkening and motorization solve real problems. Jim will also tell you honestly if a simpler product fits your situation better. He sells you what you deserve, not the most expensive thing on the truck.",
+      a: "For most homeowners, yes. You are buying the luxury end of the window: a custom product built for your exact opening, backed by the Hunter Douglas Limited Lifetime Warranty, and serviced by the person who installed it. They last for years, they hold their look, and options like room darkening and motorization solve real problems. We will also tell you honestly if a simpler product fits your situation better. We sell you what you deserve, not the most expensive thing on the truck.",
       category: "Value",
     },
     {
       q: "Do you repair Hunter Douglas blinds, even if I did not buy them from you?",
-      a: "Yes. Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing, even on treatments you bought elsewhere or from a shop that has closed. The authorized service center is Goedecke Design in Bedford, New Hampshire. You can drive your blind there yourself at no cost, or Jim can take it down, deliver it, and reinstall it for a flat service fee that covers his time and travel. He will tell you that number upfront, before anything happens.",
+      a: "Yes. Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms, so a covered repair itself costs you nothing, even on treatments you bought elsewhere or from a shop that has closed. The authorized service center is Goedecke Design in Bedford, New Hampshire. You can drive your blind there yourself at no cost, or we can take it down, deliver it, and reinstall it for a flat service fee that covers the time and travel. We will tell you that number upfront, before anything happens.",
       category: "Repairs",
     },
     {
       q: "How long does it take to get custom window treatments installed?",
-      a: "It starts with a free in-home consultation where Jim measures and helps you choose. Because every treatment is custom-fabricated for your exact windows, there is a build time after you order, and then Jim schedules the install. He will give you a realistic timeline on the visit. Rush situations are worth a conversation. Ask Jim.",
+      a: "It starts with a free in-home consultation where we measure and help you choose. Because every treatment is custom-fabricated for your exact windows, there is a build time after you order, and then we schedule the install. We will give you a realistic timeline on the visit. Rush situations are worth a conversation, so just ask.",
       category: "Timeline",
     },
     {
       q: "Do you offer smart or motorized shades I can control from my phone?",
-      a: "Yes. Hunter Douglas PowerView® Automation lets you control your shades from your phone, your voice, or a remote, and set them on automatic schedules. You can even adjust them from out of state. Snowbirds run their New England shades from Florida. It is ideal for hard-to-reach windows and for cutting glare and UV automatically. Jim sets it all up and teaches you how to use it.",
+      a: "Yes. Hunter Douglas PowerView® Automation lets you control your shades from your phone, your voice, or a remote, and set them on automatic schedules. You can even adjust them from out of state. Snowbirds run their New England shades from Florida. It is ideal for hard-to-reach windows and for cutting glare and UV automatically. We set it all up and teach you how to use it.",
       category: "Smart Home",
     },
     {
       q: "Do I need to measure my own windows before the consultation?",
-      a: "No. Jim measures every window himself during the free in-home visit. Custom Hunter Douglas products are fabricated to your exact opening, so a precise professional measurement matters, and it is part of the service. All you need to do is book the consultation.",
+      a: "No. We measure every window during the free in-home visit. Custom Hunter Douglas products are fabricated to your exact opening, so a precise professional measurement matters, and it is part of the service. All you need to do is book the consultation.",
       category: "Measuring",
     },
     {
       q: "Do you have a showroom I can visit?",
-      a: "No storefront, and that is on purpose. A shade looks completely different under store lights than it does in your home at four in the afternoon. So Jim shops at home with you. He comes to your home with the real Hunter Douglas samples, holds them in your windows, and shows you how they look in your own light.",
+      a: "No storefront, and that is on purpose. A shade looks completely different under store lights than it does in your home at four in the afternoon. So we shop at home with you. We come to your home with the real Hunter Douglas samples, hold them in your windows, and show you how they look in your own light.",
       category: "Consultation",
     },
     {
       q: "What areas do you serve?",
-      a: "All of New England. New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. Jim travels from the tip of the Cape to Maine and Vermont. There is no place in New England he will not go, though longer distances may carry a travel charge. He will tell you upfront.",
+      a: "All of New England. New Hampshire, Massachusetts, Maine, Vermont, and Cape Cod. We travel from the tip of the Cape to Maine and Vermont. There is no place in New England we will not go, though longer distances may carry a travel charge. We will tell you upfront.",
       category: "Service Area",
     },
   ],
@@ -1451,11 +1451,11 @@ export const siteConfig: SiteConfig = {
   },
 
   cta: {
-    h1: "Let Jim bring the samples to you.",
+    h1: "Let us bring the samples to you.",
     subhead:
-      "The in-home consultation is free. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to, and Jim stands behind every install.",
+      "The in-home consultation is free. We bring the real Hunter Douglas samples, measure your windows, and give you an honest installed price at your kitchen table. No pressure, no store to drive to, and we stand behind every install.",
     ctaPrimary: { label: "Request Your Free In-Home Consultation", href: CONSULT_HREF },
-    ctaSecondary: { label: "Call Jim", href: `tel:+1${PHONE_TEL}` },
+    ctaSecondary: { label: "Call Us", href: `tel:+1${PHONE_TEL}` },
   },
 
   // [DEMO COPY — pending attorney review] Plain-language, NH governing law.

@@ -27,13 +27,13 @@ import { SITE_CATEGORIES, groupedByHdCategory } from "@/data/products";
 export const metadata: Metadata = {
   title: "Hunter Douglas Product Lines",
   description:
-    "Custom Hunter Douglas shades, blinds, shutters, and drapery for homes across New England. Measured, designed, and installed by hand by Jim Garrity. Backed by the Hunter Douglas Limited Lifetime Warranty. Every quote is free.",
+    "Custom Hunter Douglas shades, blinds, shutters, and drapery for homes across New England. Measured, designed, and installed by Window Fantasies. Backed by the Hunter Douglas Limited Lifetime Warranty. Every quote is free.",
 };
 
 const PAGE_EYEBROW = "Hunter Douglas Product Lines · Salem NH · All of New England";
-const PAGE_H1 = "The full Hunter Douglas line, fitted to your windows by hand.";
+const PAGE_H1 = "The full Hunter Douglas line, fitted to your exact windows.";
 const PAGE_SUBHEAD =
-  "Shades, blinds, shutters, and drapery, all custom-built for your exact openings. As an Authorized Hunter Douglas Dealer, Jim brings the real samples to your home, holds them in your own light, and gives you an honest installed price at your kitchen table. Explore the lines below, then request a free in-home consultation.";
+  "Shades, blinds, shutters, and drapery, all custom-built for your exact openings. As an Authorized Hunter Douglas Dealer, we bring the real samples to your home, hold them in your own light, and give you an honest installed price at your kitchen table. Explore the lines below, then request a free in-home consultation.";
 
 /** Display names for the four consumer-facing categories. */
 const CATEGORY_LABEL: Record<string, string> = {
@@ -97,7 +97,7 @@ export default function ProductsIndexPage() {
               Explore the full Hunter Douglas line.
             </h2>
             <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
-              Each line is custom-built for your exact openings and fitted by hand. Start with a category, and Jim will help you find the right piece for the room. Most of these lines can be fitted with{" "}
+              Each line is custom-built for your exact openings and fitted to your home. Start with a category, and we will help you find the right piece for the room. Most of these lines can be fitted with{" "}
               <Link
                 href="/services/powerview-automation"
                 className="underline underline-offset-4"
@@ -183,7 +183,7 @@ export default function ProductsIndexPage() {
       {/* 2b. THE FULL CATALOGUE - DARK.
           Every Hunter Douglas line Jim sells, grouped under HD's own category
           names. The four cards above are the broad entry points; this is the
-          actual catalogue, and each line has its own page. Grouping by HD's
+          actual catalog, and each line has its own page. Grouping by HD's
           taxonomy rather than listing 23 tiles flat is what makes a category
           this deep browsable: "shades" alone spans Sheers & Shadings, Cellular
           Honeycomb, Roller & Solar, Roman and Woven Woods. */}
@@ -192,11 +192,11 @@ export default function ProductsIndexPage() {
           <FadeUp className="text-center max-w-3xl mx-auto mb-12">
             <p className="eyebrow" style={{ color: "var(--primary)" }}>The full line</p>
             <h2 className="mt-4 font-display text-h2">
-              Every Hunter Douglas product Jim installs.
+              Every Hunter Douglas product we install.
             </h2>
             <p className="mt-4 font-body" style={{ color: "var(--text-secondary)" }}>
-              Not a catalogue to order from, a starting point for the conversation.
-              Jim brings the real samples to your home so you can see any of these in
+              Not a catalog to order from, a starting point for the conversation.
+              We bring the real samples to your home so you can see any of these in
               your own light before you spend a dollar.
             </p>
           </FadeUp>
@@ -276,7 +276,7 @@ export default function ProductsIndexPage() {
               className="mt-4 font-body mx-auto"
               style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "60ch" }}
             >
-              That is why there is no store to drive to. Jim brings the real Hunter Douglas samples to your home, holds them in your own windows, and shows you exactly how each line reads in the room before you spend a dollar. Every treatment is backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer&apos;s warranty terms.
+              That is why there is no store to drive to. We bring the real Hunter Douglas samples to your home, hold them in your own windows, and show you exactly how each line reads in the room before you spend a dollar. Every treatment is backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer&apos;s warranty terms.
             </p>
           </FadeUp>
 
@@ -324,7 +324,7 @@ export default function ProductsIndexPage() {
                   Request Your Free In-Home Consultation
                 </Button>
                 <Button href="tel:+16038915755" variant="secondary" size="lg" tone="light">
-                  Call Jim
+                  Call Us
                 </Button>
               </div>
             </div>

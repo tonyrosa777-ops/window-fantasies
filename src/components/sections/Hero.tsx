@@ -87,7 +87,7 @@ export default function Hero() {
     <section
       className="relative overflow-hidden"
       style={{ background: "var(--ink)" }}
-      aria-label="Window Fantasies, the finest window treatments in New England, by hand"
+      aria-label="Window Fantasies, custom Hunter Douglas window treatments across New England"
     >
       {/* Layer 1: Hunter Douglas "Silhouette Halo" product film, as supplied.
           Replaced the AI-generated Higgsfield loop on 2026-08-01. That loop was

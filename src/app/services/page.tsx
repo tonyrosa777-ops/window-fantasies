@@ -18,7 +18,7 @@ import { PowerViewDisclosure } from "@/components/brand/PowerViewDisclosure";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: `Free in-home consultations, interior design guidance, measuring and installation by hand, repairs, and Hunter Douglas PowerView® Automation. Custom Hunter Douglas window treatments from Jim Garrity, with ${siteConfig.business.yearsInBusiness} years in window fashions across New England.`,
+  description: `Free in-home consultations, interior design guidance, measuring and installation, repairs, and Hunter Douglas PowerView® Automation. Custom Hunter Douglas window treatments from Window Fantasies, with ${siteConfig.business.yearsInBusiness} years in window fashions across New England.`,
 };
 
 export default function ServicesPage() {
@@ -39,14 +39,14 @@ export default function ServicesPage() {
         />
         <Container>
           <FadeUp>
-            <Eyebrow>What I Do</Eyebrow>
+            <Eyebrow>What We Do</Eyebrow>
           </FadeUp>
           <FadeUp delay={0.1}>
             <h1
               className="text-h1 hero-shimmer font-display mt-4"
               style={{ maxWidth: "22ch" }}
             >
-              Measured, designed, and installed by hand.
+              Measure, design, and install. We do it all.
             </h1>
           </FadeUp>
           <FadeUp delay={0.2}>
@@ -59,7 +59,7 @@ export default function ServicesPage() {
                 maxWidth: "65ch",
               }}
             >
-              Everything from the first free consultation to the final install, handled by Jim himself. He brings the real Hunter Douglas samples to your home, reads the light and the room, measures every window, and installs it cleanly. Jim stands behind every install he does. No store to drive to, no sales team, no subcontractors. One person, all of New England.
+              Everything from the first free consultation to the final install, handled in-house. We bring the real Hunter Douglas samples to your home, read the light and the room, measure every window, and install it cleanly. We stand behind every install. No store to drive to. One company that does it all, across New England.
             </p>
           </FadeUp>
         </Container>
@@ -123,7 +123,7 @@ export default function ServicesPage() {
                       src={featured.imageSrc}
                       alt={
                         featured.imageAlt ??
-                        `${featured.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
+                        `${featured.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by Window Fantasies`
                       }
                       width={featured.imageW}
                       height={featured.imageH}
@@ -173,7 +173,7 @@ export default function ServicesPage() {
                         src={service.imageSrc}
                         alt={
                           service.imageAlt ??
-                          `${service.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
+                          `${service.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by Window Fantasies`
                         }
                         width={service.imageW}
                         height={service.imageH}
@@ -258,7 +258,7 @@ export default function ServicesPage() {
               className="mt-4 font-body mx-auto"
               style={{ color: "var(--text-secondary)", fontSize: "1.0625rem", lineHeight: 1.65, maxWidth: "60ch" }}
             >
-              No sales team, no subcontractors, no call center. Jim measures, designs, installs, and services every treatment himself, and he stands behind his work. When you call, you get Jim.
+              One company, accountable from the first measurement to the final install. We measure, design, install, and service every treatment, and we stand behind our work. When you call, we answer.
             </p>
           </FadeUp>
         </Container>
@@ -297,14 +297,14 @@ export default function ServicesPage() {
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}
               >
-                Start with the free in-home consultation. Jim brings the real Hunter Douglas samples to you, reads the room, and tells you honestly what belongs on your windows. No pressure, no store to drive to.
+                Start with the free in-home consultation. We bring the real Hunter Douglas samples to you, read the room, and tell you honestly what belongs on your windows. No pressure, no store to drive to.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
                   Request Your Free In-Home Consultation
                 </Button>
                 <Button href="tel:+16038915755" variant="secondary" size="lg" tone="light">
-                  Call Jim
+                  Call Us
                 </Button>
               </div>
             </FadeUp>

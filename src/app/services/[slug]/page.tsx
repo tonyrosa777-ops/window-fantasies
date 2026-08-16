@@ -61,9 +61,9 @@ const audienceMap: Record<string, string[]> = {
   ],
   "measuring-and-installation": [
     "Homeowners ordering custom Hunter Douglas built to their exact openings",
-    "People who want one accountable person from measure to install, no handoffs",
+    "People who want one accountable company from measure to install, no handoffs",
     "Anyone with tricky or oversized windows that demand a precise professional measurement",
-    "Buyers who want a clean installation, done by hand, and their old treatments hauled away",
+    "Buyers who want a clean installation, handled start to finish, and their old treatments hauled away",
   ],
   "installs-and-repairs": [
     "Homeowners with a Hunter Douglas treatment that needs a warranty repair",
@@ -80,7 +80,7 @@ const audienceMap: Record<string, string[]> = {
   "powerview-automation": [
     "Homeowners who want to control shades from a phone, their voice, or a wall remote",
     "Snowbirds who want to run their New England shades from out of state",
-    "Anyone with hard-to-reach or high windows that are a chore to adjust by hand",
+    "Anyone with hard-to-reach or high windows that are a chore to adjust on their own",
     "People who want to cut glare and UV automatically on a schedule",
   ],
 };
@@ -90,8 +90,8 @@ const processSteps: Record<string, { title: string; body: string }[]> = {
   "in-home-consultation": [
     { title: "Request your free visit", body: "Tell Jim your town, your rooms, and roughly what you are thinking. The consultation is always free and carries no obligation." },
     { title: "The samples come to you", body: "Jim arrives with the real Hunter Douglas samples and holds them in your own windows, so you see every color and fabric in your light." },
-    { title: "Measure and educate", body: "Jim measures every opening himself and walks you through what fits the room, the light, and how you live. He sells you what you deserve." },
-    { title: "Honest installed price", body: "You get a real, installed price at your kitchen table, removal of your old treatments included. No pressure, and Jim stands behind every install he does." },
+    { title: "Measure and educate", body: "We measure every opening and walk you through what fits the room, the light, and how you live. We sell you what you deserve." },
+    { title: "Honest installed price", body: "You get a real, installed price at your kitchen table, removal of your old treatments included. No pressure, and we stand behind every install." },
   ],
   "interior-design": [
     { title: "Read the room", body: "Jim looks at how the light moves through the space, the style of the home, and how you actually use the room." },
@@ -106,10 +106,10 @@ const processSteps: Record<string, { title: string; body: string }[]> = {
     { title: "Financing questions welcome", body: "If you are planning a larger whole-home project, ask Jim about financing. He will give you straight answers on cost." },
   ],
   "measuring-and-installation": [
-    { title: "Precise measurement by Jim", body: "Custom Hunter Douglas is built to your exact opening, so Jim takes every measurement personally. It has to be right the first time." },
+    { title: "Precise measurement", body: "Custom Hunter Douglas is built to your exact opening, so we take every measurement ourselves. It has to be right the first time." },
     { title: "Built for your windows", body: "Your treatments are fabricated to your specific openings by Hunter Douglas. Jim confirms the products and options with you." },
-    { title: "Clean installation, done by hand", body: "Jim installs the finished product himself. No subcontractors, no handoffs, one person accountable from measure to install." },
-    { title: "Old treatments removed", body: "Jim removes and disposes of your old blinds as part of the job. Jim stands behind every install he does." },
+    { title: "A clean install, start to finish", body: "We install the finished product ourselves. No subcontractors, no handoffs, one company accountable from measure to install." },
+    { title: "Old treatments removed", body: "We remove and dispose of your old blinds as part of the job. We stand behind every install." },
   ],
   "installs-and-repairs": [
     { title: "Tell Jim what broke", body: "Describe the treatment and the problem. Because Hunter Douglas products carry the Hunter Douglas Limited Lifetime Warranty, a covered repair itself costs you nothing." },
@@ -125,7 +125,7 @@ const processSteps: Record<string, { title: string; body: string }[]> = {
   ],
   "powerview-automation": [
     { title: "Plan the automation", body: "Jim looks at which windows to motorize and how you want to control them, by phone, voice, remote, or an automatic schedule." },
-    { title: "Install and configure", body: "Jim installs Hunter Douglas PowerView® Automation and sets up the schedules, scenes, and app so everything works the day he leaves." },
+    { title: "Install and configure", body: "We install Hunter Douglas PowerView® Automation and set up the schedules, scenes, and app so everything works the day we leave." },
     { title: "Control from anywhere", body: "Adjust your shades from the couch or from Florida. Snowbirds run their New England shades from out of state, all season." },
     { title: "Learn to use it", body: "Jim teaches you how to run it, and it is all backed by the Hunter Douglas Limited Lifetime Warranty. Think of it as sunglasses for your windows, on a schedule." },
   ],
@@ -263,7 +263,7 @@ export default async function ServicePage({ params }: Props) {
                     {svc.cta.label}
                   </Button>
                   <Button href="tel:+16038915755" variant="secondary" size="lg">
-                    Call Jim
+                    Call Us
                   </Button>
                 </div>
               </FadeUp>
@@ -275,7 +275,7 @@ export default async function ServicePage({ params }: Props) {
                   src={svc.imageSrc}
                   alt={
                     svc.imageAlt ??
-                    `${svc.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by hand`
+                    `${svc.name} from Window Fantasies, custom Hunter Douglas window treatments measured and installed by Window Fantasies`
                   }
                   width={svc.imageW}
                   height={svc.imageH}
@@ -492,7 +492,7 @@ export default async function ServicePage({ params }: Props) {
                 className="mt-6 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.65 }}
               >
-                Request a free in-home consultation. Jim brings the real Hunter Douglas samples, measures your windows, and gives you an honest installed price at your kitchen table. No pressure, no store to drive to. Jim stands behind every install he does.
+                Request a free in-home consultation. We bring the real Hunter Douglas samples, measure your windows, and give you an honest installed price at your kitchen table. No pressure, no store to drive to. We stand behind every install.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

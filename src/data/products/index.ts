@@ -1,5 +1,5 @@
 /**
- * The Hunter Douglas product-line catalogue.
+ * The Hunter Douglas product-line catalog.
  *
  * 23 lines across three files, split only so three writers could work in
  * parallel; consumers should import from here, never from the parts.

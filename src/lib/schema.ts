@@ -164,7 +164,7 @@ export function buildLocalBusinessSchema(opts: LocalBusinessOptions = {}) {
     "@id": opts.idOverride ?? LOCAL_BUSINESS_ID,
     name: opts.nameOverride ?? b.name,
     legalName: b.legalName,
-    description: `Authorized Hunter Douglas Dealer based in Salem, NH, serving all of New England. ${b.yearsInBusiness}+ years of custom window treatments: shades, blinds, shutters, drapery, and PowerView® Automation, measured, designed, and installed by hand. Free in-home consultation. Products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms.`,
+    description: `Authorized Hunter Douglas Dealer based in Salem, NH, serving all of New England. ${b.yearsInBusiness}+ years of custom window treatments: shades, blinds, shutters, drapery, and PowerView® Automation, measured, designed, and installed by Window Fantasies. Free in-home consultation. Products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms.`,
     url: SITE_URL,
     telephone: b.phoneFormatted,
     email: b.email,

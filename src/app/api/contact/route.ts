@@ -329,7 +329,7 @@ export async function POST(request: Request) {
         ],
     ...(typedMessage ? { quote: { label: "What you told Jim", body: typedMessage } } : {}),
     outro: [
-      `Prefer to talk sooner? Call Jim directly at ${phoneFormatted}. He answers his own phone.`,
+      `Prefer to talk sooner? Call us directly at ${phoneFormatted}.`,
     ],
     cta: isService
       ? { label: "See repair services", href: `${base}/services/installs-and-repairs` }

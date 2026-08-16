@@ -49,7 +49,7 @@ export default function FaqPage() {
                 maxWidth: "65ch",
               }}
             >
-              Pricing, repairs, motorization, measuring, the samples that come to you, and the areas Jim serves. If your question is not here, call <span className="phone-display">{siteConfig.business.phoneFormatted}</span> or request a free consultation.
+              Pricing, repairs, motorization, measuring, the samples that come to you, and the areas we serve. If your question is not here, call <span className="phone-display">{siteConfig.business.phoneFormatted}</span> or request a free consultation.
             </p>
           </FadeUp>
         </Container>
@@ -107,7 +107,7 @@ export default function FaqPage() {
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}
               >
-                Request a free in-home consultation. Jim brings the real Hunter Douglas samples to your home, answers every question, and gives you an honest installed price at your kitchen table.
+                Request a free in-home consultation. We bring the real Hunter Douglas samples to your home, answer every question, and give you an honest installed price at your kitchen table.
               </p>
               <div className="mt-8 flex flex-wrap gap-4 justify-center">
                 <Button href="/request-a-consultation" variant="primary" size="lg">

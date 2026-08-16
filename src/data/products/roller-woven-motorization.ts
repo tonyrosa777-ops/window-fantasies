@@ -469,7 +469,7 @@ export const ROLLER_WOVEN_MOTORIZATION: HDProductLine[] = [
       "Shades can be programmed to open and close at different times of the day",
       "Available on many Hunter Douglas lines, including roller and screen shades, woven woods, Roman shades and gliding panels",
       POWERVIEW_AWARD_BULLET,
-      "Set up and programmed in your home by Jim, who does not leave until you have run it yourself once",
+      "Set up and programmed in your home by our team, and we do not leave until you have run it yourself once",
     ],
     faq: [
       {

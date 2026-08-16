@@ -41,7 +41,7 @@ import { buildAboutSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: `About ${siteConfig.business.founderName}`,
-  description: `Meet ${siteConfig.business.founderName}, ${siteConfig.business.founderTitle} of ${siteConfig.business.name}. An Authorized Hunter Douglas Dealer with ${siteConfig.business.yearsInBusiness}+ years measuring, designing, and installing custom window treatments by hand across all of New England.`,
+  description: `Meet ${siteConfig.business.founderName}, ${siteConfig.business.founderTitle} of ${siteConfig.business.name}. An Authorized Hunter Douglas Dealer with ${siteConfig.business.yearsInBusiness}+ years measuring, designing, and installing custom window treatments across all of New England.`,
 };
 
 export default function AboutPage() {

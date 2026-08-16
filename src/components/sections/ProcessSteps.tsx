@@ -12,17 +12,17 @@ const STEPS = [
   {
     n: "01",
     title: "Free in-home consultation",
-    body: "Jim comes to you with the real Hunter Douglas samples, learns the room and the light, and educates you on your options. No cost, no pressure.",
+    body: "We come to you with the real Hunter Douglas samples, learn the room and the light, and educate you on your options. No cost, no pressure.",
   },
   {
     n: "02",
     title: "Measure and design",
-    body: "Jim measures every window himself and helps you choose the right product, fabric, and controls. He gives you an honest installed price at your kitchen table.",
+    body: "We measure every window and help you choose the right product, fabric, and controls. We give you an honest installed price at your kitchen table.",
   },
   {
     n: "03",
-    title: "Installed by Jim",
-    body: "Your custom treatments arrive built for your exact openings. Jim installs them himself, removes your old ones, and shows you how everything works. Jim stands behind every install he does.",
+    title: "Installed by Window Fantasies",
+    body: "Your custom treatments arrive built for your exact openings. We install them, remove your old ones, and show you how everything works. We stand behind every install.",
   },
 ];
 
@@ -35,10 +35,10 @@ export function ProcessSteps() {
             How it works
           </p>
           <h2 className="mt-4 font-display text-h2" style={{ color: "var(--text-on-light)" }}>
-            Three simple steps, one person the whole way.
+            Three simple steps, one company the whole way.
           </h2>
           <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
-            The same person who quotes you is the person who measures, designs, and installs. No sales team, no handoffs, no call center.
+            The team that quotes you is the team that measures, designs, and installs. One company, accountable from the first measurement to the final install.
           </p>
         </FadeUp>
 

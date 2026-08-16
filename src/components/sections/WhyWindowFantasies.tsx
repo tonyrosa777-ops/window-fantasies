@@ -23,10 +23,10 @@ export function WhyWindowFantasies() {
             The Window Fantasies difference
           </p>
           <h2 className="mt-4 font-display text-h2" style={{ color: "var(--text-primary)" }}>
-            Jim brings the samples to you.
+            We bring the samples to you.
           </h2>
           <p className="mt-4 font-body" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-            There is no store to visit, and that is the point. Jim comes to your home with the real samples, holds them in your own windows, and shows you how they behave in your light. You get an education first, then an honest price.
+            There is no store to visit, and that is the point. We come to your home with the real samples, hold them in your own windows, and show you how they behave in your light. You get an education first, then an honest price.
           </p>
         </FadeUp>
 

@@ -55,7 +55,7 @@ export function FinalCTA() {
               </a>
             </div>
             <p className="font-mono text-xs uppercase tracking-widest" style={{ color: "var(--muted-on-light)" }}>
-              Call Jim directly · <span className="phone-display">{business.phoneFormatted}</span>
+              Call us directly · <span className="phone-display">{business.phoneFormatted}</span>
             </p>
           </div>
           <div

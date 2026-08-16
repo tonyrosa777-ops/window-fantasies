@@ -78,7 +78,7 @@ export function SignatureProducts() {
             The pieces homeowners fall in love with.
           </h2>
           <p className="mt-4 font-body" style={{ color: "var(--muted-on-light)" }}>
-            A few of the Hunter Douglas products Jim installs most. See them in your own light at your free consultation.
+            A few of the Hunter Douglas products we install most. See them in your own light at your free consultation.
           </p>
         </FadeUp>
 
