@@ -244,13 +244,13 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <FadeUp>
               <h2 className="text-h2 font-display" style={{ color: "var(--text-on-light)" }}>
-                Ready to let Jim shop at home with you?
+                Ready to let us bring the showroom to you?
               </h2>
               <p
                 className="mt-4 font-body"
                 style={{ color: "var(--muted-on-light)", fontSize: "1.0625rem", lineHeight: 1.6 }}
               >
-                The in-home consultation is free. I bring the real Hunter Douglas samples, hold them in your own windows, measure everything myself, and give you an honest installed price at your kitchen table. No pressure, no store to drive to, and I stand behind every install I do.
+                The in-home consultation is free. We bring the real Hunter Douglas samples, hold them in your own windows, measure everything, and give you an honest installed price at your kitchen table. No pressure, no store to drive to, and we stand behind every install.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">
                 <Button href="/request-a-consultation" variant="primary" size="lg">
