@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { RisingAsh } from "@/components/animations/RisingAsh";
+import { BbbSeal } from "@/components/brand/BbbSeal";
 import { hdCopyrightLine, HD_SEPARATE_ENTITIES_DISCLAIMER } from "@/data/hunterDouglas";
 
 /**
@@ -127,8 +128,9 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Trust badge row */}
-        <div className="mt-14 pt-8 border-t border-[var(--border-dark)]">
+        {/* Trust badge row + official BBB Accredited Business seal (links to the
+            live BBB profile — see BbbSeal.tsx). */}
+        <div className="mt-14 pt-8 border-t border-[var(--border-dark)] flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <ul className="flex flex-wrap gap-x-3 gap-y-3">
             {trustBadges.map((badge) => (
               <li
@@ -140,6 +142,7 @@ export function Footer() {
               </li>
             ))}
           </ul>
+          <BbbSeal width={150} className="shrink-0 self-start sm:self-center" />
         </div>
 
         {/* ⚠️ HUNTER DOUGLAS REQUIRED DISCLOSURES — site-wide, every page.
