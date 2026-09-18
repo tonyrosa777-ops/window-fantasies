@@ -67,6 +67,11 @@ export const metadata: Metadata = {
     // GA-account verification failed because next/script injects gtag below <head>; this
     // meta tag renders into <head> and is the durable verification. Do not remove.
     google: "gJmjiD40tfTlAs3R_7QcyzP5A8FFhGOHl9r2noKcAkY",
+    // Bing Webmaster Tools ownership (manual "HTML Meta Tag" method — the self-serve path that
+    // needs no owner OAuth, done right after GSC). Renders <meta name="msvalidate.01" ...>. Do not remove.
+    other: {
+      "msvalidate.01": "A0D959D104C2F2683A6992398B0C8180",
+    },
   },
   authors: [{ name: siteConfig.business.founderName }],
 };
