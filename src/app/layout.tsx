@@ -4,6 +4,7 @@ import { siteConfig } from "@/data/site";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import "./globals.css";
 
 /**
@@ -81,6 +82,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main className="flex-1">{children}</main>
         <Footer />
         <GoogleAnalytics />
+        <AnalyticsEvents />
       </body>
     </html>
   );

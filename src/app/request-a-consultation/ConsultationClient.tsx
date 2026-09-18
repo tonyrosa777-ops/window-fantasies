@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/data/site";
+import { trackConversion } from "@/lib/analytics";
 
 /**
  * ConsultationClient - the Window Fantasies consultation request form.
@@ -150,6 +151,7 @@ export function ConsultationClient({ context }: ConsultationClientProps = {}) {
         return;
       }
       setStatus("success");
+      trackConversion("booking_confirmed");
       reset();
     } catch {
       setStatus("error");

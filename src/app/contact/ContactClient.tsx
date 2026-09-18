@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { siteConfig } from "@/data/site";
+import { trackConversion } from "@/lib/analytics";
 
 /**
  * ContactClient — Client form using react-hook-form + zod.
@@ -83,6 +84,7 @@ export function ContactClient() {
       }
 
       setStatus("success");
+      trackConversion("quote_request");
       reset();
     } catch {
       setStatus("error");
