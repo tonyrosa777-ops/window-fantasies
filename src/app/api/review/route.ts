@@ -290,7 +290,7 @@ export async function POST(request: Request) {
           ]
         : [
             "Your review went straight to Jim, and he reads every one of them himself.",
-            "It means a lot coming from a customer. Jim runs this business himself, so feedback like yours is what keeps the phone ringing.",
+            "It means a lot coming from a customer. We read every one of these, and feedback like yours is what keeps the phone ringing.",
           ],
       ...(message
         ? { quote: { label: isPrivate ? "What you told Jim" : "What you wrote", body: message } }

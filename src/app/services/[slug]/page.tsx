@@ -108,7 +108,7 @@ const processSteps: Record<string, { title: string; body: string }[]> = {
   "measuring-and-installation": [
     { title: "Precise measurement", body: "Custom Hunter Douglas is built to your exact opening, so we take every measurement ourselves. It has to be right the first time." },
     { title: "Built for your windows", body: "Your treatments are fabricated to your specific openings by Hunter Douglas. Jim confirms the products and options with you." },
-    { title: "A clean install, start to finish", body: "We install the finished product ourselves. No subcontractors, no handoffs, one company accountable from measure to install." },
+    { title: "A clean install, start to finish", body: "We install the finished product ourselves, one company accountable from measure to install." },
     { title: "Old treatments removed", body: "We remove and dispose of your old blinds as part of the job. We stand behind every install." },
   ],
   "installs-and-repairs": [

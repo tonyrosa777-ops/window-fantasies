@@ -104,7 +104,7 @@ export function buildPersonSchema() {
     name: b.founderName,
     jobTitle: b.founderTitle,
     worksFor: { "@id": LOCAL_BUSINESS_ID },
-    description: `${b.founderName} is the ${b.founderTitle} of ${b.name}, an Authorized Hunter Douglas Dealer. A retired fire lieutenant with ${b.yearsInBusiness}+ years in window fashions, he personally measures, designs, and installs every custom treatment across New England.`,
+    description: `${b.founderName} is the ${b.founderTitle} of ${b.name}, an Authorized Hunter Douglas Dealer. A retired fire lieutenant with ${b.yearsInBusiness}+ years in window fashions, he owns ${b.name}, which measures, designs, and installs custom Hunter Douglas treatments across New England.`,
     knowsAbout: [
       "Hunter Douglas window treatments",
       "Custom shades, blinds, shutters, and drapery",

@@ -33,13 +33,13 @@ export const metadata: Metadata = {
 const NEXT_STEPS = [
   {
     numeral: "01",
-    title: "Jim calls you back",
-    body: "Personally, usually within a day. Not a call center, the owner.",
+    title: "We call you back",
+    body: "Usually within a day, from Window Fantasies, not a call center.",
   },
   {
     numeral: "02",
-    title: "He brings the samples",
-    body: "Real Hunter Douglas samples at your door, and he measures every window himself.",
+    title: "We bring the samples",
+    body: "Real Hunter Douglas samples at your door, and we measure every window.",
   },
   {
     numeral: "03",

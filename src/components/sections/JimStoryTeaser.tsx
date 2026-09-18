@@ -45,10 +45,10 @@ export function JimStoryTeaser() {
               A retired firefighter who treats your home like the only call that matters.
             </h2>
             <p className="font-body text-base md:text-lg max-w-prose" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-              Jim Garrity spent a career as a fire lieutenant, then more than thirty years in window fashions. He owns Window Fantasies and is an Authorized Hunter Douglas Dealer. He measures, designs, and installs every treatment himself.
+              Jim Garrity spent a career as a fire lieutenant, then more than thirty years in window fashions. He owns Window Fantasies and is an Authorized Hunter Douglas Dealer, and every measure, design, and install runs to his standard.
             </p>
             <p className="font-body text-base md:text-lg max-w-prose" style={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
-              Whether you live in a double-wide or a Boston tower, you get the same Jim: the same honesty, the same craft, and the same promise. You call, and he answers.
+              Whether you live in a double-wide or a Boston tower, you get the same standard: the same honesty, the same craft, and the same promise.
             </p>
             <div className="pt-2">
               <Button href="/about" variant="secondary" size="md">

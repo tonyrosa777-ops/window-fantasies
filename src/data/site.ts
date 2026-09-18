@@ -557,7 +557,7 @@ export const siteConfig: SiteConfig = {
       slug: "measuring-and-installation",
       name: "Measuring and Installation",
       shortDescription: "We measure every opening and install every treatment ourselves. Custom Hunter Douglas treatments are built for your exact window, so a precise measure and a clean install are everything.",
-      longDescription: "Custom window treatments are fabricated to your exact opening, which means the measure has to be right the first time. We take every measurement ourselves and install the finished product ourselves. No subcontractors, no handoffs. The people who measure and install are the same people who quoted you.",
+      longDescription: "Custom window treatments are fabricated to your exact opening, which means the measure has to be right the first time. We take every measurement ourselves and install the finished product ourselves. One company, accountable from measure to install. The people who measure and install are the same people who quoted you.",
       features: [
         "Precise measurement of every opening",
         "Products fabricated for your exact windows",

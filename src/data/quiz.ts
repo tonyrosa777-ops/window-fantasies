@@ -295,7 +295,7 @@ export const QUIZ_RESULTS: Record<QuizResultKey, QuizResultContent> = {
     headline: "You would rather pay for it once than fight it forever.",
     body: [
       "Who knew shades could cost so much? You did your homework, so you already know the answer, and you also know what replacing cheap blinds every five years adds up to. You are not price-shy, you are waste-shy. There is a difference, and Jim respects it.",
-      "Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. Jim measures it, installs it, and services it himself, and Jim stands behind every install he does. The consultation is free, and the number he gives you at your kitchen table is the real installed price, with your old blinds hauled away included. Straight answers before you spend a dollar, and a person who picks up after.",
+      "Hunter Douglas products are backed by the Hunter Douglas Limited Lifetime Warranty, subject to the manufacturer's warranty terms. We measure it, install it, and service it, and we stand behind every install. The consultation is free, and the number we give you at your kitchen table is the real installed price, with your old blinds hauled away included. Straight answers before you spend a dollar, and a person who picks up after.",
     ],
     recommendation: {
       name: "The Free In-Home Consultation",
@@ -331,7 +331,7 @@ export const QUIZ_RESULT_SCREEN = {
   recommendationEyebrow: "The fit",
   formHeading: "Tell Jim what you found. The consultation is free.",
   formBody:
-    "Jim brings the real Hunter Douglas samples to your home, measures your windows himself, and gives you an honest installed price at your kitchen table. No pressure, no obligation.",
+    "We bring the real Hunter Douglas samples to your home, measure your windows, and give you an honest installed price at your kitchen table. No pressure, no obligation.",
   callPrefix: "Prefer to talk it through? Call Jim at",
   startOver: "Start over",
 } as const;
