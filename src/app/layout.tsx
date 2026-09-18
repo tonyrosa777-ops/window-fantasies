@@ -61,6 +61,12 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  verification: {
+    // Google Search Console ownership (URL-prefix property https://www.windowfantasies.com).
+    // GA-account verification failed because next/script injects gtag below <head>; this
+    // meta tag renders into <head> and is the durable verification. Do not remove.
+    google: "gJmjiD40tfTlAs3R_7QcyzP5A8FFhGOHl9r2noKcAkY",
+  },
   authors: [{ name: siteConfig.business.founderName }],
 };
 
