@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { HDPhotoCredit } from "@/components/brand/HDPhotoCredit";
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -92,6 +93,27 @@ const SLIDES: Slide[] = [
 
 export function HeroSequence() {
   const [active, setActive] = useState(0);
+  // Slides 2-4 are not on screen until 4s in, so they must not compete with the
+  // first photo and the headline for bandwidth on a phone. They mount once the
+  // page has loaded and the browser is idle, well before the first crossfade.
+  const [restReady, setRestReady] = useState(false);
+
+  useEffect(() => {
+    const mount = () => {
+      const idle = (
+        window as Window & {
+          requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number;
+        }
+      ).requestIdleCallback;
+      // The timeout matters: a busy or backgrounded tab can starve idle
+      // callbacks indefinitely, and the first crossfade is due at 4s.
+      if (idle) idle(() => setRestReady(true), { timeout: 1500 });
+      else setTimeout(() => setRestReady(true), 200);
+    };
+    if (document.readyState === "complete") mount();
+    else window.addEventListener("load", mount, { once: true });
+    return () => window.removeEventListener("load", mount);
+  }, []);
 
   useEffect(() => {
     // Respect the OS setting: hold slide one, no rotation, no drift.
@@ -107,20 +129,29 @@ export function HeroSequence() {
   return (
     <>
       <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        {SLIDES.map((s, i) => (
-          <img
-            key={s.src}
-            src={s.src}
-            alt=""
-            // First slide is the LCP element, so it must not lazy-load.
-            fetchPriority={i === 0 ? "high" : "low"}
-            loading={i === 0 ? "eager" : "lazy"}
-            className="hd-hero-slide absolute inset-0 w-full h-full object-cover"
-            data-active={i === active ? "true" : "false"}
-            data-direction={s.direction}
-            style={{ transformOrigin: s.origin }}
-          />
-        ))}
+        {/* Served through next/image so a phone gets a phone-sized file instead
+            of the full desktop photograph (PageSpeed measured ~1 MB of savings).
+            Resizing for delivery is the same category as object-fit: the photo
+            is shown whole and unaltered, just at the pixel size the screen needs. */}
+        {SLIDES.map((s, i) =>
+          i === 0 || restReady ? (
+            <Image
+              key={s.src}
+              src={s.src}
+              alt=""
+              fill
+              sizes="100vw"
+              // First slide is the LCP image, so it must not lazy-load.
+              preload={i === 0}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "low"}
+              className="hd-hero-slide object-cover"
+              data-active={i === active ? "true" : "false"}
+              data-direction={s.direction}
+              style={{ transformOrigin: s.origin }}
+            />
+          ) : null,
+        )}
       </div>
 
       {/* ⚠️ The credit is a SIBLING of the image stack, not a child, and both

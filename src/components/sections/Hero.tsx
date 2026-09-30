@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { siteConfig } from "@/data/site";
 import { TrustSignals } from "@/components/sections/TrustBar";
 import { HunterDouglasLogo } from "@/components/brand/HunterDouglasLogo";
@@ -55,8 +53,6 @@ const TRUST_CHIPS = [
 ];
 
 export default function Hero() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
-
   const { tagline } = siteConfig.business;
   const { eyebrow, subhead, trustMicrocopy, ctaPrimary, ctaSecondary, h1WithEmphasis } =
     siteConfig.hero;
@@ -121,12 +117,13 @@ export default function Hero() {
           existed because the Media Kit copy was gray-on-transparent and unreadable
           on --ink, and recolouring HD's art is a violation. HD ships reversed art;
           we use it. */}
-      <motion.div
-        className="hidden sm:block absolute z-20 right-6 lg:right-12"
-        style={{ top: "calc(clamp(5rem, 8svh, 7rem) + clamp(0.75rem, 2svh, 1.5rem))" }}
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.15 }}
+      <div
+        className="hero-rise hidden sm:block absolute z-20 right-6 lg:right-12"
+        style={{
+          top: "calc(clamp(5rem, 8svh, 7rem) + clamp(0.75rem, 2svh, 1.5rem))",
+          ["--rise" as string]: "-8px",
+          animationDelay: "0.1s",
+        }}
       >
         <span className="flex flex-col items-center gap-1.5">
           <HunterDouglasLogo variant="horizontal" width={200} tone="dark" priority className="block" />
@@ -147,7 +144,7 @@ export default function Hero() {
             Authorized Dealer
           </span>
         </span>
-      </motion.div>
+      </div>
 
 
       {/* Layer 2: Dual-axis dark gradient scrim + faint gold glow behind the headline (z-5). */}
@@ -166,7 +163,6 @@ export default function Hero() {
           trust strip below stays inside the same band without moving the fold (Error #133 gates). */}
       <div className="relative min-h-[100svh] flex items-center">
       <div
-        ref={ref}
         className="relative z-10 max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 w-full"
         style={{
           paddingTop: "clamp(7.5rem, 14svh, 10rem)",
@@ -181,11 +177,9 @@ export default function Hero() {
               on-screen minimum. Left-aligned to the copy column, while the
               Window Fantasies wordmark sits in the nav above it, keeping the two
               marks visually separate. */}
-          <motion.div
-            className="sm:hidden flex items-center gap-2.5"
-            initial={{ opacity: 0, y: -6 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.05 }}
+          <div
+            className="hero-rise sm:hidden flex items-center gap-2.5"
+            style={{ ["--rise" as string]: "-6px", animationDelay: "0.05s" }}
           >
             <HunterDouglasLogo variant="horizontal" width={150} tone="dark" priority className="block" />
             <span
@@ -201,21 +195,21 @@ export default function Hero() {
             >
               Authorized Dealer
             </span>
-          </motion.div>
+          </div>
 
           {eyebrow && (
-            <motion.p
-              className="eyebrow"
-              style={{ color: "var(--gold-bright)" }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <p
+              className="hero-rise eyebrow"
+              style={{ color: "var(--gold-bright)", animationDelay: "0.05s" }}
             >
               {eyebrow}
-            </motion.p>
+            </p>
           )}
 
-          <motion.h1
+          {/* The rise lives on a wrapper because .hero-shimmer owns the H1's
+              own `animation` property; one element cannot run both shorthands. */}
+          <div className="hero-rise" style={{ ["--rise" as string]: "24px", animationDelay: "0.1s" }}>
+          <h1
             className="hero-shimmer font-display"
             style={{
               fontSize: "clamp(2.75rem, 2.2vw + 3.4svh, 5.25rem)",
@@ -224,36 +218,27 @@ export default function Hero() {
               color: "var(--text-primary)",
               textShadow: "0 2px 20px rgba(0,0,0,0.5)",
             }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
           >
             {renderH1()}
-          </motion.h1>
+          </h1>
+          </div>
 
           {subhead && (
-            <motion.p
-              className="max-w-xl font-body"
+            <p
+              className="hero-rise max-w-xl font-body"
               style={{
                 color: "var(--text-secondary)",
                 fontSize: "clamp(1rem, 0.6vw + 1.1svh, 1.3rem)",
                 lineHeight: 1.5,
                 textShadow: "0 1px 10px rgba(0,0,0,0.6)",
+                animationDelay: "0.2s",
               }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.5 }}
             >
               {subhead}
-            </motion.p>
+            </p>
           )}
 
-          <motion.div
-            className="flex flex-wrap gap-4 pt-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-          >
+          <div className="hero-rise flex flex-wrap gap-4 pt-2" style={{ animationDelay: "0.35s" }}>
             <a
               href={ctaPrimary.href}
               className="inline-flex items-center justify-center px-8 py-4 text-base md:text-lg font-semibold transition-all duration-200 hover:brightness-110 hover:scale-[1.02] font-body shadow-lg"
@@ -274,14 +259,12 @@ export default function Hero() {
             >
               {ctaSecondary.label}
             </a>
-          </motion.div>
+          </div>
 
           {/* Above-the-fold trust chips */}
-          <motion.ul
-            className="flex flex-wrap gap-x-2.5 gap-y-2 pt-1"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 1.0, duration: 0.5 }}
+          <ul
+            className="hero-rise flex flex-wrap gap-x-2.5 gap-y-2 pt-1"
+            style={{ ["--rise" as string]: "0px", animationDelay: "0.5s" }}
           >
             {TRUST_CHIPS.map((chip) => (
               <li
@@ -297,22 +280,21 @@ export default function Hero() {
                 {chip}
               </li>
             ))}
-          </motion.ul>
+          </ul>
 
           {trustMicrocopy && (
-            <motion.p
-              className="mt-1 text-xs md:text-sm"
+            <p
+              className="hero-rise mt-1 text-xs md:text-sm"
               style={{
                 color: "var(--text-secondary)",
                 letterSpacing: "0.03em",
                 textShadow: "0 1px 8px rgba(0,0,0,0.6)",
+                ["--rise" as string]: "0px",
+                animationDelay: "0.6s",
               }}
-              initial={{ opacity: 0 }}
-              animate={inView ? { opacity: 1 } : {}}
-              transition={{ delay: 1.15, duration: 0.5 }}
             >
               {trustMicrocopy}
-            </motion.p>
+            </p>
           )}
         </div>
       </div>

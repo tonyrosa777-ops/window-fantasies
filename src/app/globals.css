@@ -153,6 +153,27 @@ body {
   animation: shimmer-sweep 6s ease-in-out infinite;
 }
 
+/* ============================================================================
+   hero-rise — the hero copy's entrance. CSS, not framer-motion, on purpose.
+   The JS version held every hero line at opacity 0 until the bundle hydrated,
+   and the subhead is the page's LCP element, so mobile LCP sat at ~9 s while
+   the text waited on JavaScript (PageSpeed 2026-09-30: 3,460 ms render delay).
+   A CSS animation starts at first paint with no script. Per-element timing is
+   set inline with animation-delay and --rise (the starting Y offset).
+   ============================================================================ */
+.hero-rise {
+  animation: hero-rise 600ms cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(var(--rise, 16px)); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; }
+}
+
 @keyframes shimmer-sweep {
   0%, 100% { background-position: 200% 50%; }
   50%      { background-position: -100% 50%; }
